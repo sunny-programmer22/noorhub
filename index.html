@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NoorHub - The Unified Islamic Living Platform</title>
-  <meta name="description" content="NoorHub is an authentic, all-in-one Islamic platform featuring high-accuracy prayer times, Qibla compass, Ramadan fasting tracker, digital tasbih, zakat calculator, 40 Hadith of Imam Nawawi, Islamic baby names, and Faraid inheritance calculator.">
-  <meta name="keywords" content="Islamic tools, prayer times, Qibla compass, zakat calculator, tasbih counter, 40 hadith, fasting tracker, islamic baby names, faraid inheritance, halal guide">
-  <meta property="og:title" content="NoorHub - The Unified Islamic Living Platform">
-  <meta property="og:description" content="Authentic, modern, and tracker-free digital waqf for Muslims worldwide. Accurate prayer times, Qibla, fasting, tasbih, zakat, and hadith.">
+  <title>NoorHub - Sacred Lifestyle & Spiritual Sanctuary Dashboard</title>
+  <meta name="description" content="NoorHub is an authentic, serene Islamic living portal featuring high-precision prayer times, interactive Qibla compass, spiritual progress rings, daily verse recitation, and haptic tasbih.">
+  <meta name="keywords" content="Islamic dashboard, prayer times, Qibla compass, spiritual journey, tasbih, Quran, hadith, sacred sanctuary, NoorHub">
+  <meta property="og:title" content="NoorHub - Sacred Lifestyle & Spiritual Sanctuary Dashboard">
+  <meta property="og:description" content="Immerse in tranquility. Real-time Salat countdown, spiritual growth analytics, Qibla alignment, and sacred audio.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://noorhub.truxio.bond">
 
   <!-- Tailwind CSS & Google Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -20,79 +19,147 @@
         extend: {
           colors: {
             emerald: {
-              50: '#ecfdf5',
-              100: '#d1fae5',
-              500: '#10b981',
-              600: '#059669',
-              700: '#047857',
-              800: '#065f46',
-              900: '#064e3b',
-              950: '#022c22',
+              850: '#0a231c',
+              900: '#061A14',
+              950: '#040e0b',
             },
-            amber: {
-              50: '#fffbeb',
-              100: '#fef3c7',
-              400: '#fbbf24',
-              500: '#f59e0b',
-              600: '#d97706',
-              700: '#b45309',
+            champagne: {
+              300: '#FDF6E2',
+              400: '#F3E5AB',
+              500: '#D4AF37',
+              600: '#B8952B',
+              700: '#8C6F19',
             },
-            slate: {
-              850: '#131c2e',
-              900: '#0f172a',
-              950: '#0b0f19',
+            opal: {
+              50: '#F8FAF9',
+              100: '#E6ECE9',
+              200: '#CBD5CE',
+              300: '#94A3B8'
             }
+          },
+          fontFamily: {
+            brand: ['Cinzel', 'Plus Jakarta Sans', 'serif'],
+            arabic: ['Amiri', 'Traditional Arabic', 'serif'],
+            sans: ['Outfit', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
           }
         }
       }
     }
   </script>
+    <script>
+    // Theme initialization: default light mode unless dark is explicitly stored
+    if (localStorage.getItem('noorhub_theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern">
+<body class="min-h-screen flex flex-col font-sans transition-colors duration-300 selection:bg-amber-400 selection:text-emerald-950">
 
-  <!-- Top Announcement / Bar -->
-  <div class="bg-emerald-900 text-emerald-100 text-xs py-1.5 px-4 text-center border-b border-emerald-800 flex justify-between items-center max-w-7xl mx-auto w-full">
-    <div class="hidden sm:flex items-center space-x-2">
-      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span>NoorHub Digital Waqf • Free, Authentic & Ad-Respecting</span>
-    </div>
-    <div class="mx-auto sm:mr-0 flex items-center space-x-4">
-      <span id="header-hijri-date" class="font-medium">1448 AH</span>
-      <span class="text-emerald-400">•</span>
-      <span id="header-clock" class="font-mono font-semibold">--:--:--</span>
+  <!-- =========================================================================
+       1. Top Atmosphere Bar (Sanctuary Bar)
+       ========================================================================= -->
+  <div class="border-b border-amber-500/20 bg-emerald-950/70 text-slate-200 text-xs py-2 px-4 backdrop-blur-md z-40 transition-colors">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Left: Ambient Sound & Waqf Badge -->
+      <div class="flex items-center space-x-3">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span>
+          Sacred Sanctuary
+        </span>
+        
+        <!-- Ambient Sound Synthesizer Toggle -->
+        <button id="zen-ambient-btn" class="sanctuary-btn inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/60 transition shadow-sm" title="Toggle Calming Stream & Sanctuary Sound">
+          <span>🌿 Ambient: Calm</span>
+        </button>
+      </div>
+
+      <!-- Right: Live Location + Hijri Date + Live Clock -->
+      <div class="flex items-center space-x-3 text-[11px] sm:text-xs">
+        
+        <!-- City Selector Pill with Dropdown -->
+        <div class="relative">
+          <button id="city-selector-btn" class="sanctuary-btn flex items-center space-x-1 px-2.5 py-1 rounded-full bg-emerald-900/40 hover:bg-emerald-900/70 border border-amber-500/30 text-amber-300 font-medium">
+            <span>📍</span>
+            <span id="current-city-label">Makkah</span>
+            <svg class="w-3 h-3 ml-0.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+
+          <!-- City Selector Dropdown Modal -->
+          <div id="city-dropdown" class="hidden absolute right-0 mt-2 w-64 p-3 rounded-2xl bg-white dark:bg-[#081f18] border border-amber-500/30 shadow-2xl z-50 backdrop-blur-xl">
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-200 dark:border-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <span>Select Sanctuary City</span>
+              <button id="btn-use-gps" class="text-[10px] text-amber-500 hover:text-amber-400 underline font-normal">Use GPS</button>
+            </div>
+            <div id="cities-list" class="max-h-56 overflow-y-auto space-y-1 pr-1">
+              <!-- Dynamically populated by portal.js -->
+            </div>
+          </div>
+        </div>
+
+        <span class="text-amber-500/50 hidden sm:inline">•</span>
+
+        <!-- Hijri Date -->
+        <div class="flex items-center space-x-1 text-slate-300 font-medium">
+          <span>🌙</span>
+          <span id="header-hijri-date">1448 AH</span>
+        </div>
+
+        <span class="text-amber-500/50 hidden sm:inline">•</span>
+
+        <!-- Live Clock -->
+        <div class="font-mono text-amber-200 font-semibold tracking-wider">
+          <span id="header-clock">--:--:--</span>
+        </div>
+
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn sanctuary-btn p-1.5 rounded-full bg-slate-800/60 hover:bg-slate-800 text-amber-300 border border-slate-700/60 transition" title="Toggle Light / Dark Sanctuary">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+
+      </div>
     </div>
   </div>
 
-  <!-- Primary Navigation -->
-  <header class="sticky top-0 z-50 glass-header shadow-sm transition-all">
+  <!-- =========================================================================
+       2. Primary Sanctuary Navigation Header
+       ========================================================================= -->
+  <header class="sticky top-0 z-40 sanctuary-header border-b transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        
-        <!-- Brand Logo -->
-        <a href="index.html" class="flex items-center space-x-3 group">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-900/20 group-hover:scale-105 transition-transform">
-            <span class="text-xl">🌙</span>
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Sacred Brand Logo -->
+        <a href="index.html" class="flex items-center space-x-3.5 group">
+          <div class="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-800 via-emerald-900 to-[#040e0b] p-0.5 shadow-lg shadow-emerald-950/40 border border-amber-500/40 flex items-center justify-center group-hover:scale-105 transition-transform">
+            <span class="text-2xl filter drop-shadow">🌙</span>
+            <div class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-emerald-950"></div>
           </div>
           <div>
-            <div class="flex items-center space-x-1.5">
-              <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white font-heading">NoorHub</span>
-              <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-semibold uppercase tracking-wider">Unified</span>
+            <div class="flex items-center space-x-2">
+              <span class="font-brand text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                Noor<span class="text-amber-400 font-serif">Hub</span>
+              </span>
+              <span class="text-[10px] tracking-widest uppercase font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30">
+                Sanctuary
+              </span>
             </div>
-            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-arabic leading-none -mt-0.5">نُور هَب • المِنَصَّةُ الإِسْلَامِيَّةُ</p>
+            <p class="text-xs text-amber-600/90 dark:text-amber-400/80 font-arabic font-medium tracking-wide">نُور هَب • المِحْرَابُ الرَّوْحَانِي</p>
           </div>
         </a>
 
-        <!-- Desktop Navigation Links -->
+        <!-- Desktop Navigation Items -->
+                <!-- Desktop Navigation Links -->
         <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
-          <a href="knowledge.html" class="px-3 py-2 rounded-lg text-emerald-700 dark:text-emerald-400 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center space-x-1">
-            <span>📚</span>
-            <span>Knowledge Academy</span>
-          </a>
-          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat & Qibla</a>
+          <a href="index.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">Portal</a>
+          <a href="qibla.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Qibla Compass</a>
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat Times</a>
+          <a href="knowledge.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Knowledge</a>
           <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
-          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih & Adhkar</a>
+          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih</a>
           <a href="99-names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">99 Names</a>
           <a href="hadith.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">40 Hadith</a>
           <a href="zakat.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Zakat</a>
@@ -102,645 +169,701 @@
           <a href="mosque.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Mosque Kiosk</a>
         </nav>
 
-        <!-- Right Action Controls (City selector, Theme toggle, Hamburger) -->
-        <div class="flex items-center space-x-2">
-          
-          <!-- Location Dropdown Button -->
-          <div class="relative">
-            <button id="city-selector-btn" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-emerald-500 transition shadow-sm">
-              <span class="text-emerald-600 dark:text-emerald-400">📍</span>
-              <span id="current-city-label">Makkah</span>
-              <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-            </button>
-            
-            <!-- City Dropdown Modal / Popover -->
-            <div id="city-dropdown" class="hidden absolute right-0 mt-2 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl z-50 p-2">
-              <div class="p-2 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
-                <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Select City</span>
-                <button id="btn-use-gps" class="text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:underline flex items-center space-x-1">
-                  <span>🎯 Use GPS</span>
-                </button>
-              </div>
-              <div id="cities-list" class="max-h-56 overflow-y-auto py-1 text-xs">
-                <!-- Injected via JS -->
-              </div>
-            </div>
-          </div>
-
-          <!-- Dark/Light Theme Switcher -->
-          <button class="theme-toggle-btn p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle theme">
-            <svg class="w-5 h-5 hidden dark:block text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
-            <svg class="w-5 h-5 block dark:hidden text-slate-700" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-          </button>
-
-          <!-- Mobile Menu Hamburger -->
-          <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open menu">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-          </button>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile Drawer Menu -->
-    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
-      <a href="knowledge.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-bold">📚 Islamic Knowledge Academy</a>
-      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Salat & Qibla Compass</a>
-      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Sawm & Fasting Companion</a>
-      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Digital Tasbih & Adhkar</a>
-      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">The 40 Hadith of Imam Nawawi</a>
-      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Zakat Multi-Asset Calculator</a>
-      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Islamic Baby Names (Ism Finder)</a>
-      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Faraid Inheritance Calculator</a>
-      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Halal Food & E-Number Guide</a>
-      <a href="99-names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">99 Names of Allah</a>
-      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Masjid TV Kiosk Mode</a>
-      <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex justify-between text-xs text-slate-500">
-        <a href="about.html" class="hover:underline">About NoorHub</a>
-        <a href="contact.html" class="hover:underline">Contact</a>
-        <a href="privacy.html" class="hover:underline">Privacy</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Portal Content -->
-  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-10">
-
-    <!-- Hero / Next Prayer & Fasting Countdown Dashboard -->
-    <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 text-white p-6 sm:p-10 shadow-2xl border border-emerald-800/40">
-      
-      <!-- Subtle Decorative Islamic Arch Background -->
-      <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-emerald-600/10 blur-3xl pointer-events-none"></div>
-      <div class="absolute -left-20 -top-20 w-80 h-80 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"></div>
-
-      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        
-        <!-- Left: Next Prayer & Countdown -->
-        <div class="lg:col-span-7 space-y-4">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-semibold">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-            <span id="hero-status-pill">Next Obligatory Prayer</span>
-          </div>
-
-          <div class="flex flex-wrap items-baseline gap-4">
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight font-heading text-white">
-              <span id="next-prayer-name">Maghrib</span>
-            </h1>
-            <span id="next-prayer-time" class="text-2xl sm:text-3xl font-medium text-amber-400 font-mono">--:--</span>
-          </div>
-
-          <!-- Countdown -->
-          <div class="flex items-center space-x-3 text-slate-300">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <span class="text-sm sm:text-base font-medium">Starts in <strong id="prayer-countdown-timer" class="text-white font-mono text-lg font-bold">--h --m --s</strong></span>
-          </div>
-
-          <!-- Progress Bar to Next Prayer -->
-          <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden border border-slate-700">
-            <div id="prayer-progress-bar" class="bg-gradient-to-r from-emerald-500 to-amber-400 h-2 rounded-full transition-all duration-1000" style="width: 45%;"></div>
-          </div>
-
-          <!-- Fasting Quick Status (Suhoor / Iftar) -->
-          <div class="pt-2 flex flex-wrap gap-4 text-xs sm:text-sm text-slate-300">
-            <div class="flex items-center space-x-1.5 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
-              <span class="text-amber-400">🌙 Iftar:</span>
-              <strong id="fasting-iftar-time" class="text-white">--:--</strong>
-            </div>
-            <div class="flex items-center space-x-1.5 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
-              <span class="text-emerald-400">🥣 Suhoor Ends (Fajr):</span>
-              <strong id="fasting-suhoor-time" class="text-white">--:--</strong>
-            </div>
-            <a href="fasting.html" class="flex items-center space-x-1 text-emerald-400 hover:text-emerald-300 py-1.5 font-medium transition">
-              <span>Fasting Hub & Du'as &rarr;</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Right: Kaaba / Qibla Compass Quick Glance -->
-        <div class="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-sm">
-          <div class="flex items-center justify-between w-full mb-3 text-xs text-slate-400">
-            <span class="font-semibold uppercase tracking-wider text-emerald-400">Qibla Direction</span>
-            <span id="kaaba-distance-label" class="font-mono">-- km to Makkah</span>
-          </div>
-
-          <div class="relative w-36 h-36 flex items-center justify-center rounded-full border-2 border-emerald-500/30 bg-slate-950 shadow-inner">
-            <!-- Compass Dial Marks -->
-            <span class="absolute top-1 text-[10px] font-bold text-slate-500">N</span>
-            <span class="absolute right-2 text-[10px] font-bold text-slate-500">E</span>
-            <span class="absolute bottom-1 text-[10px] font-bold text-slate-500">S</span>
-            <span class="absolute left-2 text-[10px] font-bold text-slate-500">W</span>
-            
-            <!-- Kaaba Pointer Needle -->
-            <div id="qibla-needle" class="absolute w-full h-full flex items-center justify-center transition-transform duration-700 ease-out" style="transform: rotate(0deg);">
-              <div class="w-1 bg-gradient-to-t from-transparent via-amber-400 to-amber-500 h-28 flex flex-col items-center justify-start">
-                <span class="text-base -mt-2">🕋</span>
-              </div>
-            </div>
-            <div class="w-4 h-4 rounded-full bg-emerald-500 border-2 border-white shadow"></div>
-          </div>
-
-          <div class="mt-3 text-center">
-            <span id="qibla-angle-degrees" class="text-lg font-bold text-amber-400 font-mono">--°</span>
-            <span id="qibla-cardinal" class="text-xs text-slate-400 ml-1">From North</span>
-          </div>
-
-          <a href="prayer-times.html#qibla-section" class="mt-2 text-xs text-emerald-400 hover:text-emerald-300 font-medium">
-            Open Interactive 360° Compass &rarr;
+        <!-- Right Header Action: Quick Prayer CTA -->
+        <div class="hidden sm:flex items-center space-x-3">
+          <a href="prayer-times.html" class="sanctuary-btn inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-emerald-950 font-bold text-xs shadow-lg shadow-amber-500/20 transition">
+            <span>🕌</span>
+            <span>Salat Timetable</span>
           </a>
         </div>
 
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobile-menu-toggle" class="lg:hidden sanctuary-btn p-2 rounded-xl text-slate-400 hover:text-amber-400 hover:bg-slate-800/40">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Nav Menu Drawer -->
+        <!-- Mobile Drawer Menu -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
+      <a href="index.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">Portal</a>
+      <a href="qibla.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Qibla Compass</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Salat Times</a>
+      <a href="knowledge.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Knowledge Academy</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Sawm & Fasting</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Tasbih & Adhkar</a>
+      <a href="99-names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">99 Names of Allah</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">40 Hadith</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Zakat Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Islamic Baby Names</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Halal Guide</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Mosque Kiosk</a>
+      <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-3 text-xs text-slate-500">
+        <a href="about.html" class="hover:underline">About</a>
+        <a href="faq.html" class="hover:underline">FAQ</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+        <a href="privacy.html" class="hover:underline">Privacy</a>
+        <a href="terms.html" class="hover:underline">Terms</a>
+      </div>
+    </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       3. Main Content: The Hero Sanctuary Banner & Grid
+       ========================================================================= -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-10">
+
+    <!-- The Hero Sanctuary Banner (2-Column Architecture matching Reference UI) -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+
+      <!-- LEFT COLUMN (col-span-7): Verse of the Day Glass Card -->
+      <div class="lg:col-span-7 sanctuary-card p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+        
+        <!-- Rub el Hizb 8-Pointed Star Watermark in Top Right Corner -->
+        <svg class="islamic-star-watermark top-3 right-3 w-40 h-40 text-amber-400" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+          <rect x="25" y="25" width="50" height="50" stroke-width="1.5" />
+          <rect x="25" y="25" width="50" height="50" stroke-width="1.5" transform="rotate(45 50 50)" />
+          <circle cx="50" cy="50" r="16" stroke-width="1" />
+          <circle cx="50" cy="50" r="3" fill="currentColor" />
+        </svg>
+
+        <!-- Card Header -->
+        <div class="relative z-10 flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="text-amber-400 text-lg">✨</span>
+            <span class="text-xs uppercase tracking-widest font-bold text-amber-500 dark:text-amber-400">Ayah of Sanctuary</span>
+          </div>
+          <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+            Daily Reflection
+          </span>
+        </div>
+
+        <!-- Calligraphy & Translation Center Body -->
+        <div class="relative z-10 my-8 space-y-6">
+          <div class="p-4 sm:p-6 rounded-2xl bg-amber-500/5 dark:bg-emerald-950/40 border border-amber-500/20 text-center">
+            <p id="daily-verse-arabic" class="font-arabic-center text-2xl sm:text-3xl lg:text-4xl text-slate-900 dark:text-emerald-50 leading-relaxed font-bold tracking-wide">
+              فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ۝ إِنَّ مَعَ الْعُسْرِ يُسْرًا
+            </p>
+          </div>
+
+          <div class="space-y-2 text-center sm:text-left">
+            <p id="daily-verse-trans" class="text-base sm:text-lg text-slate-700 dark:text-slate-200 font-medium italic leading-relaxed">
+              &ldquo;Indeed, with hardship will be ease.&rdquo;
+            </p>
+            <p id="daily-verse-ref" class="text-xs sm:text-sm text-amber-600 dark:text-amber-400 font-semibold tracking-wide">
+              Surah Ash-Sharh (94:5-6)
+            </p>
+          </div>
+        </div>
+
+        <!-- Action Controls -->
+        <div class="relative z-10 pt-4 border-t border-amber-500/20 flex flex-wrap items-center justify-between gap-3">
+          <button id="btn-play-verse" class="sanctuary-btn inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-emerald-950 font-bold text-xs shadow-md shadow-amber-500/20 transition">
+            <span>▶ Listen Recitation</span>
+          </button>
+
+          <button id="btn-cycle-verse" class="sanctuary-btn inline-flex items-center space-x-1.5 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-emerald-900/30 hover:bg-slate-200 dark:hover:bg-emerald-900/50 text-slate-700 dark:text-amber-300 border border-amber-500/20 text-xs font-semibold transition">
+            <span>Next Verse ↻</span>
+          </button>
+        </div>
+
       </div>
 
-      <!-- 6 Daily Prayer Times Grid Row -->
-      <div class="mt-8 pt-6 border-t border-slate-800/80 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-center">
-        
-        <div id="card-fajr" class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60 hover:border-emerald-500/50 transition">
-          <p class="text-xs text-slate-400 font-medium">Fajr</p>
-          <p id="time-fajr" class="text-base font-bold font-mono text-white mt-0.5">--:--</p>
-          <span class="text-[10px] text-slate-500 font-arabic">الفجر</span>
+      <!-- RIGHT COLUMN (col-span-5): Stacked Next Prayer, Progress Rings, & Daily Goal -->
+      <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
+
+        <!-- Top Right: Next Prayer Card with Illuminated Vertical Timeline -->
+        <div class="sanctuary-card p-5 relative overflow-hidden">
+          
+          <!-- Rub el Hizb Watermark -->
+          <svg class="islamic-star-watermark -bottom-4 -right-4 w-28 h-28 text-amber-400" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+            <rect x="25" y="25" width="50" height="50" stroke-width="1.5" />
+            <rect x="25" y="25" width="50" height="50" stroke-width="1.5" transform="rotate(45 50 50)" />
+            <circle cx="50" cy="50" r="14" stroke-width="1" />
+          </svg>
+
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs uppercase tracking-wider font-bold text-amber-500 dark:text-amber-400 flex items-center space-x-1.5">
+              <span>🕌</span>
+              <span>Next Prayer Countdown</span>
+            </span>
+            <span class="text-[10px] text-slate-400 font-mono">Live Astronomical</span>
+          </div>
+
+          <!-- Highlight Heading -->
+          <div class="mb-4">
+            <h3 id="hero-next-prayer-heading" class="text-2xl font-bold font-brand tracking-tight text-slate-900 dark:text-white">
+              Maghrib in 1h 24m
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Prepare for wudu and mindful presence.</p>
+          </div>
+
+          <!-- Vertical Illuminated Prayer Timeline -->
+          <div class="space-y-1.5 text-xs font-medium">
+            <div id="timeline-row-fajr" class="flex items-center justify-between px-3 py-1.5 rounded-xl text-slate-400 hover:text-slate-200 transition">
+              <span class="flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                <span>Fajr</span>
+              </span>
+              <span id="timeline-fajr-time" class="font-mono">--:--</span>
+            </div>
+            <div id="timeline-row-dhuhr" class="flex items-center justify-between px-3 py-1.5 rounded-xl text-slate-400 hover:text-slate-200 transition">
+              <span class="flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                <span>Dhuhr</span>
+              </span>
+              <span id="timeline-dhuhr-time" class="font-mono">--:--</span>
+            </div>
+            <div id="timeline-row-asr" class="flex items-center justify-between px-3 py-1.5 rounded-xl text-slate-400 hover:text-slate-200 transition">
+              <span class="flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                <span>Asr</span>
+              </span>
+              <span id="timeline-asr-time" class="font-mono">--:--</span>
+            </div>
+            <div id="timeline-row-maghrib" class="flex items-center justify-between px-3 py-1.5 rounded-xl gold-pill-active text-amber-300 font-bold">
+              <span class="flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                <span>Maghrib</span>
+              </span>
+              <span id="timeline-maghrib-time" class="font-mono">--:--</span>
+            </div>
+            <div id="timeline-row-isha" class="flex items-center justify-between px-3 py-1.5 rounded-xl text-slate-400 hover:text-slate-200 transition">
+              <span class="flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                <span>Isha</span>
+              </span>
+              <span id="timeline-isha-time" class="font-mono">--:--</span>
+            </div>
+          </div>
+
         </div>
 
-        <div id="card-sunrise" class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60 hover:border-amber-500/50 transition">
-          <p class="text-xs text-slate-400 font-medium">Sunrise</p>
-          <p id="time-sunrise" class="text-base font-bold font-mono text-amber-200 mt-0.5">--:--</p>
-          <span class="text-[10px] text-slate-500 font-arabic">الشروق</span>
+        <!-- Middle Right: Spiritual Dashboard Card with 4 Circular SVG Progress Rings -->
+        <div class="sanctuary-card p-5 relative overflow-hidden">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs uppercase tracking-wider font-bold text-amber-500 dark:text-amber-400 flex items-center space-x-1.5">
+              <span>📊</span>
+              <span>Spiritual Growth Rings</span>
+            </span>
+            <span class="text-[10px] text-slate-400">Daily Momentum</span>
+          </div>
+
+          <div class="grid grid-cols-4 gap-2 text-center">
+            
+            <!-- Ring 1: Prayers (Gold) -->
+            <div class="flex flex-col items-center">
+              <div class="relative w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                <svg class="w-full h-full" viewBox="0 0 72 72">
+                  <circle cx="36" cy="36" r="28" stroke="rgba(212, 175, 55, 0.15)" stroke-width="5" fill="none" />
+                  <circle id="ring-prayers" class="progress-ring-circle" cx="36" cy="36" r="28" stroke="#D4AF37" stroke-width="5" stroke-linecap="round" fill="none" />
+                </svg>
+                <span id="val-ring-prayers" class="absolute font-bold text-xs sm:text-sm text-slate-800 dark:text-amber-300 font-mono">3/5</span>
+              </div>
+              <span class="text-[11px] font-semibold text-slate-600 dark:text-slate-300 mt-1">Prayers</span>
+            </div>
+
+            <!-- Ring 2: Dhikr (Amber) -->
+            <div class="flex flex-col items-center">
+              <div class="relative w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                <svg class="w-full h-full" viewBox="0 0 72 72">
+                  <circle cx="36" cy="36" r="28" stroke="rgba(245, 158, 11, 0.15)" stroke-width="5" fill="none" />
+                  <circle id="ring-dhikr" class="progress-ring-circle" cx="36" cy="36" r="28" stroke="#F59E0B" stroke-width="5" stroke-linecap="round" fill="none" />
+                </svg>
+                <span id="val-ring-dhikr" class="absolute font-bold text-xs sm:text-sm text-slate-800 dark:text-amber-400 font-mono">66/99</span>
+              </div>
+              <span class="text-[11px] font-semibold text-slate-600 dark:text-slate-300 mt-1">Dhikr</span>
+            </div>
+
+            <!-- Ring 3: Quran Reading (Mint / Emerald) -->
+            <div class="flex flex-col items-center">
+              <div class="relative w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                <svg class="w-full h-full" viewBox="0 0 72 72">
+                  <circle cx="36" cy="36" r="28" stroke="rgba(16, 185, 129, 0.15)" stroke-width="5" fill="none" />
+                  <circle id="ring-quran" class="progress-ring-circle" cx="36" cy="36" r="28" stroke="#10B981" stroke-width="5" stroke-linecap="round" fill="none" />
+                </svg>
+                <span id="val-ring-quran" class="absolute font-bold text-xs sm:text-sm text-slate-800 dark:text-emerald-400 font-mono">15m</span>
+              </div>
+              <span class="text-[11px] font-semibold text-slate-600 dark:text-slate-300 mt-1">Quran</span>
+            </div>
+
+            <!-- Ring 4: Daily Habits (Opal / Blue-Slate) -->
+            <div class="flex flex-col items-center">
+              <div class="relative w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                <svg class="w-full h-full" viewBox="0 0 72 72">
+                  <circle cx="36" cy="36" r="28" stroke="rgba(148, 163, 184, 0.2)" stroke-width="5" fill="none" />
+                  <circle id="ring-habits" class="progress-ring-circle" cx="36" cy="36" r="28" stroke="#38BDF8" stroke-width="5" stroke-linecap="round" fill="none" />
+                </svg>
+                <span id="val-ring-habits" class="absolute font-bold text-xs sm:text-sm text-slate-800 dark:text-sky-300 font-mono">4/5</span>
+              </div>
+              <span class="text-[11px] font-semibold text-slate-600 dark:text-slate-300 mt-1">Habits</span>
+            </div>
+
+          </div>
         </div>
 
-        <div id="card-dhuhr" class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60 hover:border-emerald-500/50 transition">
-          <p class="text-xs text-slate-400 font-medium">Dhuhr</p>
-          <p id="time-dhuhr" class="text-base font-bold font-mono text-white mt-0.5">--:--</p>
-          <span class="text-[10px] text-slate-500 font-arabic">الظهر</span>
-        </div>
-
-        <div id="card-asr" class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60 hover:border-emerald-500/50 transition">
-          <p class="text-xs text-slate-400 font-medium">Asr</p>
-          <p id="time-asr" class="text-base font-bold font-mono text-white mt-0.5">--:--</p>
-          <span class="text-[10px] text-slate-500 font-arabic">العصر</span>
-        </div>
-
-        <div id="card-maghrib" class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60 hover:border-emerald-500/50 transition">
-          <p class="text-xs text-slate-400 font-medium">Maghrib</p>
-          <p id="time-maghrib" class="text-base font-bold font-mono text-white mt-0.5">--:--</p>
-          <span class="text-[10px] text-slate-500 font-arabic">المغرب</span>
-        </div>
-
-        <div id="card-isha" class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60 hover:border-emerald-500/50 transition">
-          <p class="text-xs text-slate-400 font-medium">Isha</p>
-          <p id="time-isha" class="text-base font-bold font-mono text-white mt-0.5">--:--</p>
-          <span class="text-[10px] text-slate-500 font-arabic">العشاء</span>
+        <!-- Bottom Right: Inspirational Goal Golden Gradient Pill -->
+        <div class="p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-amber-400/10 to-emerald-500/20 border border-amber-500/30 flex items-center justify-between text-xs">
+          <div class="flex items-center space-x-2">
+            <span class="text-amber-400 text-sm">🌱</span>
+            <span class="font-medium text-slate-800 dark:text-amber-200">
+              &ldquo;Nourish your soul today. Each step brings peace.&rdquo;
+            </span>
+          </div>
+          <span class="text-[10px] text-amber-500 dark:text-amber-400 font-mono font-bold uppercase tracking-wider">Focus</span>
         </div>
 
       </div>
 
     </section>
 
-    <!-- Daily Spiritual Reflection & Quick Interactive Tasbih -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <!-- =========================================================================
+         4. Interactive Modular Daily Utilities (4 Modern Glass Cards)
+         ========================================================================= -->
+    <section class="space-y-6">
       
-      <!-- Left Column (8 cols): Daily Ayah & Daily Hadith -->
-      <div class="lg:col-span-8 space-y-6">
-        
-        <!-- Daily Ayah Reflection -->
-        <article class="glass-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative">
-          <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
-            <div class="flex items-center space-x-2">
-              <span class="text-lg">📖</span>
-              <h2 class="text-base font-bold text-slate-900 dark:text-white">Ayah of the Day</h2>
-              <span id="ayah-surah-ref" class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-medium">Surah Al-Baqarah (2:286)</span>
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="font-brand text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Daily Sanctuary Utilities
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            Interactive spiritual tools calibrated for astronomical accuracy &amp; mindful devotion.
+          </p>
+        </div>
+        <div class="hidden sm:block text-xs font-mono text-amber-500 dark:text-amber-400">
+          ● Live Responsive Engines
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- ===================================================================
+             UTILITY 1: 2D Interactive Qibla Compass Card
+             =================================================================== -->
+        <div class="sanctuary-card p-5 flex flex-col justify-between relative overflow-hidden">
+          
+          <!-- Watermark -->
+          <svg class="islamic-star-watermark top-2 right-2 w-24 h-24 text-amber-400" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+            <rect x="25" y="25" width="50" height="50" stroke-width="1.5" />
+            <rect x="25" y="25" width="50" height="50" stroke-width="1.5" transform="rotate(45 50 50)" />
+          </svg>
+
+          <!-- Top Row -->
+          <div class="flex items-center justify-between mb-3 z-10">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-500 dark:text-amber-400 flex items-center space-x-1.5">
+              <span>🧭</span>
+              <span>Qibla Compass</span>
+            </span>
+            <div class="flex items-center space-x-1">
+              <button class="enable-compass-sensor-btn sanctuary-btn text-[10px] font-semibold text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 px-2 py-0.5 rounded-full border border-amber-500/30 transition">
+                📡 Sensor
+              </button>
+              <span class="compass-sensor-badge inline-flex items-center text-[10px] font-semibold text-slate-400 bg-slate-800/40 px-2 py-0.5 rounded-full border border-slate-700/60">
+                Interactive
+              </span>
             </div>
+          </div>
+
+          <!-- Compass Alignment Banner (Hidden by default) -->
+          <div class="qibla-aligned-banner hidden mb-2 py-1 px-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500 text-emerald-400 text-center text-xs font-bold animate-pulse z-10">
+            🕋 ALIGNED WITH MAKKAH!
+          </div>
+
+          <!-- Interactive Dial Container -->
+          <div class="interactive-compass-dial-container relative w-44 h-44 mx-auto my-2 rounded-full flex items-center justify-center cursor-grab active:cursor-grabbing select-none z-10">
             
-            <button id="btn-play-ayah-audio" class="p-2 rounded-full bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 transition" title="Listen to recitation">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
-            </button>
-          </div>
+            <!-- Dial Outer Ring -->
+            <div class="compass-outer-frame absolute inset-0 rounded-full border-2 border-amber-500/30 bg-emerald-950/40 shadow-inner flex items-center justify-center transition-all">
+              
+              <!-- Rotating Dial for North -->
+              <div class="compass-dial-rotate absolute inset-1 rounded-full flex items-center justify-center transition-transform duration-75">
+                <span class="absolute top-1 text-[11px] font-bold text-red-400 font-mono">N</span>
+                <span class="absolute bottom-1 text-[11px] font-bold text-slate-400 font-mono">S</span>
+                <span class="absolute right-1 text-[11px] font-bold text-slate-400 font-mono">E</span>
+                <span class="absolute left-1 text-[11px] font-bold text-slate-400 font-mono">W</span>
+                
+                <!-- Tick Marks -->
+                <div class="w-full h-full rounded-full border border-dashed border-amber-500/20"></div>
+              </div>
 
-          <div class="py-6">
-            <p id="ayah-arabic-text" class="text-2xl sm:text-3xl font-arabic text-emerald-900 dark:text-emerald-300 leading-loose text-right">
-              لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا ۚ لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْ
-            </p>
-            <p id="ayah-english-text" class="mt-4 text-base sm:text-lg text-slate-700 dark:text-slate-200 italic font-serif">
-              "Allah burdens not a person beyond his scope. He gets reward for that (good) which he has earned, and he is punished for that (evil) which he has earned."
-            </p>
-          </div>
+              <!-- Golden Kaaba Pointer Needle -->
+              <div class="qibla-pointer-needle absolute inset-0 flex items-center justify-center transition-transform duration-100 pointer-events-none">
+                <div class="w-1.5 h-20 bg-gradient-to-t from-transparent via-amber-400 to-amber-300 rounded-full flex flex-col items-center justify-start -translate-y-4 shadow-lg shadow-amber-400/50">
+                  <div class="w-3.5 h-3.5 rounded-full bg-amber-400 border border-emerald-950 flex items-center justify-center text-[8px] font-bold text-emerald-950 -mt-1 shadow">
+                    🕋
+                  </div>
+                </div>
+              </div>
 
-          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs text-slate-500 dark:text-slate-400">
-            <span>Reflect upon this divine reassurance in moments of trial.</span>
-            <button id="btn-copy-ayah" class="text-emerald-600 dark:text-emerald-400 hover:underline">Copy Ayah</button>
-          </div>
-        </article>
+              <!-- Center Pivot Pin -->
+              <div class="w-4 h-4 rounded-full bg-gradient-to-tr from-amber-600 to-amber-300 border-2 border-emerald-950 z-20 shadow"></div>
 
-        <!-- Daily Hadith (from Imam an-Nawawi) -->
-        <article class="glass-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-          <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
-            <div class="flex items-center space-x-2">
-              <span class="text-lg">📜</span>
-              <h2 class="text-base font-bold text-slate-900 dark:text-white">Daily Hadith from Al-Arba'in</h2>
-              <span id="hadith-num-badge" class="text-xs px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 font-medium">Hadith 1</span>
             </div>
-            <a href="hadith.html" class="text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:underline">
-              View All 42 Hadiths &rarr;
+          </div>
+
+          <!-- Bearing & Instruction Info -->
+          <div class="text-center space-y-1 z-10 my-2">
+            <div class="text-xs font-bold text-slate-700 dark:text-slate-200">
+              Kaaba: <span class="qibla-bearing-label text-amber-500 dark:text-amber-400 font-mono">--°</span>
+              <span class="text-slate-400 mx-1">|</span>
+              Heading: <span class="current-heading-label font-mono text-slate-400">0° N</span>
+            </div>
+            <div class="qibla-turn-instruction text-[11px] font-medium text-amber-500">
+              Turn dial to align
+            </div>
+            <div class="qibla-distance-label text-[10px] text-slate-400 font-mono">
+              -- km to Makkah
+            </div>
+          </div>
+
+          <!-- Heading Slider for Desktop Simulation -->
+          <div class="space-y-1.5 z-10 pt-2 border-t border-amber-500/20">
+            <div class="flex justify-between text-[10px] text-slate-400">
+              <span>Rotate Heading</span>
+              <span class="font-mono">0°–360°</span>
+            </div>
+            <input type="range" min="0" max="360" value="0" class="compass-heading-slider w-full accent-amber-400 h-1.5 rounded-lg bg-slate-700 cursor-pointer">
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="flex items-center justify-between gap-1.5 mt-3 pt-2 z-10">
+            <button class="test-align-kaaba-btn sanctuary-btn flex-1 py-1.5 px-2 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-semibold text-[11px] border border-amber-500/30 transition text-center">
+              Align Kaaba
+            </button>
+            <button class="test-reset-north-btn sanctuary-btn py-1.5 px-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] border border-slate-700 transition">
+              Reset N
+            </button>
+            <a href="qibla.html" class="sanctuary-btn py-1.5 px-2 rounded-lg bg-emerald-900/40 hover:bg-emerald-900 text-amber-400 text-[11px] border border-amber-500/30 font-bold" title="Open Full Qibla Sanctuary">
+              Full →
             </a>
           </div>
 
-          <div class="py-4 space-y-3">
-            <p id="hadith-narrator" class="text-xs font-semibold text-slate-500 dark:text-slate-400">On the authority of Amir al-Mu'minin, Umar ibn al-Khattab (may Allah be pleased with him):</p>
-            <p id="hadith-arabic-text" class="text-xl sm:text-2xl font-arabic text-amber-900 dark:text-amber-300 leading-relaxed text-right">
-              إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى
-            </p>
-            <p id="hadith-english-text" class="text-sm sm:text-base text-slate-700 dark:text-slate-300 font-serif">
-              "Actions are according to intentions, and everyone will get what was intended. Whoever migrates for Allah and His Messenger, his migration is for Allah and His Messenger..."
-            </p>
-          </div>
+        </div>
 
-          <div class="mt-2 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 text-xs text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-800">
-            <strong class="text-emerald-600 dark:text-emerald-400">Core Lesson:</strong> Sincerity (Ikhlas) is the prerequisite foundation for every righteous deed to be accepted by Allah.
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Right Column (4 cols): Quick Interactive Tasbih Counter -->
-      <div class="lg:col-span-4">
-        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col items-center text-center sticky top-24">
+        <!-- ===================================================================
+             UTILITY 2: Haptic Digital Tasbih Card
+             =================================================================== -->
+        <div class="sanctuary-card p-5 flex flex-col justify-between relative overflow-hidden">
           
-          <div class="w-full flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
-            <div class="flex items-center space-x-2">
-              <span class="text-emerald-600 dark:text-emerald-400">📿</span>
-              <h3 class="font-bold text-sm text-slate-900 dark:text-white">Quick Tasbih</h3>
-            </div>
-            <a href="tasbih.html" class="text-xs text-emerald-600 dark:text-emerald-400 hover:underline">Full Adhkar &rarr;</a>
-          </div>
+          <!-- Watermark -->
+          <svg class="islamic-star-watermark top-2 right-2 w-24 h-24 text-amber-400" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+            <rect x="25" y="25" width="50" height="50" stroke-width="1.5" />
+            <rect x="25" y="25" width="50" height="50" stroke-width="1.5" transform="rotate(45 50 50)" />
+          </svg>
 
-          <!-- Selected Dhikr Phrase -->
-          <div class="my-4">
-            <p id="quick-tasbih-arabic" class="text-2xl font-arabic text-emerald-700 dark:text-emerald-300">سُبْحَانَ اللَّهِ</p>
-            <p id="quick-tasbih-trans" class="text-xs text-slate-500 mt-1 font-medium">SubhanAllah (Glory be to Allah)</p>
-          </div>
-
-          <!-- Interactive Tap Circle Bead -->
-          <button id="quick-tasbih-tap-btn" class="tasbih-btn relative w-36 h-36 rounded-full bg-gradient-to-tr from-emerald-600 via-emerald-500 to-teal-400 text-white shadow-xl shadow-emerald-500/20 flex flex-col items-center justify-center cursor-pointer border-4 border-emerald-300/40 select-none my-2 transition-all">
-            <span id="quick-tasbih-count" class="text-4xl font-extrabold font-mono tracking-tight">0</span>
-            <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-100 mt-1">Tap to Count</span>
-          </button>
-
-          <!-- Target & Progress -->
-          <div class="w-full mt-3 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 px-4">
-            <span>Target: <strong id="quick-tasbih-target" class="text-slate-800 dark:text-slate-200">33</strong></span>
-            <span>Completed: <strong id="quick-tasbih-cycles" class="text-slate-800 dark:text-slate-200">0</strong> cycles</span>
-          </div>
-
-          <!-- Quick Dhikr Selectors -->
-          <div class="grid grid-cols-2 gap-1.5 w-full mt-4 text-[11px]">
-            <button data-dhikr="SubhanAllah" data-ar="سُبْحَانَ اللَّهِ" data-meaning="Glory be to Allah" class="dhikr-selector-btn px-2 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:border-emerald-500 text-slate-700 dark:text-slate-300 font-medium transition">SubhanAllah</button>
-            <button data-dhikr="Alhamdulillah" data-ar="الْحَمْدُ لِلَّهِ" data-meaning="Praise be to Allah" class="dhikr-selector-btn px-2 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:border-emerald-500 text-slate-700 dark:text-slate-300 font-medium transition">Alhamdulillah</button>
-            <button data-dhikr="Allahu Akbar" data-ar="اللَّهُ أَكْبَرُ" data-meaning="Allah is the Greatest" class="dhikr-selector-btn px-2 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:border-emerald-500 text-slate-700 dark:text-slate-300 font-medium transition">Allahu Akbar</button>
-            <button data-dhikr="Astaghfirullah" data-ar="أَسْتَغْفِرُ اللَّهَ" data-meaning="I seek Allah's forgiveness" class="dhikr-selector-btn px-2 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:border-emerald-500 text-slate-700 dark:text-slate-300 font-medium transition">Astaghfirullah</button>
-          </div>
-
-          <!-- Sound and Reset Controls -->
-          <div class="w-full flex items-center justify-between pt-4 mt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
-            <button id="quick-tasbih-sound-toggle" class="text-slate-500 dark:text-slate-400 hover:text-emerald-600 flex items-center space-x-1">
-              <span>🔊 Sound: On</span>
+          <!-- Top Row -->
+          <div class="flex items-center justify-between mb-2 z-10">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-500 dark:text-amber-400 flex items-center space-x-1.5">
+              <span>📿</span>
+              <span>Digital Tasbih</span>
+            </span>
+            <button id="sanctuary-tasbih-reset" class="sanctuary-btn text-[11px] text-slate-400 hover:text-amber-400 transition font-mono">
+              ↺ Reset
             </button>
-            <button id="quick-tasbih-reset-btn" class="text-rose-500 hover:underline">
-              Reset Count
+          </div>
+
+          <!-- Active Dhikr Label -->
+          <div class="text-center z-10 mb-2">
+            <p id="sanctuary-tasbih-dhikr-name" class="font-arabic text-base sm:text-lg font-bold text-amber-300">
+              سُبْحَانَ اللَّهِ (SubhanAllah)
+            </p>
+            <p class="text-[10px] text-slate-400">Target Cycle: 33 / 99</p>
+          </div>
+
+          <!-- Big Tap Button with Counter -->
+          <div class="my-auto py-2 flex justify-center z-10">
+            <button id="sanctuary-tasbih-tap" class="sanctuary-btn relative w-28 h-28 rounded-full bg-gradient-to-br from-amber-500/20 via-emerald-900/60 to-emerald-950 border-2 border-amber-500/50 shadow-xl shadow-amber-500/10 flex flex-col items-center justify-center hover:scale-105 active:scale-95 transition-all group">
+              <span id="sanctuary-tasbih-count" class="font-mono font-bold text-3xl sm:text-4xl text-amber-300 group-hover:text-amber-200 transition-colors">
+                66
+              </span>
+              <span class="text-[9px] uppercase tracking-wider text-amber-400/80 font-bold mt-0.5">
+                TAP • ذِكْر
+              </span>
+            </button>
+          </div>
+
+          <!-- Dhikr Preset Pills -->
+          <div class="grid grid-cols-2 gap-1.5 z-10 mt-3 pt-3 border-t border-amber-500/20">
+            <button class="dhikr-pill-btn sanctuary-btn py-1 px-2 rounded-lg text-[10px] font-semibold border text-center transition gold-pill-active text-amber-300" data-name="سُبْحَانَ اللَّهِ (SubhanAllah)">
+              SubhanAllah
+            </button>
+            <button class="dhikr-pill-btn sanctuary-btn py-1 px-2 rounded-lg text-[10px] font-semibold border border-slate-700 bg-slate-800/40 text-slate-300 hover:text-amber-300 text-center transition" data-name="الْحَمْدُ لِلَّهِ (Alhamdulillah)">
+              Alhamdulillah
+            </button>
+            <button class="dhikr-pill-btn sanctuary-btn py-1 px-2 rounded-lg text-[10px] font-semibold border border-slate-700 bg-slate-800/40 text-slate-300 hover:text-amber-300 text-center transition" data-name="اللَّهُ أَكْبَرُ (Allahu Akbar)">
+              Allahu Akbar
+            </button>
+            <button class="dhikr-pill-btn sanctuary-btn py-1 px-2 rounded-lg text-[10px] font-semibold border border-slate-700 bg-slate-800/40 text-slate-300 hover:text-amber-300 text-center transition" data-name="أَسْتَغْفِرُ اللَّهَ (Astaghfirullah)">
+              Astaghfirullah
             </button>
           </div>
 
         </div>
-      </div>
 
-    </div>
+        <!-- ===================================================================
+             UTILITY 3: Topic Sanctuary Knowledge Card
+             =================================================================== -->
+        <div class="sanctuary-card p-5 flex flex-col justify-between relative overflow-hidden">
+          
+          <!-- Watermark -->
+          <svg class="islamic-star-watermark top-2 right-2 w-24 h-24 text-amber-400" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+            <rect x="25" y="25" width="50" height="50" stroke-width="1.5" />
+            <rect x="25" y="25" width="50" height="50" stroke-width="1.5" transform="rotate(45 50 50)" />
+          </svg>
 
-    <!-- Featured Knowledge Academy Banner -->
-    <section class="glass-card rounded-3xl p-6 sm:p-8 bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white border border-emerald-700/50 shadow-xl relative overflow-hidden">
-      <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div class="space-y-2 max-w-2xl">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-semibold">
-            <span>📚</span>
-            <span>Comprehensive Learning & Fiqh Repository</span>
+          <!-- Top Row -->
+          <div class="flex items-center justify-between mb-2 z-10">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-500 dark:text-amber-400 flex items-center space-x-1.5">
+              <span>📖</span>
+              <span>Sanctuary Knowledge</span>
+            </span>
+            <a href="knowledge.html" class="text-[11px] text-amber-400 hover:underline">
+              Academy →
+            </a>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold font-heading text-white">
-            The Islamic Knowledge Academy
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-serif">
-            Master the foundations of the Deen: The 5 Pillars of Islam, The 6 Articles of Iman, Step-by-Step Sunnah Wudu & Salah, the Prophetic Seerah Timeline, Everyday Fortress Du'as, and Tajweed Recitation Rules.
-          </p>
+
+          <!-- Topic Pills Filter -->
+          <div class="flex flex-wrap gap-1.5 z-10 mb-3">
+            <button class="topic-pill-btn sanctuary-btn px-2.5 py-1 rounded-full text-[10px] font-bold border transition gold-pill-active text-amber-400" data-topic="patience">
+              Patience
+            </button>
+            <button class="topic-pill-btn sanctuary-btn px-2.5 py-1 rounded-full text-[10px] font-bold border border-slate-700 bg-slate-800/40 text-slate-300 hover:text-amber-400 transition" data-topic="gratitude">
+              Gratitude
+            </button>
+            <button class="topic-pill-btn sanctuary-btn px-2.5 py-1 rounded-full text-[10px] font-bold border border-slate-700 bg-slate-800/40 text-slate-300 hover:text-amber-400 transition" data-topic="forgiveness">
+              Forgiveness
+            </button>
+            <button class="topic-pill-btn sanctuary-btn px-2.5 py-1 rounded-full text-[10px] font-bold border border-slate-700 bg-slate-800/40 text-slate-300 hover:text-amber-400 transition" data-topic="sakinah">
+              Sakinah
+            </button>
+          </div>
+
+          <!-- Dynamic Result Box populated by portal.js -->
+          <div id="topic-result-box" class="z-10 my-auto">
+            <div class="space-y-3 p-3.5 rounded-2xl bg-emerald-950/20 border border-emerald-500/20">
+              <h4 class="font-bold text-amber-400 text-xs sm:text-sm">Patience &amp; Steadfastness (الصبر)</h4>
+              <p class="font-arabic text-sm sm:text-base text-emerald-100 leading-relaxed">
+                وَاصْبِرْ وَمَا صَبْرُكَ إِلَّا بِاللَّهِ
+              </p>
+              <p class="text-xs text-slate-300 italic">
+                &ldquo;And be patient, and your patience is not but through Allah.&rdquo; (16:127)
+              </p>
+              <div class="pt-2 border-t border-emerald-800/40 text-[11px] text-slate-400">
+                <strong class="text-emerald-400">Prophetic Hadith:</strong> &ldquo;How wonderful is the affair of the believer, for his affair is all good...&rdquo; (Muslim)
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Link -->
+          <div class="pt-3 border-t border-amber-500/20 z-10 mt-3 text-right">
+            <a href="hadith.html" class="text-[11px] text-slate-400 hover:text-amber-300 font-medium transition">
+              Explore 40 Nawawi Hadith →
+            </a>
+          </div>
+
         </div>
-        <a href="knowledge.html" class="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-amber-500 hover:from-emerald-400 hover:to-amber-400 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-900/40 transition flex items-center space-x-2 flex-shrink-0">
-          <span>Explore Knowledge Academy</span>
-          <span>&rarr;</span>
-        </a>
-      </div>
-    </section>
 
-    <!-- The 10 Unified Islamic Tools Suite -->
-    <section class="space-y-6 pt-6">
-      
-      <div class="text-center max-w-2xl mx-auto space-y-2">
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white font-heading">
-          Unified Islamic Tools Suite
-        </h2>
-        <p class="text-sm text-slate-600 dark:text-slate-400">
-          Everything the believer needs in one unified, fast, client-side digital hub. Zero trackers, zero commercial clutter.
-        </p>
-      </div>
+        <!-- ===================================================================
+             UTILITY 4: Daily Habits & Deed Checklist (Syncs with Rings)
+             =================================================================== -->
+        <div id="daily-habits" class="sanctuary-card p-5 flex flex-col justify-between relative overflow-hidden">
+          
+          <!-- Watermark -->
+          <svg class="islamic-star-watermark top-2 right-2 w-24 h-24 text-amber-400" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+            <rect x="25" y="25" width="50" height="50" stroke-width="1.5" />
+            <rect x="25" y="25" width="50" height="50" stroke-width="1.5" transform="rotate(45 50 50)" />
+          </svg>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Top Row -->
+          <div class="flex items-center justify-between mb-3 z-10">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-500 dark:text-amber-400 flex items-center space-x-1.5">
+              <span>📋</span>
+              <span>Daily Habits Checklist</span>
+            </span>
+            <span class="text-[10px] text-amber-400 font-mono">Syncs Rings</span>
+          </div>
 
-        <!-- Tool 1: Salat & Qibla Compass -->
-        <a href="prayer-times.html" class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 group flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-2xl group-hover:scale-110 transition-transform">
-              🕋
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">
-              Salat & Qibla Compass
-            </h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Astronomical prayer timetable engine, Adhan audio chimes, 2D azimuth Qibla compass towards the Kaaba, and printable monthly calendars.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
-            <span>Explore Salat & Qibla</span>
-            <span>&rarr;</span>
-          </div>
-        </a>
+          <!-- Habit Items Checkbox List -->
+          <div class="space-y-2 z-10 text-xs">
+            
+            <label class="flex items-center space-x-2.5 p-2 rounded-xl bg-slate-100/60 dark:bg-emerald-950/30 hover:bg-amber-500/10 cursor-pointer transition border border-transparent hover:border-amber-500/30">
+              <input type="checkbox" checked class="daily-habit-checkbox w-4 h-4 rounded text-amber-500 focus:ring-amber-400 border-slate-600">
+              <span class="text-slate-700 dark:text-slate-200 font-medium">5 Obligatory Salat Prayers</span>
+            </label>
 
-        <!-- Tool 2: Fasting & Ramadan Companion -->
-        <a href="fasting.html" class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 group flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-950 flex items-center justify-center text-amber-600 dark:text-amber-400 text-2xl group-hover:scale-110 transition-transform">
-              🌙
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition">
-              Sawm & Fasting Hub
-            </h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Live Suhoor & Iftar countdowns, White Days (13th-15th) voluntary fasting calendar, authentic Sunnah du'as, and 30-day Quran khatam planner.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-amber-600 dark:text-amber-400 font-semibold">
-            <span>Explore Fasting Tracker</span>
-            <span>&rarr;</span>
-          </div>
-        </a>
+            <label class="flex items-center space-x-2.5 p-2 rounded-xl bg-slate-100/60 dark:bg-emerald-950/30 hover:bg-amber-500/10 cursor-pointer transition border border-transparent hover:border-amber-500/30">
+              <input type="checkbox" checked class="daily-habit-checkbox w-4 h-4 rounded text-amber-500 focus:ring-amber-400 border-slate-600">
+              <span class="text-slate-700 dark:text-slate-200 font-medium">Morning &amp; Evening Adhkar</span>
+            </label>
 
-        <!-- Tool 3: Digital Tasbih & Fortress Adhkar -->
-        <a href="tasbih.html" class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 group flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-teal-100 dark:bg-teal-950 flex items-center justify-center text-teal-600 dark:text-teal-400 text-2xl group-hover:scale-110 transition-transform">
-              📿
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition">
-              Tasbih & Fortress Adhkar
-            </h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Full-screen digital counter with bead sound feedback and haptic vibration, plus authentic morning, evening, and post-prayer adhkar (Hisnul Muslim).
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-teal-600 dark:text-teal-400 font-semibold">
-            <span>Open Tasbih & Adhkar</span>
-            <span>&rarr;</span>
-          </div>
-        </a>
+            <label class="flex items-center space-x-2.5 p-2 rounded-xl bg-slate-100/60 dark:bg-emerald-950/30 hover:bg-amber-500/10 cursor-pointer transition border border-transparent hover:border-amber-500/30">
+              <input type="checkbox" checked class="daily-habit-checkbox w-4 h-4 rounded text-amber-500 focus:ring-amber-400 border-slate-600">
+              <span class="text-slate-700 dark:text-slate-200 font-medium">Daily Quran Recitation (15m+)</span>
+            </label>
 
-        <!-- Tool 4: Zakat Multi-Asset Calculator -->
-        <a href="zakat.html" class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 group flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-2xl group-hover:scale-110 transition-transform">
-              💰
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">
-              Zakat Calculator & Nisab
-            </h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Transparent multi-asset calculator covering cash, gold & silver jewelry, investments, crypto, and business inventory with live Nisab threshold checks.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
-            <span>Calculate Zakat</span>
-            <span>&rarr;</span>
-          </div>
-        </a>
+            <label class="flex items-center space-x-2.5 p-2 rounded-xl bg-slate-100/60 dark:bg-emerald-950/30 hover:bg-amber-500/10 cursor-pointer transition border border-transparent hover:border-amber-500/30">
+              <input type="checkbox" checked class="daily-habit-checkbox w-4 h-4 rounded text-amber-500 focus:ring-amber-400 border-slate-600">
+              <span class="text-slate-700 dark:text-slate-200 font-medium">Daily Sadaqah or Act of Kindness</span>
+            </label>
 
-        <!-- Tool 5: The 40 Hadith of Imam An-Nawawi -->
-        <a href="hadith.html" class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 group flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-950 flex items-center justify-center text-amber-600 dark:text-amber-400 text-2xl group-hover:scale-110 transition-transform">
-              📜
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition">
-              Al-Arba'in (40 Hadith)
-            </h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Complete 42 hadith collection with full Arabic vocalization, narrator chains, English commentaries, flashcard memorization, and instant search.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-amber-600 dark:text-amber-400 font-semibold">
-            <span>Read 40 Hadith</span>
-            <span>&rarr;</span>
-          </div>
-        </a>
+            <label class="flex items-center space-x-2.5 p-2 rounded-xl bg-slate-100/60 dark:bg-emerald-950/30 hover:bg-amber-500/10 cursor-pointer transition border border-transparent hover:border-amber-500/30">
+              <input type="checkbox" class="daily-habit-checkbox w-4 h-4 rounded text-amber-500 focus:ring-amber-400 border-slate-600">
+              <span class="text-slate-700 dark:text-slate-200 font-medium">Night Reflection &amp; Istighfar</span>
+            </label>
 
-        <!-- Tool 6: Islamic Baby Names (Ism Finder) -->
-        <a href="names.html" class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 group flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-sky-100 dark:bg-sky-950 flex items-center justify-center text-sky-600 dark:text-sky-400 text-2xl group-hover:scale-110 transition-transform">
-              👶
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition">
-              Islamic Baby Names (Ism)
-            </h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Curated encyclopedia of 1,000+ Muslim baby names with Arabic calligraphy, linguistic root etymology, Quranic occurrences, and Prophetic naming etiquette.
-            </p>
           </div>
-          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-sky-600 dark:text-sky-400 font-semibold">
-            <span>Browse Names Directory</span>
-            <span>&rarr;</span>
-          </div>
-        </a>
 
-        <!-- Tool 7: Faraid Inheritance Calculator -->
-        <a href="inheritance.html" class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 group flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-950 flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-2xl group-hover:scale-110 transition-transform">
-              ⚖️
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">
-              Faraid Inheritance Calculator
-            </h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Quranic estate distribution according to Sunni jurisprudence: Quranic fixed heirs (Ashab al-Furud), residuaries (Asabah), exclusion rules (Hajb), and Awl/Radd.
-            </p>
+          <!-- Bottom Indicator -->
+          <div class="pt-3 border-t border-amber-500/20 z-10 mt-3 text-xs flex justify-between items-center text-slate-400">
+            <span>Dynamic Haptic Feedback</span>
+            <span class="text-amber-400 font-bold">4 / 5 Done</span>
           </div>
-          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-indigo-600 dark:text-indigo-400 font-semibold">
-            <span>Calculate Estate Shares</span>
-            <span>&rarr;</span>
-          </div>
-        </a>
 
-        <!-- Tool 8: Halal Food & E-Number Guide -->
-        <a href="halal-guide.html" class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 group flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-rose-100 dark:bg-rose-950 flex items-center justify-center text-rose-600 dark:text-rose-400 text-2xl group-hover:scale-110 transition-transform">
-              🍽️
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition">
-              Halal Food & E-Numbers Guide
-            </h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Searchable database of food additives (E-numbers) classifying Halal, Haram, and Mushbooh ingredients, plus global halal dining directory standards.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-rose-600 dark:text-rose-400 font-semibold">
-            <span>Check Food Ingredients</span>
-            <span>&rarr;</span>
-          </div>
-        </a>
-
-        <!-- Tool 9: 99 Names of Allah (Asma-ul-Husna) -->
-        <a href="99-names.html" class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 group flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-950 flex items-center justify-center text-purple-600 dark:text-purple-400 text-2xl group-hover:scale-110 transition-transform">
-              ✨
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">
-              Asma-ul-Husna (99 Names)
-            </h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              The 99 Beautiful Names of Allah with high-res Arabic calligraphy, meanings, Quranic occurrences, audio pronunciation, and memorization tracking.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-purple-600 dark:text-purple-400 font-semibold">
-            <span>Explore 99 Divine Names</span>
-            <span>&rarr;</span>
-          </div>
-        </a>
-
-        <!-- Tool 10: Masjid TV Kiosk & Noticeboard -->
-        <a href="mosque.html" class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 group flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-2xl group-hover:scale-110 transition-transform">
-              🕌
-            </div>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">
-              Masjid TV Kiosk Display
-            </h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Full-screen TV mode designed for mosque hallway screens: real-time adhan & iqamah countdowns, daily Quran verse, and community notices.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
-            <span>Launch TV Display</span>
-            <span>&rarr;</span>
-          </div>
-        </a>
+        </div>
 
       </div>
 
     </section>
 
-    <!-- Spiritual & Educational Foundations -->
-    <section class="rounded-3xl bg-emerald-950 text-white p-8 sm:p-12 relative overflow-hidden border border-emerald-900">
-      <div class="max-w-3xl space-y-4">
-        <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Waqf Fi Sabilillah</span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold font-heading">
-          Built for the Believer, Backed by Authentic Knowledge
-        </h2>
-        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-          NoorHub was founded as a genuine, non-commercial digital waqf. Unlike mainstream ad-heavy apps that track user locations or clutter prayer screens with banners, NoorHub runs 100% in your browser. All calculations—prayer times, inheritance shares, zakat totals, and zikr tallies—stay private on your device.
-        </p>
-        <div class="pt-4 flex flex-wrap gap-4 text-xs">
-          <div class="flex items-center space-x-2 text-emerald-300">
-            <span>✓</span>
-            <span>Zero Third-Party Geolocation Tracking</span>
-          </div>
-          <div class="flex items-center space-x-2 text-emerald-300">
-            <span>✓</span>
-            <span>Authentic Chains (Bukhari, Muslim, Nawawi)</span>
-          </div>
-          <div class="flex items-center space-x-2 text-emerald-300">
-            <span>✓</span>
-            <span>Compliant with Sunni Jurisprudential Standards</span>
-          </div>
-        </div>
+    <!-- =========================================================================
+         5. Quick Access Grid to NoorHub Core Suites
+         ========================================================================= -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-brand text-lg font-bold text-slate-900 dark:text-white">
+          NoorHub Sanctuary Modules
+        </h3>
+        <span class="text-xs text-slate-400">Full Islamic Living Suite</span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        
+        <a href="fasting.html" class="sanctuary-card p-3.5 text-center group hover:border-amber-500/50 transition">
+          <div class="text-2xl mb-1.5 group-hover:scale-110 transition-transform">🌙</div>
+          <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">Fasting Tracker</h4>
+          <p class="text-[10px] text-slate-400 mt-0.5">Suhoor &amp; Iftar</p>
+        </a>
+
+        <a href="99-names.html" class="sanctuary-card p-3.5 text-center group hover:border-amber-500/50 transition">
+          <div class="text-2xl mb-1.5 group-hover:scale-110 transition-transform">✨</div>
+          <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">99 Names</h4>
+          <p class="text-[10px] text-slate-400 mt-0.5">Asma-ul-Husna</p>
+        </a>
+
+        <a href="zakat.html" class="sanctuary-card p-3.5 text-center group hover:border-amber-500/50 transition">
+          <div class="text-2xl mb-1.5 group-hover:scale-110 transition-transform">🪙</div>
+          <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">Zakat Calculator</h4>
+          <p class="text-[10px] text-slate-400 mt-0.5">Nisab &amp; Wealth</p>
+        </a>
+
+        <a href="inheritance.html" class="sanctuary-card p-3.5 text-center group hover:border-amber-500/50 transition">
+          <div class="text-2xl mb-1.5 group-hover:scale-110 transition-transform">📜</div>
+          <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">Faraid Calculator</h4>
+          <p class="text-[10px] text-slate-400 mt-0.5">Inheritance Law</p>
+        </a>
+
+        <a href="mosque.html" class="sanctuary-card p-3.5 text-center group hover:border-amber-500/50 transition">
+          <div class="text-2xl mb-1.5 group-hover:scale-110 transition-transform">🕌</div>
+          <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">Mosque Finder</h4>
+          <p class="text-[10px] text-slate-400 mt-0.5">Find Congregations</p>
+        </a>
+
+        <a href="halal-guide.html" class="sanctuary-card p-3.5 text-center group hover:border-amber-500/50 transition">
+          <div class="text-2xl mb-1.5 group-hover:scale-110 transition-transform">🌿</div>
+          <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">Halal Guide</h4>
+          <p class="text-[10px] text-slate-400 mt-0.5">E-Numbers &amp; Diet</p>
+        </a>
+
       </div>
     </section>
 
   </main>
 
-  <!-- Global Footer -->
-  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm mt-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- =========================================================================
+       6. Dignified Sanctuary Footer
+       ========================================================================= -->
+  <footer class="mt-16 border-t border-amber-500/20 bg-emerald-950/80 backdrop-blur-xl text-slate-400 text-xs py-12 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         
-        <!-- Brand Info -->
-        <div class="space-y-3">
+        <!-- Col 1: Brand & Purpose -->
+        <div class="space-y-3 md:col-span-1">
           <div class="flex items-center space-x-2">
-            <span class="text-2xl">🌙</span>
-            <span class="text-lg font-bold text-white font-heading">NoorHub</span>
+            <span class="text-xl">🌙</span>
+            <span class="font-brand text-lg font-bold text-white">Noor<span class="text-amber-400">Hub</span></span>
           </div>
           <p class="text-xs text-slate-400 leading-relaxed">
-            The authentic unified Islamic digital living platform. Providing precision prayer schedules, fasting companions, zakat tools, and prophetic hadith without commercial tracking.
+            The sacred, tracker-free digital waqf designed to elevate your daily Islamic practice with serenity and precision.
           </p>
-          <p class="text-xs text-emerald-400 font-arabic pt-1">
-            صَدَقَةٌ جَارِيَةٌ لِوَجْهِ اللَّهِ تَعَالَى
+          <p class="font-arabic text-sm text-amber-400/90">
+            وَمَا تَوْفِيقِي إِلَّا بِاللَّهِ
           </p>
         </div>
 
-        <!-- Quick Links: Core Tools -->
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Core Tools</h4>
-          <ul class="space-y-2 text-xs">
-            <li><a href="prayer-times.html" class="hover:text-emerald-400 transition">Prayer Times & Qibla</a></li>
-            <li><a href="fasting.html" class="hover:text-emerald-400 transition">Fasting & Ramadan Tracker</a></li>
-            <li><a href="tasbih.html" class="hover:text-emerald-400 transition">Digital Tasbih & Adhkar</a></li>
-            <li><a href="zakat.html" class="hover:text-emerald-400 transition">Zakat Calculator & Nisab</a></li>
-            <li><a href="hadith.html" class="hover:text-emerald-400 transition">40 Hadith of Imam Nawawi</a></li>
+        <!-- Col 2: Core Sanctuary Tools -->
+        <div class="space-y-2">
+          <h5 class="text-white font-semibold text-xs uppercase tracking-wider">Sanctuary Utilities</h5>
+          <ul class="space-y-1.5 text-xs">
+            <li><a href="prayer-times.html" class="hover:text-amber-400 transition">Salat Times &amp; Timetable</a></li>
+            <li><a href="qibla.html" class="hover:text-amber-400 transition">Interactive Qibla Compass</a></li>
+            <li><a href="tasbih.html" class="hover:text-amber-400 transition">Digital Tasbih Counter</a></li>
+            <li><a href="fasting.html" class="hover:text-amber-400 transition">Ramadan &amp; Fasting Tracker</a></li>
+            <li><a href="knowledge.html" class="hover:text-amber-400 transition">Knowledge Academy</a></li>
           </ul>
         </div>
 
-        <!-- Resources & Knowledge -->
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Resources</h4>
-          <ul class="space-y-2 text-xs">
-            <li><a href="names.html" class="hover:text-emerald-400 transition">Islamic Baby Names (Ism)</a></li>
-            <li><a href="inheritance.html" class="hover:text-emerald-400 transition">Faraid Inheritance Engine</a></li>
-            <li><a href="halal-guide.html" class="hover:text-emerald-400 transition">Halal Food & E-Numbers</a></li>
-            <li><a href="99-names.html" class="hover:text-emerald-400 transition">99 Names of Allah</a></li>
-            <li><a href="mosque.html" class="hover:text-emerald-400 transition">Mosque TV Kiosk Mode</a></li>
+        <!-- Col 3: Specialized Knowledge -->
+        <div class="space-y-2">
+          <h5 class="text-white font-semibold text-xs uppercase tracking-wider">Faith &amp; Knowledge</h5>
+          <ul class="space-y-1.5 text-xs">
+            <li><a href="hadith.html" class="hover:text-amber-400 transition">40 Hadith of Imam Nawawi</a></li>
+            <li><a href="99-names.html" class="hover:text-amber-400 transition">99 Beautiful Names of Allah</a></li>
+            <li><a href="zakat.html" class="hover:text-amber-400 transition">Zakat Nisab Calculator</a></li>
+            <li><a href="inheritance.html" class="hover:text-amber-400 transition">Faraid Inheritance Engine</a></li>
+            <li><a href="names.html" class="hover:text-amber-400 transition">Islamic Baby Names Dictionary</a></li>
           </ul>
         </div>
 
-        <!-- Trust & About -->
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">About & Trust</h4>
-          <ul class="space-y-2 text-xs">
-            <li><a href="about.html" class="hover:text-emerald-400 transition">About NoorHub Initiative</a></li>
-            <li><a href="faq.html" class="hover:text-emerald-400 transition">Frequently Asked Questions</a></li>
-            <li><a href="contact.html" class="hover:text-emerald-400 transition">Contact & Feedback</a></li>
-            <li><a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Commitment (Zero Tracking)</a></li>
-            <li><a href="terms.html" class="hover:text-emerald-400 transition">Terms of Service</a></li>
-            <li class="pt-2 text-[11px] text-slate-500">Contact: siddiknurealam1@gmail.com</li>
+        <!-- Col 4: Platform & Legal -->
+        <div class="space-y-2">
+          <h5 class="text-white font-semibold text-xs uppercase tracking-wider">Platform &amp; Waqf</h5>
+          <ul class="space-y-1.5 text-xs">
+            <li><a href="about.html" class="hover:text-amber-400 transition">About NoorHub Sanctuary</a></li>
+            <li><a href="contact.html" class="hover:text-amber-400 transition">Contact &amp; Feedback</a></li>
+            <li><a href="privacy.html" class="hover:text-amber-400 transition">Privacy Policy (Zero Trackers)</a></li>
+            <li><a href="terms.html" class="hover:text-amber-400 transition">Terms of Service</a></li>
+            <li><a href="faq.html" class="hover:text-amber-400 transition">Frequently Asked Questions</a></li>
           </ul>
         </div>
 
       </div>
 
-      <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
-        <p>© 2026 NoorHub. Free, Open & Waqf-dedicated. All rights reserved for the Ummah.</p>
-        <div class="flex space-x-4 mt-2 sm:mt-0">
-          <span>noorhub.truxio.bond</span>
+      <!-- Copyright & Bottom Line -->
+      <div class="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+        <div>
+          &copy; 1448 AH / 2026 NoorHub. An open, authentic digital waqf for Muslims worldwide.
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="#top" class="hover:text-amber-400 transition">Back to Top ↑</a>
         </div>
       </div>
+
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- =========================================================================
+       7. Scripts Execution
+       ========================================================================= -->
   <script src="shared.js"></script>
   <script src="salat-engine.js"></script>
+  <script src="compass.js"></script>
   <script src="portal.js"></script>
+
 </body>
 </html>

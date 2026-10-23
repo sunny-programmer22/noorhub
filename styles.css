@@ -1,21 +1,25 @@
 /* ==========================================================================
-   NoorHub (نور هب) - Unified Islamic Living Platform Stylesheet
-   Theme: Deep Emerald (#065f46 / #10b981), Warm Gold (#d97706 / #f59e0b), and Slate Obsidian (#0b0f19)
+   NoorHub (نور هب) - Sacred Modern Lifestyle & Spiritual Dashboard
+   Visual Identity: Deep Emerald (#061A14, #0D231D), Warm Champagne Gold (#D4AF37, #F3E5AB),
+   Muted Opal (#E6ECE9, #94A3B8), Soft White (#FFFFFF).
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Reem+Kufi:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --primary-emerald: #059669;
-  --primary-emerald-hover: #047857;
-  --primary-emerald-glow: rgba(5, 150, 105, 0.25);
-  --accent-gold: #d97706;
-  --accent-gold-hover: #b45309;
-  --accent-gold-glow: rgba(217, 119, 6, 0.25);
-  
-  --font-latin: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  /* Sanctuary Palette */
+  --emerald-deep: #061A14;
+  --emerald-midnight: #0D231D;
+  --emerald-dark: #040E0B;
+  --gold-champagne: #D4AF37;
+  --gold-warm: #F3E5AB;
+  --gold-glow: rgba(212, 175, 55, 0.22);
+  --opal-muted: #E6ECE9;
+  --slate-subtle: #94A3B8;
+
+  --font-brand: 'Cinzel', 'Plus Jakarta Sans', serif;
+  --font-body: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-arabic: 'Amiri', 'Traditional Arabic', serif;
-  --font-heading: 'Reem Kufi', 'Plus Jakarta Sans', sans-serif;
 }
 
 * {
@@ -24,10 +28,29 @@
 }
 
 body {
-  font-family: var(--font-latin);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Light Theme - Serene Opal & Warm Ivory Alabaster */
+body,
+html:not(.dark) body {
+  background: #F8FAF9;
+  color: #1E293B;
+}
+
+/* Dark Theme - Exact Deep Emerald & Midnight Slate */
+.dark body,
+html.dark body,
+body.dark {
+  background: radial-gradient(circle at 80% 20%, #0F2D25 0%, #061A14 55%, #030D0A 100%) !important;
+  color: #E6ECE9 !important;
+}
+
+.font-brand {
+  font-family: var(--font-brand);
 }
 
 .font-arabic {
@@ -44,102 +67,116 @@ body {
   line-height: 2.2;
 }
 
-.font-heading {
-  font-family: var(--font-heading);
+/* Sacred Glassmorphism Cards */
+.sanctuary-card {
+  position: relative;
+  border-radius: 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-/* Islamic Arabesque Geometric Pattern Background */
-.islamic-bg-pattern {
-  background-image: 
-    radial-gradient(rgba(5, 150, 105, 0.06) 1.5px, transparent 1.5px),
-    radial-gradient(rgba(217, 119, 6, 0.04) 1.5px, transparent 1.5px);
-  background-size: 32px 32px;
-  background-position: 0 0, 16px 16px;
-}
-
-.dark .islamic-bg-pattern {
-  background-image: 
-    radial-gradient(rgba(16, 185, 129, 0.10) 1.5px, transparent 1.5px),
-    radial-gradient(rgba(245, 158, 11, 0.05) 1.5px, transparent 1.5px);
-}
-
-/* Glassmorphism Styles */
-.glass-header {
+/* Light mode card */
+.sanctuary-card,
+html:not(.dark) .sanctuary-card {
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(6, 26, 20, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-.dark .glass-header {
-  background: rgba(15, 23, 42, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+/* Dark mode card (Matches reference UI screenshot) */
+.dark .sanctuary-card,
+html.dark .sanctuary-card,
+body.dark .sanctuary-card {
+  background: linear-gradient(145deg, rgba(13, 35, 29, 0.82) 0%, rgba(6, 26, 20, 0.88) 100%) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.22) !important;
+  box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(243, 229, 171, 0.08) !important;
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.dark .glass-card {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-card:hover {
+.sanctuary-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.08);
 }
 
-.dark .glass-card:hover {
-  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.4);
+.dark .sanctuary-card:hover,
+html.dark .sanctuary-card:hover,
+body.dark .sanctuary-card:hover {
+  border-color: rgba(212, 175, 55, 0.45) !important;
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.18) !important;
 }
 
-/* Qibla Compass Needle and Rose */
-.compass-dial {
-  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
-  transform-origin: center center;
+/* Golden Pill & Borders */
+.gold-pill-active {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(243, 229, 171, 0.12) 100%) !important;
+  border: 1px solid rgba(212, 175, 55, 0.65) !important;
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.3) !important;
 }
 
-.qibla-pointer {
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+/* Ambient Gold Glow */
+.gold-glow {
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.22);
+}
+
+/* Watermark Eight-Pointed Islamic Star (Rub el Hizb) */
+.islamic-star-watermark {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.06;
+  transition: opacity 0.3s ease;
+}
+
+.dark .islamic-star-watermark,
+html.dark .islamic-star-watermark,
+body.dark .islamic-star-watermark {
+  opacity: 0.10;
+}
+
+/* Circular Progress Rings */
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(-90deg);
   transform-origin: 50% 50%;
 }
 
-/* Pulsing and glow animations */
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.88; transform: scale(1.02); }
+/* Navigation Header */
+.sanctuary-header {
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
 }
 
-.animate-pulse-subtle {
-  animation: pulse-subtle 3s ease-in-out infinite;
+.dark .sanctuary-header,
+html.dark .sanctuary-header,
+body.dark .sanctuary-header {
+  background: rgba(6, 26, 20, 0.88) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.18) !important;
 }
 
-/* Tasbih bead tap button animation */
-.tasbih-btn:active {
-  transform: scale(0.96);
+/* Button & Tap States */
+.sanctuary-btn {
+  transition: all 0.2s ease;
+}
+
+.sanctuary-btn:active {
+  transform: scale(0.97);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.5);
+  background: rgba(212, 175, 55, 0.3);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 116, 139, 0.7);
+  background: rgba(212, 175, 55, 0.5);
 }

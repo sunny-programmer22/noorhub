@@ -20,6 +20,14 @@
       }
     }
   </script>
+    <script>
+    // Theme initialization: default light mode unless dark is explicitly stored
+    if (localStorage.getItem('noorhub_theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕋</text></svg>">
 </head>
@@ -43,10 +51,12 @@
         </a>
 
         <!-- Desktop Nav Links -->
+                <!-- Desktop Navigation Links -->
         <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
           <a href="index.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Portal</a>
+          <a href="qibla.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Qibla Compass</a>
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">Salat Times</a>
           <a href="knowledge.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Knowledge</a>
-          <a href="prayer-times.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">Salat & Qibla</a>
           <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
           <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih</a>
           <a href="99-names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">99 Names</a>
@@ -70,20 +80,28 @@
       </div>
     </div>
 
-    <!-- Mobile Drawer -->
+        <!-- Mobile Drawer Menu -->
     <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
-      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">NoorHub Home</a>
-      <a href="knowledge.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Islamic Knowledge Academy</a>
-      <a href="prayer-times.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">Salat & Qibla Compass</a>
-      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Sawm & Fasting Companion</a>
-      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Digital Tasbih & Adhkar</a>
-      <a href="99-names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">99 Names of Allah</a>
-      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">40 Hadith of Imam Nawawi</a>
-      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Zakat Calculator</a>
-      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Islamic Baby Names</a>
-      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Inheritance Calculator</a>
-      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Halal Food Guide</a>
-      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Mosque Kiosk</a>
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Portal</a>
+      <a href="qibla.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Qibla Compass</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">Salat Times</a>
+      <a href="knowledge.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Knowledge Academy</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Sawm & Fasting</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Tasbih & Adhkar</a>
+      <a href="99-names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">99 Names of Allah</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">40 Hadith</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Zakat Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Islamic Baby Names</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Halal Guide</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Mosque Kiosk</a>
+      <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-3 text-xs text-slate-500">
+        <a href="about.html" class="hover:underline">About</a>
+        <a href="faq.html" class="hover:underline">FAQ</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+        <a href="privacy.html" class="hover:underline">Privacy</a>
+        <a href="terms.html" class="hover:underline">Terms</a>
+      </div>
     </div>
   </header>
 
@@ -160,62 +178,147 @@
     </div>
 
     <!-- 2D Interactive Qibla Compass Section -->
-    <section id="qibla-section" class="glass-card rounded-3xl p-6 sm:p-10 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        
-        <div class="lg:col-span-6 space-y-4">
+    <section id="qibla-section" class="glass-card rounded-3xl p-6 sm:p-10 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+      
+      <!-- Compass Header & Sensor Controls -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 pb-4 border-b border-slate-200 dark:border-slate-800">
+        <div>
           <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 text-xs font-semibold">
             <span>🕋</span>
-            <span>Spherical Forward Azimuth Trigonometry</span>
+            <span>Live Astronomical Qibla Compass</span>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-heading">
-            Accurate Kaaba Qibla Direction
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-heading mt-1">
+            Kaaba Qibla Direction & Heading Finder
           </h2>
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            The Qibla is calculated using great-circle spherical navigation between your exact coordinates and the Holy Kaaba in Makkah al-Mukarramah (21.4225° N, 39.8262° E).
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <span class="compass-sensor-badge inline-flex items-center text-[11px] font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-700">
+            Sensor: Standby
+          </span>
+          <button class="enable-compass-sensor-btn px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center space-x-1 shadow-sm">
+            <span>📱 Enable Phone Compass</span>
+          </button>
+          <button class="toggle-compass-sound-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition border border-slate-200 dark:border-slate-700">
+            🔔 Chime: On
+          </button>
+        </div>
+      </div>
+
+      <!-- Alignment Banner (Shows when phone points to Kaaba) -->
+      <div class="qibla-aligned-banner hidden p-4 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 text-white text-center shadow-lg animate-pulse-subtle">
+        <div class="flex items-center justify-center space-x-2 text-sm sm:text-base font-extrabold font-heading">
+          <span class="text-xl">🕋</span>
+          <span>ALIGNED! YOU ARE DIRECTLY FACING THE HOLY KAABA (QIBLA)</span>
+        </div>
+        <p class="text-xs text-emerald-100 mt-0.5">Alhamdulillah • Your device is oriented within 4° of Makkah al-Mukarramah</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left: Metrics & Guidance -->
+        <div class="lg:col-span-6 space-y-4">
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-serif">
+            Calculated via great-circle forward azimuth spherical trigonometry between your coordinates and the Holy Kaaba in Makkah (21.4225° N, 39.8262° E). Rotate your phone until the golden Kaaba pointer points directly upwards.
           </p>
 
-          <div class="grid grid-cols-2 gap-4 pt-2">
+          <div class="grid grid-cols-2 gap-3 text-xs">
             <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60">
-              <span class="text-xs text-slate-400">Kaaba Bearing</span>
-              <p id="salat-qibla-bearing" class="text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400 mt-1">--°</p>
-              <span id="salat-qibla-cardinal" class="text-[11px] text-slate-500">From True North</span>
+              <span class="text-slate-400">Target Qibla Azimuth</span>
+              <p class="qibla-bearing-label text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400 mt-1">--°</p>
+              <span class="text-[10px] text-slate-500">True bearing from North</span>
             </div>
+
             <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60">
-              <span class="text-xs text-slate-400">Great Circle Distance</span>
-              <p id="salat-kaaba-distance" class="text-2xl font-bold font-mono text-amber-600 dark:text-amber-400 mt-1">-- km</p>
-              <span class="text-[11px] text-slate-500">Direct geodesic route</span>
+              <span class="text-slate-400">Current Device Heading</span>
+              <p class="current-heading-label text-2xl font-bold font-mono text-amber-600 dark:text-amber-400 mt-1">0° N</p>
+              <span class="text-[10px] text-slate-500">Direction you are facing</span>
             </div>
           </div>
 
-          <div class="pt-2 text-xs text-slate-500 flex items-center space-x-2">
-            <span>💡</span>
-            <span>On mobile phones, rotate your device flat to align with the Kaaba direction.</span>
+          <!-- Dynamic Guidance Banner -->
+          <div class="p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 flex items-center justify-between text-xs">
+            <span class="text-slate-600 dark:text-slate-300 font-medium">Navigation Guide:</span>
+            <span class="qibla-turn-instruction font-bold text-amber-600 dark:text-amber-400">Calculating bearing...</span>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-slate-500 pt-1">
+            <span class="qibla-distance-label font-mono">-- km to Makkah</span>
+            <span>Haptic & Audio: Active</span>
+          </div>
+
+          <!-- Manual Heading Slider (For Laptops / Testing) -->
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-semibold text-slate-700 dark:text-slate-300">Desktop / Manual Direction Simulator:</span>
+              <span class="current-heading-label font-mono font-bold text-emerald-600 dark:text-emerald-400">0° N</span>
+            </div>
+            <input type="range" min="0" max="360" value="0" class="compass-heading-slider w-full accent-emerald-600 cursor-pointer">
+            <div class="flex flex-wrap gap-2 pt-1">
+              <button class="test-align-kaaba-btn px-2.5 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-xs font-bold border border-emerald-300 dark:border-emerald-800 hover:bg-emerald-200 dark:hover:bg-emerald-900 transition flex items-center space-x-1">
+                <span>🎯 Simulate Facing Kaaba</span>
+              </button>
+              <button class="test-reset-north-btn px-2.5 py-1 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-300 dark:hover:bg-slate-600 transition">
+                <span>🧭 Reset to North (0°)</span>
+              </button>
+            </div>
+            <p class="text-[11px] text-slate-400">Slide to turn your simulated direction, click "Simulate Facing Kaaba", or drag the compass dial directly.</p>
           </div>
         </div>
 
+        <!-- Right: The 2D Interactive Compass -->
         <div class="lg:col-span-6 flex flex-col items-center justify-center">
-          <div class="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center rounded-full border-4 border-emerald-500/30 bg-slate-900 shadow-2xl">
-            <!-- Compass Rose Markers -->
-            <div class="absolute top-3 text-xs font-extrabold text-rose-500">N</div>
-            <div class="absolute right-4 text-xs font-extrabold text-slate-400">E</div>
-            <div class="absolute bottom-3 text-xs font-extrabold text-slate-400">S</div>
-            <div class="absolute left-4 text-xs font-extrabold text-slate-400">W</div>
+          <div class="interactive-compass-dial-container cursor-grab active:cursor-grabbing select-none relative w-72 h-72 sm:w-84 sm:h-84 flex items-center justify-center rounded-full border-4 border-slate-800 dark:border-slate-700 bg-slate-950 shadow-2xl compass-outer-frame transition-all duration-300">
+            
+            <!-- Rotating Compass Rose Dial -->
+            <div class="compass-dial-rotate absolute inset-0 w-full h-full flex items-center justify-center transition-transform duration-200 ease-out" style="transform: rotate(0deg);">
+              
+              <!-- Subtle SVG Dial Face with Ticks and Degrees -->
+              <svg class="w-full h-full p-2" viewBox="0 0 300 300">
+                <circle cx="150" cy="150" r="140" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" />
+                <circle cx="150" cy="150" r="130" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-dasharray="2,6" />
+                
+                <!-- Cardinal Ticks -->
+                <line x1="150" y1="12" x2="150" y2="28" stroke="#ef4444" stroke-width="3" />
+                <line x1="288" y1="150" x2="272" y2="150" stroke="#94a3b8" stroke-width="2" />
+                <line x1="150" y1="288" x2="150" y2="272" stroke="#94a3b8" stroke-width="2" />
+                <line x1="12" y1="150" x2="28" y2="150" stroke="#94a3b8" stroke-width="2" />
+                
+                <!-- Degree labels -->
+                <text x="150" y="42" fill="#ef4444" font-size="14" font-weight="bold" text-anchor="middle">N</text>
+                <text x="260" y="155" fill="#94a3b8" font-size="13" font-weight="bold" text-anchor="middle">E</text>
+                <text x="150" y="268" fill="#94a3b8" font-size="13" font-weight="bold" text-anchor="middle">S</text>
+                <text x="40" y="155" fill="#94a3b8" font-size="13" font-weight="bold" text-anchor="middle">W</text>
+                
+                <text x="230" y="75" fill="#64748b" font-size="10" font-weight="semibold" text-anchor="middle">NE</text>
+                <text x="230" y="235" fill="#64748b" font-size="10" font-weight="semibold" text-anchor="middle">SE</text>
+                <text x="70" y="235" fill="#64748b" font-size="10" font-weight="semibold" text-anchor="middle">SW</text>
+                <text x="70" y="75" fill="#64748b" font-size="10" font-weight="semibold" text-anchor="middle">NW</text>
+              </svg>
+            </div>
 
-            <!-- Dial ticks -->
-            <div class="absolute inset-4 rounded-full border border-dashed border-slate-700 pointer-events-none"></div>
-
-            <!-- Animated Needle -->
-            <div id="salat-compass-needle" class="absolute w-full h-full flex items-center justify-center transition-transform duration-700 ease-out" style="transform: rotate(0deg);">
-              <div class="w-1.5 bg-gradient-to-t from-transparent via-amber-400 to-amber-500 h-56 flex flex-col items-center justify-start">
-                <div class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center text-lg shadow-lg -mt-4 border-2 border-slate-900">
+            <!-- Kaaba Pointer Needle (Points to relative Qibla) -->
+            <div class="qibla-pointer-needle absolute w-full h-full flex items-center justify-center transition-transform duration-200 ease-out z-20 pointer-events-none" style="transform: rotate(0deg);">
+              <div class="w-2 bg-gradient-to-t from-transparent via-amber-400 to-amber-500 h-64 flex flex-col items-center justify-start">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-500 to-amber-400 text-white flex items-center justify-center text-xl shadow-xl -mt-5 border-2 border-slate-900 animate-bounce">
                   🕋
                 </div>
               </div>
             </div>
 
-            <div class="w-6 h-6 rounded-full bg-emerald-500 border-4 border-white shadow-md z-10"></div>
+            <!-- Phone Top Orientation Notch Indicator -->
+            <div class="absolute -top-3 w-6 h-3 bg-rose-500 rounded-b-md shadow-md z-30 flex items-center justify-center text-[8px] font-bold text-white">▲</div>
+
+            <!-- Central Jewel -->
+            <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-emerald-600 to-emerald-400 border-4 border-slate-900 shadow-lg z-30 flex items-center justify-center">
+              <div class="w-2 h-2 rounded-full bg-white"></div>
+            </div>
+
           </div>
+
+          <p class="text-[11px] text-slate-400 mt-4 text-center">
+            Tip: Keep phone flat on your palm. When the Kaaba icon points straight up, you are facing Makkah!
+          </p>
         </div>
 
       </div>
@@ -311,6 +414,7 @@
 
   <script src="shared.js"></script>
   <script src="salat-engine.js"></script>
+  <script src="compass.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const core = window.NoorHub;
@@ -359,28 +463,10 @@
           });
         }
 
-        // Qibla
-        const kaabaLat = 21.422487;
-        const kaabaLng = 39.826206;
-        const lat1 = (loc.lat * Math.PI) / 180;
-        const lat2 = (kaabaLat * Math.PI) / 180;
-        const dLng = ((kaabaLng - loc.lng) * Math.PI) / 180;
-        const y = Math.sin(dLng);
-        const x = Math.cos(lat1) * Math.tan(lat2) - Math.sin(lat1) * Math.cos(dLng);
-        let qibla = (Math.atan2(y, x) * 180) / Math.PI;
-        qibla = (qibla + 360) % 360;
-
-        const R = 6371;
-        const dLat = lat2 - lat1;
-        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
-        const dist = Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
-
-        const needle = document.getElementById('salat-compass-needle');
-        if (needle) needle.style.transform = `rotate(${qibla}deg)`;
-        const bEl = document.getElementById('salat-qibla-bearing');
-        if (bEl) bEl.textContent = `${Math.round(qibla)}°`;
-        const dEl = document.getElementById('salat-kaaba-distance');
-        if (dEl) dEl.textContent = `${dist.toLocaleString()} km`;
+        // Update Interactive Qibla Compass
+        if (window.NoorHubCompass) {
+          window.NoorHubCompass.recalculateQibla(loc);
+        }
 
         // Monthly schedule
         generateMonthly(loc, method, school);
@@ -413,18 +499,6 @@
           `;
         }
         tbody.innerHTML = html;
-      }
-
-      // Device orientation for mobile compass
-      if (window.DeviceOrientationEvent) {
-        window.addEventListener('deviceorientation', (e) => {
-          if (e.webkitCompassHeading) {
-            // iOS
-            const heading = e.webkitCompassHeading;
-            const needle = document.getElementById('salat-compass-needle');
-            // adjust needle
-          }
-        }, false);
       }
 
       updateAll();

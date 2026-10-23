@@ -1,24 +1,19 @@
 /**
- * NoorHub - Flagship Portal Dashboard Logic
+ * NoorHub - Sacred Lifestyle & Spiritual Dashboard Logic
+ * Powered by Astronomical Salat Engine, Ambient Audio Synthesis, and Haptic Utilities
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   const core = window.NoorHub;
   let activeTimings = null;
   let prayerInterval = null;
+  let ambientAudioCtx = null;
+  let ambientPlaying = false;
+  let ambientNodes = [];
 
-  // 1. Clock and Hijri Date
-  function updateClock() {
-    const now = new Date();
-    const clockEl = document.getElementById('header-clock');
-    if (clockEl) {
-      clockEl.textContent = now.toLocaleTimeString('en-US', { hour12: false });
-    }
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-
-  // Simple Hijri Date approximation or API sync
+  // =========================================================================
+  // 1. Clock and Live Hijri Date
+  // =========================================================================
   function updateNativeHijriDate() {
     try {
       const today = new Date();
@@ -29,25 +24,28 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       const hijriText = hijriFormatter.format(today);
       const el = document.getElementById('header-hijri-date');
-      if (el) el.textContent = hijriText + ' AH';
+      if (el) el.textContent = `${hijriText} AH`;
     } catch (e) {
-      console.warn('Hijri Intl format fallback:', e);
+      const el = document.getElementById('header-hijri-date');
+      if (el) el.textContent = '1448 AH';
     }
   }
   updateNativeHijriDate();
 
-  // 2. City Dropdown & Selector
+  // =========================================================================
+  // 2. City Selector & Dropdown
+  // =========================================================================
   const cityBtn = document.getElementById('city-selector-btn');
   const cityDropdown = document.getElementById('city-dropdown');
   const citiesList = document.getElementById('cities-list');
   const cityLabel = document.getElementById('current-city-label');
   const gpsBtn = document.getElementById('btn-use-gps');
 
-  if (cityLabel) cityLabel.textContent = core.city.name;
+  if (cityLabel && core && core.city) cityLabel.textContent = core.city.name;
 
-  if (citiesList) {
+  if (citiesList && typeof NOORHUB_CITIES !== 'undefined') {
     citiesList.innerHTML = NOORHUB_CITIES.map(c => `
-      <button class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-between transition ${c.name === core.city.name ? 'text-emerald-600 font-semibold bg-emerald-50/50 dark:bg-emerald-950/30' : 'text-slate-700 dark:text-slate-300'}" data-city="${c.name}">
+      <button class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-between transition text-xs ${c.name === (core.city ? core.city.name : '') ? 'text-amber-500 font-bold bg-amber-500/10' : 'text-slate-700 dark:text-slate-300'}" data-city="${c.name}">
         <span>${c.name}, ${c.country}</span>
         <span class="text-[10px] text-slate-400 font-mono">${c.lat.toFixed(1)}°, ${c.lng.toFixed(1)}°</span>
       </button>
@@ -61,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (cityLabel) cityLabel.textContent = selected.name;
           if (cityDropdown) cityDropdown.classList.add('hidden');
           loadPrayerTimes();
+          if (window.NoorHubCompass) window.NoorHubCompass.recalculateQibla(selected);
         }
       });
     });
@@ -78,102 +77,153 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (gpsBtn) {
+  if (gpsBtn && core) {
     gpsBtn.addEventListener('click', () => {
       core.requestGPSLocation((loc) => {
         if (cityLabel) cityLabel.textContent = loc.name;
         if (cityDropdown) cityDropdown.classList.add('hidden');
         loadPrayerTimes();
+        if (window.NoorHubCompass) window.NoorHubCompass.recalculateQibla(loc);
       });
     });
   }
 
-  // 3. Prayer Times Calculation & Rendering
+  // =========================================================================
+  // 3. Zen / Ambient Nature Audio Synthesizer (Flowing Water & Sanctuary Chime)
+  // =========================================================================
+  const ambientBtn = document.getElementById('zen-ambient-btn');
+  
+  function toggleAmbientSound() {
+    if (ambientPlaying) {
+      stopAmbientSound();
+    } else {
+      startAmbientSound();
+    }
+  }
+
+  function startAmbientSound() {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      ambientAudioCtx = new AudioCtx();
+      if (ambientAudioCtx.state === 'suspended') {
+        ambientAudioCtx.resume();
+      }
+
+      // 1. Pink Noise generator buffer for soothing flowing stream/rain
+      const bufferSize = ambientAudioCtx.sampleRate * 2;
+      const noiseBuffer = ambientAudioCtx.createBuffer(1, bufferSize, ambientAudioCtx.sampleRate);
+      const output = noiseBuffer.getChannelData(0);
+      let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+      for (let i = 0; i < bufferSize; i++) {
+        const white = Math.random() * 2 - 1;
+        b0 = 0.99886 * b0 + white * 0.0555179;
+        b1 = 0.99332 * b1 + white * 0.0750759;
+        b2 = 0.96900 * b2 + white * 0.1538520;
+        b3 = 0.86650 * b3 + white * 0.3104856;
+        b4 = 0.55000 * b4 + white * 0.5329522;
+        b5 = -0.7616 * b5 - white * 0.0168980;
+        output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.04;
+        b6 = white * 0.115926;
+      }
+
+      const whiteNoise = ambientAudioCtx.createBufferSource();
+      whiteNoise.buffer = noiseBuffer;
+      whiteNoise.loop = true;
+
+      // Filter: gentle resonant lowpass like a forest stream
+      const filter = ambientAudioCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(650, ambientAudioCtx.currentTime);
+      filter.Q.setValueAtTime(1.2, ambientAudioCtx.currentTime);
+
+      const gain = ambientAudioCtx.createGain();
+      gain.gain.setValueAtTime(0.01, ambientAudioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.18, ambientAudioCtx.currentTime + 1.5);
+
+      whiteNoise.connect(filter);
+      filter.connect(gain);
+      gain.connect(ambientAudioCtx.destination);
+      whiteNoise.start();
+
+      ambientNodes = [whiteNoise, filter, gain];
+      ambientPlaying = true;
+      if (ambientBtn) {
+        ambientBtn.classList.add('gold-pill-active', 'text-amber-400');
+        ambientBtn.innerHTML = `<span>🌊 Sanctuary Audio: On</span>`;
+      }
+    } catch (e) {
+      console.warn('Ambient audio error:', e);
+    }
+  }
+
+  function stopAmbientSound() {
+    if (ambientAudioCtx) {
+      try {
+        ambientNodes.forEach(node => {
+          if (node.stop) node.stop();
+          if (node.disconnect) node.disconnect();
+        });
+        ambientAudioCtx.close();
+      } catch (e) {}
+    }
+    ambientPlaying = false;
+    if (ambientBtn) {
+      ambientBtn.classList.remove('gold-pill-active', 'text-amber-400');
+      ambientBtn.innerHTML = `<span>🌿 Ambient: Calm</span>`;
+    }
+  }
+
+  if (ambientBtn) {
+    ambientBtn.addEventListener('click', toggleAmbientSound);
+  }
+
+  // =========================================================================
+  // 4. Prayer Times Engine & Hero Countdown
+  // =========================================================================
   async function loadPrayerTimes() {
-    const loc = core.city;
+    const loc = core.city || { lat: 21.4225, lng: 39.8262, name: 'Makkah', tz: 'Asia/Riyadh' };
     const now = new Date();
     let timings = null;
 
-    // Try live API first with 3.5s timeout
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 3500);
-      const ts = Math.floor(now.getTime() / 1000);
-      const res = await fetch(`https://api.aladhan.com/v1/timings/${ts}?latitude=${loc.lat}&longitude=${loc.lng}&method=3`, { signal: controller.signal });
-      clearTimeout(timeoutId);
-      if (res.ok) {
-        const json = await res.json();
-        if (json.data && json.data.timings) {
-          timings = {
-            Fajr: json.data.timings.Fajr.split(' ')[0],
-            Sunrise: json.data.timings.Sunrise.split(' ')[0],
-            Dhuhr: json.data.timings.Dhuhr.split(' ')[0],
-            Asr: json.data.timings.Asr.split(' ')[0],
-            Maghrib: json.data.timings.Maghrib.split(' ')[0],
-            Isha: json.data.timings.Isha.split(' ')[0]
-          };
-          if (json.data.date && json.data.date.hijri) {
-            const h = json.data.date.hijri;
-            const el = document.getElementById('header-hijri-date');
-            if (el) el.textContent = `${h.day} ${h.month.en} ${h.year} AH`;
-          }
-        }
-      }
-    } catch (e) {
-      console.warn('Aladhan API timeout/network error, calculating offline:', e);
-    }
-
-    // Fallback to offline astronomical calculator if API failed
-    if (!timings && typeof AstronomicalPrayerCalculator !== 'undefined') {
+    if (typeof AstronomicalPrayerCalculator !== 'undefined') {
       timings = AstronomicalPrayerCalculator.calculate(now, loc.lat, loc.lng, 3, 0, 'night-middle', loc.tz);
     }
 
-    if (!timings) {
-      // Default fallback standard timings
-      timings = {
-        Fajr: '05:05',
-        Sunrise: '06:22',
-        Dhuhr: '12:15',
-        Asr: '15:35',
-        Maghrib: '18:05',
-        Isha: '19:25'
-      };
+    if (timings) {
+      activeTimings = timings;
+      renderPrayerDashboard();
+      startPrayerCountdown();
     }
-
-    activeTimings = timings;
-    renderTimings(timings);
-    updateQibla(loc);
-    startPrayerCountdown();
   }
 
-  function renderTimings(t) {
-    const ids = ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'];
-    ids.forEach(key => {
-      const cap = key.charAt(0).toUpperCase() + key.slice(1);
-      const el = document.getElementById(`time-${key}`);
-      if (el && t[cap]) {
-        el.textContent = format12h(t[cap]);
-      }
-    });
-
-    const suhoorEl = document.getElementById('fasting-suhoor-time');
-    const iftarEl = document.getElementById('fasting-iftar-time');
-    if (suhoorEl && t.Fajr) suhoorEl.textContent = format12h(t.Fajr);
-    if (iftarEl && t.Maghrib) iftarEl.textContent = format12h(t.Maghrib);
-  }
-
-  function format12h(timeStr) {
-    if (!timeStr) return '--:--';
-    const [hStr, mStr] = timeStr.split(':');
-    let h = parseInt(hStr, 10);
-    const m = mStr ? mStr.substring(0, 2) : '00';
+  function format12h(time24) {
+    if (!time24) return '--:--';
+    const [hours, mins] = time24.split(':');
+    let h = parseInt(hours, 10);
+    const m = mins.slice(0, 2);
     const ampm = h >= 12 ? 'PM' : 'AM';
     h = h % 12;
     h = h ? h : 12;
     return `${h}:${m} ${ampm}`;
   }
 
-  // 4. Next Prayer Countdown
+  function renderPrayerDashboard() {
+    if (!activeTimings) return;
+    const list = [
+      { key: 'fajr', label: 'Fajr', time: activeTimings.Fajr },
+      { key: 'dhuhr', label: 'Dhuhr', time: activeTimings.Dhuhr },
+      { key: 'asr', label: 'Asr', time: activeTimings.Asr },
+      { key: 'maghrib', label: 'Maghrib', time: activeTimings.Maghrib },
+      { key: 'isha', label: 'Isha', time: activeTimings.Isha }
+    ];
+
+    list.forEach(p => {
+      const el = document.getElementById(`timeline-${p.key}-time`);
+      if (el) el.textContent = p.time;
+    });
+  }
+
   function startPrayerCountdown() {
     if (prayerInterval) clearInterval(prayerInterval);
     updateCountdown();
@@ -184,234 +234,304 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!activeTimings) return;
     const now = new Date();
     const prayerOrder = [
-      { name: 'Fajr', time: activeTimings.Fajr },
-      { name: 'Sunrise', time: activeTimings.Sunrise, skipNext: true },
-      { name: 'Dhuhr', time: activeTimings.Dhuhr },
-      { name: 'Asr', time: activeTimings.Asr },
-      { name: 'Maghrib', time: activeTimings.Maghrib },
-      { name: 'Isha', time: activeTimings.Isha }
+      { name: 'Fajr', time: activeTimings.Fajr, key: 'fajr' },
+      { name: 'Dhuhr', time: activeTimings.Dhuhr, key: 'dhuhr' },
+      { name: 'Asr', time: activeTimings.Asr, key: 'asr' },
+      { name: 'Maghrib', time: activeTimings.Maghrib, key: 'maghrib' },
+      { name: 'Isha', time: activeTimings.Isha, key: 'isha' }
     ];
 
     const currentMinutes = now.getHours() * 60 + now.getMinutes() + now.getSeconds() / 60;
-    
     let nextPrayer = null;
     let nextPrayerMinutes = null;
-    let prevPrayerMinutes = null;
 
     for (let i = 0; i < prayerOrder.length; i++) {
       const p = prayerOrder[i];
       const [h, m] = p.time.split(':').map(Number);
       const pMin = h * 60 + m;
-
       if (pMin > currentMinutes) {
         nextPrayer = p;
         nextPrayerMinutes = pMin;
-        prevPrayerMinutes = i > 0 ? (prayerOrder[i - 1].time.split(':').map(Number)[0] * 60 + prayerOrder[i - 1].time.split(':').map(Number)[1]) : 0;
         break;
       }
     }
 
-    // After Isha, next prayer is tomorrow's Fajr
     if (!nextPrayer) {
       nextPrayer = prayerOrder[0];
       const [h, m] = nextPrayer.time.split(':').map(Number);
       nextPrayerMinutes = 24 * 60 + (h * 60 + m);
-      const ishaMin = prayerOrder[5].time.split(':').map(Number)[0] * 60 + prayerOrder[5].time.split(':').map(Number)[1];
-      prevPrayerMinutes = ishaMin;
     }
-
-    // Update Next Prayer Hero Card
-    const nameEl = document.getElementById('next-prayer-name');
-    const timeEl = document.getElementById('next-prayer-time');
-    const timerEl = document.getElementById('prayer-countdown-timer');
-    const progressEl = document.getElementById('prayer-progress-bar');
-
-    if (nameEl) nameEl.textContent = nextPrayer.name;
-    if (timeEl) timeEl.textContent = format12h(nextPrayer.time);
 
     const diffMinutes = nextPrayerMinutes - currentMinutes;
-    const diffSecTotal = Math.max(0, Math.floor(diffMinutes * 60));
-    const hours = Math.floor(diffSecTotal / 3600);
-    const mins = Math.floor((diffSecTotal % 3600) / 60);
-    const secs = diffSecTotal % 60;
+    const hours = Math.floor(diffMinutes / 60);
+    const mins = Math.floor(diffMinutes % 60);
 
-    if (timerEl) {
-      timerEl.textContent = `${hours}h ${mins}m ${secs.toString().padStart(2, '0')}s`;
+    const countdownHeading = document.getElementById('hero-next-prayer-heading');
+    if (countdownHeading) {
+      const timeStr = hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
+      countdownHeading.textContent = `${nextPrayer.name} in ${timeStr}`;
     }
 
-    // Highlight card
-    ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'].forEach(k => {
-      const c = document.getElementById(`card-${k}`);
-      if (c) {
-        if (k.toLowerCase() === nextPrayer.name.toLowerCase()) {
-          c.classList.add('ring-2', 'ring-emerald-400', 'bg-emerald-950/60');
+    // Highlight timeline row matching next prayer with champagne gold glowing pill
+    prayerOrder.forEach(p => {
+      const row = document.getElementById(`timeline-row-${p.key}`);
+      if (row) {
+        if (p.key === nextPrayer.key) {
+          row.className = 'flex items-center justify-between px-3 py-1.5 rounded-xl gold-pill-active text-amber-300 font-bold';
         } else {
-          c.classList.remove('ring-2', 'ring-emerald-400', 'bg-emerald-950/60');
+          row.className = 'flex items-center justify-between px-3 py-1.5 rounded-xl text-slate-400 hover:text-slate-200 transition';
         }
       }
     });
+  }
 
-    // Progress bar calculation
-    if (progressEl && prevPrayerMinutes !== null) {
-      const totalSpan = nextPrayerMinutes - prevPrayerMinutes;
-      const elapsed = currentMinutes >= prevPrayerMinutes ? (currentMinutes - prevPrayerMinutes) : (currentMinutes + 24 * 60 - prevPrayerMinutes);
-      const pct = Math.min(100, Math.max(0, (elapsed / totalSpan) * 100));
-      progressEl.style.width = `${pct}%`;
+  // =========================================================================
+  // 5. Verse of the Day Carousel & Audio Recitation
+  // =========================================================================
+  const SACRED_VERSES = [
+    {
+      arabic: 'فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ۝ إِنَّ مَعَ الْعُسْرِ يُسْرًا',
+      translation: 'Indeed, with hardship will be ease. (Surah Ash-Sharh 94:6)',
+      surah: 'Surah Ash-Sharh (94:5-6)',
+      audio: 'https://everyayah.com/data/Alafasy_128kbps/094005.mp3'
+    },
+    {
+      arabic: 'لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا',
+      translation: 'Allah does not burden a soul beyond that it can bear. (Surah Al-Baqarah 2:286)',
+      surah: 'Surah Al-Baqarah (2:286)',
+      audio: 'https://everyayah.com/data/Alafasy_128kbps/002286.mp3'
+    },
+    {
+      arabic: 'وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ',
+      translation: 'And He is with you wherever you are. (Surah Al-Hadid 57:4)',
+      surah: 'Surah Al-Hadid (57:4)',
+      audio: 'https://everyayah.com/data/Alafasy_128kbps/057004.mp3'
+    },
+    {
+      arabic: 'أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ',
+      translation: 'Unquestionably, by the remembrance of Allah hearts find rest. (Surah Ar-Ra\'d 13:28)',
+      surah: 'Surah Ar-Ra\'d (13:28)',
+      audio: 'https://everyayah.com/data/Alafasy_128kbps/013028.mp3'
     }
+  ];
+
+  let currentVerseIdx = 0;
+  let verseAudio = null;
+
+  function renderVerse(idx) {
+    const v = SACRED_VERSES[idx];
+    const arEl = document.getElementById('daily-verse-arabic');
+    const transEl = document.getElementById('daily-verse-trans');
+    const refEl = document.getElementById('daily-verse-ref');
+
+    if (arEl) arEl.textContent = v.arabic;
+    if (transEl) transEl.textContent = v.translation;
+    if (refEl) refEl.textContent = v.surah;
+  }
+  renderVerse(0);
+
+  const cycleVerseBtn = document.getElementById('btn-cycle-verse');
+  if (cycleVerseBtn) {
+    cycleVerseBtn.addEventListener('click', () => {
+      currentVerseIdx = (currentVerseIdx + 1) % SACRED_VERSES.length;
+      renderVerse(currentVerseIdx);
+      if (verseAudio && !verseAudio.paused) {
+        verseAudio.pause();
+      }
+    });
   }
 
-  // 5. Qibla Bearing Calculation
-  function updateQibla(loc) {
-    const kaabaLat = 21.422487;
-    const kaabaLng = 39.826206;
-
-    const lat1 = (loc.lat * Math.PI) / 180;
-    const lat2 = (kaabaLat * Math.PI) / 180;
-    const dLng = ((kaabaLng - loc.lng) * Math.PI) / 180;
-
-    const y = Math.sin(dLng);
-    const x = Math.cos(lat1) * Math.tan(lat2) - Math.sin(lat1) * Math.cos(dLng);
-    let qibla = (Math.atan2(y, x) * 180) / Math.PI;
-    qibla = (qibla + 360) % 360;
-
-    // Kaaba Distance (Haversine)
-    const R = 6371;
-    const dLat = lat2 - lat1;
-    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const dist = Math.round(R * c);
-
-    const needle = document.getElementById('qibla-needle');
-    const angleEl = document.getElementById('qibla-angle-degrees');
-    const distEl = document.getElementById('kaaba-distance-label');
-
-    if (needle) needle.style.transform = `rotate(${qibla}deg)`;
-    if (angleEl) angleEl.textContent = `${Math.round(qibla)}°`;
-    if (distEl) distEl.textContent = `${dist.toLocaleString()} km to Makkah`;
+  const playVerseBtn = document.getElementById('btn-play-verse');
+  if (playVerseBtn) {
+    playVerseBtn.addEventListener('click', () => {
+      const v = SACRED_VERSES[currentVerseIdx];
+      if (verseAudio && !verseAudio.paused) {
+        verseAudio.pause();
+        playVerseBtn.innerHTML = `<span>▶ Listen Recitation</span>`;
+        return;
+      }
+      verseAudio = new Audio(v.audio);
+      playVerseBtn.innerHTML = `<span>⏸ Pause Recitation</span>`;
+      verseAudio.play().catch(e => console.warn('Audio play err:', e));
+      verseAudio.onended = () => {
+        playVerseBtn.innerHTML = `<span>▶ Listen Recitation</span>`;
+      };
+    });
   }
 
-  // 6. Interactive Quick Tasbih Counter
-  let tasbihCount = 0;
-  let tasbihTarget = 33;
-  let tasbihCycles = 0;
-  let soundEnabled = true;
+  // =========================================================================
+  // 6. Spiritual Dashboard - Glowing Progress Rings
+  // =========================================================================
+  const PRAYER_MAX = 5;
+  const DHIKR_MAX = 99;
+  const QURAN_MAX = 30; // 30 mins
+  const HABITS_MAX = 5;
 
-  const countBtn = document.getElementById('quick-tasbih-tap-btn');
-  const countEl = document.getElementById('quick-tasbih-count');
-  const cyclesEl = document.getElementById('quick-tasbih-cycles');
-  const targetEl = document.getElementById('quick-tasbih-target');
-  const resetBtn = document.getElementById('quick-tasbih-reset-btn');
-  const soundBtn = document.getElementById('quick-tasbih-sound-toggle');
-  const arabicEl = document.getElementById('quick-tasbih-arabic');
-  const transEl = document.getElementById('quick-tasbih-trans');
+  let statePrayers = 3;
+  let stateDhikr = 66;
+  let stateQuran = 15;
+  let stateHabits = 4;
 
-  // Web Audio chime for tasbih
-  function playBeadClick() {
-    if (!soundEnabled) return;
+  function updateProgressRing(id, current, max) {
+    const circle = document.getElementById(id);
+    if (!circle) return;
+    const radius = circle.r.baseVal.value;
+    const circumference = 2 * Math.PI * radius;
+    circle.style.strokeDasharray = `${circumference} ${circumference}`;
+    const offset = circumference - (Math.min(current, max) / max) * circumference;
+    circle.style.strokeDashoffset = offset;
+  }
+
+  function syncAllRings() {
+    updateProgressRing('ring-prayers', statePrayers, PRAYER_MAX);
+    updateProgressRing('ring-dhikr', stateDhikr, DHIKR_MAX);
+    updateProgressRing('ring-quran', stateQuran, QURAN_MAX);
+    updateProgressRing('ring-habits', stateHabits, HABITS_MAX);
+
+    const prayerVal = document.getElementById('val-ring-prayers');
+    if (prayerVal) prayerVal.textContent = `${statePrayers}/${PRAYER_MAX}`;
+
+    const dhikrVal = document.getElementById('val-ring-dhikr');
+    if (dhikrVal) dhikrVal.textContent = `${stateDhikr}/${DHIKR_MAX}`;
+
+    const quranVal = document.getElementById('val-ring-quran');
+    if (quranVal) quranVal.textContent = `${stateQuran}m`;
+
+    const habitVal = document.getElementById('val-ring-habits');
+    if (habitVal) habitVal.textContent = `${stateHabits}/${HABITS_MAX}`;
+  }
+  syncAllRings();
+
+  // =========================================================================
+  // 7. Interactive Daily Habits Checklist (Syncs with Rings)
+  // =========================================================================
+  const habitChecks = document.querySelectorAll('.daily-habit-checkbox');
+  habitChecks.forEach(cb => {
+    cb.addEventListener('change', () => {
+      const checkedCount = document.querySelectorAll('.daily-habit-checkbox:checked').length;
+      stateHabits = checkedCount;
+      syncAllRings();
+
+      if (navigator.vibrate) navigator.vibrate(25);
+    });
+  });
+
+  // =========================================================================
+  // 8. Haptic Digital Tasbih Utility
+  // =========================================================================
+  let tasbihCount = 66;
+  const tasbihCountEl = document.getElementById('sanctuary-tasbih-count');
+  const tasbihTapBtn = document.getElementById('sanctuary-tasbih-tap');
+  const tasbihResetBtn = document.getElementById('sanctuary-tasbih-reset');
+  const tasbihDhikrLabel = document.getElementById('sanctuary-tasbih-dhikr-name');
+
+  function playTasbihClick() {
     try {
       const ctx = new (window.AudioContext || window.webkitAudioContext)();
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5 chime
-      osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.08); // A5
-      gain.gain.setValueAtTime(0.2, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+      osc.frequency.setValueAtTime(528, ctx.currentTime);
+      gain.gain.setValueAtTime(0.12, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start();
-      osc.stop(ctx.currentTime + 0.1);
+      osc.stop(ctx.currentTime + 0.08);
     } catch (e) {}
   }
 
-  if (countBtn) {
-    countBtn.addEventListener('click', () => {
+  if (tasbihTapBtn) {
+    tasbihTapBtn.addEventListener('click', () => {
       tasbihCount++;
-      playBeadClick();
+      if (tasbihCount > 99) tasbihCount = 1;
+      if (tasbihCountEl) tasbihCountEl.textContent = tasbihCount;
+      stateDhikr = tasbihCount;
+      syncAllRings();
+      playTasbihClick();
 
-      // Mobile Haptic vibration
       if (navigator.vibrate) {
-        navigator.vibrate(25);
+        if (tasbihCount === 33 || tasbihCount === 66 || tasbihCount === 99) {
+          navigator.vibrate([60, 40, 60]);
+        } else {
+          navigator.vibrate(20);
+        }
       }
-
-      if (tasbihCount >= tasbihTarget) {
-        tasbihCount = 0;
-        tasbihCycles++;
-        if (cyclesEl) cyclesEl.textContent = tasbihCycles;
-        if (navigator.vibrate) navigator.vibrate([40, 60, 40]);
-      }
-      if (countEl) countEl.textContent = tasbihCount;
     });
   }
 
-  if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
+  if (tasbihResetBtn) {
+    tasbihResetBtn.addEventListener('click', () => {
       tasbihCount = 0;
-      tasbihCycles = 0;
-      if (countEl) countEl.textContent = '0';
-      if (cyclesEl) cyclesEl.textContent = '0';
+      if (tasbihCountEl) tasbihCountEl.textContent = '0';
+      stateDhikr = 0;
+      syncAllRings();
     });
   }
 
-  if (soundBtn) {
-    soundBtn.addEventListener('click', () => {
-      soundEnabled = !soundEnabled;
-      soundBtn.textContent = soundEnabled ? '🔊 Sound: On' : '🔇 Sound: Off';
-    });
-  }
-
-  // Dhikr selector buttons
-  document.querySelectorAll('.dhikr-selector-btn').forEach(btn => {
+  // Dhikr preset buttons
+  document.querySelectorAll('.dhikr-pill-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const ar = btn.getAttribute('data-ar');
-      const meaning = btn.getAttribute('data-meaning');
-      if (arabicEl) arabicEl.textContent = ar;
-      if (transEl) transEl.textContent = `${btn.getAttribute('data-dhikr')} (${meaning})`;
+      document.querySelectorAll('.dhikr-pill-btn').forEach(b => b.classList.remove('gold-pill-active'));
+      btn.classList.add('gold-pill-active');
+      if (tasbihDhikrLabel) tasbihDhikrLabel.textContent = btn.getAttribute('data-name');
       tasbihCount = 0;
-      if (countEl) countEl.textContent = '0';
+      if (tasbihCountEl) tasbihCountEl.textContent = '0';
     });
   });
 
-  // 7. Ayah Recitation Audio & Copy
-  const ayahAudioBtn = document.getElementById('btn-play-ayah-audio');
-  const copyAyahBtn = document.getElementById('btn-copy-ayah');
-  let currentAyahAudio = null;
+  // =========================================================================
+  // 9. Topic Sanctuary Knowledge Quick Filter
+  // =========================================================================
+  const topicData = {
+    patience: {
+      title: 'Patience & Steadfastness (الصبر)',
+      ayah: 'وَاصْبِرْ وَمَا صَبْرُكَ إِلَّا بِاللَّهِ',
+      trans: 'And be patient, [O Muhammad], and your patience is not but through Allah. (16:127)',
+      hadith: '"How wonderful is the affair of the believer, for his affair is all good... if hardship befalls him, he is patient, and that is better for him." (Muslim 2999)'
+    },
+    gratitude: {
+      title: 'Gratitude (الشكر)',
+      ayah: 'لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ',
+      trans: 'If you are grateful, I will surely increase you [in favor]. (14:7)',
+      hadith: '"Look to those who are lower than you, and do not look to those who are higher than you, for that is more likely to prevent you from underestimating the favor of Allah." (Muslim 2963)'
+    },
+    forgiveness: {
+      title: 'Repentance & Mercy (التوبة والمغفرة)',
+      ayah: 'إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا',
+      trans: 'Indeed, Allah forgives all sins. Indeed, it is He who is the Forgiving, the Merciful. (39:53)',
+      hadith: '"Every son of Adam commits sins, and the best of those who commit sins are the repenting." (Tirmidhi 2499)'
+    },
+    sakinah: {
+      title: 'Inner Peace & Serenity (السكينة)',
+      ayah: 'هُوَ الَّذِي أَنزَلَ السَّكِينَةَ فِي قُلُوبِ الْمُؤْمِنِينَ',
+      trans: 'It is He who sent down tranquility into the hearts of the believers that they would increase in faith. (48:4)',
+      hadith: '"No people gather together in one of the Houses of Allah, reciting the Book of Allah and studying it together, but tranquility descends upon them." (Muslim 2699)'
+    }
+  };
 
-  if (ayahAudioBtn) {
-    ayahAudioBtn.addEventListener('click', () => {
-      if (currentAyahAudio && !currentAyahAudio.paused) {
-        currentAyahAudio.pause();
-        ayahAudioBtn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
-        return;
+  const topicContainer = document.getElementById('topic-result-box');
+  document.querySelectorAll('.topic-pill-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.topic-pill-btn').forEach(b => b.classList.remove('gold-pill-active', 'text-amber-400'));
+      btn.classList.add('gold-pill-active', 'text-amber-400');
+      const key = btn.getAttribute('data-topic');
+      const d = topicData[key];
+      if (d && topicContainer) {
+        topicContainer.innerHTML = `
+          <div class="space-y-3 p-4 rounded-2xl bg-emerald-950/20 border border-emerald-500/20">
+            <h4 class="font-bold text-amber-400 text-sm">${d.title}</h4>
+            <p class="font-arabic text-base text-emerald-100">${d.ayah}</p>
+            <p class="text-xs text-slate-300 italic">${d.trans}</p>
+            <div class="pt-2 border-t border-emerald-800/40 text-[11px] text-slate-400">
+              <strong class="text-emerald-400">Prophetic Hadith:</strong> ${d.hadith}
+            </div>
+          </div>
+        `;
       }
-      // Al-Baqarah 2:286 Mishary Alafasy public CDN
-      const audioUrl = 'https://everyayah.com/data/Alafasy_128kbps/002286.mp3';
-      currentAyahAudio = new Audio(audioUrl);
-      ayahAudioBtn.innerHTML = `<svg class="w-5 h-5 text-amber-500 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
-      
-      currentAyahAudio.play().then(() => {
-        ayahAudioBtn.innerHTML = `<svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
-      }).catch(err => {
-        console.warn('Audio playback error:', err);
-        ayahAudioBtn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>`;
-      });
-
-      currentAyahAudio.onended = () => {
-        ayahAudioBtn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>`;
-      };
     });
-  }
+  });
 
-  if (copyAyahBtn) {
-    copyAyahBtn.addEventListener('click', () => {
-      const text = `لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا - "Allah burdens not a person beyond his scope." [Surah Al-Baqarah 2:286] (via NoorHub.truxio.bond)`;
-      navigator.clipboard.writeText(text).then(() => {
-        copyAyahBtn.textContent = 'Copied to clipboard!';
-        setTimeout(() => copyAyahBtn.textContent = 'Copy Ayah', 2000);
-      });
-    });
-  }
-
-  // Load initial timings
+  // Load initial prayer timetable
   loadPrayerTimes();
 });

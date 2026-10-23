@@ -20,6 +20,14 @@
       }
     }
   </script>
+    <script>
+    // Theme initialization: default light mode unless dark is explicitly stored
+    if (localStorage.getItem('noorhub_theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
 </head>
@@ -42,19 +50,20 @@
           </div>
         </a>
 
-        <!-- Desktop Navigation Links -->
+                <!-- Desktop Navigation Links -->
         <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
           <a href="index.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Portal</a>
-          <a href="knowledge.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">Knowledge Hub</a>
-          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat & Qibla</a>
+          <a href="qibla.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Qibla Compass</a>
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat Times</a>
+          <a href="knowledge.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">Knowledge</a>
           <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
           <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih</a>
+          <a href="99-names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">99 Names</a>
           <a href="hadith.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">40 Hadith</a>
           <a href="zakat.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Zakat</a>
           <a href="names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Names</a>
           <a href="inheritance.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Inheritance</a>
           <a href="halal-guide.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Halal Guide</a>
-          <a href="99-names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">99 Names</a>
           <a href="mosque.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Mosque Kiosk</a>
         </nav>
 
@@ -70,20 +79,28 @@
       </div>
     </div>
 
-    <!-- Mobile Drawer -->
+        <!-- Mobile Drawer Menu -->
     <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
-      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">NoorHub Home</a>
-      <a href="knowledge.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">Islamic Knowledge Academy</a>
-      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Salat & Qibla Compass</a>
-      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Sawm & Fasting Companion</a>
-      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Digital Tasbih & Adhkar</a>
-      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">40 Hadith of Imam Nawawi</a>
-      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Zakat Calculator</a>
-      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Islamic Baby Names</a>
-      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Inheritance Calculator</a>
-      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Halal Food Guide & E-Numbers</a>
-      <a href="99-names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">99 Names of Allah</a>
-      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Mosque TV Kiosk Mode</a>
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Portal</a>
+      <a href="qibla.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Qibla Compass</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Salat Times</a>
+      <a href="knowledge.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">Knowledge Academy</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Sawm & Fasting</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Tasbih & Adhkar</a>
+      <a href="99-names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">99 Names of Allah</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">40 Hadith</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Zakat Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Islamic Baby Names</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Halal Guide</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Mosque Kiosk</a>
+      <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-3 text-xs text-slate-500">
+        <a href="about.html" class="hover:underline">About</a>
+        <a href="faq.html" class="hover:underline">FAQ</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+        <a href="privacy.html" class="hover:underline">Privacy</a>
+        <a href="terms.html" class="hover:underline">Terms</a>
+      </div>
     </div>
   </header>
 
