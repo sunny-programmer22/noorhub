@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ism Finder - Islamic Baby Names - NoorHub</title>
+  <meta name="description" content="Curated authentic Islamic baby names for boys and girls. Search by meaning, root etymology, Quranic citations, and prophetic naming Sunnah.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b', 950: '#022c22' },
+            amber: { 50: '#fffbeb', 100: '#fef3c7', 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309' },
+            slate: { 850: '#131c2e', 900: '#0f172a', 950: '#0b0f19' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👶</text></svg>">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-emerald-900 text-emerald-100 text-xs py-1.5 px-4 text-center border-b border-emerald-800 flex justify-between items-center max-w-7xl mx-auto w-full">
+    <div class="hidden sm:flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>NoorHub Digital Waqf • Ism Finder (دَلِيلُ أَسْمَاءِ المَوَالِيدِ)</span>
+    </div>
+    <div class="mx-auto sm:mr-0 flex items-center space-x-4">
+      <span id="header-hijri-date" class="font-medium">1448 AH</span>
+      <span class="text-emerald-400">•</span>
+      <span id="header-clock" class="font-mono font-semibold">--:--:--</span>
+    </div>
+  </div>
+
+  <!-- Primary Navigation -->
+  <header class="sticky top-0 z-50 glass-header shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-900/20 group-hover:scale-105 transition-transform">
+            <span class="text-xl">🌙</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white font-heading">NoorHub</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-semibold uppercase tracking-wider">Names</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-arabic leading-none -mt-0.5">أسماء المواليد الإسلامية</p>
+          </div>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a href="index.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Portal</a>
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat & Qibla</a>
+          <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
+          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih</a>
+          <a href="hadith.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">40 Hadith</a>
+          <a href="zakat.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Zakat</a>
+          <a href="names.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">Names</a>
+          <a href="inheritance.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Inheritance</a>
+          <a href="halal-guide.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Halal Guide</a>
+          <a href="mosque.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Mosque Kiosk</a>
+        </nav>
+
+        <!-- Right Controls -->
+        <div class="flex items-center space-x-2">
+          <button class="theme-toggle-btn p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Toggle Light/Dark Theme">
+            <span class="dark:hidden text-lg">🌙</span>
+            <span class="hidden dark:inline text-lg">☀️</span>
+          </button>
+
+          <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-1 text-sm shadow-xl">
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">NoorHub Home</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Salat & Qibla Compass</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Sawm & Fasting Companion</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Digital Tasbih & Adhkar</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">The 40 Hadith of Imam Nawawi</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Zakat Multi-Asset Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">Islamic Baby Names (Ism)</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Halal Food Guide</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Mosque TV Kiosk Mode</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-8">
+
+    <!-- Hero Header Banner -->
+    <div class="relative overflow-hidden bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl border border-emerald-700/40">
+      <div class="absolute -right-8 -bottom-8 opacity-10 pointer-events-none font-arabic text-9xl">
+        الأسماء
+      </div>
+      <div class="relative z-10 max-w-3xl space-y-4">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 text-xs font-semibold uppercase tracking-wider">
+          <span>👶 Ism Finder (دَلِيلُ الأَسْمَاءِ)</span>
+          <span>•</span>
+          <span class="font-arabic">تَسْمِيَةُ المَوْلُودِ</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black font-heading tracking-tight leading-tight">
+          Authentic Islamic Baby Names
+        </h1>
+        <p class="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
+          Discover beautiful names for Muslim boys and girls. Every entry is enriched with genuine Arabic calligraphy, diacritics (tashkeel), linguistic root etymology, and Quranic/Sahabi heritage.
+        </p>
+
+        <!-- Quick Stats -->
+        <div class="pt-2 flex flex-wrap items-center gap-3 text-xs">
+          <div class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+            <span id="stat-total-names" class="text-amber-400 font-bold">143</span>
+            <span class="text-slate-200">Verified Names</span>
+          </div>
+          <div class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+            <span class="text-blue-300 font-bold">67</span>
+            <span class="text-slate-200">Boys</span>
+          </div>
+          <div class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+            <span class="text-pink-300 font-bold">59</span>
+            <span class="text-slate-200">Girls</span>
+          </div>
+          <div class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+            <span class="text-purple-300 font-bold">17</span>
+            <span class="text-slate-200">Unisex</span>
+          </div>
+          <div class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+            <span class="text-red-400">❤️</span>
+            <span id="stat-favorites-count" class="text-slate-200 font-semibold">0 Saved</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search & Filter Controls -->
+    <section class="glass-card bg-white dark:bg-slate-900 p-4 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-5">
+      
+      <!-- Row 1: Search Bar and Gender Selector -->
+      <div class="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between">
+        
+        <!-- Search Input -->
+        <div class="relative flex-grow max-w-xl">
+          <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </span>
+          <input 
+            type="text" 
+            id="names-search-input" 
+            placeholder="Search by name (e.g. Maryam, Muhammad), Arabic text, or meaning..." 
+            class="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+          >
+          <button id="names-clear-search" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+            ✕
+          </button>
+        </div>
+
+        <!-- Gender Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-1.5">
+          <button class="gender-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-emerald-600 text-white shadow-sm" data-gender="all">
+            All Names
+          </button>
+          <button class="gender-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-950 hover:text-blue-600" data-gender="boy">
+            👦 Boys
+          </button>
+          <button class="gender-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-pink-50 dark:hover:bg-pink-950 hover:text-pink-600" data-gender="girl">
+            👧 Girls
+          </button>
+          <button class="gender-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-purple-50 dark:hover:bg-purple-950 hover:text-purple-600" data-gender="unisex">
+            ✨ Unisex
+          </button>
+          <button id="btn-filter-favorites" class="px-3.5 py-2 rounded-xl text-xs font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-red-50 dark:hover:bg-red-950 hover:text-red-600 flex items-center space-x-1">
+            <span>❤️ Favorites</span>
+            <span id="fav-count-pill" class="ml-1 px-1.5 py-0.2 rounded-full bg-red-100 dark:bg-red-900/60 text-red-600 dark:text-red-300 text-[10px]">0</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Row 2: Alphabet A-Z Index Filter -->
+      <div class="space-y-1.5">
+        <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+          <span class="font-semibold uppercase tracking-wider">Browse Alphabetically:</span>
+          <button id="btn-clear-letter" class="text-emerald-600 dark:text-emerald-400 hover:underline hidden">Show All Letters</button>
+        </div>
+        <div id="alphabet-container" class="flex flex-wrap gap-1 overflow-x-auto pb-1">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Row 3: Category Badges & Sort -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
+        <div class="flex flex-wrap items-center gap-1.5">
+          <span class="font-semibold text-slate-500 mr-1">Category:</span>
+          <button class="category-filter-btn px-2.5 py-1 rounded-lg font-medium bg-emerald-600 text-white" data-category="all">All</button>
+          <button class="category-filter-btn px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" data-category="prophets">Prophets (الأنبياء)</button>
+          <button class="category-filter-btn px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" data-category="sahabah">Sahabah (الصحابة)</button>
+          <button class="category-filter-btn px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" data-category="quranic">Quranic (قرآني)</button>
+          <button class="category-filter-btn px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" data-category="virtuous">Virtuous Character</button>
+          <button class="category-filter-btn px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" data-category="nature">Nature & Light</button>
+        </div>
+
+        <div class="flex items-center space-x-3 text-xs text-slate-400">
+          <span id="names-results-counter" class="font-mono">Showing 143 names</span>
+          <button id="btn-reset-all-filters" class="text-xs text-emerald-600 dark:text-emerald-400 hover:underline">Reset</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Names Card Grid -->
+    <section>
+      <div id="names-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+      <!-- No Results State -->
+      <div id="names-no-results" class="hidden text-center py-16 px-4 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-3">
+        <span class="text-5xl">🔍</span>
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">No Names Match Your Search</h3>
+        <p class="text-sm text-slate-500 max-w-md mx-auto">
+          Try expanding your search query, selecting "All" genders, or clearing the active alphabet filter.
+        </p>
+        <button id="btn-clear-search-empty" class="mt-2 px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-semibold hover:bg-emerald-700 transition">
+          Clear Filters & Show All
+        </button>
+      </div>
+    </section>
+
+    <!-- Detailed Name Modal -->
+    <div id="name-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm hidden">
+      <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xl relative space-y-5 animate-scale-up max-h-[90vh] overflow-y-auto">
+        
+        <!-- Close Button -->
+        <button id="btn-close-modal" class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          ✕
+        </button>
+
+        <!-- Modal Header -->
+        <div class="text-center space-y-2 pt-2">
+          <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold" id="modal-gender-badge">
+            <!-- Gender Badge -->
+          </div>
+          <h2 id="modal-arabic-name" class="font-arabic text-4xl sm:text-5xl font-extrabold text-emerald-800 dark:text-emerald-300 py-1">
+            مُحَمَّدٌ
+          </h2>
+          <div class="flex items-center justify-center space-x-2">
+            <h3 id="modal-english-name" class="text-2xl font-bold text-slate-900 dark:text-white">
+              Muhammad
+            </h3>
+            <button id="modal-pronounce-btn" class="p-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 hover:scale-110 transition" title="Listen Pronunciation">
+              🔊
+            </button>
+          </div>
+          <p id="modal-pronunciation" class="text-xs text-slate-500 font-mono">
+            moo-HAM-mad
+          </p>
+        </div>
+
+        <!-- Meaning & Root Box -->
+        <div class="p-4 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/40 space-y-2 text-xs">
+          <div>
+            <span class="font-bold text-slate-700 dark:text-slate-300">Meaning:</span>
+            <span id="modal-meaning" class="text-slate-800 dark:text-slate-200 ml-1"></span>
+          </div>
+          <div>
+            <span class="font-bold text-slate-700 dark:text-slate-300">Linguistic Root:</span>
+            <span id="modal-root" class="text-emerald-700 dark:text-emerald-400 font-semibold ml-1"></span>
+          </div>
+          <div id="modal-quran-box" class="hidden">
+            <span class="font-bold text-slate-700 dark:text-slate-300">Quranic Citation:</span>
+            <span id="modal-quran" class="text-amber-700 dark:text-amber-400 ml-1 font-medium"></span>
+          </div>
+        </div>
+
+        <!-- Historical Background -->
+        <div class="space-y-1.5 text-xs">
+          <h4 class="font-bold uppercase tracking-wider text-slate-900 dark:text-white">Historical & Prophetic Context</h4>
+          <p id="modal-historical" class="text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+        </div>
+
+        <!-- Famous Bearers -->
+        <div id="modal-bearers-box" class="space-y-1.5 text-xs hidden">
+          <h4 class="font-bold uppercase tracking-wider text-slate-900 dark:text-white">Renowned Islamic Figures</h4>
+          <p id="modal-bearers" class="text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+        </div>
+
+        <!-- Spiritual Reflection -->
+        <div class="space-y-1.5 text-xs bg-slate-50 dark:bg-slate-800/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <h4 class="font-bold text-emerald-700 dark:text-emerald-400 flex items-center space-x-1">
+            <span>✨</span>
+            <span>Spiritual Reflection & Parental Aspiration</span>
+          </h4>
+          <p id="modal-reflection" class="text-slate-700 dark:text-slate-300 leading-relaxed italic"></p>
+        </div>
+
+        <!-- Modal Footer Actions -->
+        <div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
+          <button id="modal-fav-toggle" class="px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-red-950/60 hover:text-red-600">
+            <span class="heart-icon">🤍</span>
+            <span class="heart-label">Save to Favorites</span>
+          </button>
+          
+          <button id="modal-copy-btn" class="px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-semibold hover:bg-emerald-700 transition flex items-center space-x-1.5">
+            <span>📋 Copy Name</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION: PROPHETIC NAMING ETIQUETTE & 7TH DAY SUNNAH -->
+    <section class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-sm space-y-8 mt-12">
+      
+      <!-- Section Header -->
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-6 space-y-1">
+        <div class="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+          <span>📖 Prophetic Traditions</span>
+          <span>•</span>
+          <span class="font-arabic">آدَابُ التَّسْمِيَةِ وَسُنَنُ المَوْلُودِ</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-heading">
+          Prophetic Naming Etiquette & The Sunnah on the 7th Day
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          The noble blueprint established by the Prophet Muhammad ﷺ for welcoming a newborn into the Ummah with dignity, blessing, and gratitude.
+        </p>
+      </div>
+
+      <!-- 4 Pillars of the 7th Day -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <!-- Pillar 1: Naming -->
+        <div class="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/40 space-y-2.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg shadow-sm font-arabic">
+            ١
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">1. Bestowing a Noble Name</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            The Sunnah encourages giving the child their permanent name on the <strong>7th day</strong> after birth (or upon birth, as the Prophet ﷺ named his son Ibrahim on the day he was born). The name forms a lifelong spiritual mantle.
+          </p>
+          <div class="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 pt-1">
+            «كُلُّ غُلَامٍ رَهِينَةٌ بِعَقِيقَتِهِ تُذْبَحُ عَنْهُ يَوْمَ سَابِعِهِ وَيُحْلَقُ وَيُسَمَّى» (أبو داود)
+          </div>
+        </div>
+
+        <!-- Pillar 2: Tahneek -->
+        <div class="p-5 rounded-2xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900/40 space-y-2.5">
+          <div class="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center text-lg shadow-sm font-arabic">
+            ٢
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">2. Tahneek (التَّحْنِيك)</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Taking a sweet date, softening a minute fraction with saliva or water, and gently placing a tiny sweet trace on the baby’s upper palate. The Sahabah would bring their newborns to the Messenger ﷺ who performed Tahneek and supplicated for Barakah.
+          </p>
+        </div>
+
+        <!-- Pillar 3: Aqeeqah -->
+        <div class="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/30 border border-sky-100 dark:border-sky-900/40 space-y-2.5">
+          <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center text-lg shadow-sm font-arabic">
+            ٣
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">3. Al-Aqeeqah (العَقِيقَة)</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            A verified Sunnah Mu'akkadah sacrifice of gratitude on the 7th day: <strong>two sheep or goats for a baby boy</strong>, and <strong>one sheep or goat for a baby girl</strong>. The meat is distributed among family, friends, and the impoverished.
+          </p>
+        </div>
+
+        <!-- Pillar 4: Shaving Hair & Sadaqah -->
+        <div class="p-5 rounded-2xl bg-purple-50/60 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900/40 space-y-2.5">
+          <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center text-lg shadow-sm font-arabic">
+            ٤
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">4. Shaving Hair & Sadaqah</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Shaving the newborn baby’s head smoothly on the 7th day, weighing the fine hair, and donating its equivalent weight in <strong>silver</strong> (or cash equivalent) as voluntary charity (Sadaqah) to the poor, symbolizing purity and renewal.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Categories of Beloved vs Prohibited Names -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 text-xs sm:text-sm">
+        
+        <!-- Beloved Names -->
+        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-3">
+          <h3 class="text-base font-bold text-emerald-800 dark:text-emerald-300 flex items-center space-x-2">
+            <span>✅</span>
+            <span>The Most Beloved & Recommended Categories</span>
+          </h3>
+          <ul class="space-y-2 text-slate-700 dark:text-slate-300 leading-relaxed">
+            <li>
+              <strong class="text-slate-900 dark:text-white">1. Names of Servitude to Allah (Takhbeed):</strong>
+              The Prophet ﷺ stated: <em>"The most beloved of names to Allah are 'Abdullah' (Servant of Allah) and 'Abdur-Rahman' (Servant of the Most Merciful)."</em> (Sahih Muslim). Any name beginning with 'Abd' followed by one of Allah’s 99 Names.
+            </li>
+            <li>
+              <strong class="text-slate-900 dark:text-white">2. Names of the Noble Prophets:</strong>
+              Naming after the Messengers of Allah (e.g. Muhammad, Ahmad, Ibrahim, Musa, Isa, Yusuf, Dawud, Yahya). The Prophet ﷺ named his own son Ibrahim.
+            </li>
+            <li>
+              <strong class="text-slate-900 dark:text-white">3. Names of the Righteous Companions:</strong>
+              Emulating the giants of piety and sacrifice: Abu Bakr, Umar, Uthman, Ali, Bilal, Khadijah, Aisha, Fatimah, Maryam, Asma, Zaynab.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Prohibited & Discouraged Names -->
+        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-3">
+          <h3 class="text-base font-bold text-amber-800 dark:text-amber-400 flex items-center space-x-2">
+            <span>⚠️</span>
+            <span>Prohibited & Discouraged Names in Islam</span>
+          </h3>
+          <ul class="space-y-2 text-slate-700 dark:text-slate-300 leading-relaxed">
+            <li>
+              <strong class="text-slate-900 dark:text-white">1. Exclusively Divine Names:</strong>
+              Names that belong exclusively to Allah without 'Abd' prefix (e.g. Al-Khaliq [The Creator], Ar-Rahman, Al-Quddus, Malik al-Amlak [King of Kings]).
+            </li>
+            <li>
+              <strong class="text-slate-900 dark:text-white">2. Servitude to Creation (Shirk):</strong>
+              Any name meaning slave/servant to other than Allah (e.g. Abd al-Nabi, Abd al-Ka'bah, Abd al-Rasul).
+            </li>
+            <li>
+              <strong class="text-slate-900 dark:text-white">3. Depressing, Ugly, or Ominous Names:</strong>
+              The Prophet ﷺ consistently changed names that signified gloom or arrogance. He changed a companion's name from <em>'Harb' (War)</em> to <em>'Silm' (Peace)</em>, and <em>'Hazn' (Roughness)</em> to <em>'Sahl' (Gentle/Easy)</em>.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        
+        <!-- Brand Info -->
+        <div class="space-y-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-2xl">🌙</span>
+            <span class="text-lg font-bold text-white font-heading">NoorHub</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The authentic unified Islamic digital living platform. Providing precision prayer schedules, fasting companions, zakat tools, and prophetic hadith without commercial tracking.
+          </p>
+          <p class="text-xs text-emerald-400 font-arabic pt-1">
+            صَدَقَةٌ جَارِيَةٌ لِوَجْهِ اللَّهِ تَعَالَى
+          </p>
+        </div>
+
+        <!-- Quick Links: Core Tools -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Core Tools</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="prayer-times.html" class="hover:text-emerald-400 transition">Prayer Times & Qibla</a></li>
+            <li><a href="fasting.html" class="hover:text-emerald-400 transition">Fasting & Ramadan Tracker</a></li>
+            <li><a href="tasbih.html" class="hover:text-emerald-400 transition">Digital Tasbih & Adhkar</a></li>
+            <li><a href="zakat.html" class="hover:text-emerald-400 transition">Zakat Calculator & Nisab</a></li>
+            <li><a href="hadith.html" class="hover:text-emerald-400 transition">40 Hadith of Imam Nawawi</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources & Knowledge -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Resources</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="names.html" class="text-emerald-400 font-semibold transition">Islamic Baby Names (Ism)</a></li>
+            <li><a href="inheritance.html" class="hover:text-emerald-400 transition">Faraid Inheritance Engine</a></li>
+            <li><a href="halal-guide.html" class="hover:text-emerald-400 transition">Halal Food & E-Numbers</a></li>
+            <li><a href="99-names.html" class="hover:text-emerald-400 transition">99 Names of Allah</a></li>
+            <li><a href="mosque.html" class="hover:text-emerald-400 transition">Mosque TV Kiosk Mode</a></li>
+          </ul>
+        </div>
+
+        <!-- About & Trust -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">About & Trust</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="about.html" class="hover:text-emerald-400 transition">About NoorHub Initiative</a></li>
+            <li><a href="faq.html" class="hover:text-emerald-400 transition">Frequently Asked Questions</a></li>
+            <li><a href="contact.html" class="hover:text-emerald-400 transition">Contact & Feedback</a></li>
+            <li><a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Commitment (Zero Tracking)</a></li>
+            <li><a href="terms.html" class="hover:text-emerald-400 transition">Terms of Service</a></li>
+            <li class="pt-2 text-[11px] text-slate-500">Contact: siddiknurealam1@gmail.com</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <p>© 2026 NoorHub. Free, Open & Waqf-dedicated. All rights reserved for the Ummah.</p>
+        <div class="flex space-x-4 mt-2 sm:mt-0">
+          <span>noorhub.truxio.bond</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 pointer-events-none flex flex-col space-y-2"></div>
+
+  <!-- Scripts -->
+  <script src="shared.js"></script>
+  <script src="data/names-data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Load Database
+      const namesDb = (typeof window.ISM_NAMES_DATABASE !== 'undefined' ? window.ISM_NAMES_DATABASE : []) || [];
+      
+      // Update Total Counter
+      const statTotal = document.getElementById('stat-total-names');
+      if (statTotal) statTotal.textContent = namesDb.length;
+
+      // 2. Favorites Manager
+      let favorites = new Set();
+      try {
+        const saved = JSON.parse(localStorage.getItem('noorhub_favorite_names') || '[]');
+        favorites = new Set(saved);
+      } catch (e) {}
+
+      function saveFavorites() {
+        localStorage.setItem('noorhub_favorite_names', JSON.stringify([...favorites]));
+        updateFavoritesCount();
+      }
+
+      function updateFavoritesCount() {
+        const count = favorites.size;
+        const pill = document.getElementById('fav-count-pill');
+        if (pill) pill.textContent = count;
+        const statFav = document.getElementById('stat-favorites-count');
+        if (statFav) statFav.textContent = `${count} Saved`;
+      }
+      updateFavoritesCount();
+
+      // Toast Helper
+      function showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        const toast = document.createElement('div');
+        toast.className = `px-4 py-3 rounded-xl shadow-lg text-xs font-semibold text-white pointer-events-auto transition-all transform duration-300 translate-y-2 opacity-0 flex items-center space-x-2 ${
+          type === 'success' ? 'bg-emerald-700' : 'bg-slate-800'
+        }`;
+        toast.innerHTML = `<span>${type === 'success' ? '✓' : 'ℹ️'}</span><span>${message}</span>`;
+        container.appendChild(toast);
+        setTimeout(() => toast.classList.remove('translate-y-2', 'opacity-0'), 10);
+        setTimeout(() => {
+          toast.classList.add('opacity-0', 'translate-y-2');
+          setTimeout(() => toast.remove(), 300);
+        }, 3000);
+      }
+
+      // Voice Pronunciation Helper
+      function speakName(text) {
+        if (!('speechSynthesis' in window)) {
+          showToast('Voice synthesis is not supported in this browser.', 'info');
+          return;
+        }
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'ar-SA';
+        utterance.rate = 0.85;
+        window.speechSynthesis.speak(utterance);
+      }
+
+      // 3. State Management
+      let selectedGender = 'all';
+      let selectedCategory = 'all';
+      let selectedLetter = 'all';
+      let searchQuery = '';
+      let showFavoritesOnly = false;
+
+      // 4. Alphabet Index Generator
+      const alphabetContainer = document.getElementById('alphabet-container');
+      const clearLetterBtn = document.getElementById('btn-clear-letter');
+      const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+      if (alphabetContainer) {
+        // "All" button
+        const allBtn = document.createElement('button');
+        allBtn.textContent = 'All';
+        allBtn.className = 'letter-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-600 text-white';
+        allBtn.dataset.letter = 'all';
+        alphabetContainer.appendChild(allBtn);
+
+        alphabet.forEach(letter => {
+          const btn = document.createElement('button');
+          btn.textContent = letter;
+          btn.className = 'letter-btn px-2 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700';
+          btn.dataset.letter = letter;
+          alphabetContainer.appendChild(btn);
+        });
+
+        alphabetContainer.addEventListener('click', (e) => {
+          const btn = e.target.closest('.letter-btn');
+          if (!btn) return;
+          selectedLetter = btn.dataset.letter;
+          
+          document.querySelectorAll('.letter-btn').forEach(b => {
+            b.classList.remove('bg-emerald-600', 'text-white');
+            b.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+          });
+          btn.classList.add('bg-emerald-600', 'text-white');
+          btn.classList.remove('bg-slate-100', 'dark:bg-slate-800');
+
+          if (clearLetterBtn) {
+            clearLetterBtn.classList.toggle('hidden', selectedLetter === 'all');
+          }
+          renderGrid();
+        });
+      }
+
+      if (clearLetterBtn) {
+        clearLetterBtn.addEventListener('click', () => {
+          selectedLetter = 'all';
+          clearLetterBtn.classList.add('hidden');
+          document.querySelectorAll('.letter-btn').forEach(b => {
+            b.classList.remove('bg-emerald-600', 'text-white');
+            b.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+          });
+          const allBtn = document.querySelector('.letter-btn[data-letter="all"]');
+          if (allBtn) {
+            allBtn.classList.add('bg-emerald-600', 'text-white');
+            allBtn.classList.remove('bg-slate-100', 'dark:bg-slate-800');
+          }
+          renderGrid();
+        });
+      }
+
+      // 5. Gender Filter Buttons
+      document.querySelectorAll('.gender-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          showFavoritesOnly = false;
+          const favBtn = document.getElementById('btn-filter-favorites');
+          if (favBtn) {
+            favBtn.classList.remove('bg-red-600', 'text-white');
+            favBtn.classList.add('bg-slate-100', 'dark:bg-slate-800');
+          }
+
+          document.querySelectorAll('.gender-filter-btn').forEach(b => {
+            b.classList.remove('bg-emerald-600', 'text-white', 'shadow-sm');
+            b.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+          });
+          btn.classList.add('bg-emerald-600', 'text-white', 'shadow-sm');
+          btn.classList.remove('bg-slate-100', 'dark:bg-slate-800');
+          selectedGender = btn.dataset.gender;
+          renderGrid();
+        });
+      });
+
+      // Favorites Only Filter Button
+      const favFilterBtn = document.getElementById('btn-filter-favorites');
+      if (favFilterBtn) {
+        favFilterBtn.addEventListener('click', () => {
+          showFavoritesOnly = !showFavoritesOnly;
+          if (showFavoritesOnly) {
+            favFilterBtn.classList.add('bg-red-600', 'text-white');
+            favFilterBtn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+            document.querySelectorAll('.gender-filter-btn').forEach(b => {
+              b.classList.remove('bg-emerald-600', 'text-white');
+              b.classList.add('bg-slate-100', 'dark:bg-slate-800');
+            });
+          } else {
+            favFilterBtn.classList.remove('bg-red-600', 'text-white');
+            favFilterBtn.classList.add('bg-slate-100', 'dark:bg-slate-800');
+            const allBtn = document.querySelector('.gender-filter-btn[data-gender="all"]');
+            if (allBtn) {
+              allBtn.classList.add('bg-emerald-600', 'text-white');
+            }
+          }
+          renderGrid();
+        });
+      }
+
+      // Category Filter Buttons
+      document.querySelectorAll('.category-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.category-filter-btn').forEach(b => {
+            b.classList.remove('bg-emerald-600', 'text-white');
+            b.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+          });
+          btn.classList.add('bg-emerald-600', 'text-white');
+          btn.classList.remove('bg-slate-100', 'dark:bg-slate-800');
+          selectedCategory = btn.dataset.category;
+          renderGrid();
+        });
+      });
+
+      // Search Inputs
+      const searchInput = document.getElementById('names-search-input');
+      const clearSearchBtn = document.getElementById('names-clear-search');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          if (clearSearchBtn) {
+            clearSearchBtn.classList.toggle('hidden', !searchQuery);
+          }
+          renderGrid();
+        });
+      }
+
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          searchQuery = '';
+          clearSearchBtn.classList.add('hidden');
+          renderGrid();
+        });
+      }
+
+      // Reset All Filters
+      function resetAll() {
+        searchQuery = '';
+        if (searchInput) searchInput.value = '';
+        if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
+        selectedGender = 'all';
+        selectedCategory = 'all';
+        selectedLetter = 'all';
+        showFavoritesOnly = false;
+
+        document.querySelectorAll('.gender-filter-btn').forEach(b => {
+          b.classList.remove('bg-emerald-600', 'text-white');
+          b.classList.add('bg-slate-100', 'dark:bg-slate-800');
+        });
+        const allGenderBtn = document.querySelector('.gender-filter-btn[data-gender="all"]');
+        if (allGenderBtn) allGenderBtn.classList.add('bg-emerald-600', 'text-white');
+
+        const favBtn = document.getElementById('btn-filter-favorites');
+        if (favBtn) {
+          favBtn.classList.remove('bg-red-600', 'text-white');
+          favBtn.classList.add('bg-slate-100', 'dark:bg-slate-800');
+        }
+
+        document.querySelectorAll('.category-filter-btn').forEach(b => {
+          b.classList.remove('bg-emerald-600', 'text-white');
+          b.classList.add('bg-slate-100', 'dark:bg-slate-800');
+        });
+        const allCatBtn = document.querySelector('.category-filter-btn[data-category="all"]');
+        if (allCatBtn) allCatBtn.classList.add('bg-emerald-600', 'text-white');
+
+        document.querySelectorAll('.letter-btn').forEach(b => {
+          b.classList.remove('bg-emerald-600', 'text-white');
+          b.classList.add('bg-slate-100', 'dark:bg-slate-800');
+        });
+        const allLetBtn = document.querySelector('.letter-btn[data-letter="all"]');
+        if (allLetBtn) allLetBtn.classList.add('bg-emerald-600', 'text-white');
+
+        if (clearLetterBtn) clearLetterBtn.classList.add('hidden');
+
+        renderGrid();
+      }
+
+      const resetAllBtn = document.getElementById('btn-reset-all-filters');
+      if (resetAllBtn) resetAllBtn.addEventListener('click', resetAll);
+
+      const emptyResetBtn = document.getElementById('btn-clear-search-empty');
+      if (emptyResetBtn) emptyResetBtn.addEventListener('click', resetAll);
+
+      // 6. Grid Rendering
+      const grid = document.getElementById('names-grid');
+      const counterEl = document.getElementById('names-results-counter');
+      const noResultsEl = document.getElementById('names-no-results');
+
+      function renderGrid() {
+        if (!grid) return;
+
+        const filtered = namesDb.filter(n => {
+          // Favorites filter
+          if (showFavoritesOnly && !favorites.has(n.id)) return false;
+
+          // Gender filter
+          if (selectedGender !== 'all' && n.gender !== selectedGender) return false;
+
+          // Category filter
+          if (selectedCategory !== 'all') {
+            const hasCat = (n.categories || []).includes(selectedCategory);
+            if (!hasCat) return false;
+          }
+
+          // Letter filter
+          if (selectedLetter !== 'all') {
+            const startsWith = (n.name || '').toUpperCase().startsWith(selectedLetter);
+            if (!startsWith) return false;
+          }
+
+          // Search query
+          if (searchQuery) {
+            const q = searchQuery.toLowerCase().trim();
+            const nameMatch = (n.name || '').toLowerCase().includes(q);
+            const arabicMatch = (n.arabic || '').includes(q);
+            const meaningMatch = (n.meaning || '').toLowerCase().includes(q);
+            const rootMatch = (n.root || '').toLowerCase().includes(q);
+            if (!nameMatch && !arabicMatch && !meaningMatch && !rootMatch) {
+              return false;
+            }
+          }
+
+          return true;
+        });
+
+        counterEl.textContent = `Showing ${filtered.length} names`;
+
+        if (filtered.length === 0) {
+          grid.innerHTML = '';
+          noResultsEl.classList.remove('hidden');
+          return;
+        } else {
+          noResultsEl.classList.add('hidden');
+        }
+
+        grid.innerHTML = filtered.map(n => {
+          const isFav = favorites.has(n.id);
+          
+          let genderBadgeClass = 'bg-blue-100 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300';
+          let genderLabel = 'Boy';
+          if (n.gender === 'girl') {
+            genderBadgeClass = 'bg-pink-100 dark:bg-pink-950/60 text-pink-800 dark:text-pink-300';
+            genderLabel = 'Girl';
+          } else if (n.gender === 'unisex') {
+            genderBadgeClass = 'bg-purple-100 dark:bg-purple-950/60 text-purple-800 dark:text-purple-300';
+            genderLabel = 'Unisex';
+          }
+
+          return `
+            <div class="glass-card bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between space-y-4 hover:border-emerald-500/60 transition group">
+              
+              <!-- Card Header -->
+              <div class="flex items-start justify-between">
+                <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${genderBadgeClass}">
+                  ${genderLabel}
+                </span>
+
+                <div class="flex items-center space-x-1">
+                  <button class="btn-audio-pronounce p-1.5 rounded-lg text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-arabic="${n.arabic}" title="Hear Pronunciation">
+                    🔊
+                  </button>
+                  <button class="btn-toggle-fav p-1.5 rounded-lg transition ${isFav ? 'text-red-500' : 'text-slate-400 hover:text-red-500'}" data-id="${n.id}" title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
+                    ${isFav ? '❤️' : '🤍'}
+                  </button>
+                </div>
+              </div>
+
+              <!-- Arabic Name Display -->
+              <div class="text-center py-2">
+                <h3 class="font-arabic text-4xl font-bold text-emerald-800 dark:text-emerald-300 tracking-wide select-none group-hover:scale-105 transition-transform">
+                  ${n.arabic}
+                </h3>
+                <div class="mt-1">
+                  <span class="text-lg font-bold text-slate-900 dark:text-white font-heading">${n.name}</span>
+                  <span class="text-xs text-slate-400 block font-mono">${n.pronunciation}</span>
+                </div>
+              </div>
+
+              <!-- Meaning & Root Details -->
+              <div class="space-y-2 text-xs border-t border-slate-100 dark:border-slate-800/80 pt-3">
+                <p class="text-slate-600 dark:text-slate-300 line-clamp-2">
+                  <strong class="text-slate-800 dark:text-slate-200">Meaning:</strong> ${n.meaning}
+                </p>
+
+                <div class="flex items-center space-x-1 text-slate-500 dark:text-slate-400 text-[11px]">
+                  <span class="font-semibold">Root:</span>
+                  <span class="font-arabic font-bold text-emerald-700 dark:text-emerald-400">${n.root.split('—')[0]}</span>
+                </div>
+
+                ${n.quranMention ? `
+                  <div class="inline-flex items-center space-x-1 px-2 py-0.5 rounded-md bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 text-[10px] font-medium border border-amber-200/50 dark:border-amber-900/30">
+                    <span>📖</span>
+                    <span class="truncate max-w-[200px]">${n.quranMention}</span>
+                  </div>
+                ` : ''}
+              </div>
+
+              <!-- Card Action Button -->
+              <div class="pt-2">
+                <button class="btn-open-modal w-full py-2 px-3 rounded-xl bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 hover:bg-emerald-600 hover:text-white text-xs font-semibold transition flex items-center justify-center space-x-1" data-id="${n.id}">
+                  <span>View Full Details & Heritage</span>
+                  <span>→</span>
+                </button>
+              </div>
+
+            </div>
+          `;
+        }).join('');
+
+        attachGridListeners();
+      }
+
+      function attachGridListeners() {
+        // Audio pronunciation
+        document.querySelectorAll('.btn-audio-pronounce').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            speakName(btn.dataset.arabic);
+          });
+        });
+
+        // Favorite toggle
+        document.querySelectorAll('.btn-toggle-fav').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const id = btn.dataset.id;
+            if (favorites.has(id)) {
+              favorites.delete(id);
+              showToast('Removed from favorites.');
+            } else {
+              favorites.add(id);
+              showToast('Saved to your favorites! ❤️');
+            }
+            saveFavorites();
+            renderGrid();
+          });
+        });
+
+        // Modal open
+        document.querySelectorAll('.btn-open-modal').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = btn.dataset.id;
+            openModal(id);
+          });
+        });
+      }
+
+      // 7. Modal Functionality
+      const modal = document.getElementById('name-modal');
+      const closeModalBtn = document.getElementById('btn-close-modal');
+      let currentModalName = null;
+
+      function openModal(nameId) {
+        const item = namesDb.find(n => n.id === nameId);
+        if (!item || !modal) return;
+        currentModalName = item;
+
+        // Gender Badge
+        const gBadge = document.getElementById('modal-gender-badge');
+        if (item.gender === 'boy') {
+          gBadge.className = 'inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300';
+          gBadge.textContent = '👦 Muslim Boy Name';
+        } else if (item.gender === 'girl') {
+          gBadge.className = 'inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-pink-100 dark:bg-pink-950/60 text-pink-800 dark:text-pink-300';
+          gBadge.textContent = '👧 Muslim Girl Name';
+        } else {
+          gBadge.className = 'inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 dark:bg-purple-950/60 text-purple-800 dark:text-purple-300';
+          gBadge.textContent = '✨ Unisex Islamic Name';
+        }
+
+        document.getElementById('modal-arabic-name').textContent = item.arabic;
+        document.getElementById('modal-english-name').textContent = item.name;
+        document.getElementById('modal-pronunciation').textContent = item.pronunciation;
+        document.getElementById('modal-meaning').textContent = item.meaning;
+        document.getElementById('modal-root').textContent = item.root;
+
+        const quranBox = document.getElementById('modal-quran-box');
+        if (item.quranMention) {
+          quranBox.classList.remove('hidden');
+          document.getElementById('modal-quran').textContent = item.quranMention;
+        } else {
+          quranBox.classList.add('hidden');
+        }
+
+        document.getElementById('modal-historical').textContent = item.historicalRef || 'An honorable classical Arabic name carried by righteous Muslims across generations.';
+
+        const bearersBox = document.getElementById('modal-bearers-box');
+        if (item.famousBearers) {
+          bearersBox.classList.remove('hidden');
+          document.getElementById('modal-bearers').textContent = item.famousBearers;
+        } else {
+          bearersBox.classList.add('hidden');
+        }
+
+        document.getElementById('modal-reflection').textContent = item.spiritualReflection || 'A reminder of virtue, righteousness, and living up to an auspicious prophetic standard.';
+
+        // Favorite status in modal
+        updateModalFavButton();
+
+        modal.classList.remove('hidden');
+      }
+
+      function updateModalFavButton() {
+        if (!currentModalName) return;
+        const btn = document.getElementById('modal-fav-toggle');
+        const isFav = favorites.has(currentModalName.id);
+        if (btn) {
+          btn.querySelector('.heart-icon').textContent = isFav ? '❤️' : '🤍';
+          btn.querySelector('.heart-label').textContent = isFav ? 'Saved in Favorites' : 'Save to Favorites';
+          if (isFav) {
+            btn.classList.add('bg-red-50', 'dark:bg-red-950/60', 'text-red-600', 'dark:text-red-300');
+            btn.classList.remove('bg-slate-100', 'dark:bg-slate-800');
+          } else {
+            btn.classList.remove('bg-red-50', 'dark:bg-red-950/60', 'text-red-600', 'dark:text-red-300');
+            btn.classList.add('bg-slate-100', 'dark:bg-slate-800');
+          }
+        }
+      }
+
+      if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+          modal.classList.add('hidden');
+        });
+      }
+
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) modal.classList.add('hidden');
+        });
+      }
+
+      // Modal Pronunciation
+      const modalAudioBtn = document.getElementById('modal-pronounce-btn');
+      if (modalAudioBtn) {
+        modalAudioBtn.addEventListener('click', () => {
+          if (currentModalName) speakName(currentModalName.arabic);
+        });
+      }
+
+      // Modal Fav Toggle
+      const modalFavBtn = document.getElementById('modal-fav-toggle');
+      if (modalFavBtn) {
+        modalFavBtn.addEventListener('click', () => {
+          if (!currentModalName) return;
+          const id = currentModalName.id;
+          if (favorites.has(id)) {
+            favorites.delete(id);
+            showToast('Removed from favorites.');
+          } else {
+            favorites.add(id);
+            showToast('Saved to your favorites! ❤️');
+          }
+          saveFavorites();
+          updateModalFavButton();
+          renderGrid();
+        });
+      }
+
+      // Modal Copy Button
+      const modalCopyBtn = document.getElementById('modal-copy-btn');
+      if (modalCopyBtn) {
+        modalCopyBtn.addEventListener('click', () => {
+          if (!currentModalName) return;
+          const txt = `${currentModalName.name} (${currentModalName.arabic})\nPronunciation: ${currentModalName.pronunciation}\nMeaning: ${currentModalName.meaning}\nLinguistic Root: ${currentModalName.root}\n— NoorHub Ism Finder (noorhub.truxio.bond)`;
+          navigator.clipboard.writeText(txt).then(() => {
+            showToast('Copied name details to clipboard!');
+          }).catch(() => {
+            showToast('Copy failed.', 'info');
+          });
+        });
+      }
+
+      // 8. Header Clock & Hijri
+      function updateHeaderClock() {
+        const now = new Date();
+        const clockEl = document.getElementById('header-clock');
+        if (clockEl) clockEl.textContent = now.toLocaleTimeString('en-US', { hour12: false });
+      }
+      setInterval(updateHeaderClock, 1000);
+      updateHeaderClock();
+
+      try {
+        const hijriFormatter = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+        const el = document.getElementById('header-hijri-date');
+        if (el) el.textContent = hijriFormatter.format(new Date()) + ' AH';
+      } catch (e) {}
+
+      // Initial Render
+      renderGrid();
+    });
+  </script>
+</body>
+</html>

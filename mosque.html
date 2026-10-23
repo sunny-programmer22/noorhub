@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masjid Connect - Mosque TV Kiosk Mode - NoorHub</title>
+  <meta name="description" content="Digital TV Kiosk display for mosque prayer halls, hallway monitors, and Smart TVs. Large digital clock, live Hijri calendar, astronomical prayer timetable, Iqamah countdowns, and community notice ticker.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b', 950: '#022c22' },
+            amber: { 50: '#fffbeb', 100: '#fef3c7', 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309' },
+            slate: { 850: '#131c2e', 900: '#0f172a', 950: '#0b0f19' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕌</text></svg>">
+  <style>
+    /* Fullscreen Kiosk Overrides */
+    :fullscreen #kiosk-screen,
+    :-webkit-full-screen #kiosk-screen {
+      width: 100vw;
+      height: 100vh;
+      max-width: 100vw;
+      border-radius: 0;
+      border: none;
+      margin: 0;
+      padding: 1.5rem 2.5rem;
+    }
+
+    body:fullscreen header,
+    body:fullscreen footer,
+    body:fullscreen #non-kiosk-chrome,
+    body:-webkit-full-screen header,
+    body:-webkit-full-screen footer,
+    body:-webkit-full-screen #non-kiosk-chrome {
+      display: none !important;
+    }
+
+    body:fullscreen,
+    body:-webkit-full-screen {
+      overflow: hidden;
+      background: #060911;
+    }
+
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.4); }
+      50% { box-shadow: 0 0 0 16px rgba(217, 119, 6, 0); }
+    }
+
+    .pulse-gold-highlight {
+      animation: pulse-gold 2s infinite;
+    }
+
+    .ticker-fade-in {
+      animation: tickerFade 0.6s ease-in-out;
+    }
+
+    @keyframes tickerFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern">
+
+  <!-- Top Announcement Bar -->
+  <div id="top-announcement-bar" class="bg-emerald-900 text-emerald-100 text-xs py-1.5 px-4 text-center border-b border-emerald-800 flex justify-between items-center max-w-7xl mx-auto w-full">
+    <div class="hidden sm:flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>NoorHub Digital Waqf • Masjid TV Display Kiosk (شَاشَةُ المَسْجِدِ)</span>
+    </div>
+    <div class="mx-auto sm:mr-0 flex items-center space-x-4">
+      <span id="header-hijri-date" class="font-medium">1448 AH</span>
+      <span class="text-emerald-400">•</span>
+      <span id="header-clock" class="font-mono font-semibold">--:--:--</span>
+    </div>
+  </div>
+
+  <!-- Primary Navigation -->
+  <header class="sticky top-0 z-40 glass-header shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-900/20 group-hover:scale-105 transition-transform">
+            <span class="text-xl">🌙</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white font-heading">NoorHub</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-semibold uppercase tracking-wider">Kiosk</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-arabic leading-none -mt-0.5">شاشة المسجد التفاعلية</p>
+          </div>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a href="index.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Portal</a>
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat & Qibla</a>
+          <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
+          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih</a>
+          <a href="hadith.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">40 Hadith</a>
+          <a href="zakat.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Zakat</a>
+          <a href="names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Names</a>
+          <a href="inheritance.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Inheritance</a>
+          <a href="halal-guide.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Halal Guide</a>
+          <a href="mosque.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">Mosque Kiosk</a>
+        </nav>
+
+        <!-- Right Controls -->
+        <div class="flex items-center space-x-2">
+          <button id="btn-header-fullscreen" class="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-sm">
+            <span>🖥️</span>
+            <span>Launch TV Kiosk</span>
+          </button>
+
+          <button class="theme-toggle-btn p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Toggle Light/Dark Theme">
+            <span class="dark:hidden text-lg">🌙</span>
+            <span class="hidden dark:inline text-lg">☀️</span>
+          </button>
+
+          <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-1 text-sm shadow-xl">
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">NoorHub Home</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Salat & Qibla Compass</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Sawm & Fasting Companion</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Digital Tasbih & Adhkar</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">40 Hadith of Imam Nawawi</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Zakat Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Islamic Baby Names</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Halal Food Guide</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">Mosque TV Kiosk Mode</a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full space-y-6">
+
+    <!-- Non-Kiosk Chrome: Admin Controls & Hardware Setup Guide Banner -->
+    <div id="non-kiosk-chrome" class="space-y-4">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white p-5 sm:p-6 rounded-3xl border border-emerald-700/40 shadow-lg">
+        <div>
+          <div class="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-emerald-400">
+            <span>📺 Hallway & Prayer Hall Display Engine</span>
+            <span>•</span>
+            <span class="font-arabic">شاشة المسجد</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold font-heading mt-1">
+            Masjid Connect — Mosque TV Kiosk
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-300 mt-0.5">
+            Designed for 1080p/4K TV screens, Raspberry Pi displays, and smart tablets. High-contrast, zero-maintenance, and runs fully offline.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2.5">
+          <button id="btn-open-settings" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition flex items-center space-x-1.5 border border-white/20">
+            <span>⚙️</span>
+            <span>Kiosk Settings</span>
+          </button>
+          
+          <button id="btn-enter-fullscreen-main" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-amber-500 hover:from-emerald-600 hover:to-amber-600 text-white text-xs font-extrabold transition flex items-center space-x-2 shadow-lg hover:scale-105 transform">
+            <span class="text-base">🖥️</span>
+            <span>Launch Fullscreen TV Kiosk</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- THE MOSQUE TV KIOSK CONTAINER (Expands in Fullscreen Mode)        -->
+    <!-- ================================================================= -->
+    <div id="kiosk-screen" class="relative bg-slate-950 text-white rounded-3xl border border-slate-800 shadow-2xl p-6 sm:p-8 flex flex-col justify-between min-h-[640px] space-y-6 overflow-hidden">
+      
+      <!-- Subtle Decorative Islamic Arabesque Lattice Background Pattern -->
+      <div class="absolute inset-0 opacity-5 pointer-events-none islamic-bg-pattern"></div>
+      
+      <!-- Ambient Glow Accents -->
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- KIOSK TOP HEADER: Mosque Identity & Quick Controls -->
+      <div class="relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800/80 pb-4">
+        
+        <!-- Mosque Brand & Location -->
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white text-2xl shadow-lg border border-emerald-400/30">
+            🕌
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <h2 id="kiosk-mosque-name" class="text-xl sm:text-2xl font-black font-heading text-white tracking-wide">
+                Masjid An-Noor Islamic Center
+              </h2>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 uppercase tracking-widest hidden md:inline">
+                LIVE
+              </span>
+            </div>
+            <p id="kiosk-mosque-location" class="text-xs text-slate-400 font-medium flex items-center space-x-1.5 mt-0.5">
+              <span>📍 Makkah, Saudi Arabia</span>
+              <span>•</span>
+              <span id="kiosk-status-tag" class="text-emerald-400">Congregational Timing Engine</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Kiosk Toolbar (Fullscreen, Settings, Sound) -->
+        <div class="flex items-center space-x-2 self-end sm:self-center">
+          <button id="btn-toggle-sound" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-amber-400 transition" title="Toggle Adhan Tone / Chime">
+            <span id="sound-icon">🔔</span>
+          </button>
+          
+          <button id="btn-kiosk-settings-icon" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition" title="Mosque Settings (HotKey: S)">
+            ⚙️
+          </button>
+
+          <button id="btn-toggle-fullscreen" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-emerald-400 transition" title="Toggle Fullscreen (HotKey: F)">
+            ⛶
+          </button>
+        </div>
+
+      </div>
+
+      <!-- KIOSK CENTRAL HERO DISPLAY: Giant Clock & Dual Calendars -->
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        
+        <!-- Large Clock Display (7 cols) -->
+        <div class="lg:col-span-7 flex flex-col justify-center space-y-2 text-center lg:text-left">
+          <div class="flex items-baseline justify-center lg:justify-start space-x-3">
+            <span id="kiosk-giant-clock" class="text-6xl sm:text-7xl md:text-8xl font-black font-mono tracking-tight text-white drop-shadow-sm select-none">
+              12:45<span class="text-emerald-400 animate-pulse">:</span>00
+            </span>
+            <span id="kiosk-clock-ampm" class="text-xl sm:text-2xl font-bold text-amber-400 font-mono">
+              PM
+            </span>
+          </div>
+
+          <!-- Dual Gregorian & Hijri Date Row -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-1 text-sm sm:text-base font-medium">
+            <span id="kiosk-gregorian-date" class="text-slate-300">
+              Friday, 23 October 2026
+            </span>
+            <span class="text-emerald-500 hidden sm:inline">•</span>
+            <span id="kiosk-hijri-date-ar" class="text-amber-400 font-arabic font-bold text-lg">
+              ٢٣ جمادى الآخرة ١٤٤٨ هـ
+            </span>
+          </div>
+        </div>
+
+        <!-- Next Prayer & Next Iqamah Live Countdown Banner (5 cols) -->
+        <div class="lg:col-span-5">
+          <div id="countdown-card" class="relative overflow-hidden bg-gradient-to-br from-emerald-950/80 via-slate-900 to-slate-950 p-5 sm:p-6 rounded-3xl border-2 border-emerald-500/50 shadow-2xl flex flex-col justify-between space-y-4">
+            
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-widest text-emerald-400 block">
+                  Next Congregation (الصلاة القادمة)
+                </span>
+                <h3 id="next-prayer-name" class="text-2xl sm:text-3xl font-black font-heading text-white">
+                  Maghrib (المغرب)
+                </h3>
+              </div>
+              <span id="next-prayer-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                Adhan in
+              </span>
+            </div>
+
+            <!-- Giant Countdown Timer -->
+            <div class="text-center py-2">
+              <span id="next-prayer-countdown" class="text-4xl sm:text-5xl font-mono font-black text-amber-400 tracking-wider">
+                00:42:15
+              </span>
+              <p id="next-iqamah-info" class="text-xs text-slate-300 mt-1 font-medium">
+                Adhan: 17:58 • Iqamah: 18:03 (+5m)
+              </p>
+            </div>
+
+            <!-- Dynamic Notification / Status Strip -->
+            <div id="prayer-status-strip" class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-center text-xs font-semibold text-slate-300">
+              <span id="prayer-status-text">Upcoming: Maghrib prayer</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- KIOSK 5 DAILY PRAYER + SUNRISE CARDS TIMETABLE -->
+      <div class="relative z-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        
+        <!-- FAJR CARD -->
+        <div id="card-fajr" class="prayer-card p-4 rounded-2xl bg-slate-900/80 border border-slate-800 transition-all flex flex-col justify-between space-y-3">
+          <div class="flex justify-between items-start">
+            <span class="text-xs font-bold text-slate-400 uppercase">Fajr</span>
+            <span class="font-arabic text-xs font-semibold text-slate-400">الفَجْر</span>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-mono font-extrabold text-white" id="time-fajr-adhan">
+              05:08
+            </div>
+            <div class="text-[11px] font-semibold text-emerald-400 flex items-center justify-between mt-1 pt-1 border-t border-slate-800">
+              <span class="text-slate-400">Iqamah</span>
+              <span class="font-mono text-sm" id="time-fajr-iqamah">05:28</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUNRISE / SHURUQ CARD -->
+        <div id="card-sunrise" class="prayer-card p-4 rounded-2xl bg-slate-900/80 border border-slate-800 transition-all flex flex-col justify-between space-y-3">
+          <div class="flex justify-between items-start">
+            <span class="text-xs font-bold text-amber-500 uppercase">Sunrise</span>
+            <span class="font-arabic text-xs font-semibold text-amber-500">الشُّرُوق</span>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-mono font-extrabold text-amber-400" id="time-sunrise">
+              06:26
+            </div>
+            <div class="text-[11px] font-semibold text-slate-400 flex items-center justify-between mt-1 pt-1 border-t border-slate-800">
+              <span>Duha Starts</span>
+              <span class="font-mono text-xs text-amber-500">+15m</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DHUHR CARD -->
+        <div id="card-dhuhr" class="prayer-card p-4 rounded-2xl bg-slate-900/80 border border-slate-800 transition-all flex flex-col justify-between space-y-3">
+          <div class="flex justify-between items-start">
+            <span class="text-xs font-bold text-slate-400 uppercase">Dhuhr</span>
+            <span class="font-arabic text-xs font-semibold text-slate-400">الظُّهْر</span>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-mono font-extrabold text-white" id="time-dhuhr-adhan">
+              12:15
+            </div>
+            <div class="text-[11px] font-semibold text-emerald-400 flex items-center justify-between mt-1 pt-1 border-t border-slate-800">
+              <span class="text-slate-400">Iqamah</span>
+              <span class="font-mono text-sm" id="time-dhuhr-iqamah">12:30</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ASR CARD -->
+        <div id="card-asr" class="prayer-card p-4 rounded-2xl bg-slate-900/80 border border-slate-800 transition-all flex flex-col justify-between space-y-3">
+          <div class="flex justify-between items-start">
+            <span class="text-xs font-bold text-slate-400 uppercase">Asr</span>
+            <span class="font-arabic text-xs font-semibold text-slate-400">العَصْر</span>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-mono font-extrabold text-white" id="time-asr-adhan">
+              15:35
+            </div>
+            <div class="text-[11px] font-semibold text-emerald-400 flex items-center justify-between mt-1 pt-1 border-t border-slate-800">
+              <span class="text-slate-400">Iqamah</span>
+              <span class="font-mono text-sm" id="time-asr-iqamah">15:50</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAGHRIB CARD -->
+        <div id="card-maghrib" class="prayer-card p-4 rounded-2xl bg-slate-900/80 border border-slate-800 transition-all flex flex-col justify-between space-y-3">
+          <div class="flex justify-between items-start">
+            <span class="text-xs font-bold text-slate-400 uppercase">Maghrib</span>
+            <span class="font-arabic text-xs font-semibold text-slate-400">المَغْرِب</span>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-mono font-extrabold text-white" id="time-maghrib-adhan">
+              18:02
+            </div>
+            <div class="text-[11px] font-semibold text-emerald-400 flex items-center justify-between mt-1 pt-1 border-t border-slate-800">
+              <span class="text-slate-400">Iqamah</span>
+              <span class="font-mono text-sm" id="time-maghrib-iqamah">18:07</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ISHA CARD -->
+        <div id="card-isha" class="prayer-card p-4 rounded-2xl bg-slate-900/80 border border-slate-800 transition-all flex flex-col justify-between space-y-3">
+          <div class="flex justify-between items-start">
+            <span class="text-xs font-bold text-slate-400 uppercase">Isha</span>
+            <span class="font-arabic text-xs font-semibold text-slate-400">العِشَاء</span>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-mono font-extrabold text-white" id="time-isha-adhan">
+              19:32
+            </div>
+            <div class="text-[11px] font-semibold text-emerald-400 flex items-center justify-between mt-1 pt-1 border-t border-slate-800">
+              <span class="text-slate-400">Iqamah</span>
+              <span class="font-mono text-sm" id="time-isha-iqamah">19:47</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- KIOSK BOTTOM MARQUEE: LIVE ROTATING COMMUNITY ANNOUNCEMENT & HADITH TICKER -->
+      <div class="relative z-10 bg-slate-900/90 border border-slate-800 rounded-2xl p-4 flex items-center space-x-3 shadow-inner">
+        
+        <div class="flex items-center space-x-2 px-3 py-1 rounded-xl bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 font-bold text-xs whitespace-nowrap">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>NOTICES & HADITH</span>
+        </div>
+
+        <div class="flex-grow overflow-hidden relative">
+          <div id="ticker-text" class="ticker-fade-in text-xs sm:text-sm text-slate-200 font-medium truncate">
+            🕌 Friday Jumu'ah: 1st Khutbah 1:15 PM • 2nd Khutbah 2:15 PM • Please park considerately and carpool.
+          </div>
+        </div>
+
+        <div class="hidden sm:flex items-center space-x-2 text-[11px] text-slate-400 font-mono">
+          <span id="ticker-index">1 / 5</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Mosque Hardware & TV Kiosk Guide Section -->
+    <div id="hardware-guide-section" class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+        <div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">
+            Mosque Kiosk TV Setup Guide (دَلِيلُ التَّثْبِيتِ عَلَى الشَّاشَاتِ)
+          </h3>
+          <p class="text-xs text-slate-500">How to mount and run this free digital display on smart monitors</p>
+        </div>
+        <span class="text-2xl">📺</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-slate-600 dark:text-slate-300">
+        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+          <div class="font-bold text-slate-900 dark:text-white text-sm flex items-center space-x-1.5">
+            <span>1.</span>
+            <span>Any Smart TV Browser</span>
+          </div>
+          <p class="leading-relaxed">
+            Open the browser app on any Samsung Tizen, LG webOS, Android TV, or Amazon Fire Stick. Navigate to <code class="font-mono text-emerald-600 dark:text-emerald-400">noorhub.truxio.bond/mosque.html</code> and click "Launch Fullscreen TV Kiosk".
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+          <div class="font-bold text-slate-900 dark:text-white text-sm flex items-center space-x-1.5">
+            <span>2.</span>
+            <span>Raspberry Pi or Hallway PC</span>
+          </div>
+          <p class="leading-relaxed">
+            Launch Chrome or Chromium in auto-start kiosk mode: <br>
+            <code class="font-mono text-[11px] block bg-slate-100 dark:bg-slate-900 p-1.5 rounded mt-1 border">chromium-browser --kiosk --incognito https://noorhub.truxio.bond/mosque.html</code>
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+          <div class="font-bold text-slate-900 dark:text-white text-sm flex items-center space-x-1.5">
+            <span>3.</span>
+            <span>Zero Tracking & Offline Resilient</span>
+          </div>
+          <p class="leading-relaxed">
+            All calculations are computed locally via astronomical formulas. Even if the mosque's Wi-Fi drops, the clock, prayer timetable, and Iqamah countdowns remain 100% accurate.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- KIOSK SETTINGS MODAL -->
+  <div id="mosque-settings-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm hidden">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xl relative space-y-5 animate-scale-up max-h-[90vh] overflow-y-auto">
+      
+      <!-- Close Button -->
+      <button id="btn-close-settings" class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        ✕
+      </button>
+
+      <div class="space-y-1">
+        <div class="inline-flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+          <span>⚙️ Administration</span>
+          <span>•</span>
+          <span class="font-arabic">إِعْدَادَاتُ شَاشَةِ المَسْجِدِ</span>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-heading">
+          Mosque Kiosk Configuration
+        </h2>
+        <p class="text-xs text-slate-500">Settings are saved locally to this device / TV screen</p>
+      </div>
+
+      <!-- Settings Form -->
+      <form id="kiosk-settings-form" class="space-y-4 text-xs">
+        
+        <!-- Mosque Name -->
+        <div class="space-y-1">
+          <label class="font-bold text-slate-700 dark:text-slate-300">Mosque / Islamic Center Name:</label>
+          <input type="text" id="setting-mosque-name" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-semibold focus:ring-2 focus:ring-emerald-500 outline-none" required>
+        </div>
+
+        <!-- City Selection -->
+        <div class="space-y-1">
+          <label class="font-bold text-slate-700 dark:text-slate-300">City / Location Coordinates:</label>
+          <select id="setting-city-select" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-semibold focus:ring-2 focus:ring-emerald-500 outline-none">
+            <!-- Populated from NOORHUB_CITIES -->
+          </select>
+        </div>
+
+        <!-- Iqamah Offsets (Minutes after Adhan) -->
+        <div class="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800">
+          <label class="font-bold text-slate-900 dark:text-white block">Iqamah Offsets (Minutes after Adhan):</label>
+          <div class="grid grid-cols-5 gap-2 text-center">
+            <div>
+              <span class="block text-[11px] text-slate-500 mb-1">Fajr</span>
+              <input type="number" id="offset-fajr" min="0" max="60" class="w-full text-center px-2 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-mono font-bold" value="20">
+            </div>
+            <div>
+              <span class="block text-[11px] text-slate-500 mb-1">Dhuhr</span>
+              <input type="number" id="offset-dhuhr" min="0" max="60" class="w-full text-center px-2 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-mono font-bold" value="15">
+            </div>
+            <div>
+              <span class="block text-[11px] text-slate-500 mb-1">Asr</span>
+              <input type="number" id="offset-asr" min="0" max="60" class="w-full text-center px-2 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-mono font-bold" value="15">
+            </div>
+            <div>
+              <span class="block text-[11px] text-slate-500 mb-1">Maghrib</span>
+              <input type="number" id="offset-maghrib" min="0" max="60" class="w-full text-center px-2 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-mono font-bold" value="5">
+            </div>
+            <div>
+              <span class="block text-[11px] text-slate-500 mb-1">Isha</span>
+              <input type="number" id="offset-isha" min="0" max="60" class="w-full text-center px-2 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-mono font-bold" value="15">
+            </div>
+          </div>
+        </div>
+
+        <!-- Community Announcements & Notices -->
+        <div class="space-y-1.5 pt-2 border-t border-slate-200 dark:border-slate-800">
+          <label class="font-bold text-slate-700 dark:text-slate-300 block">Rotating Community Announcements (one notice per line):</label>
+          <textarea id="setting-announcements" rows="4" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-sans focus:ring-2 focus:ring-emerald-500 outline-none leading-relaxed"></textarea>
+          <p class="text-[11px] text-slate-400">Notices smoothly rotate across the bottom ticker every 8 seconds.</p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-slate-800">
+          <button type="button" id="btn-reset-defaults" class="text-xs text-slate-400 hover:text-red-500 underline">
+            Reset Defaults
+          </button>
+          <div class="flex space-x-2">
+            <button type="button" id="btn-cancel-settings" class="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 font-semibold hover:bg-slate-100 dark:hover:bg-slate-800">
+              Cancel
+            </button>
+            <button type="submit" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold shadow-md transition">
+              Save & Apply
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Global Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        
+        <!-- Brand Info -->
+        <div class="space-y-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-2xl">🌙</span>
+            <span class="text-lg font-bold text-white font-heading">NoorHub</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The authentic unified Islamic digital living platform. Providing precision prayer schedules, fasting companions, zakat tools, and prophetic hadith without commercial tracking.
+          </p>
+          <p class="text-xs text-emerald-400 font-arabic pt-1">
+            صَدَقَةٌ جَارِيَةٌ لِوَجْهِ اللَّهِ تَعَالَى
+          </p>
+        </div>
+
+        <!-- Quick Links: Core Tools -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Core Tools</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="prayer-times.html" class="hover:text-emerald-400 transition">Prayer Times & Qibla</a></li>
+            <li><a href="fasting.html" class="hover:text-emerald-400 transition">Fasting & Ramadan Tracker</a></li>
+            <li><a href="tasbih.html" class="hover:text-emerald-400 transition">Digital Tasbih & Adhkar</a></li>
+            <li><a href="zakat.html" class="hover:text-emerald-400 transition">Zakat Calculator & Nisab</a></li>
+            <li><a href="hadith.html" class="hover:text-emerald-400 transition">40 Hadith of Imam Nawawi</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources & Knowledge -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Resources</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="names.html" class="hover:text-emerald-400 transition">Islamic Baby Names (Ism)</a></li>
+            <li><a href="inheritance.html" class="hover:text-emerald-400 transition">Faraid Inheritance Engine</a></li>
+            <li><a href="halal-guide.html" class="hover:text-emerald-400 transition">Halal Food & E-Numbers</a></li>
+            <li><a href="99-names.html" class="hover:text-emerald-400 transition">99 Names of Allah</a></li>
+            <li><a href="mosque.html" class="text-emerald-400 font-semibold transition">Mosque TV Kiosk Mode</a></li>
+          </ul>
+        </div>
+
+        <!-- About & Trust -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">About & Trust</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="about.html" class="hover:text-emerald-400 transition">About NoorHub Initiative</a></li>
+            <li><a href="faq.html" class="hover:text-emerald-400 transition">Frequently Asked Questions</a></li>
+            <li><a href="contact.html" class="hover:text-emerald-400 transition">Contact & Feedback</a></li>
+            <li><a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Commitment (Zero Tracking)</a></li>
+            <li><a href="terms.html" class="hover:text-emerald-400 transition">Terms of Service</a></li>
+            <li class="pt-2 text-[11px] text-slate-500">Contact: siddiknurealam1@gmail.com</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <p>© 2026 NoorHub. Free, Open & Waqf-dedicated. All rights reserved for the Ummah.</p>
+        <div class="flex space-x-4 mt-2 sm:mt-0">
+          <span>noorhub.truxio.bond</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 pointer-events-none flex flex-col space-y-2"></div>
+
+  <!-- Shared Script -->
+  <script src="shared.js"></script>
+
+  <!-- Dedicated Mosque Kiosk Astronomical & Display Engine -->
+  <script>
+    /**
+     * Self-contained High-Precision Astronomical Calculation Engine
+     * Zero external dependencies. Works 100% offline.
+     */
+    class MosquePrayerEngine {
+      static degToRad(deg) { return (deg * Math.PI) / 180.0; }
+      static radToDeg(rad) { return (rad * 180.0) / Math.PI; }
+      static fixAngle(a) { a = a - 360.0 * Math.floor(a / 360.0); return a < 0 ? a + 360.0 : a; }
+      static fixHour(b) { b = b - 24.0 * Math.floor(b / 24.0); return b < 0 ? b + 24.0 : b; }
+
+      static getJulianDate(year, month, day) {
+        if (month <= 2) { year -= 1; month += 12; }
+        const a = Math.floor(year / 100);
+        const b = 2 - a + Math.floor(a / 4);
+        return Math.floor(365.25 * (year + 4716)) + Math.floor(30.6001 * (month + 1)) + day + b - 1524.5;
+      }
+
+      static getSunPosition(jd) {
+        const d = jd - 2451545.0;
+        const t = d / 36525.0;
+        const meanLon = this.fixAngle(280.46646 + 36000.76983 * t + 0.0003032 * t * t);
+        const meanAnomaly = this.fixAngle(357.52911 + 35999.05029 * t - 0.0001537 * t * t);
+        const mRad = this.degToRad(meanAnomaly);
+        const center = (1.914602 - 0.004817 * t - 0.000014 * t * t) * Math.sin(mRad)
+                     + (0.019993 - 0.000101 * t) * Math.sin(2 * mRad)
+                     + 0.000289 * Math.sin(3 * mRad);
+        const trueLon = this.fixAngle(meanLon + center);
+        const obliquity = 23.439291 - 0.0130042 * t;
+        const sinDec = Math.sin(this.degToRad(obliquity)) * Math.sin(this.degToRad(trueLon));
+        const declination = this.radToDeg(Math.asin(sinDec));
+        const y = Math.pow(Math.tan(this.degToRad(obliquity / 2)), 2);
+        const e = 0.016708634 - 0.000042037 * t;
+        const eot = 4 * this.radToDeg(
+          y * Math.sin(2 * this.degToRad(meanLon))
+          - 2 * e * Math.sin(mRad)
+          + 4 * e * y * Math.sin(mRad) * Math.cos(2 * this.degToRad(meanLon))
+          - 0.5 * y * y * Math.sin(4 * this.degToRad(meanLon))
+          - 1.25 * e * e * Math.sin(2 * mRad)
+        );
+        return { declination, equationOfTime: eot };
+      }
+
+      static getHourAngle(zenithAngle, latitude, declination) {
+        const latRad = this.degToRad(latitude);
+        const decRad = this.degToRad(declination);
+        const zRad = this.degToRad(zenithAngle);
+        const cosH = (Math.cos(zRad) - Math.sin(latRad) * Math.sin(decRad)) / (Math.cos(latRad) * Math.cos(decRad));
+        if (cosH > 1.0 || cosH < -1.0) return null;
+        return this.radToDeg(Math.acos(cosH)) / 15.0;
+      }
+
+      static getTimezoneOffset(timeZone, date = new Date()) {
+        try {
+          if (!timeZone) return -date.getTimezoneOffset() / 60.0;
+          const utcDate = new Date(date.toLocaleString('en-US', { timeZone: 'UTC' }));
+          const tzDate = new Date(date.toLocaleString('en-US', { timeZone }));
+          return (tzDate.getTime() - utcDate.getTime()) / 3600000.0;
+        } catch (e) {
+          return -date.getTimezoneOffset() / 60.0;
+        }
+      }
+
+      static calculate(date, lat, lng, tz) {
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const tzOffset = this.getTimezoneOffset(tz, date);
+
+        const jd = this.getJulianDate(year, month, day);
+        const sun = this.getSunPosition(jd);
+
+        const solarNoon = 12.0 + tzOffset - (lng / 15.0) - (sun.equationOfTime / 60.0);
+        const dhuhr = solarNoon + (2.0 / 60.0);
+
+        const hSun = this.getHourAngle(90.8333, lat, sun.declination);
+        const sunrise = hSun !== null ? solarNoon - hSun : null;
+        const sunset = hSun !== null ? solarNoon + hSun : null;
+        const maghrib = sunset;
+
+        // Asr (Shafi/Hanbali/Maliki standard factor = 1)
+        const latRad = this.degToRad(lat);
+        const decRad = this.degToRad(sun.declination);
+        const diff = Math.abs(latRad - decRad);
+        const arccot = Math.atan(1.0 / (1.0 + Math.tan(diff)));
+        const asrZenith = 90.0 - this.radToDeg(arccot);
+        const hAsr = this.getHourAngle(asrZenith, lat, sun.declination);
+        const asr = hAsr !== null ? solarNoon + hAsr : null;
+
+        // Fajr (18° angle) & Isha (18° angle or Umm al Qura 90m)
+        const fajrZenith = 90.0 + 18.0;
+        const hFajr = this.getHourAngle(fajrZenith, lat, sun.declination);
+        let fajr = hFajr !== null ? solarNoon - hFajr : null;
+
+        const ishaZenith = 90.0 + 17.5;
+        const hIsha = this.getHourAngle(ishaZenith, lat, sun.declination);
+        let isha = hIsha !== null ? solarNoon + hIsha : null;
+
+        // Fallback for extreme high latitudes
+        if (sunrise !== null && sunset !== null) {
+          const nightDuration = 24.0 - (sunset - sunrise);
+          if (fajr === null || fajr > sunrise) fajr = sunrise - (nightDuration / 2.0);
+          if (isha === null || isha < sunset) isha = sunset + (nightDuration / 2.0);
+        }
+
+        return {
+          fajr: this.formatTime(fajr),
+          sunrise: this.formatTime(sunrise),
+          dhuhr: this.formatTime(dhuhr),
+          asr: this.formatTime(asr),
+          maghrib: this.formatTime(maghrib),
+          isha: this.formatTime(isha),
+          raw: { fajr, sunrise, dhuhr, asr, maghrib, isha }
+        };
+      }
+
+      static formatTime(decimalHours) {
+        if (decimalHours === null || isNaN(decimalHours)) return '--:--';
+        decimalHours = this.fixHour(decimalHours);
+        let hours = Math.floor(decimalHours);
+        let minutes = Math.round((decimalHours - hours) * 60);
+        if (minutes === 60) {
+          hours = (hours + 1) % 24;
+          minutes = 0;
+        }
+        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+      }
+
+      static addMinutes(timeStr, minsToAdd) {
+        if (!timeStr || timeStr === '--:--') return '--:--';
+        const parts = timeStr.split(':').map(Number);
+        const total = parts[0] * 60 + parts[1] + minsToAdd;
+        const h = Math.floor((total / 60) % 24);
+        const m = Math.floor(total % 60);
+        return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+      }
+    }
+
+    // Default Configuration
+    const DEFAULT_CONFIG = {
+      mosqueName: "Masjid An-Noor & Community Center",
+      cityName: "Makkah",
+      country: "Saudi Arabia",
+      lat: 21.4225,
+      lng: 39.8262,
+      tz: "Asia/Riyadh",
+      offsets: {
+        fajr: 20,
+        dhuhr: 15,
+        asr: 15,
+        maghrib: 5,
+        isha: 15
+      },
+      announcements: [
+        "🕌 Friday Jumu'ah Prayers: 1st Khutbah 1:15 PM • 2nd Khutbah 2:15 PM • Please park considerately and carpool.",
+        "📖 Daily Hadith: 'Whoever builds a mosque for Allah, Allah will build for him a house in Paradise.' (Bukhari & Muslim)",
+        "🤝 Weekly Youth Halaqah & Sisters Study Circle every Saturday after Asr in the Community Hall.",
+        "🤲 Du'a Request for the sick and elderly in our community. May Allah grant full shifa and 'afiyah.",
+        "💧 Taharah & Cleanliness: Please preserve water during Wudu and keep the prayer hall fragrant and clean."
+      ],
+      soundEnabled: true
+    };
+
+    // Load Settings from LocalStorage
+    let mosqueConfig = { ...DEFAULT_CONFIG };
+    try {
+      const saved = localStorage.getItem('noorhub_mosque_settings');
+      if (saved) mosqueConfig = { ...DEFAULT_CONFIG, ...JSON.parse(saved) };
+    } catch (e) {}
+
+    function saveMosqueConfig() {
+      localStorage.setItem('noorhub_mosque_settings', JSON.stringify(mosqueConfig));
+    }
+
+    // Web Audio Synthesized Chime (Spiritual tone without external mp3 dependencies)
+    function playPrayerTone() {
+      if (!mosqueConfig.soundEnabled) return;
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const now = audioCtx.currentTime;
+        
+        // Chime sequence: C5 (523Hz) -> E5 (659Hz) -> G5 (784Hz)
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.35);
+
+          gain.gain.setValueAtTime(0, now + idx * 0.35);
+          gain.gain.linearRampToValueAtTime(0.2, now + idx * 0.35 + 0.05);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.35 + 1.2);
+
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          osc.start(now + idx * 0.35);
+          osc.stop(now + idx * 0.35 + 1.3);
+        });
+      } catch (e) {
+        console.warn('Audio tone failed:', e);
+      }
+    }
+
+    // DOM Ready
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // Populate city options in modal
+      const citySelect = document.getElementById('setting-city-select');
+      if (citySelect && typeof NOORHUB_CITIES !== 'undefined') {
+        citySelect.innerHTML = NOORHUB_CITIES.map(c => 
+          `<option value="${c.name}" ${c.name === mosqueConfig.cityName ? 'selected' : ''}>${c.name}, ${c.country}</option>`
+        ).join('');
+      }
+
+      // Initialize UI Texts from Config
+      function updateConfigUI() {
+        document.getElementById('kiosk-mosque-name').textContent = mosqueConfig.mosqueName;
+        document.getElementById('kiosk-mosque-location').innerHTML = `<span>📍 ${mosqueConfig.cityName}, ${mosqueConfig.country}</span> • <span class="text-emerald-400">Congregational Timing Engine</span>`;
+        document.getElementById('sound-icon').textContent = mosqueConfig.soundEnabled ? '🔔' : '🔕';
+      }
+      updateConfigUI();
+
+      // Sound Toggle Button
+      const soundBtn = document.getElementById('btn-toggle-sound');
+      if (soundBtn) {
+        soundBtn.addEventListener('click', () => {
+          mosqueConfig.soundEnabled = !mosqueConfig.soundEnabled;
+          saveMosqueConfig();
+          updateConfigUI();
+          if (mosqueConfig.soundEnabled) playPrayerTone();
+        });
+      }
+
+      // Ticker Announcements Rotation
+      let currentTickerIdx = 0;
+      const tickerTextEl = document.getElementById('ticker-text');
+      const tickerIndexEl = document.getElementById('ticker-index');
+
+      function updateTicker() {
+        const notices = mosqueConfig.announcements || DEFAULT_CONFIG.announcements;
+        if (!notices.length) return;
+        if (currentTickerIdx >= notices.length) currentTickerIdx = 0;
+        
+        if (tickerTextEl) {
+          tickerTextEl.classList.remove('ticker-fade-in');
+          void tickerTextEl.offsetWidth; // trigger reflow
+          tickerTextEl.textContent = notices[currentTickerIdx];
+          tickerTextEl.classList.add('ticker-fade-in');
+        }
+
+        if (tickerIndexEl) {
+          tickerIndexEl.textContent = `${currentTickerIdx + 1} / ${notices.length}`;
+        }
+
+        currentTickerIdx = (currentTickerIdx + 1) % notices.length;
+      }
+      setInterval(updateTicker, 8000);
+      updateTicker();
+
+      // Fullscreen Controller
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {
+            console.warn(`Fullscreen error: ${err.message}`);
+          });
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      }
+
+      const btnFs1 = document.getElementById('btn-header-fullscreen');
+      const btnFs2 = document.getElementById('btn-enter-fullscreen-main');
+      const btnFs3 = document.getElementById('btn-toggle-fullscreen');
+      if (btnFs1) btnFs1.addEventListener('click', toggleFullscreen);
+      if (btnFs2) btnFs2.addEventListener('click', toggleFullscreen);
+      if (btnFs3) btnFs3.addEventListener('click', toggleFullscreen);
+
+      // Keyboard Shortcuts: 'F' for Fullscreen, 'S' for Settings
+      document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+        if (e.key === 'f' || e.key === 'F') {
+          e.preventDefault();
+          toggleFullscreen();
+        } else if (e.key === 's' || e.key === 'S') {
+          e.preventDefault();
+          openSettingsModal();
+        }
+      });
+
+      // Settings Modal Open/Close Logic
+      const modal = document.getElementById('mosque-settings-modal');
+      const openSettingsBtn = document.getElementById('btn-open-settings');
+      const openSettingsIcon = document.getElementById('btn-kiosk-settings-icon');
+      const closeSettingsBtn = document.getElementById('btn-close-settings');
+      const cancelSettingsBtn = document.getElementById('btn-cancel-settings');
+      const resetDefaultsBtn = document.getElementById('btn-reset-defaults');
+      const settingsForm = document.getElementById('kiosk-settings-form');
+
+      function openSettingsModal() {
+        if (!modal) return;
+        document.getElementById('setting-mosque-name').value = mosqueConfig.mosqueName;
+        document.getElementById('offset-fajr').value = mosqueConfig.offsets.fajr;
+        document.getElementById('offset-dhuhr').value = mosqueConfig.offsets.dhuhr;
+        document.getElementById('offset-asr').value = mosqueConfig.offsets.asr;
+        document.getElementById('offset-maghrib').value = mosqueConfig.offsets.maghrib;
+        document.getElementById('offset-isha').value = mosqueConfig.offsets.isha;
+        document.getElementById('setting-announcements').value = mosqueConfig.announcements.join('\n');
+        modal.classList.remove('hidden');
+      }
+
+      function closeSettingsModal() {
+        if (modal) modal.classList.add('hidden');
+      }
+
+      if (openSettingsBtn) openSettingsBtn.addEventListener('click', openSettingsModal);
+      if (openSettingsIcon) openSettingsIcon.addEventListener('click', openSettingsModal);
+      if (closeSettingsBtn) closeSettingsBtn.addEventListener('click', closeSettingsModal);
+      if (cancelSettingsBtn) cancelSettingsBtn.addEventListener('click', closeSettingsModal);
+
+      if (resetDefaultsBtn) {
+        resetDefaultsBtn.addEventListener('click', () => {
+          if (confirm('Reset mosque settings to defaults?')) {
+            mosqueConfig = { ...DEFAULT_CONFIG };
+            saveMosqueConfig();
+            updateConfigUI();
+            closeSettingsModal();
+            updatePrayerCalculations();
+          }
+        });
+      }
+
+      if (settingsForm) {
+        settingsForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          mosqueConfig.mosqueName = document.getElementById('setting-mosque-name').value.trim() || DEFAULT_CONFIG.mosqueName;
+          
+          const cityName = document.getElementById('setting-city-select').value;
+          const foundCity = (typeof NOORHUB_CITIES !== 'undefined') ? NOORHUB_CITIES.find(c => c.name === cityName) : null;
+          if (foundCity) {
+            mosqueConfig.cityName = foundCity.name;
+            mosqueConfig.country = foundCity.country;
+            mosqueConfig.lat = foundCity.lat;
+            mosqueConfig.lng = foundCity.lng;
+            mosqueConfig.tz = foundCity.tz;
+          }
+
+          mosqueConfig.offsets = {
+            fajr: parseInt(document.getElementById('offset-fajr').value, 10) || 20,
+            dhuhr: parseInt(document.getElementById('offset-dhuhr').value, 10) || 15,
+            asr: parseInt(document.getElementById('offset-asr').value, 10) || 15,
+            maghrib: parseInt(document.getElementById('offset-maghrib').value, 10) || 5,
+            isha: parseInt(document.getElementById('offset-isha').value, 10) || 15
+          };
+
+          const rawAnnounce = document.getElementById('setting-announcements').value;
+          mosqueConfig.announcements = rawAnnounce.split('\n').map(s => s.trim()).filter(Boolean);
+          if (!mosqueConfig.announcements.length) {
+            mosqueConfig.announcements = [...DEFAULT_CONFIG.announcements];
+          }
+
+          saveMosqueConfig();
+          updateConfigUI();
+          closeSettingsModal();
+          updatePrayerCalculations();
+        });
+      }
+
+      // Live High-Precision Clock & Timetable Loop
+      let cachedDateKey = '';
+      let todayTimings = null;
+
+      function updatePrayerCalculations() {
+        const now = new Date();
+        todayTimings = MosquePrayerEngine.calculate(now, mosqueConfig.lat, mosqueConfig.lng, mosqueConfig.tz);
+
+        // Update Timetable Cards
+        document.getElementById('time-fajr-adhan').textContent = todayTimings.fajr;
+        document.getElementById('time-fajr-iqamah').textContent = MosquePrayerEngine.addMinutes(todayTimings.fajr, mosqueConfig.offsets.fajr);
+
+        document.getElementById('time-sunrise').textContent = todayTimings.sunrise;
+
+        document.getElementById('time-dhuhr-adhan').textContent = todayTimings.dhuhr;
+        document.getElementById('time-dhuhr-iqamah').textContent = MosquePrayerEngine.addMinutes(todayTimings.dhuhr, mosqueConfig.offsets.dhuhr);
+
+        document.getElementById('time-asr-adhan').textContent = todayTimings.asr;
+        document.getElementById('time-asr-iqamah').textContent = MosquePrayerEngine.addMinutes(todayTimings.asr, mosqueConfig.offsets.asr);
+
+        document.getElementById('time-maghrib-adhan').textContent = todayTimings.maghrib;
+        document.getElementById('time-maghrib-iqamah').textContent = MosquePrayerEngine.addMinutes(todayTimings.maghrib, mosqueConfig.offsets.maghrib);
+
+        document.getElementById('time-isha-adhan').textContent = todayTimings.isha;
+        document.getElementById('time-isha-iqamah').textContent = MosquePrayerEngine.addMinutes(todayTimings.isha, mosqueConfig.offsets.isha);
+      }
+
+      function liveTick() {
+        const now = new Date();
+        const dateKey = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
+
+        // Recompute prayer times once daily or on config change
+        if (dateKey !== cachedDateKey || !todayTimings) {
+          cachedDateKey = dateKey;
+          updatePrayerCalculations();
+
+          // Gregorian Display
+          const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+          const gregDateStr = now.toLocaleDateString('en-US', dateOptions);
+          document.getElementById('kiosk-gregorian-date').textContent = gregDateStr;
+
+          // Hijri Display
+          try {
+            const hijriFormatter = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric'
+            });
+            const hijriEnFormatter = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric'
+            });
+            const hText = hijriFormatter.format(now) + ' هـ';
+            const hTextEn = hijriEnFormatter.format(now) + ' AH';
+            document.getElementById('kiosk-hijri-date-ar').textContent = hText;
+            const topH = document.getElementById('header-hijri-date');
+            if (topH) topH.textContent = hTextEn;
+          } catch (e) {}
+        }
+
+        // Giant Digital Clock (12h/24h)
+        const hours24 = now.getHours();
+        const mins = String(now.getMinutes()).padStart(2, '0');
+        const secs = String(now.getSeconds()).padStart(2, '0');
+        const ampm = hours24 >= 12 ? 'PM' : 'AM';
+        const hours12 = hours24 % 12 || 12;
+
+        document.getElementById('kiosk-giant-clock').innerHTML = `${hours12}:${mins}<span class="text-emerald-400">:</span><span class="text-4xl sm:text-5xl opacity-80">${secs}</span>`;
+        document.getElementById('kiosk-clock-ampm').textContent = ampm;
+
+        const headerClock = document.getElementById('header-clock');
+        if (headerClock) headerClock.textContent = `${String(hours24).padStart(2, '0')}:${mins}:${secs}`;
+
+        // Compute Next Prayer and Next Iqamah
+        evaluatePrayerState(now);
+      }
+
+      function timeStringToMinutes(timeStr) {
+        if (!timeStr || timeStr === '--:--') return 0;
+        const [h, m] = timeStr.split(':').map(Number);
+        return h * 60 + m;
+      }
+
+      function evaluatePrayerState(now) {
+        if (!todayTimings) return;
+        const currentMins = now.getHours() * 60 + now.getMinutes() + now.getSeconds() / 60;
+
+        const prayers = [
+          { name: 'Fajr', nameAr: 'الفَجْر', adhan: todayTimings.fajr, offset: mosqueConfig.offsets.fajr, cardId: 'card-fajr' },
+          { name: 'Sunrise', nameAr: 'الشُّرُوق', adhan: todayTimings.sunrise, offset: 0, cardId: 'card-sunrise', isSunrise: true },
+          { name: 'Dhuhr', nameAr: 'الظُّهْر', adhan: todayTimings.dhuhr, offset: mosqueConfig.offsets.dhuhr, cardId: 'card-dhuhr' },
+          { name: 'Asr', nameAr: 'العَصْر', adhan: todayTimings.asr, offset: mosqueConfig.offsets.asr, cardId: 'card-asr' },
+          { name: 'Maghrib', nameAr: 'المَغْرِب', adhan: todayTimings.maghrib, offset: mosqueConfig.offsets.maghrib, cardId: 'card-maghrib' },
+          { name: 'Isha', nameAr: 'العِشَاء', adhan: todayTimings.isha, offset: mosqueConfig.offsets.isha, cardId: 'card-isha' }
+        ];
+
+        // Reset highlights
+        document.querySelectorAll('.prayer-card').forEach(c => {
+          c.classList.remove('ring-2', 'ring-emerald-500', 'bg-emerald-950/60', 'pulse-gold-highlight');
+        });
+
+        // Find active and next prayer
+        let nextItem = null;
+        let isCongregationWindow = false;
+
+        for (let i = 0; i < prayers.length; i++) {
+          const p = prayers[i];
+          const adhanMins = timeStringToMinutes(p.adhan);
+          const iqamahMins = adhanMins + (p.offset || 0);
+
+          // Check if right now is in the Iqamah prayer window (Adhan to Iqamah + 12 min)
+          if (!p.isSunrise && currentMins >= adhanMins && currentMins <= iqamahMins + 12) {
+            isCongregationWindow = true;
+            const cardEl = document.getElementById(p.cardId);
+            if (cardEl) {
+              cardEl.classList.add('ring-2', 'ring-amber-500', 'bg-amber-950/40', 'pulse-gold-highlight');
+            }
+
+            if (currentMins >= iqamahMins) {
+              // During prayer
+              document.getElementById('next-prayer-name').textContent = `${p.name} (${p.nameAr})`;
+              document.getElementById('next-prayer-badge').textContent = 'PRAYER IN PROGRESS';
+              document.getElementById('next-prayer-badge').className = 'px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse';
+              document.getElementById('next-prayer-countdown').textContent = '🔕 SILENCE';
+              document.getElementById('next-iqamah-info').textContent = 'Salat in congregation. Please silence all phones.';
+              document.getElementById('prayer-status-strip').innerHTML = '<span class="text-amber-400 font-bold">⚠️ Iqamah has commenced • Turn off mobile phones</span>';
+              return;
+            } else {
+              // Between Adhan and Iqamah
+              const secToIqamah = Math.round((iqamahMins - currentMins) * 60);
+              const m = Math.floor(secToIqamah / 60);
+              const s = secToIqamah % 60;
+              document.getElementById('next-prayer-name').textContent = `${p.name} (${p.nameAr})`;
+              document.getElementById('next-prayer-badge').textContent = 'IQAMAH COUNTDOWN';
+              document.getElementById('next-prayer-badge').className = 'px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30';
+              document.getElementById('next-prayer-countdown').textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+              document.getElementById('next-iqamah-info').textContent = `Adhan: ${p.adhan} • Iqamah at ${MosquePrayerEngine.addMinutes(p.adhan, p.offset)}`;
+              document.getElementById('prayer-status-strip').innerHTML = `<span class="text-emerald-400 font-bold">⏰ Iqamah in ${m} minutes — Please prepare for rows (Taswiyat al-Sufuf)</span>`;
+              return;
+            }
+          }
+
+          if (adhanMins > currentMins && !nextItem) {
+            nextItem = p;
+          }
+        }
+
+        // If all prayers today have passed, next is tomorrow's Fajr
+        if (!nextItem) {
+          nextItem = prayers[0]; // Fajr
+        }
+
+        // Highlight next prayer card
+        const nextCard = document.getElementById(nextItem.cardId);
+        if (nextCard) {
+          nextCard.classList.add('ring-2', 'ring-emerald-500', 'bg-emerald-950/40');
+        }
+
+        const adhanMins = timeStringToMinutes(nextItem.adhan);
+        let diffSec = 0;
+        if (adhanMins > currentMins) {
+          diffSec = Math.round((adhanMins - currentMins) * 60);
+        } else {
+          // Tomorrow Fajr (add 24 hours)
+          diffSec = Math.round((adhanMins + 1440 - currentMins) * 60);
+        }
+
+        const hh = Math.floor(diffSec / 3600);
+        const mm = Math.floor((diffSec % 3600) / 60);
+        const ss = diffSec % 60;
+
+        document.getElementById('next-prayer-name').textContent = `${nextItem.name} (${nextItem.nameAr})`;
+        document.getElementById('next-prayer-badge').textContent = 'ADHAN COUNTDOWN';
+        document.getElementById('next-prayer-badge').className = 'px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+        document.getElementById('next-prayer-countdown').textContent = `${String(hh).padStart(2, '0')}:${String(mm).padStart(2, '0')}:${String(ss).padStart(2, '0')}`;
+        
+        if (nextItem.isSunrise) {
+          document.getElementById('next-iqamah-info').textContent = `Sunrise at ${nextItem.adhan} • End of Fajr prayer`;
+        } else {
+          document.getElementById('next-iqamah-info').textContent = `Adhan: ${nextItem.adhan} • Iqamah: ${MosquePrayerEngine.addMinutes(nextItem.adhan, nextItem.offset)} (+${nextItem.offset}m)`;
+        }
+
+        document.getElementById('prayer-status-strip').innerHTML = `<span>Next call to prayer: <strong class="text-white">${nextItem.name}</strong></span>`;
+      }
+
+      // Start live tick every 1000ms
+      liveTick();
+      setInterval(liveTick, 1000);
+    });
+  </script>
+</body>
+</html>

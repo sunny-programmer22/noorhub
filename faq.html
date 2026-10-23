@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frequently Asked Questions (FAQ) - NoorHub</title>
+  <meta name="description" content="Detailed answers to common questions about prayer time calculations, Qibla compass accuracy, Zakat nisab, Halal E-numbers, and Mosque TV setup on NoorHub.">
+  <meta name="keywords" content="NoorHub FAQ, prayer times calculation explained, qibla compass formula, gold vs silver zakat nisab, halal e-numbers list, mosque kiosk display setup">
+  <meta property="og:title" content="Frequently Asked Questions (FAQ) - NoorHub">
+  <meta property="og:description" content="Clear, scholarly, and technical answers to all your questions about NoorHub's prayer times, Qibla, Zakat, and Islamic tools.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://noorhub.truxio.bond/faq.html">
+
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              950: '#022c22',
+            },
+            amber: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            },
+            slate: {
+              850: '#131c2e',
+              900: '#0f172a',
+              950: '#0b0f19',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-emerald-900 text-emerald-100 text-xs py-1.5 px-4 text-center border-b border-emerald-800 flex justify-between items-center max-w-7xl mx-auto w-full">
+    <div class="hidden sm:flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>NoorHub Digital Waqf • Free, Authentic & Ad-Respecting</span>
+    </div>
+    <div class="mx-auto sm:mr-0 flex items-center space-x-4">
+      <span id="header-hijri-date" class="font-medium">1448 AH</span>
+      <span class="text-emerald-400">•</span>
+      <span id="header-clock" class="font-mono font-semibold">--:--:--</span>
+    </div>
+  </div>
+
+  <!-- Primary Navigation -->
+  <header class="sticky top-0 z-50 glass-header shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-900/20 group-hover:scale-105 transition-transform">
+            <span class="text-xl">🌙</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white font-heading">NoorHub</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-semibold uppercase tracking-wider">FAQ</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-arabic leading-none -mt-0.5">نُور هَب • المِنَصَّةُ الإِسْلَامِيَّةُ</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat & Qibla</a>
+          <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
+          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih & Adhkar</a>
+          <a href="hadith.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">40 Hadith</a>
+          <a href="zakat.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Zakat</a>
+          <a href="names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Names</a>
+          <a href="inheritance.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Inheritance</a>
+          <a href="halal-guide.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Halal Guide</a>
+          <a href="mosque.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Mosque Kiosk</a>
+        </nav>
+
+        <!-- Right Action Controls -->
+        <div class="flex items-center space-x-2">
+          <!-- Dark/Light Theme Switcher -->
+          <button class="theme-toggle-btn p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle theme">
+            <svg class="w-5 h-5 hidden dark:block text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+            <svg class="w-5 h-5 block dark:hidden text-slate-700" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          </button>
+
+          <!-- Mobile Menu Hamburger -->
+          <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Home</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Salat & Qibla Compass</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Sawm & Fasting Companion</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Digital Tasbih & Adhkar</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">The 40 Hadith of Imam Nawawi</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Zakat Multi-Asset Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Islamic Baby Names (Ism Finder)</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Faraid Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Halal Food & E-Number Guide</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Mosque TV Kiosk Mode</a>
+      <a href="about.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">About NoorHub</a>
+      <a href="faq.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-bold text-emerald-600">Frequently Asked Questions</a>
+      <a href="contact.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Contact & Feedback</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-10">
+
+    <!-- Header & Search Box -->
+    <div class="text-center space-y-4 max-w-3xl mx-auto">
+      <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 text-xs font-semibold uppercase tracking-wider">
+        <span>💡</span>
+        <span>Knowledge Base & Technical Guidance</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-heading">
+        Frequently Asked Questions
+      </h1>
+      <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300">
+        Clear, authentic answers regarding astronomical prayer timings, Qibla geometry, Zakat calculations, food additives, and platform architecture.
+      </p>
+
+      <!-- Live Search Bar -->
+      <div class="pt-2 relative max-w-xl mx-auto">
+        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </div>
+        <input type="text" id="faq-search-input" placeholder="Search questions (e.g., nisab, qibla, high latitude, e-numbers)..." class="w-full pl-10 pr-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm text-slate-900 dark:text-white shadow-sm focus:ring-2 focus:ring-emerald-500 outline-none transition">
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs">
+        <button class="faq-filter-btn px-3 py-1.5 rounded-full bg-emerald-600 text-white font-semibold shadow-sm transition" data-category="all">All Questions</button>
+        <button class="faq-filter-btn px-3 py-1.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition" data-category="prayer">Salat & Qibla</button>
+        <button class="faq-filter-btn px-3 py-1.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition" data-category="zakat">Zakat & Finance</button>
+        <button class="faq-filter-btn px-3 py-1.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition" data-category="diet">Halal Food & E-Codes</button>
+        <button class="faq-filter-btn px-3 py-1.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition" data-category="mosque">Mosque TV Kiosk</button>
+        <button class="faq-filter-btn px-3 py-1.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 font-medium transition" data-category="general">Platform & Privacy</button>
+      </div>
+    </div>
+
+    <!-- FAQ Accordion List -->
+    <div id="faq-container" class="space-y-4">
+
+      <!-- Item 1: Prayer calculation -->
+      <div class="faq-item glass-card rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden transition" data-category="prayer" id="prayer-calc">
+        <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-900 dark:text-white text-base hover:text-emerald-600 transition" aria-expanded="false">
+          <span class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs shrink-0">01</span>
+            <span>How are daily prayer times calculated mathematically?</span>
+          </span>
+          <svg class="faq-arrow w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 pt-4 space-y-3 leading-relaxed">
+          <p>
+            NoorHub uses rigorous astronomical solar position algorithms. The sun's position is computed using Julian centuries, solar mean anomaly, ecliptic coordinates, and the Equation of Time (EoT):
+          </p>
+          <ul class="list-disc list-inside space-y-1.5 text-xs">
+            <li><strong>Dhuhr (Midday):</strong> The moment the sun crosses the local meridian (solar transit or solar noon), adjusted by a few minutes of precaution (<span class="italic font-arabic">احتياط</span>) when the sun begins its descent from the zenith.</li>
+            <li><strong>Sunrise & Maghrib:</strong> Calculated when the sun's center reaches an altitude of -0.833° (accounting for the 0.267° solar semi-diameter and 0.567° atmospheric refraction).</li>
+            <li><strong>Fajr (True Dawn / Subh Sadiq):</strong> Calculated when the sun is at a negative depression angle below the eastern horizon (typically between -15.0° to -19.5°, depending on the chosen fiqh convention).</li>
+            <li><strong>Isha:</strong> Calculated either by a specific negative twilight depression angle (e.g., -15.0° to -18.0°) or a fixed duration after Maghrib (such as 90 minutes in the Umm al-Qura standard).</li>
+            <li><strong>Asr:</strong> Determined by shadow length. In the standard majority view (Shafi'i, Maliki, Hanbali), Asr begins when the shadow of an object equals its midday shadow plus its own height (<span class="font-arabic font-semibold">ظل المثل</span>). In the Hanafi school, it begins when the shadow reaches twice the object's height (<span class="font-arabic font-semibold">ظل المثلين</span>).</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Item 2: Which Calculation Method -->
+      <div class="faq-item glass-card rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden transition" data-category="prayer" id="calc-methods">
+        <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-900 dark:text-white text-base hover:text-emerald-600 transition" aria-expanded="false">
+          <span class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs shrink-0">02</span>
+            <span>Which prayer calculation method should I choose for my region?</span>
+          </span>
+          <svg class="faq-arrow w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 pt-4 space-y-3 leading-relaxed">
+          <p>
+            The difference between methods lies in the sun depression angles used for Fajr and Isha. Here is the recommended mapping:
+          </p>
+          <div class="overflow-x-auto text-xs">
+            <table class="w-full text-left border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+              <thead class="bg-slate-100 dark:bg-slate-800/80 font-semibold">
+                <tr>
+                  <th class="py-2 px-3">Method Name</th>
+                  <th class="py-2 px-3">Angles (Fajr / Isha)</th>
+                  <th class="py-2 px-3">Recommended Region</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                <tr>
+                  <td class="py-2 px-3 font-semibold text-emerald-600">Muslim World League (MWL)</td>
+                  <td class="py-2 px-3">18° / 17°</td>
+                  <td class="py-2 px-3">Europe, East Asia, Global general recommendation</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-3 font-semibold text-emerald-600">Islamic Society of North America (ISNA)</td>
+                  <td class="py-2 px-3">15° / 15°</td>
+                  <td class="py-2 px-3">United States, Canada</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-3 font-semibold text-emerald-600">Umm al-Qura University, Makkah</td>
+                  <td class="py-2 px-3">18.5° / +90m (+120m Ramadan)</td>
+                  <td class="py-2 px-3">Saudi Arabia & Arabian Peninsula</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-3 font-semibold text-emerald-600">Egyptian General Authority of Survey</td>
+                  <td class="py-2 px-3">19.5° / 17.5°</td>
+                  <td class="py-2 px-3">Egypt, North Africa, Levant, Middle East</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-3 font-semibold text-emerald-600">Univ. of Islamic Sciences, Karachi</td>
+                  <td class="py-2 px-3">18° / 18°</td>
+                  <td class="py-2 px-3">Pakistan, Bangladesh, India, Afghanistan</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-3 font-semibold text-emerald-600">Diyanet İşleri Başkanlığı</td>
+                  <td class="py-2 px-3">18° / 17°</td>
+                  <td class="py-2 px-3">Turkey, Balkans</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: Qibla compass -->
+      <div class="faq-item glass-card rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden transition" data-category="prayer" id="qibla-compass">
+        <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-900 dark:text-white text-base hover:text-emerald-600 transition" aria-expanded="false">
+          <span class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs shrink-0">03</span>
+            <span>How does the Qibla compass work on mobile and desktop?</span>
+          </span>
+          <svg class="faq-arrow w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 pt-4 space-y-3 leading-relaxed">
+          <p>
+            The Qibla is determined using the <strong>great-circle initial bearing</strong> from your location to the coordinates of the Holy Kaaba in Makkah (21.4225° N, 39.8262° E) using the spherical trigonometry forward azimuth formula:
+          </p>
+          <div class="p-3 bg-slate-100 dark:bg-slate-800/70 rounded-xl font-mono text-xs overflow-x-auto text-emerald-700 dark:text-emerald-300">
+            θ = atan2( sin(Δλ) · cos(φ₂), cos(φ₁) · sin(φ₂) - sin(φ₁) · cos(φ₂) · cos(Δλ) )
+          </div>
+          <p>
+            <strong>On mobile devices:</strong> If your smartphone has a built-in magnetometer (compass sensor), the compass dial automatically rotates in real-time as you physically turn the phone, guiding you until the needle points directly at the Kaaba.
+          </p>
+          <p>
+            <strong>Tip for mobile calibration:</strong> If the compass feels unaligned, wave your smartphone in a smooth figure-8 motion in the air away from metal objects, laptop chargers, or magnetic phone cases to calibrate the sensor.
+          </p>
+          <p>
+            <strong>On desktop computers:</strong> Because desktop monitors lack magnetic compass sensors, NoorHub displays the static true compass bearing (e.g. 119° East of True North) and the great-circle geodesic distance in kilometers.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 4: High latitude prayer times -->
+      <div class="faq-item glass-card rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden transition" data-category="prayer" id="high-latitude">
+        <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-900 dark:text-white text-base hover:text-emerald-600 transition" aria-expanded="false">
+          <span class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs shrink-0">04</span>
+            <span>How does NoorHub handle Fajr and Isha in high-latitude countries (UK, Scandinavia, Canada)?</span>
+          </span>
+          <svg class="faq-arrow w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 pt-4 space-y-3 leading-relaxed">
+          <p>
+            In locations above ~48° latitude during summer, the sun does not dip sufficiently below the horizon (persistent twilight), causing conventional astronomical formulas to produce mathematical errors (e.g., dawn never technically breaking or midnight twilight blending into sunrise).
+          </p>
+          <p>
+            To address this in strict accordance with the Islamic Fiqh Academy resolutions, NoorHub incorporates recognized high-latitude adjustment rules:
+          </p>
+          <ul class="list-disc list-inside space-y-1 text-xs">
+            <li><strong>Middle of the Night rule (Nisf al-Layl):</strong> Twilight length is capped at half the period between sunset and sunrise.</li>
+            <li><strong>One-Seventh of the Night rule (Sub' al-Layl):</strong> Fajr begins 1/7th of the night before sunrise, and Isha ends 1/7th after sunset.</li>
+            <li><strong>Angle-Based (Aqrab al-Balad):</strong> Proportional estimation based on the nearest temperate latitude where twilight occurs normally.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Item 5: Zakat Nisab -->
+      <div class="faq-item glass-card rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden transition" data-category="zakat" id="zakat-nisab">
+        <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-900 dark:text-white text-base hover:text-emerald-600 transition" aria-expanded="false">
+          <span class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs shrink-0">05</span>
+            <span>Should I calculate my Zakat threshold using the Gold or Silver Nisab?</span>
+          </span>
+          <svg class="faq-arrow w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 pt-4 space-y-3 leading-relaxed">
+          <p>
+            In Islamic jurisprudence, the Prophet ﷺ defined Nisab (the minimum threshold of wealth qualifying for Zakat) in terms of:
+          </p>
+          <ul class="list-disc list-inside space-y-1 text-xs">
+            <li><strong>Gold:</strong> 20 Mithqals = approximately <strong>85 grams</strong> of fine gold (24 karat).</li>
+            <li><strong>Silver:</strong> 200 Dirhams = approximately <strong>595 grams</strong> of pure silver.</li>
+          </ul>
+          <p>
+            In modern financial markets, the commercial price ratio of gold to silver has diverged significantly compared to prophetic times. 595 grams of silver is valued substantially lower than 85 grams of gold:
+          </p>
+          <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs space-y-1.5">
+            <p><strong>The Classical Hanafi Position:</strong> Recommends using the <em>Silver Nisab</em> for liquid wealth and cash because it sets a lower threshold, thereby bringing more Muslims into eligibility to pay and maximizing relief for the poor and destitute (<span class="italic font-arabic">أنفع للفقراء</span>).</p>
+            <p><strong>The Contemporary Majority Position:</strong> Many modern scholars (including scholars in the Shafi'i, Maliki, and Hanbali traditions) recommend evaluating cash against the <em>Gold Nisab</em>, because gold has more accurately preserved realistic purchasing power over the centuries.</p>
+          </div>
+          <p class="text-xs text-slate-500">
+            NoorHub provides both options with live toggle calculation so you can adhere to the school of thought or advisory followed by your local scholar.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 6: Halal food and E-Numbers -->
+      <div class="faq-item glass-card rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden transition" data-category="diet" id="halal-enumbers">
+        <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-900 dark:text-white text-base hover:text-emerald-600 transition" aria-expanded="false">
+          <span class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs shrink-0">06</span>
+            <span>Why are some food additives (E-numbers) marked as Mushbooh (doubtful)?</span>
+          </span>
+          <svg class="faq-arrow w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 pt-4 space-y-3 leading-relaxed">
+          <p>
+            An E-number is marked as <strong>Mushbooh (doubtful or requiring verification)</strong> when the chemical substance can be produced from either halal plant/synthetic origins or non-halal animal byproducts:
+          </p>
+          <ul class="list-disc list-inside space-y-1.5 text-xs">
+            <li><strong>Emulsifiers & Fatty Acids (E471, E472):</strong> Mono- and diglycerides of fatty acids can be sourced from 100% plant oils (soy, palm) or animal tallow/pork fat. If the packaging lacks a "Suitable for Vegetarians" or Halal certified label, the source is doubtful.</li>
+            <li><strong>Gelatin (E441):</strong> Often sourced from pork skin or non-zabiha cattle bones unless explicitly marked as fish gelatin or 100% Halal beef gelatin.</li>
+            <li><strong>Carmine / Cochineal (E120):</strong> A natural red food coloring derived from crushed female cochineal insects. Under classical jurisprudence, insect consumption is disputed (disallowed in Hanafi/Shafi'i/Hanbali; permitted under specific conditions in the Maliki school).</li>
+            <li><strong>Enzymes & Rennet:</strong> Used in cheese production; can be microbial (halal) or animal-derived.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Item 7: Mosque TV setup -->
+      <div class="faq-item glass-card rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden transition" data-category="mosque" id="mosque-setup">
+        <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-900 dark:text-white text-base hover:text-emerald-600 transition" aria-expanded="false">
+          <span class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs shrink-0">07</span>
+            <span>How do I set up NoorHub's Mosque Kiosk Mode on a prayer hall TV or monitor?</span>
+          </span>
+          <svg class="faq-arrow w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 pt-4 space-y-3 leading-relaxed">
+          <p>
+            NoorHub is built to function as an instant digital timetable display for mosques without requiring expensive proprietary hardware. Here is the step-by-step setup:
+          </p>
+          <ol class="list-decimal list-inside space-y-1.5 text-xs">
+            <li>Connect your TV or monitor to any computer, Raspberry Pi, Android TV box, or smart TV browser.</li>
+            <li>Open the browser and navigate to <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded font-mono text-emerald-600">noorhub.truxio.bond/mosque.html</code>.</li>
+            <li>Select your city and configure your masjid's specific Iqamah offset minutes (e.g., Isha Iqamah 15 minutes after Adhan).</li>
+            <li>Press <kbd class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 font-mono text-xs">F11</kbd> on your keyboard (or tap the Fullscreen button on screen) to enter true fullscreen kiosk mode.</li>
+            <li>The display automatically highlights the upcoming prayer, shows an active countdown clock, and presents rotating authentic daily Hadith reminders between prayer calls.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Item 8: Is it completely free? -->
+      <div class="faq-item glass-card rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden transition" data-category="general" id="free-waqf">
+        <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-900 dark:text-white text-base hover:text-emerald-600 transition" aria-expanded="false">
+          <span class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs shrink-0">08</span>
+            <span>Is NoorHub truly 100% free with no hidden subscriptions?</span>
+          </span>
+          <svg class="faq-arrow w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 pt-4 space-y-3 leading-relaxed">
+          <p>
+            <strong>Yes, entirely and permanently.</strong> NoorHub was established as a non-profit digital waqf (ongoing charitable endowment for the sake of Allah, <span class="italic font-arabic">صدقة جارية لوجه الله</span>). There are no premium subscription tiers, no "pro" features locked behind paywalls, no pop-up advertisements, and no monetization of user attention.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 9: Offline capabilities -->
+      <div class="faq-item glass-card rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden transition" data-category="general" id="offline-capability">
+        <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-900 dark:text-white text-base hover:text-emerald-600 transition" aria-expanded="false">
+          <span class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs shrink-0">09</span>
+            <span>Can I use NoorHub when I have no internet connection or during travel?</span>
+          </span>
+          <svg class="faq-arrow w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 pt-4 space-y-3 leading-relaxed">
+          <p>
+            Because NoorHub executes all astronomical and algorithmic code directly in your browser without communicating with external calculation APIs, once a page is cached in your browser memory, core tools (including the Digital Tasbih, 40 Hadith reader, and mathematical calculators) remain completely functional even without active internet access.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 10: Submitting feedback or scholarly corrections -->
+      <div class="faq-item glass-card rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden transition" data-category="general" id="feedback-process">
+        <button class="faq-toggle w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-900 dark:text-white text-base hover:text-emerald-600 transition" aria-expanded="false">
+          <span class="flex items-center space-x-3">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs shrink-0">10</span>
+            <span>How do I report a typo in a Hadith or propose a scholarly correction?</span>
+          </span>
+          <svg class="faq-arrow w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="faq-content hidden px-5 sm:px-6 pb-6 text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800/80 pt-4 space-y-3 leading-relaxed">
+          <p>
+            We take accuracy in sacred matters with the utmost seriousness. If you observe any vocalization nuance (tashkeel), typographical error, or prayer timing variation, please submit a note via our <a href="contact.html" class="text-emerald-600 dark:text-emerald-400 font-semibold underline">Contact page</a> selecting <em>"Scholarly / Fiqh Correction"</em>, or email directly to <a href="mailto:siddiknurealam1@gmail.com" class="text-emerald-600 dark:text-emerald-400 font-semibold underline">siddiknurealam1@gmail.com</a>. Please provide the relevant hadith number or classical source citation so our review team can verify and publish the update.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Still Have Questions Callout -->
+    <div class="glass-card rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-emerald-50 via-white to-amber-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-850 border border-slate-200 dark:border-slate-800 text-center space-y-4">
+      <h3 class="text-xl font-bold font-heading text-slate-900 dark:text-white">
+        Didn't find what you were looking for?
+      </h3>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto">
+        Our team and community caretakers are here to assist. Feel free to reach out with any question regarding our calculations, sources, or implementation.
+      </p>
+      <div class="pt-2">
+        <a href="contact.html" class="inline-flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition shadow-md">
+          <span>✉️</span>
+          <span>Contact NoorHub Support</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <!-- Brand Info -->
+        <div class="space-y-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-2xl">🌙</span>
+            <span class="text-lg font-bold text-white font-heading">NoorHub</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The authentic unified Islamic digital living platform. Providing precision prayer schedules, fasting companions, zakat tools, and prophetic hadith without commercial tracking.
+          </p>
+          <p class="text-xs text-emerald-400 font-arabic pt-1">
+            صَدَقَةٌ جَارِيَةٌ لِوَجْهِ اللَّهِ تَعَالَى
+          </p>
+        </div>
+
+        <!-- Quick Links: Core Tools -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Core Tools</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="prayer-times.html" class="hover:text-emerald-400 transition">Prayer Times & Qibla</a></li>
+            <li><a href="fasting.html" class="hover:text-emerald-400 transition">Fasting & Ramadan Tracker</a></li>
+            <li><a href="tasbih.html" class="hover:text-emerald-400 transition">Digital Tasbih & Adhkar</a></li>
+            <li><a href="zakat.html" class="hover:text-emerald-400 transition">Zakat Calculator & Nisab</a></li>
+            <li><a href="hadith.html" class="hover:text-emerald-400 transition">40 Hadith of Imam Nawawi</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources & Knowledge -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Resources</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="names.html" class="hover:text-emerald-400 transition">Islamic Baby Names (Ism)</a></li>
+            <li><a href="inheritance.html" class="hover:text-emerald-400 transition">Faraid Inheritance Engine</a></li>
+            <li><a href="halal-guide.html" class="hover:text-emerald-400 transition">Halal Food & E-Numbers</a></li>
+            <li><a href="99-names.html" class="hover:text-emerald-400 transition">99 Names of Allah</a></li>
+            <li><a href="mosque.html" class="hover:text-emerald-400 transition">Mosque TV Kiosk Mode</a></li>
+          </ul>
+        </div>
+
+        <!-- Trust & About -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">About & Trust</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="about.html" class="hover:text-emerald-400 transition">About NoorHub Initiative</a></li>
+            <li><a href="faq.html" class="text-emerald-400 font-semibold transition">Frequently Asked Questions</a></li>
+            <li><a href="contact.html" class="hover:text-emerald-400 transition">Contact & Feedback</a></li>
+            <li><a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Commitment (Zero Tracking)</a></li>
+            <li><a href="terms.html" class="hover:text-emerald-400 transition">Terms of Service</a></li>
+            <li class="pt-2 text-[11px] text-slate-500">Contact: siddiknurealam1@gmail.com</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <p>© 2026 NoorHub. Free, Open & Waqf-dedicated. All rights reserved for the Ummah.</p>
+        <div class="flex space-x-4 mt-2 sm:mt-0">
+          <span>noorhub.truxio.bond</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="shared.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Accordion Toggle
+      const toggles = document.querySelectorAll('.faq-toggle');
+      toggles.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const content = btn.nextElementSibling;
+          const arrow = btn.querySelector('.faq-arrow');
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+          if (isExpanded) {
+            btn.setAttribute('aria-expanded', 'false');
+            content.classList.add('hidden');
+            if (arrow) arrow.classList.remove('rotate-180');
+          } else {
+            btn.setAttribute('aria-expanded', 'true');
+            content.classList.remove('hidden');
+            if (arrow) arrow.classList.add('rotate-180');
+          }
+        });
+      });
+
+      // Expand hash target if anchored
+      if (window.location.hash) {
+        const targetId = window.location.hash.substring(1);
+        const targetItem = document.getElementById(targetId);
+        if (targetItem) {
+          const btn = targetItem.querySelector('.faq-toggle');
+          if (btn && btn.getAttribute('aria-expanded') !== 'true') {
+            btn.click();
+            targetItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
+      }
+
+      // 2. Filter Buttons
+      const filterBtns = document.querySelectorAll('.faq-filter-btn');
+      const items = document.querySelectorAll('.faq-item');
+
+      filterBtns.forEach(b => {
+        b.addEventListener('click', () => {
+          const cat = b.getAttribute('data-category');
+
+          filterBtns.forEach(btn => {
+            btn.classList.remove('bg-emerald-600', 'text-white', 'font-semibold');
+            btn.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300', 'font-medium');
+          });
+          b.classList.add('bg-emerald-600', 'text-white', 'font-semibold');
+          b.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+
+          items.forEach(it => {
+            const itemCat = it.getAttribute('data-category');
+            if (cat === 'all' || itemCat === cat) {
+              it.classList.remove('hidden');
+            } else {
+              it.classList.add('hidden');
+            }
+          });
+        });
+      });
+
+      // 3. Search Filter
+      const searchInput = document.getElementById('faq-search-input');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const q = e.target.value.toLowerCase().trim();
+          items.forEach(it => {
+            const text = it.textContent.toLowerCase();
+            if (!q || text.includes(q)) {
+              it.classList.remove('hidden');
+              // Automatically expand if matching search query
+              if (q.length > 2) {
+                const btn = it.querySelector('.faq-toggle');
+                const content = it.querySelector('.faq-content');
+                const arrow = it.querySelector('.faq-arrow');
+                if (btn && content && content.classList.contains('hidden')) {
+                  btn.setAttribute('aria-expanded', 'true');
+                  content.classList.remove('hidden');
+                  if (arrow) arrow.classList.add('rotate-180');
+                }
+              }
+            } else {
+              it.classList.add('hidden');
+            }
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

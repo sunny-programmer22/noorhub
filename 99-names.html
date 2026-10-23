@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>99 Names of Allah (Asma-ul-Husna) - NoorHub</title>
+  <meta name="description" content="Explore the 99 Beautiful Names of Allah (Asma-ul-Husna) with vocalized Arabic calligraphy, English transliteration, comprehensive meanings, Quranic citations, and an interactive memorization tracker.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b', 950: '#022c22' },
+            amber: { 50: '#fffbeb', 100: '#fef3c7', 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309' },
+            slate: { 850: '#131c2e', 900: '#0f172a', 950: '#0b0f19' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern selection:bg-emerald-500 selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-emerald-900 text-emerald-100 text-xs py-1.5 px-4 text-center border-b border-emerald-800 flex justify-between items-center max-w-7xl mx-auto w-full">
+    <div class="hidden sm:flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>NoorHub Asma-ul-Husna • The 99 Beautiful Divine Names (Open Waqf)</span>
+    </div>
+    <div class="mx-auto sm:mr-0 flex items-center space-x-4">
+      <span id="names-memorized-badge-top" class="font-medium text-emerald-300">Memorized: 0/99</span>
+      <span class="text-emerald-400">•</span>
+      <span class="font-mono font-semibold" id="names-live-clock">--:--:--</span>
+    </div>
+  </div>
+
+  <!-- Primary Navigation -->
+  <header class="sticky top-0 z-50 glass-header shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-900/20 group-hover:scale-105 transition-transform">
+            <span class="text-xl">🌙</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white font-heading">NoorHub</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-semibold uppercase tracking-wider">99 Names</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-arabic leading-none -mt-0.5">أَسْمَاءُ اللَّهِ الْحُسْنَى</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a href="index.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Portal</a>
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat & Qibla</a>
+          <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
+          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih & Adhkar</a>
+          <a href="99-names.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">99 Names</a>
+          <a href="hadith.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">40 Hadith</a>
+          <a href="zakat.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Zakat</a>
+          <a href="names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Baby Names</a>
+          <a href="inheritance.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Inheritance</a>
+          <a href="halal-guide.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Halal Guide</a>
+          <a href="mosque.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Mosque Kiosk</a>
+        </nav>
+
+        <!-- Right Action Controls -->
+        <div class="flex items-center space-x-2">
+          
+          <!-- Theme Switcher -->
+          <button class="theme-toggle-btn p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle theme">
+            <svg class="w-5 h-5 hidden dark:block text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+            <svg class="w-5 h-5 block dark:hidden text-slate-700" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          </button>
+
+          <!-- Mobile Hamburger -->
+          <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">NoorHub Home</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Salat & Qibla Compass</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Sawm & Fasting Companion</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Digital Tasbih & Adhkar</a>
+      <a href="99-names.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">99 Names of Allah</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">40 Hadith of Imam Nawawi</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Zakat Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Islamic Baby Names</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Halal Food Guide</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Mosque Kiosk</a>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-10">
+
+    <!-- Hero: Prophetic Hadith & Virtues of Enumerating the 99 Names -->
+    <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-950 text-white p-6 sm:p-10 shadow-2xl border border-emerald-800/40">
+      
+      <!-- Decorative Backdrop Circles -->
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-20 -top-20 w-80 h-80 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-4xl space-y-5">
+        
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-semibold">
+          <span>✨</span>
+          <span>Asma-ul-Husna (The Most Beautiful Divine Names)</span>
+        </div>
+
+        <div>
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight font-heading text-white">
+            The 99 Names of Allah
+          </h1>
+          <p class="font-arabic text-2xl sm:text-3xl text-amber-300 mt-2 leading-relaxed text-right sm:text-left">
+            وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ فَادْعُوهُ بِهَا
+          </p>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1 italic">
+            "And to Allah belong the best names, so invoke Him by them." (Surah Al-A'raf 7:180)
+          </p>
+        </div>
+
+        <!-- Prophetic Hadith Box -->
+        <div class="bg-slate-900/80 backdrop-blur-md rounded-2xl p-5 border border-slate-800/80 space-y-3">
+          <div class="flex items-center space-x-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
+            <span>📜</span>
+            <span>Prophetic Hadith on the Virtue of Memorizing & Contemplating</span>
+          </div>
+
+          <p class="font-arabic text-lg sm:text-xl text-emerald-200 leading-loose text-right">
+            عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ، أَنَّ رَسُولَ اللَّهِ ﷺ قَالَ: «إِنَّ لِلَّهِ تِسْعَةً وَتِسْعِينَ اسْمًا، مِائَةً إِلَّا وَاحِدًا، مَنْ أَحْصَاهَا دَخَلَ الْجَنَّةَ»
+          </p>
+
+          <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+            Narrated Abu Hurairah (RA): The Messenger of Allah ﷺ said: 
+            <strong>"Allah has ninety-nine names, one hundred less one. Whoever enumerates and memorizes them (ahṣāhā) will enter Paradise."</strong>
+          </p>
+
+          <div class="pt-2 border-t border-slate-800 flex flex-col sm:flex-row justify-between text-[11px] text-slate-400 gap-1">
+            <span>Sahih al-Bukhari (2736), Sahih Muslim (2677)</span>
+            <span class="text-emerald-400">Meaning of 'Ahṣāhā': Memorizing words, contemplating their meanings, supplicating with them, and embodying their virtuous reflection.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: Interactive Memorization Tracker Dashboard -->
+    <section class="glass-card rounded-3xl p-6 sm:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg space-y-6">
+      
+      <!-- Tracker Header & Metrics -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Personal Hifdh Tracker</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white font-heading mt-0.5">
+            Memorization Progress
+          </h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400">
+            Check off each Name as you commit it to memory. State is stored locally in your browser.
+          </p>
+        </div>
+
+        <!-- Metric Badges -->
+        <div class="flex items-center space-x-3 w-full md:w-auto justify-between md:justify-end">
+          <div class="text-right">
+            <div class="text-2xl font-extrabold text-slate-900 dark:text-white font-mono flex items-center justify-end space-x-1">
+              <span id="memorized-count-display">0</span>
+              <span class="text-slate-400 text-lg font-normal">/ 99</span>
+            </div>
+            <span id="memorization-level-label" class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">Seeker of Light</span>
+          </div>
+
+          <span id="memorized-percent-badge" class="px-3 py-1.5 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-sm font-bold font-mono">
+            0%
+          </span>
+
+          <button id="btn-reset-tracker" title="Reset all memorized checkmarks" class="text-xs font-semibold text-slate-400 hover:text-red-500 transition px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-red-300">
+            🔄 Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Animated Progress Bar -->
+      <div class="space-y-1.5">
+        <div class="w-full h-3.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
+          <div id="memorization-progress-bar" class="h-full bg-gradient-to-r from-emerald-500 via-teal-400 to-amber-400 rounded-full transition-all duration-500 ease-out" style="width: 0%;"></div>
+        </div>
+        <div class="flex justify-between text-[10px] text-slate-400 px-1 font-mono">
+          <span>0 (Start)</span>
+          <span>33 (Contemplator)</span>
+          <span>66 (Devout)</span>
+          <span>99 (Paradise Bearer ✨)</span>
+        </div>
+      </div>
+
+      <!-- Search & Filters Row -->
+      <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+        
+        <!-- Search Input -->
+        <div class="relative flex-grow max-w-md">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">🔍</span>
+          <input type="text" id="names-search-input" placeholder="Search by English, Arabic (e.g. الرحمن), #, or meaning..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-emerald-500 outline-none">
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="flex flex-wrap items-center gap-1.5 text-xs font-medium">
+          <button class="category-filter-btn px-3 py-1.5 rounded-xl bg-emerald-600 text-white font-semibold transition" data-filter="all">All (99)</button>
+          <button class="category-filter-btn px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-filter="memorized">Memorized Only</button>
+          <button class="category-filter-btn px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-filter="remaining">Remaining</button>
+          <button class="category-filter-btn px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-filter="mercy">Mercy & Grace</button>
+          <button class="category-filter-btn px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-filter="majesty">Majesty & Power</button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SECTION 3: 99 Names Grid -->
+    <section class="space-y-4">
+      
+      <!-- Counter & Results Header -->
+      <div class="flex justify-between items-center text-xs text-slate-500">
+        <span id="names-results-counter">Showing 99 of 99 Divine Names</span>
+        <span class="text-emerald-600 dark:text-emerald-400 font-medium">Click card or button to toggle memorization</span>
+      </div>
+
+      <!-- Dynamic Cards Grid -->
+      <div id="names-grid-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Rendered dynamically by JS -->
+      </div>
+
+    </section>
+
+    <!-- SECTION 4: Contemplation Guide: How to Call Upon Allah using His Names -->
+    <section class="glass-card rounded-3xl p-6 sm:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-5">
+      <div class="border-b border-slate-100 dark:border-slate-800 pb-3">
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Du'a & Supplication Etiquette</span>
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white font-heading mt-0.5">
+          How to Supplicate (Du'a) through Asma-ul-Husna
+        </h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400">
+          Match your spiritual or worldly needs with the corresponding Divine Attribute as recommended by the scholars of Ahl as-Sunnah.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+        
+        <div class="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 space-y-2">
+          <span class="text-lg">🤲</span>
+          <h4 class="font-bold text-slate-900 dark:text-white">Seeking Forgiveness</h4>
+          <p class="font-arabic text-emerald-800 dark:text-emerald-300 text-sm">يَا غَفَّارُ • يَا تَوَّابُ • يَا عَفُوُّ</p>
+          <p class="text-slate-600 dark:text-slate-300">
+            "Yā Ghaffār, Yā Tawwāb, Yā 'Afuww: Pardon my shortcomings, wipe clean my errors, and turn toward me in mercy."
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 space-y-2">
+          <span class="text-lg">🍞</span>
+          <h4 class="font-bold text-slate-900 dark:text-white">Seeking Provision & Ease</h4>
+          <p class="font-arabic text-amber-800 dark:text-amber-300 text-sm">يَا رَزَّاقُ • يَا فَتَّاحُ • يَا وَهَّابُ</p>
+          <p class="text-slate-600 dark:text-slate-300">
+            "Yā Razzāq, Yā Fattāḥ, Yā Wahhāb: Open for me the closed doors of halal sustenance and bless my livelihood."
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/60 space-y-2">
+          <span class="text-lg">🕊️</span>
+          <h4 class="font-bold text-slate-900 dark:text-white">Seeking Inner Peace & Calm</h4>
+          <p class="font-arabic text-blue-800 dark:text-blue-300 text-sm">يَا سَلَامُ • يَا مُؤْمِنُ • يَا لَطِيفُ</p>
+          <p class="text-slate-600 dark:text-slate-300">
+            "Yā Salām, Yā Mu'min, Yā Laṭīf: Grant tranquility to my restless heart and shield my mind from anxiety."
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800/60 space-y-2">
+          <span class="text-lg">🛡️</span>
+          <h4 class="font-bold text-slate-900 dark:text-white">Seeking Protection & Justice</h4>
+          <p class="font-arabic text-purple-800 dark:text-purple-300 text-sm">يَا حَفِيظُ • يَا وَكِيلُ • يَا عَدْلُ</p>
+          <p class="text-slate-600 dark:text-slate-300">
+            "Yā Ḥafīẓ, Yā Wakīl, Yā 'Adl: Protect my faith and family, and suffice me against oppression and injustice."
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Unified Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <!-- Brand Summary -->
+        <div class="space-y-3">
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white">🌙</div>
+            <span class="font-bold text-lg text-white font-heading">NoorHub</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The unified Islamic platform offering astronomical prayer timings, fasting companions, authentic Hadith collections, and essential fiqh calculators. Dedicated as an open Digital Waqf.
+          </p>
+        </div>
+
+        <!-- Pillars Navigation -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Worship & Prayer</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="prayer-times.html" class="hover:text-emerald-400 transition">Salat & Qibla Timetable</a></li>
+            <li><a href="fasting.html" class="hover:text-emerald-400 transition">Sawm & Fasting Companion</a></li>
+            <li><a href="tasbih.html" class="hover:text-emerald-400 transition">Digital Tasbih & Adhkar</a></li>
+            <li><a href="hadith.html" class="hover:text-emerald-400 transition">40 Hadith of Imam Nawawi</a></li>
+          </ul>
+        </div>
+
+        <!-- Knowledge & Tools -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Knowledge & Wealth</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="99-names.html" class="hover:text-emerald-400 transition">99 Names of Allah (Asma-ul-Husna)</a></li>
+            <li><a href="zakat.html" class="hover:text-emerald-400 transition">Zakat Multi-Asset Calculator</a></li>
+            <li><a href="names.html" class="hover:text-emerald-400 transition">Islamic Baby Names (Ism)</a></li>
+            <li><a href="inheritance.html" class="hover:text-emerald-400 transition">Faraid Inheritance Engine</a></li>
+            <li><a href="halal-guide.html" class="hover:text-emerald-400 transition">Halal Food & E-Numbers</a></li>
+            <li><a href="mosque.html" class="hover:text-emerald-400 transition">Mosque TV Kiosk Mode</a></li>
+          </ul>
+        </div>
+
+        <!-- Trust & About -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">About & Trust</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="about.html" class="hover:text-emerald-400 transition">About NoorHub Initiative</a></li>
+            <li><a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Commitment (Zero Tracking)</a></li>
+            <li><a href="contact.html" class="hover:text-emerald-400 transition">Contact & Feedback</a></li>
+            <li class="pt-2 text-[11px] text-slate-500">Contact: siddiknurealam1@gmail.com</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <p>© 2026 NoorHub • The Unified Islamic Living Platform. Open Waqf.</p>
+        <div class="flex space-x-4 mt-2 sm:mt-0">
+          <span>noorhub.truxio.bond</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-2.5 rounded-xl shadow-2xl border border-slate-700 text-xs flex items-center space-x-2 transition-all duration-300 opacity-0 pointer-events-none translate-y-3">
+    <span>✨</span>
+    <span id="toast-msg">Text copied</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="shared.js"></script>
+  <script>
+    // =========================================================================
+    // The Complete 99 Names of Allah Dataset
+    // =========================================================================
+    const ASMA_UL_HUSNA = [
+      { id: 1, ar: "الرَّحْمٰنُ", en: "Ar-Rahman", meaning: "The Entirely Merciful / The Beneficent", category: "mercy", citation: "Surah Al-Fatihah (1:3)", desc: "Possessor of vast, boundless mercy that encompasses all creation in existence." },
+      { id: 2, ar: "الرَّحِيمُ", en: "Ar-Raheem", meaning: "The Especially Merciful", category: "mercy", citation: "Surah Al-Fatihah (1:3)", desc: "Bestower of continuous, specialized mercy upon believers in this life and the hereafter." },
+      { id: 3, ar: "الْمَلِكُ", en: "Al-Malik", meaning: "The Sovereign / The King", category: "majesty", citation: "Surah Al-Hashr (59:23)", desc: "The absolute Lord and Sovereign Ruler who commands creation with unquestioned authority." },
+      { id: 4, ar: "الْقُدُّوسُ", en: "Al-Quddus", meaning: "The Most Sacred / Pure", category: "majesty", citation: "Surah Al-Hashr (59:23)", desc: "Transcendent above any defect, flaw, shortcoming, or human likeness." },
+      { id: 5, ar: "السَّلَامُ", en: "As-Salam", meaning: "The Source of Peace", category: "mercy", citation: "Surah Al-Hashr (59:23)", desc: "The Free of all deficiency, whose creation is preserved in safety and peace through His grace." },
+      { id: 6, ar: "الْمُؤْمِنُ", en: "Al-Mu'min", meaning: "The Granter of Security", category: "mercy", citation: "Surah Al-Hashr (59:23)", desc: "The Inspirer of faith in hearts and the Guarantor of safety against fear and oppression." },
+      { id: 7, ar: "الْمُهَيْمِنُ", en: "Al-Muhaymin", meaning: "The Guardian / Overseer", category: "majesty", citation: "Surah Al-Hashr (59:23)", desc: "The Ever-Watchful Protector who witnesses and preserves every thought and movement in the universe." },
+      { id: 8, ar: "الْعَزِيزُ", en: "Al-'Azeez", meaning: "The All-Mighty / Invulnerable", category: "majesty", citation: "Surah Al-Hashr (59:23)", desc: "The Unconquerable whose might cannot be overcome and who can never be resisted." },
+      { id: 9, ar: "الْجَبَّارُ", en: "Al-Jabbar", meaning: "The Compeller / Restorer", category: "majesty", citation: "Surah Al-Hashr (59:23)", desc: "He who mends the brokenhearted, rectifies affairs, and subjugates all to His will." },
+      { id: 10, ar: "الْمُتَكَبِّرُ", en: "Al-Mutakabbir", meaning: "The Supreme in Greatness", category: "majesty", citation: "Surah Al-Hashr (59:23)", desc: "To Whom alone true grandeur belongs; majestic above all that partners with Him." },
+      { id: 11, ar: "الْخَالِقُ", en: "Al-Khaliq", meaning: "The Creator / Originator", category: "creation", citation: "Surah Al-Hashr (59:24)", desc: "The One who brings things into existence from nothing with precise determination." },
+      { id: 12, ar: "الْبَارِئُ", en: "Al-Bari'", meaning: "The Maker / Evolver", category: "creation", citation: "Surah Al-Hashr (59:24)", desc: "He who creates diverse souls and bodies in harmonious proportion without flaw." },
+      { id: 13, ar: "الْمُصَوِّرُ", en: "Al-Musawwir", meaning: "The Fashioner of Forms", category: "creation", citation: "Surah Al-Hashr (59:24)", desc: "The Ultimate Artist who designs unique shapes, features, and appearances for every creature." },
+      { id: 14, ar: "الْغَفَّارُ", en: "Al-Ghaffar", meaning: "The Ever-Forgiving", category: "mercy", citation: "Surah Nuh (71:10)", desc: "He who forgives and covers sins repeatedly no matter how often the servant repents." },
+      { id: 15, ar: "الْقَهَّارُ", en: "Al-Qahhar", meaning: "The Subduer / Irresistible", category: "majesty", citation: "Surah Yusuf (12:39)", desc: "He who vanquishes the tyrants and completely holds all creatures under His absolute dominion." },
+      { id: 16, ar: "الْوَهَّابُ", en: "Al-Wahhab", meaning: "The Supreme Bestower", category: "mercy", citation: "Surah Ali 'Imran (3:8)", desc: "The Bountiful Giver who showers unconditional gifts and favors without requesting return." },
+      { id: 17, ar: "الرَّزَّاقُ", en: "Ar-Razzaq", meaning: "The Sustainer / Provider", category: "mercy", citation: "Surah Adh-Dhariyat (51:58)", desc: "The Provider who guarantees and distributes food, knowledge, and life to every living soul." },
+      { id: 18, ar: "الْفَتَّاحُ", en: "Al-Fattah", meaning: "The Opener / Supreme Arbiter", category: "mercy", citation: "Surah Saba (34:26)", desc: "He who unlocks closed doors, resolves difficulties, and judges between creation in truth." },
+      { id: 19, ar: "الْعَلِيمُ", en: "Al-'Aleem", meaning: "The All-Knowing", category: "majesty", citation: "Surah Al-Baqarah (2:29)", desc: "Omniscient of all that was, is, and will be; nothing in the cosmos is hidden from Him." },
+      { id: 20, ar: "الْقَابِضُ", en: "Al-Qabid", meaning: "The Withholder / Restrainer", category: "majesty", citation: "Surah Al-Baqarah (2:245)", desc: "He who contracts sustenance, souls, and hearts in accordance with divine wisdom." },
+      { id: 21, ar: "الْبَاسِطُ", en: "Al-Basit", meaning: "The Expander / Extender", category: "mercy", citation: "Surah Al-Baqarah (2:245)", desc: "He who enlarges provision, opens joyful relief, and spreads mercy across creation." },
+      { id: 22, ar: "الْخَافِضُ", en: "Al-Khafid", meaning: "The Abaser / Humbler", category: "majesty", citation: "Surah Al-Waqi'ah (56:3)", desc: "He who lowers the haughty, arrogant transgressors and degrades the rebellious." },
+      { id: 23, ar: "الرَّافِعُ", en: "Ar-Rafi'", meaning: "The Exalter / Elevator", category: "mercy", citation: "Surah Al-An'am (6:165)", desc: "He who elevates the humble, pious believers in status and honor in both worlds." },
+      { id: 24, ar: "الْمُعِزُّ", en: "Al-Mu'izz", meaning: "The Bestower of Honor", category: "majesty", citation: "Surah Ali 'Imran (3:26)", desc: "He who crowns whom He pleases with dignity, victory, and uprightness." },
+      { id: 25, ar: "الْمُذِلُّ", en: "Al-Mudhill", meaning: "The Dishonorer / Humiliator", category: "majesty", citation: "Surah Ali 'Imran (3:26)", desc: "He who casts down the obstinate into humiliation when they choose darkness." },
+      { id: 26, ar: "السَّمِيعُ", en: "As-Samee'", meaning: "The All-Hearing", category: "majesty", citation: "Surah Al-Baqarah (2:127)", desc: "He whose hearing perceives every whisper, sigh, and secret in all languages simultaneously." },
+      { id: 27, ar: "الْبَصِيرُ", en: "Al-Baseer", meaning: "The All-Seeing", category: "majesty", citation: "Surah Ash-Shura (42:11)", desc: "He who witnesses every minute detail, even a black ant on a black rock in the pitch dark." },
+      { id: 28, ar: "الْحَكَمُ", en: "Al-Hakam", meaning: "The Supreme Judge", category: "majesty", citation: "Surah Al-An'am (6:114)", desc: "The Ultimate Arbiter whose rulings are flawless, just, and cannot be repealed." },
+      { id: 29, ar: "الْعَدْلُ", en: "Al-'Adl", meaning: "The Absolutely Just", category: "majesty", citation: "Surah Al-An'am (6:115)", desc: "He who is completely pure from tyranny, injustice, and inequity." },
+      { id: 30, ar: "اللَّطِيفُ", en: "Al-Lateef", meaning: "The Subtle / Most Gentle", category: "mercy", citation: "Surah Al-Mulk (67:14)", desc: "He who delivers kindness in imperceptible ways and is aware of all subtleties." },
+      { id: 31, ar: "الْخَبِيرُ", en: "Al-Khabeer", meaning: "The All-Aware", category: "majesty", citation: "Surah Al-An'am (6:18)", desc: "Fully acquainted with the innermost reality and secrets behind all affairs." },
+      { id: 32, ar: "الْحَلِيمُ", en: "Al-Haleem", meaning: "The Most Forbearing", category: "mercy", citation: "Surah Al-Baqarah (2:225)", desc: "He who does not hasten to punish sinners, giving them ample respite to repent." },
+      { id: 33, ar: "الْعَظِيمُ", en: "Al-'Azeem", meaning: "The Magnificent / Vast", category: "majesty", citation: "Surah Al-Baqarah (2:255)", desc: "Immense in glory, honor, and majesty, surpassing all imagination." },
+      { id: 34, ar: "الْغَفُورُ", en: "Al-Ghafur", meaning: "The Great Forgiver", category: "mercy", citation: "Surah Az-Zumar (39:53)", desc: "He who conceals offenses with immense pardon, saving servants from retribution." },
+      { id: 35, ar: "الشَّكُورُ", en: "Ash-Shakur", meaning: "The Most Appreciative", category: "mercy", citation: "Surah Fatir (35:30)", desc: "He who multiplies minor good deeds into immense, never-ending heavenly rewards." },
+      { id: 36, ar: "الْعَلِيُّ", en: "Al-'Aliyy", meaning: "The Most High", category: "majesty", citation: "Surah Al-Baqarah (2:255)", desc: "Exalted above all rivals, peers, and comparisons in essence, power, and status." },
+      { id: 37, ar: "الْكَبِيرُ", en: "Al-Kabeer", meaning: "The Most Great", category: "majesty", citation: "Surah Al-Hajj (22:62)", desc: "The Immeasurably Grand, before Whom all creation is as dust in comparison." },
+      { id: 38, ar: "الْحَفِيظُ", en: "Al-Hafeez", meaning: "The Preserver / Guardian", category: "mercy", citation: "Surah Hud (11:57)", desc: "He who preserves heavens and earth from falling apart and protects His faithful." },
+      { id: 39, ar: "الْمُقِيتُ", en: "Al-Muqeet", meaning: "The Nourisher / Maintainer", category: "mercy", citation: "Surah An-Nisa (4:85)", desc: "He who sustains physical bodies with food and souls with divine remembrance." },
+      { id: 40, ar: "الْحَسِيبُ", en: "Al-Haseeb", meaning: "The Reckoner / Sufficient", category: "majesty", citation: "Surah An-Nisa (4:86)", desc: "The One who suffices all needs and accounts for every atom of human deed." },
+      { id: 41, ar: "الْجَلِيلُ", en: "Al-Jaleel", meaning: "The Sublime / Majestic", category: "majesty", citation: "Surah Ar-Rahman (55:27)", desc: "Possessor of absolute majesty, reverence, and splendid perfection." },
+      { id: 42, ar: "الْكَرِيمُ", en: "Al-Kareem", meaning: "The Most Generous", category: "mercy", citation: "Surah Al-Infitar (82:6)", desc: "He who gives bountifully without question, forgiving whenever approached." },
+      { id: 43, ar: "الرَّقِيبُ", en: "Ar-Raqeeb", meaning: "The Watchful Observer", category: "majesty", citation: "Surah An-Nisa (4:1)", desc: "The Constant Witness from Whom no glance, breath, or whisper can be concealed." },
+      { id: 44, ar: "الْمُجِيبُ", en: "Al-Mujeeb", meaning: "The Responsive", category: "mercy", citation: "Surah Hud (11:61)", desc: "The Answerer of prayers who responds to the caller whenever they call upon Him." },
+      { id: 45, ar: "الْوَاسِعُ", en: "Al-Wasi'", meaning: "The All-Encompassing", category: "mercy", citation: "Surah Al-Baqarah (2:115)", desc: "Boundless in capacity, knowledge, forgiveness, and sustenance without limit." },
+      { id: 46, ar: "الْحَكِيمُ", en: "Al-Hakeem", meaning: "The All-Wise", category: "majesty", citation: "Surah Al-Baqarah (2:129)", desc: "He who places everything in its rightful place with consummate purpose." },
+      { id: 47, ar: "الْوَدُودُ", en: "Al-Wadud", meaning: "The Most Loving", category: "mercy", citation: "Surah Al-Buruj (85:14)", desc: "Full of affection and loving-kindness toward His righteous servants." },
+      { id: 48, ar: "الْمَجِيدُ", en: "Al-Majeed", meaning: "The All-Glorious", category: "majesty", citation: "Surah Hud (11:73)", desc: "He who combines absolute nobility, immense praise, and glorious majesty." },
+      { id: 49, ar: "الْبَاعِثُ", en: "Al-Ba'ith", meaning: "The Resurrector", category: "majesty", citation: "Surah Al-Hajj (22:7)", desc: "He who will raise the dead from their graves on the Day of Judgment for recompense." },
+      { id: 50, ar: "الشَّهِيدُ", en: "Ash-Shaheed", meaning: "The Universal Witness", category: "majesty", citation: "Surah Al-Ma'idah (5:117)", desc: "He from Whom nothing is absent, witnessing all open and covert realities." },
+      { id: 51, ar: "الْحَقُّ", en: "Al-Haqq", meaning: "The Absolute Truth", category: "majesty", citation: "Surah Ta-Ha (20:114)", desc: "The immutable Reality whose existence and promises are absolute and eternal." },
+      { id: 52, ar: "الْوَكِيلُ", en: "Al-Wakeel", meaning: "The Supreme Trustee", category: "mercy", citation: "Surah Ali 'Imran (3:173)", desc: "The completely reliable Guardian upon Whom servants can cast all their reliance." },
+      { id: 53, ar: "الْقَوِيُّ", en: "Al-Qawiyy", meaning: "The All-Strong", category: "majesty", citation: "Surah Al-Hajj (22:40)", desc: "Possessor of infinite power that never tires or diminishes." },
+      { id: 54, ar: "الْمَتِينُ", en: "Al-Mateen", meaning: "The Steadfast / Firm", category: "majesty", citation: "Surah Adh-Dhariyat (51:58)", desc: "He whose strength is unyielding, immovable, and eternal." },
+      { id: 55, ar: "الْوَلِيُّ", en: "Al-Waliyy", meaning: "The Protecting Ally", category: "mercy", citation: "Surah Ash-Shura (42:28)", desc: "The loving Friend and Helper who guides and supports believers." },
+      { id: 56, ar: "الْحَمِيدُ", en: "Al-Hameed", meaning: "The Praiseworthy", category: "majesty", citation: "Surah Ibrahim (14:1)", desc: "Deserving of all praise regardless of whether creatures praise Him." },
+      { id: 57, ar: "الْمُحْصِي", en: "Al-Muhsee", meaning: "The Accounter / Counter", category: "majesty", citation: "Surah Maryam (19:94)", desc: "He who encompasses the count of every atom, raindrop, and star in existence." },
+      { id: 58, ar: "الْمُبْدِئُ", en: "Al-Mubdi'", meaning: "The Originator", category: "creation", citation: "Surah Al-Buruj (85:13)", desc: "He who produces all creation for the first time without prior model." },
+      { id: 59, ar: "الْمُعِيدُ", en: "Al-Mu'eed", meaning: "The Restorer", category: "creation", citation: "Surah Ar-Rum (30:27)", desc: "He who recreates all beings after their death just as He created them initially." },
+      { id: 60, ar: "الْمُحْيِي", en: "Al-Muhyee", meaning: "The Giver of Life", category: "creation", citation: "Surah Ar-Rum (30:50)", desc: "He who bestows vitality, spirit, and life upon lifeless dust." },
+      { id: 61, ar: "الْمُمِيتُ", en: "Al-Mumeet", meaning: "The Creator of Death", category: "majesty", citation: "Surah Al-Baqarah (2:258)", desc: "He who brings an end to mortal lifespans according to His decreed appointment." },
+      { id: 62, ar: "الْحَيُّ", en: "Al-Hayy", meaning: "The Ever-Living", category: "majesty", citation: "Surah Al-Baqarah (2:255)", desc: "Possessing perfect, everlasting life with neither beginning nor end." },
+      { id: 63, ar: "الْقَيُّومُ", en: "Al-Qayyum", meaning: "The Self-Subsisting Sustainer", category: "majesty", citation: "Surah Al-Baqarah (2:255)", desc: "Independent of all, while all creation depends on Him continuously for survival." },
+      { id: 64, ar: "الْوَاجِدُ", en: "Al-Wajid", meaning: "The Perceiver / Resourceful", category: "majesty", citation: "Surah Ad-Duha (93:6-8)", desc: "He who lacks nothing, finding and realizing whatever He wills." },
+      { id: 65, ar: "الْمَاجِدُ", en: "Al-Majid", meaning: "The Illustrious", category: "majesty", citation: "Surah Al-Buruj (85:15)", desc: "The Magnanimous whose generosity and splendor shine throughout existence." },
+      { id: 66, ar: "الْوَاحِدُ", en: "Al-Wahid", meaning: "The One / Unique", category: "majesty", citation: "Surah Al-Ikhlas (112:1)", desc: "The Single One without equal, partner, or plurality in essence or attributes." },
+      { id: 67, ar: "الْأَحَدُ", en: "Al-Ahad", meaning: "The Indivisible Sole", category: "majesty", citation: "Surah Al-Ikhlas (112:1)", desc: "The Incomparable, utterly Unique Monad who has no parts or partners." },
+      { id: 68, ar: "الصَّمَدُ", en: "As-Samad", meaning: "The Eternal Refuge", category: "majesty", citation: "Surah Al-Ikhlas (112:2)", desc: "The Self-Sufficient Lord to Whom all creatures turn in total need." },
+      { id: 69, ar: "الْقَادِرُ", en: "Al-Qadir", meaning: "The All-Powerful", category: "majesty", citation: "Surah Al-An'am (6:65)", desc: "Able to execute whatever He decrees; no decree is arduous for Him." },
+      { id: 70, ar: "الْمُقْتَدِرُ", en: "Al-Muqtadir", meaning: "The Omnipotent Determiner", category: "majesty", citation: "Surah Al-Qamar (54:42)", desc: "The Supreme Master whose divine capability prevails over all things." },
+      { id: 71, ar: "الْمُقَدِّمُ", en: "Al-Muqaddim", meaning: "The Expediter / Promoter", category: "majesty", citation: "Surah Qaf (50:28)", desc: "He who brings forward matters and raises ranks according to wisdom." },
+      { id: 72, ar: "الْمُؤَخِّرُ", en: "Al-Mu'akhkhir", meaning: "The Delayer / Postponer", category: "majesty", citation: "Surah Ibrahim (14:42)", desc: "He who sets back matters and delays penalties to their appointed time." },
+      { id: 73, ar: "الْأَوَّلُ", en: "Al-Awwal", meaning: "The First", category: "majesty", citation: "Surah Al-Hadid (57:3)", desc: "Existing before everything, without any beginning." },
+      { id: 74, ar: "الْآخِرُ", en: "Al-Akhir", meaning: "The Last", category: "majesty", citation: "Surah Al-Hadid (57:3)", desc: "Remaining after all creation passes away, without any end." },
+      { id: 75, ar: "الظَّاهِرُ", en: "Az-Zahir", meaning: "The Manifest / Evident", category: "majesty", citation: "Surah Al-Hadid (57:3)", desc: "Evident through His magnificent signs, above all things in dominion." },
+      { id: 76, ar: "الْبَاطِنُ", en: "Al-Batin", meaning: "The Hidden / Inward", category: "majesty", citation: "Surah Al-Hadid (57:3)", desc: "Transcendent and invisible to physical eyes in this life; Knower of inner secrets." },
+      { id: 77, ar: "الْوَالِي", en: "Al-Wali", meaning: "The Sole Governor", category: "majesty", citation: "Surah Ar-Ra'd (13:11)", desc: "The Ruler who manages all realms of existence with supreme administration." },
+      { id: 78, ar: "الْمُتَعَالِي", en: "Al-Muta'ali", meaning: "The Supremely Exalted", category: "majesty", citation: "Surah Ar-Ra'd (13:9)", desc: "High above every imperfection, human conception, or deficiency." },
+      { id: 79, ar: "الْبَرُّ", en: "Al-Barr", meaning: "The Source of Goodness", category: "mercy", citation: "Surah At-Tur (52:28)", desc: "The Benign and Kind whose beneficence and righteous gifts never cease." },
+      { id: 80, ar: "التَّوَّابُ", en: "At-Tawwab", meaning: "The Acceptor of Repentance", category: "mercy", citation: "Surah An-Nur (24:10)", desc: "He who welcomes back returning repentant servants with open forgiveness." },
+      { id: 81, ar: "الْمُنْتَقِمُ", en: "Al-Muntaqim", meaning: "The Dispenser of Justice", category: "majesty", citation: "Surah As-Sajdah (32:22)", desc: "The Just Retributor who exacts fair punishment on defiant tyrants." },
+      { id: 82, ar: "الْعَفُوُّ", en: "Al-'Afuww", meaning: "The Pardoner / Effacer", category: "mercy", citation: "Surah An-Nisa (4:99)", desc: "He who wipes away sins as if they had never occurred in the first place." },
+      { id: 83, ar: "الرَّءُوفُ", en: "Ar-Ra'uf", meaning: "The Most Tender / Pitying", category: "mercy", citation: "Surah Al-Baqarah (2:207)", desc: "Full of profound compassion, gentleness, and tender mercy." },
+      { id: 84, ar: "مَالِكُ الْمُلْكِ", en: "Malik-ul-Mulk", meaning: "Owner of Absolute Dominion", category: "majesty", citation: "Surah Ali 'Imran (3:26)", desc: "Master of all kingdoms and realms, giving power and taking it as He wills." },
+      { id: 85, ar: "ذُو الْجَلَالِ وَالْإِكْرَامِ", en: "Dhul-Jalali wal-Ikram", meaning: "Lord of Majesty and Honor", category: "majesty", citation: "Surah Ar-Rahman (55:27)", desc: "Possessor of supreme splendor, awe, reverence, and infinite generosity." },
+      { id: 86, ar: "الْمُقْسِطُ", en: "Al-Muqsit", meaning: "The Equitable", category: "majesty", citation: "Surah Ali 'Imran (3:18)", desc: "The Just Arbiter who rectifies injustices and protects rights with absolute balance." },
+      { id: 87, ar: "الْجَامِعُ", en: "Al-Jami'", meaning: "The Gatherer / Assembler", category: "majesty", citation: "Surah Ali 'Imran (3:9)", desc: "He who will assemble all humanity onto the Day of Judgment without doubt." },
+      { id: 88, ar: "الْغَنِيُّ", en: "Al-Ghaniyy", meaning: "The Self-Sufficient / Rich", category: "majesty", citation: "Surah Al-Baqarah (2:267)", desc: "Free from any need, while all creation stands in absolute need of Him." },
+      { id: 89, ar: "الْمُغْنِي", en: "Al-Mughni", meaning: "The Enricher", category: "mercy", citation: "Surah An-Najm (53:48)", desc: "He who bestows wealth, contentment, and satisfaction upon whomever He pleases." },
+      { id: 90, ar: "الْمَانِعُ", en: "Al-Mani'", meaning: "The Preventer / Shield", category: "majesty", citation: "Surah Al-Mulk (67:20)", desc: "He who shields His servants from harm and withholds out of wisdom." },
+      { id: 91, ar: "الضَّارُّ", en: "Ad-Darr", meaning: "The Afflicter", category: "majesty", citation: "Surah Al-An'am (6:17)", desc: "In Whose hand alone adversity lies as a test or righteous consequence." },
+      { id: 92, ar: "النَّافِعُ", en: "An-Nafi'", meaning: "The Bestower of Benefit", category: "mercy", citation: "Surah Al-An'am (6:17)", desc: "The Originator of all blessing, benefit, profit, and wellness." },
+      { id: 93, ar: "النُّورُ", en: "An-Nur", meaning: "The Illuminating Light", category: "mercy", citation: "Surah An-Nur (24:35)", desc: "The Light of heavens and earth, who illuminates darkened hearts with guidance." },
+      { id: 94, ar: "الْهَادِي", en: "Al-Hadi", meaning: "The Supreme Guide", category: "mercy", citation: "Surah Al-Hajj (22:54)", desc: "He who directs seekers towards the Straight Path of peace and faith." },
+      { id: 95, ar: "الْبَدِيعُ", en: "Al-Badi'", meaning: "The Incomparable Originator", category: "creation", citation: "Surah Al-Baqarah (2:117)", desc: "He who created celestial wonders in original beauty with no prior prototype." },
+      { id: 96, ar: "الْبَاقِي", en: "Al-Baqi", meaning: "The Everlasting", category: "majesty", citation: "Surah Ar-Rahman (55:27)", desc: "The Enduring One who continues forever while all worldly things perish." },
+      { id: 97, ar: "الْوَارِثُ", en: "Al-Warith", meaning: "The Ultimate Inheritor", category: "majesty", citation: "Surah Al-Hijr (15:23)", desc: "The Eternal Heir to Whom all dominions return after creation vanishes." },
+      { id: 98, ar: "الرَّشِيدُ", en: "Ar-Rasheed", meaning: "The Infallible Guide / Wise", category: "majesty", citation: "Surah Al-Kahf (18:10)", desc: "He who directs all affairs to their righteous fruition with flawless sagacity." },
+      { id: 99, ar: "الصَّبُورُ", en: "As-Sabur", meaning: "The Most Patient", category: "mercy", citation: "Surah Al-Baqarah (2:153)", desc: "He who endures rebellious insolence without hasty retaliation, giving opportunity for salvation." }
+    ];
+
+    // =========================================================================
+    // Application Controller: Memorization Tracker & Filter Engine
+    // =========================================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // Memorized set stored in localStorage
+      let memorizedStore = JSON.parse(localStorage.getItem('noorhub_99names_memorized') || '{}');
+      let activeFilter = 'all';
+
+      // DOM references
+      const gridContainer = document.getElementById('names-grid-container');
+      const searchInput = document.getElementById('names-search-input');
+      const resultsCounter = document.getElementById('names-results-counter');
+      const memorizedCountDisplay = document.getElementById('memorized-count-display');
+      const memorizedBadgeTop = document.getElementById('names-memorized-badge-top');
+      const memorizedPercentBadge = document.getElementById('memorized-percent-badge');
+      const progressBar = document.getElementById('memorization-progress-bar');
+      const levelLabel = document.getElementById('memorization-level-label');
+      const resetBtn = document.getElementById('btn-reset-tracker');
+      const liveClock = document.getElementById('names-live-clock');
+
+      // Live clock
+      setInterval(() => {
+        if (liveClock) liveClock.textContent = new Date().toLocaleTimeString('en-GB');
+      }, 1000);
+
+      // Level determination
+      function getMilestoneTitle(count) {
+        if (count >= 99) return "Ahsaha Master (Paradise Bearer) ✨";
+        if (count >= 66) return "Devout Knower of Allah";
+        if (count >= 33) return "Contemplator of Attributes";
+        if (count >= 10) return "Seeker of Light";
+        return "Beginner Seeker";
+      }
+
+      function updateMemorizationUI() {
+        const totalMemorized = Object.keys(memorizedStore).filter(k => memorizedStore[k]).length;
+        const pct = Math.round((totalMemorized / 99) * 100);
+
+        if (memorizedCountDisplay) memorizedCountDisplay.textContent = totalMemorized;
+        if (memorizedBadgeTop) memorizedBadgeTop.textContent = `Memorized: ${totalMemorized}/99`;
+        if (memorizedPercentBadge) memorizedPercentBadge.textContent = `${pct}%`;
+        if (progressBar) progressBar.style.width = `${pct}%`;
+        if (levelLabel) levelLabel.textContent = getMilestoneTitle(totalMemorized);
+      }
+
+      function renderGrid() {
+        if (!gridContainer) return;
+        const query = (searchInput ? searchInput.value.trim().toLowerCase() : '');
+
+        let visibleCount = 0;
+        let html = '';
+
+        ASMA_UL_HUSNA.forEach(item => {
+          const isMemorized = !!memorizedStore[item.id];
+
+          // Filter by category
+          if (activeFilter === 'memorized' && !isMemorized) return;
+          if (activeFilter === 'remaining' && isMemorized) return;
+          if (activeFilter === 'mercy' && item.category !== 'mercy') return;
+          if (activeFilter === 'majesty' && item.category !== 'majesty') return;
+
+          // Search query
+          if (query) {
+            const matches = item.en.toLowerCase().includes(query) ||
+                            item.ar.includes(query) ||
+                            item.meaning.toLowerCase().includes(query) ||
+                            item.id.toString() === query ||
+                            item.citation.toLowerCase().includes(query);
+            if (!matches) return;
+          }
+
+          visibleCount++;
+
+          html += `
+            <div class="glass-card rounded-2xl p-5 bg-white dark:bg-slate-900 border transition-all flex flex-col justify-between space-y-4 ${isMemorized ? 'border-emerald-500/60 dark:border-emerald-500/40 bg-emerald-50/30 dark:bg-emerald-950/20 shadow-md shadow-emerald-950/20' : 'border-slate-200 dark:border-slate-800'}" id="name-card-${item.id}">
+              
+              <!-- Card Top: Number badge, Pronounce, and Memorize toggle -->
+              <div class="flex items-center justify-between">
+                <span class="w-8 h-8 rounded-xl flex items-center justify-center text-xs font-mono font-bold ${isMemorized ? 'bg-emerald-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'}">
+                  #${item.id}
+                </span>
+
+                <div class="flex items-center space-x-1.5">
+                  <button onclick="speakName('${item.ar}')" title="Pronounce Arabic Name" class="p-1.5 rounded-lg text-slate-400 hover:text-emerald-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition text-xs">
+                    🔊
+                  </button>
+                  <button class="memorize-toggle-btn px-3 py-1 rounded-xl text-xs font-bold transition flex items-center space-x-1 ${isMemorized ? 'bg-emerald-600 text-white shadow-sm' : 'bg-slate-100 dark:bg-slate-800 hover:bg-emerald-100 text-slate-700 dark:text-slate-300'}" data-id="${item.id}">
+                    <span>${isMemorized ? 'Memorized ✓' : 'Memorize'}</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Arabic Calligraphy Name Box -->
+              <div class="bg-slate-50/80 dark:bg-slate-850/60 py-4 px-3 rounded-xl border border-slate-100 dark:border-slate-800 text-center select-all">
+                <h3 class="font-arabic text-3xl sm:text-4xl text-emerald-800 dark:text-emerald-300 font-bold leading-normal">
+                  ${item.ar}
+                </h3>
+              </div>
+
+              <!-- Transliteration and English Meaning -->
+              <div class="space-y-1">
+                <h4 class="text-base font-bold text-slate-900 dark:text-white">${item.en}</h4>
+                <p class="text-xs font-semibold text-emerald-700 dark:text-emerald-400">${item.meaning}</p>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">${item.desc}</p>
+              </div>
+
+              <!-- Footer: Verse citation & Copy button -->
+              <div class="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+                <span class="truncate max-w-[180px]" title="${item.citation}">📖 ${item.citation}</span>
+                <button onclick="copyNameCard(${item.id})" class="text-emerald-600 dark:text-emerald-400 hover:underline font-semibold flex items-center space-x-0.5">
+                  <span>📋 Copy</span>
+                </button>
+              </div>
+
+            </div>
+          `;
+        });
+
+        gridContainer.innerHTML = html || '<div class="col-span-full text-center py-12 text-slate-400 text-xs">No matching Divine Names found. Try a different search term.</div>';
+
+        if (resultsCounter) {
+          resultsCounter.textContent = `Showing ${visibleCount} of 99 Divine Names`;
+        }
+
+        // Bind memorize buttons
+        gridContainer.querySelectorAll('.memorize-toggle-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const id = btn.getAttribute('data-id');
+            memorizedStore[id] = !memorizedStore[id];
+            localStorage.setItem('noorhub_99names_memorized', JSON.stringify(memorizedStore));
+            updateMemorizationUI();
+            renderGrid();
+
+            if (memorizedStore[id]) {
+              showToast(`Marked #${id} as Memorized! ✨`);
+            }
+          });
+        });
+      }
+
+      // Filter category pills
+      document.querySelectorAll('.category-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.category-filter-btn').forEach(b => {
+            b.classList.remove('bg-emerald-600', 'text-white', 'font-semibold');
+            b.classList.add('text-slate-600', 'dark:text-slate-300');
+          });
+          btn.classList.add('bg-emerald-600', 'text-white', 'font-semibold');
+          btn.classList.remove('text-slate-600', 'dark:text-slate-300');
+
+          activeFilter = btn.getAttribute('data-filter');
+          renderGrid();
+        });
+      });
+
+      // Search input listener
+      if (searchInput) {
+        searchInput.addEventListener('input', renderGrid);
+      }
+
+      // Reset button
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          if (confirm('Are you sure you want to reset your 99 Names memorization progress?')) {
+            memorizedStore = {};
+            localStorage.removeItem('noorhub_99names_memorized');
+            updateMemorizationUI();
+            renderGrid();
+            showToast('Memorization tracker reset.');
+          }
+        });
+      }
+
+      // Initialize
+      updateMemorizationUI();
+      renderGrid();
+
+      // Audio Speech synthesis
+      window.speakName = function(arabicText) {
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          const utterance = new SpeechSynthesisUtterance(arabicText);
+          utterance.lang = 'ar-SA';
+          utterance.rate = 0.85;
+          window.speechSynthesis.speak(utterance);
+        } else {
+          showToast(arabicText);
+        }
+      };
+
+      // Copy card helper
+      window.copyNameCard = function(id) {
+        const item = ASMA_UL_HUSNA.find(x => x.id === id);
+        if (item) {
+          const text = `#${item.id} - ${item.ar} (${item.en})\nMeaning: ${item.meaning}\nReflection: ${item.desc}\nQuran: ${item.citation}`;
+          navigator.clipboard.writeText(text).then(() => {
+            showToast(`Copied ${item.en} details!`);
+          });
+        }
+      };
+
+    });
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const text = document.getElementById('toast-msg');
+      if (!toast || !text) return;
+      text.textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
+      }, 2400);
+    }
+  </script>
+</body>
+</html>

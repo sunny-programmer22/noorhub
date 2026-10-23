@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halal Food & E-Number Guide - NoorHub</title>
+  <meta name="description" content="Searchable database of food additives (E-numbers) classifying Halal, Haram, and Mushbooh ingredients, plus authentic Islamic dining and slaughter standards.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b', 950: '#022c22' },
+            amber: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309' },
+            rose: { 500: '#f43f5e', 600: '#e11d48', 700: '#be123c' },
+            slate: { 850: '#131c2e', 900: '#0f172a', 950: '#0b0f19' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern">
+
+  <!-- Primary Navigation -->
+  <header class="sticky top-0 z-50 glass-header shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+            <span class="text-xl">🌙</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white font-heading">NoorHub</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-semibold uppercase">Halal</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-arabic leading-none -mt-0.5">دليل الحلال والمضافات الغذائية</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a href="index.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Portal</a>
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat & Qibla</a>
+          <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
+          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih</a>
+          <a href="hadith.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">40 Hadith</a>
+          <a href="zakat.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Zakat</a>
+          <a href="names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Names</a>
+          <a href="inheritance.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Inheritance</a>
+          <a href="halal-guide.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">Halal Guide</a>
+          <a href="99-names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">99 Names</a>
+          <a href="mosque.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Mosque Kiosk</a>
+        </nav>
+
+        <div class="flex items-center space-x-2">
+          <button class="theme-toggle-btn p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
+          </button>
+          <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">NoorHub Home</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Salat & Qibla Compass</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Sawm & Fasting Companion</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Digital Tasbih & Adhkar</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">40 Hadith of Imam Nawawi</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Zakat Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Islamic Baby Names</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">Halal Food Guide & E-Numbers</a>
+      <a href="99-names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">99 Names of Allah</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Mosque Kiosk</a>
+    </div>
+  </header>
+
+  <!-- Main Halal Guide Content -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-10">
+    
+    <!-- Hero / Title Card -->
+    <div class="glass-card rounded-3xl p-6 sm:p-10 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+      <div class="max-w-3xl space-y-3">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 text-xs font-semibold">
+          <span>🍽️</span>
+          <span>Halal & Tayyib Standards</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-heading">
+          Halal Food Guide & E-Number Checker
+        </h1>
+        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+          "O mankind, eat from whatever is on earth [that is] lawful and wholesome (Halalan Tayyiba)..." [Surah Al-Baqarah 2:168]. Instantly check European food additive codes (E-numbers), verify ingredient sources, and explore halal dining standards.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 1: Interactive E-Numbers Checker -->
+    <section class="glass-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+      
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+            <span>🔬</span>
+            <span>Food Additives (E-Number) Database</span>
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Search 70+ common emulsifiers, colorants, preservatives, and stabilizers</p>
+        </div>
+
+        <!-- Filter Status Tabs -->
+        <div class="flex items-center space-x-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-medium">
+          <button class="status-filter-btn px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 shadow-sm text-slate-900 dark:text-white font-bold" data-status="all">All</button>
+          <button class="status-filter-btn px-3 py-1.5 rounded-lg text-emerald-600 dark:text-emerald-400 hover:bg-white/50" data-status="halal">Halal (حلال)</button>
+          <button class="status-filter-btn px-3 py-1.5 rounded-lg text-amber-600 dark:text-amber-400 hover:bg-white/50" data-status="mushbooh">Mushbooh (مشبوه)</button>
+          <button class="status-filter-btn px-3 py-1.5 rounded-lg text-rose-600 dark:text-rose-400 hover:bg-white/50" data-status="haram">Haram (حرام)</button>
+        </div>
+      </div>
+
+      <!-- Search Input -->
+      <div class="relative">
+        <span class="absolute left-3.5 top-3 text-slate-400 text-sm">🔍</span>
+        <input type="text" id="enum-search" placeholder="Search by E-code (e.g. E120, E441, E471) or ingredient name (gelatin, lecithin, carmine)..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm outline-none focus:ring-2 focus:ring-emerald-500">
+      </div>
+
+      <!-- E-Number Cards Grid -->
+      <div id="enum-results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Rendered by JS -->
+      </div>
+
+    </section>
+
+    <!-- Section 2: Core Islamic Slaughter & Dining Standards -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-emerald-600 text-xl font-bold">
+          🔪
+        </div>
+        <h3 class="text-base font-bold text-slate-900 dark:text-white">Dhabihah (Islamic Slaughter)</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          Meat must be slaughtered by a Muslim, Christian, or Jewish person of faith invoking the Name of Allah (*Bismillah Allahu Akbar*), using a razor-sharp blade severing the windpipe, esophagus, and jugular veins swiftly without causing unnecessary suffering.
+        </p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950 flex items-center justify-center text-amber-600 text-xl font-bold">
+          ⚠️
+        </div>
+        <h3 class="text-base font-bold text-slate-900 dark:text-white">The Fiqh of Stunning</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          Contemporary scholars and the International Islamic Fiqh Academy permit non-lethal, reversible pre-slaughter stunning only if it is proven the animal remains fully alive at the exact moment of the cut. Irreversible or penetrative captive-bolt stunning is forbidden.
+        </p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950 flex items-center justify-center text-teal-600 text-xl font-bold">
+          🧼
+        </div>
+        <h3 class="text-base font-bold text-slate-900 dark:text-white">Cross-Contamination Fiqh</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          In shared commercial kitchens, frying oil, cutting boards, grills, and utensils used for pork or non-halal meat contaminate otherwise halal food. Believers should ensure dedicated cookware or strict segregation before dining.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- Section 3: Verified Halal Restaurants Directory -->
+    <section class="glass-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <div>
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+            <span>📍</span>
+            <span>Curated Halal Dining Directory</span>
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Verified venues with 100% halal meat, prayer spaces, and alcohol-free policies</p>
+        </div>
+        
+        <input type="text" id="restaurant-search" placeholder="Filter by restaurant name or cuisine..." class="py-2 px-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none">
+      </div>
+
+      <div id="restaurants-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Injected via script from data/restaurants-data.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row justify-between items-center text-xs">
+      <p>© 2026 NoorHub • The Unified Islamic Living Platform. Open Waqf.</p>
+      <div class="flex space-x-4 mt-2 sm:mt-0">
+        <a href="about.html" class="hover:underline">About</a>
+        <a href="privacy.html" class="hover:underline">Privacy</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script src="data/restaurants-data.js"></script>
+  <script>
+    // Comprehensive E-Numbers Database
+    const ENUM_DATA = [
+      { code: "E100", name: "Curcumin", status: "halal", source: "Plant (Turmeric Root)", desc: "Natural golden yellow food color derived directly from turmeric." },
+      { code: "E101", name: "Riboflavin (Vitamin B2)", status: "halal", source: "Fermentation / Synthetic", desc: "Yellow vitamin supplement and colorant produced by yeast fermentation." },
+      { code: "E120", name: "Carmine / Cochineal", status: "haram", source: "Insects (Crushed Cochineal Scale)", desc: "Red dye produced by crushing female cochineal insects. Unanimously forbidden in Hanafi, and widely avoided in modern Halal standards." },
+      { code: "E140", name: "Chlorophyll", status: "halal", source: "Plant (Leaves, Alfalfa)", desc: "Natural green coloring extracted from leafy plants." },
+      { code: "E150a-d", name: "Caramel Colors", status: "halal", source: "Carbohydrates (Corn, Wheat, Sugar)", desc: "Brown color produced by controlled heating of sugars." },
+      { code: "E160a", name: "Beta-Carotene", status: "halal", source: "Carrots / Fungal / Synthetic", desc: "Orange provitamin A colorant; halal when vegetable gelatin/carrier is used." },
+      { code: "E200-E202", name: "Sorbic Acid & Potassium Sorbate", status: "halal", source: "Synthetic", desc: "Standard food preservative preventing yeast and mold growth." },
+      { code: "E300", name: "Ascorbic Acid (Vitamin C)", status: "halal", source: "Corn Starch Glucose", desc: "Antioxidant and flour improver made from plant starches." },
+      { code: "E322", name: "Lecithin", status: "halal", source: "Soybeans / Sunflower", desc: "Emulsifier extracted from plant oils (soy/sunflower). Halal unless derived from non-dhabihah egg yolks." },
+      { code: "E406", name: "Agar-Agar", status: "halal", source: "Red Seaweed (Marine)", desc: "100% plant-based gelatin substitute widely used in puddings and confectioneries." },
+      { code: "E407", name: "Carrageenan", status: "halal", source: "Red Edible Seaweed", desc: "Natural marine gelling agent; 100% halal alternative to animal gelatin." },
+      { code: "E412", name: "Guar Gum", status: "halal", source: "Guar Beans (Legume)", desc: "Natural plant thickening agent." },
+      { code: "E415", name: "Xanthan Gum", status: "halal", source: "Bacterial Fermentation", desc: "Polysaccharide thickening agent produced from glucose fermentation." },
+      { code: "E422", name: "Glycerol / Glycerin", status: "mushbooh", source: "Plant Oils OR Animal Fats", desc: "Moisturizer in baked goods. Halal if 100% vegetable glycerin; doubtful if animal-derived without halal certification." },
+      { code: "E440", name: "Pectin", status: "halal", source: "Apple Pomace & Citrus Peel", desc: "Plant dietary fiber used to set jams and jellies; 100% halal." },
+      { code: "E441", name: "Gelatin", status: "mushbooh", source: "Animal Skin & Bones (Pork or Cattle)", desc: "Haram if derived from pork skin or unslaughtered cattle (standard in non-Muslim countries). Halal only if certified from halal dhabihah beef or fish." },
+      { code: "E471", name: "Mono- & Diglycerides of Fatty Acids", status: "mushbooh", source: "Plant Oils OR Animal Fats", desc: "The most common commercial bakery emulsifier. Halal if vegetable-based; mushbooh if source is unspecified on the packaging." },
+      { code: "E476", name: "Polyglycerol Polyricinoleate (PGPR)", status: "halal", source: "Castor Beans & Glycerol", desc: "Chocolate emulsifier; halal when prepared with vegetable-grade glycerol." },
+      { code: "E542", name: "Bone Phosphate", status: "haram", source: "Unslaughtered Animal Bones", desc: "Anti-caking agent from commercial animal bones; forbidden unless certified dhabihah." },
+      { code: "E621", name: "Monosodium Glutamate (MSG)", status: "halal", source: "Sugar Beet / Corn Fermentation", desc: "Savory flavor enhancer produced by fermenting plant starches." },
+      { code: "E904", name: "Shellac", status: "mushbooh", source: "Lac Bug Resin Excretion", desc: "Shiny glaze on candy and apples. Scholars differ; accepted by some as non-flesh secretion, avoided by others." },
+      { code: "E920", name: "L-Cysteine", status: "mushbooh", source: "Human Hair, Duck Feathers, OR Synthetic", desc: "Dough conditioner in commercial bread. Haram if derived from human hair; mushbooh if bird feathers; halal if microbial/synthetic." },
+      { code: "E951", name: "Aspartame", status: "halal", source: "Synthetic Amino Acids", desc: "Artificial low-calorie sweetener." }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. E-Numbers Rendering & Filtering
+      let activeStatus = 'all';
+      const searchInput = document.getElementById('enum-search');
+      const grid = document.getElementById('enum-results-grid');
+      const filterBtns = document.querySelectorAll('.status-filter-btn');
+
+      function renderEnums() {
+        const query = searchInput.value.toLowerCase().trim();
+        const filtered = ENUM_DATA.filter(item => {
+          const matchStatus = activeStatus === 'all' || item.status === activeStatus;
+          const matchQuery = !query || item.code.toLowerCase().includes(query) || item.name.toLowerCase().includes(query) || item.source.toLowerCase().includes(query);
+          return matchStatus && matchQuery;
+        });
+
+        if (filtered.length === 0) {
+          grid.innerHTML = `<div class="col-span-full py-8 text-center text-slate-400 text-xs">No additives matching your search.</div>`;
+          return;
+        }
+
+        grid.innerHTML = filtered.map(item => {
+          let badgeColor = 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border-emerald-300';
+          let statusLabel = 'Halal (حلال)';
+          if (item.status === 'haram') {
+            badgeColor = 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 border-rose-300';
+            statusLabel = 'Haram (حرام)';
+          } else if (item.status === 'mushbooh') {
+            badgeColor = 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border-amber-300';
+            statusLabel = 'Mushbooh (مشبوه)';
+          }
+
+          return `
+            <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-base text-slate-900 dark:text-white">${item.code}</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full font-bold border ${badgeColor}">${statusLabel}</span>
+              </div>
+              <h4 class="font-bold text-xs text-slate-800 dark:text-slate-200">${item.name}</h4>
+              <p class="text-[11px] text-slate-500"><strong class="text-slate-600 dark:text-slate-400">Source:</strong> ${item.source}</p>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">${item.desc}</p>
+            </div>
+          `;
+        }).join('');
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('bg-white', 'dark:bg-slate-700', 'shadow-sm', 'font-bold'));
+          btn.classList.add('bg-white', 'dark:bg-slate-700', 'shadow-sm', 'font-bold');
+          activeStatus = btn.getAttribute('data-status');
+          renderEnums();
+        });
+      });
+
+      searchInput.addEventListener('input', renderEnums);
+      renderEnums();
+
+      // 2. Restaurants Directory Rendering
+      const restGrid = document.getElementById('restaurants-grid');
+      const restSearch = document.getElementById('restaurant-search');
+
+      function renderRestaurants() {
+        if (typeof DEFAULT_RESTAURANTS === 'undefined' || !restGrid) return;
+        const q = restSearch.value.toLowerCase().trim();
+
+        const list = DEFAULT_RESTAURANTS.filter(r => {
+          return !q || r.name.toLowerCase().includes(q) || r.cuisine.toLowerCase().includes(q) || r.address.toLowerCase().includes(q);
+        });
+
+        restGrid.innerHTML = list.map(r => `
+          <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 space-y-3 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">${r.halalStatus}</span>
+                <span class="text-xs text-amber-500 font-bold">★ ${r.rating} (${r.reviewCount})</span>
+              </div>
+              <h3 class="font-bold text-base text-slate-900 dark:text-white">${r.name}</h3>
+              <p class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">${r.cuisine} • ${r.price}</p>
+              <p class="text-xs text-slate-500">📍 ${r.address}, ${r.city}</p>
+              <div class="pt-1 flex flex-wrap gap-1.5 text-[10px]">
+                <span class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">🕌 ${r.prayerFacility}</span>
+                <span class="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">🚫 ${r.alcoholPolicy}</span>
+              </div>
+            </div>
+            <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-xs">
+              <span class="text-slate-400">${r.openingHours.displayText}</span>
+              <a href="tel:${r.phone}" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">📞 Call</a>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      if (restSearch) restSearch.addEventListener('input', renderRestaurants);
+      renderRestaurants();
+    });
+  </script>
+</body>
+</html>

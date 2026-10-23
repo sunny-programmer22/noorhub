@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zakat Multi-Asset Calculator & Nisab Guide - NoorHub</title>
+  <meta name="description" content="Calculate your 2.5% Zakat obligation with live precious metal Nisab rates, multi-currency support, multi-asset tracking, deductible liabilities, and the 8 Quranic recipient categories (Surah At-Tawbah 9:60).">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b', 950: '#022c22' },
+            amber: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309' },
+            slate: { 850: '#131c2e', 900: '#0f172a', 950: '#0b0f19' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
+
+  <style>
+    /* Tab paning */
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+    
+    /* Active threshold card */
+    .active-threshold {
+      border-color: #10b981 !important;
+      background: rgba(16, 185, 129, 0.08) !important;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3) !important;
+    }
+    
+    /* Toggle buttons active states */
+    .nisab-choice-btn.active {
+      background-color: #059669 !important;
+      color: #ffffff !important;
+    }
+    .rate-pill-btn.active {
+      background-color: #059669 !important;
+      color: #ffffff !important;
+    }
+    .filter-chip.active {
+      background-color: #059669 !important;
+      color: #ffffff !important;
+      border-color: #059669 !important;
+    }
+    .nav-tab-btn.active {
+      background-color: rgba(5, 150, 105, 0.12);
+      color: #059669;
+      border-bottom: 2px solid #059669;
+    }
+    .dark .nav-tab-btn.active {
+      background-color: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border-bottom: 2px solid #34d399;
+    }
+    
+    /* Category Collapsing */
+    .category-card.collapsed .category-body { display: none; }
+    .category-card.collapsed .collapse-icon { transform: rotate(-90deg); }
+    .collapse-icon { transition: transform 0.2s ease; }
+    
+    /* FAQ Accordion */
+    .faq-item .faq-answer { display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-chevron { transition: transform 0.2s ease; }
+
+    /* Nisab Status Styling */
+    .nisab-status-box.reached {
+      background-color: rgba(16, 185, 129, 0.12);
+      border: 1px solid #10b981;
+      color: #065f46;
+    }
+    .dark .nisab-status-box.reached {
+      background-color: rgba(16, 185, 129, 0.18);
+      border: 1px solid #10b981;
+      color: #a7f3d0;
+    }
+    .nisab-status-box.not-reached {
+      background-color: rgba(245, 158, 11, 0.12);
+      border: 1px solid #f59e0b;
+      color: #92400e;
+    }
+    .dark .nisab-status-box.not-reached {
+      background-color: rgba(245, 158, 11, 0.18);
+      border: 1px solid #f59e0b;
+      color: #fde68a;
+    }
+
+    /* Toast Notice */
+    .toast-notice {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      transform: translateY(120%);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+    .toast-notice.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    /* Print Only Styles */
+    @media print {
+      body * { visibility: hidden; }
+      #print-only-statement, #print-only-statement * { visibility: visible; }
+      #print-only-statement { position: absolute; left: 0; top: 0; width: 100%; display: block !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern font-sans antialiased">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-emerald-900 text-emerald-100 text-xs py-1.5 px-4 text-center border-b border-emerald-800 flex justify-between items-center max-w-7xl mx-auto w-full">
+    <div class="hidden sm:flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>NoorHub Digital Waqf • Free, Authentic & 100% Client-Side Privacy</span>
+    </div>
+    <div class="mx-auto sm:mr-0 flex items-center space-x-4">
+      <span class="font-medium">Third Pillar of Islam (الزكاة)</span>
+      <span class="text-emerald-400">•</span>
+      <span class="font-mono font-semibold">2.5% Annual Wealth Purification</span>
+    </div>
+  </div>
+
+  <!-- Primary Navigation -->
+  <header class="sticky top-0 z-50 glass-header shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-900/20 group-hover:scale-105 transition-transform">
+            <span class="text-xl">🌙</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white font-heading">NoorHub</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-semibold uppercase tracking-wider">Zakat</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-arabic leading-none -mt-0.5">حاسبة الزكاة والنصاب</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a href="index.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Portal</a>
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat & Qibla</a>
+          <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
+          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih</a>
+          <a href="hadith.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">40 Hadith</a>
+          <a href="zakat.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">Zakat</a>
+          <a href="names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Names</a>
+          <a href="inheritance.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Inheritance</a>
+          <a href="halal-guide.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Halal Guide</a>
+          <a href="mosque.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Mosque Kiosk</a>
+        </nav>
+
+        <!-- Right Controls: Currency Selector & Actions -->
+        <div class="flex items-center space-x-2">
+          
+          <!-- Base Currency Dropdown -->
+          <div class="flex items-center bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 shadow-sm">
+            <span class="text-xs font-semibold text-slate-500 mr-1.5">💱</span>
+            <select id="currency-select" class="bg-transparent text-xs font-bold text-slate-800 dark:text-slate-100 focus:outline-none cursor-pointer">
+              <option value="USD">USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+              <option value="SAR">SAR (ر.س)</option>
+              <option value="AED">AED (د.إ)</option>
+              <option value="BDT">BDT (৳)</option>
+              <option value="PKR">PKR (₨)</option>
+              <option value="INR">INR (₹)</option>
+              <option value="CAD">CAD (C$)</option>
+              <option value="TRY">TRY (₺)</option>
+            </select>
+          </div>
+
+          <!-- Header Print PDF -->
+          <button id="btn-header-print" class="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-sm">
+            <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            <span>Print Statement</span>
+          </button>
+
+          <!-- Save Browser State -->
+          <button id="btn-save-data" class="hidden sm:inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-sm transition">
+            <span>💾 Save</span>
+          </button>
+
+          <!-- Theme Toggle -->
+          <button class="theme-toggle-btn p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle theme">
+            <svg class="w-5 h-5 hidden dark:block text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+            <svg class="w-5 h-5 block dark:hidden text-slate-700" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          </button>
+
+          <!-- Mobile Hamburger -->
+          <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">NoorHub Home</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Salat & Qibla Compass</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Sawm & Fasting Companion</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Digital Tasbih & Adhkar</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">40 Hadith of Imam Nawawi</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">Zakat Multi-Asset Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Islamic Baby Names</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Faraid Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Halal Food Guide</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Mosque Kiosk</a>
+    </div>
+  </header>
+
+  <!-- Hero Header Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 w-full">
+    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 text-white p-6 sm:p-10 shadow-2xl border border-emerald-800/40">
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-emerald-600/15 blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-20 -top-20 w-80 h-80 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 space-y-4">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-semibold">
+          <span>⚖️ Third Pillar of Islam</span>
+          <span>•</span>
+          <span>Authentic Fiqh Engine</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-heading text-white">
+          Zakat Multi-Asset Calculator & Nisab Guide
+        </h1>
+
+        <p class="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed">
+          Accurately calculate your 2.5% Zakat liability across cash, gold jewelry, silver, business inventory, equities, and cryptocurrency with live precious metal Nisab evaluation.
+        </p>
+
+        <!-- Quranic Ayat Quote -->
+        <div class="pt-2 border-t border-emerald-800/60 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs text-emerald-200">
+          <div class="font-arabic text-base text-amber-300">خُذْ مِنْ أَمْوَالِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِم بِهَا</div>
+          <div class="italic">"Take from their wealth a charity by which you purify them and cause them increase." — Surah At-Tawbah (9:103)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Secondary Tab Navigation Bar -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 w-full">
+    <div class="flex items-center space-x-2 border-b border-slate-200 dark:border-slate-800 pb-2 overflow-x-auto text-sm font-semibold">
+      <button class="nav-tab-btn active px-4 py-2 rounded-xl transition flex items-center space-x-2" data-tab="calculator">
+        <span>🧮</span>
+        <span>Calculator</span>
+      </button>
+      <button class="nav-tab-btn px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition flex items-center space-x-2" data-tab="guide">
+        <span>📖</span>
+        <span>8 Quranic Recipients & Fiqh</span>
+      </button>
+      <button class="nav-tab-btn px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition flex items-center space-x-2" data-tab="directory">
+        <span>🤲</span>
+        <span>Vetted Charities</span>
+      </button>
+      <button class="nav-tab-btn px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition flex items-center space-x-2" data-tab="faq">
+        <span>❓</span>
+        <span>Zakat FAQs</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Live Nisab Valuation Strip -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+      
+      <!-- Nisab Criterion Selector -->
+      <div class="md:col-span-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Selected Nisab Standard</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-semibold">Recommended</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-2">
+            <button class="nisab-choice-btn active px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold text-center transition" data-nisab="silver">
+              Silver Nisab (612.36g)
+            </button>
+            <button class="nisab-choice-btn px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300 text-center transition" data-nisab="gold">
+              Gold Nisab (87.48g)
+            </button>
+          </div>
+        </div>
+        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-3 leading-relaxed">
+          Contemporary jurists strongly advise using the <strong>Silver Nisab (612.36g)</strong> for liquid cash and savings to benefit the poor and guarantee obligation fulfillment.
+        </p>
+      </div>
+
+      <!-- Silver Nisab Threshold Box -->
+      <div id="card-silver-threshold" class="md:col-span-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm active-threshold relative transition-all">
+        <div class="flex justify-between items-start">
+          <div>
+            <div class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400">Silver Nisab (612.36g)</div>
+            <div id="silver-threshold-display" class="text-2xl font-black text-slate-900 dark:text-white font-mono mt-1">$600.11</div>
+            <div class="text-[11px] text-slate-500">52.5 Tolas • 200 Dirhams</div>
+          </div>
+          <span class="text-2xl">🥈</span>
+        </div>
+        <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+          <label for="silver-price-input" class="text-slate-600 dark:text-slate-400 font-medium">Silver Price / g:</label>
+          <div class="flex items-center space-x-1">
+            <input type="number" id="silver-price-input" value="0.98" step="0.01" min="0" class="w-20 px-2 py-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-right font-mono font-semibold text-xs focus:ring-1 focus:ring-emerald-500 outline-none">
+            <span class="silver-curr-symbol font-mono text-slate-500 text-xs">$/g</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gold Nisab Threshold Box -->
+      <div id="card-gold-threshold" class="md:col-span-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm relative transition-all">
+        <div class="flex justify-between items-start">
+          <div>
+            <div class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400">Gold Nisab (87.48g)</div>
+            <div id="gold-threshold-display" class="text-2xl font-black text-slate-900 dark:text-white font-mono mt-1">$6,692.22</div>
+            <div class="text-[11px] text-slate-500">7.5 Tolas • 20 Mithqals</div>
+          </div>
+          <span class="text-2xl">🥇</span>
+        </div>
+        <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+          <label for="gold-price-input" class="text-slate-600 dark:text-slate-400 font-medium">Gold (24K) / g:</label>
+          <div class="flex items-center space-x-1">
+            <input type="number" id="gold-price-input" value="76.50" step="0.1" min="0" class="w-20 px-2 py-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-right font-mono font-semibold text-xs focus:ring-1 focus:ring-emerald-500 outline-none">
+            <span class="gold-curr-symbol font-mono text-slate-500 text-xs">$/g</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Main Content Body -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full">
+
+    <!-- ==================== TAB 1: CALCULATOR ==================== -->
+    <div id="tab-calculator" class="tab-pane active">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Left Column: Form Inputs (7 Cols) -->
+        <div class="lg:col-span-7 space-y-6">
+
+          <!-- 1. Cash in Hand & Bank Accounts -->
+          <div class="category-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden transition-all">
+            <div class="category-header p-5 flex items-center justify-between cursor-pointer border-b border-slate-100 dark:border-slate-800 select-none hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+              <div class="flex items-center space-x-3">
+                <span class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl">💵</span>
+                <div>
+                  <h2 class="text-base font-bold text-slate-900 dark:text-white">1. Cash in Hand & Bank Accounts</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">Physical notes, checking & savings accounts, foreign currency, digital wallets</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3">
+                <span id="subtotal-cash" class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">$0.00</span>
+                <svg class="collapse-icon w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+
+            <div class="category-body p-5 space-y-4 text-xs">
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-cash-hand" class="font-semibold text-slate-700 dark:text-slate-200 block">Cash at Home & in Wallet</label>
+                  <span class="text-[11px] text-slate-400">Physical bank notes in your direct possession</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-cash-hand" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-slate-800 dark:text-slate-100 outline-none text-right">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-cash-bank" class="font-semibold text-slate-700 dark:text-slate-200 block">Bank Accounts (Checking & Savings)</label>
+                  <span class="text-[11px] text-slate-400">Total liquid balance across all personal bank accounts</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-cash-bank" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-slate-800 dark:text-slate-100 outline-none text-right">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-foreign-cash" class="font-semibold text-slate-700 dark:text-slate-200 block">Foreign Currencies (Cash Equivalent)</label>
+                  <span class="text-[11px] text-slate-400">Foreign currency bills converted to base currency value</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-foreign-cash" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-slate-800 dark:text-slate-100 outline-none text-right">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-digital-wallets" class="font-semibold text-slate-700 dark:text-slate-200 block">Digital Wallets & Prepaid Balances</label>
+                  <span class="text-[11px] text-slate-400">PayPal, Wise, Revolut, Apple Cash, bKash, etc.</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-digital-wallets" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-slate-800 dark:text-slate-100 outline-none text-right">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Gold & Silver Jewelry and Coins -->
+          <div class="category-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden transition-all">
+            <div class="category-header p-5 flex items-center justify-between cursor-pointer border-b border-slate-100 dark:border-slate-800 select-none hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+              <div class="flex items-center space-x-3">
+                <span class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl">🪙</span>
+                <div>
+                  <h2 class="text-base font-bold text-slate-900 dark:text-white">2. Gold & Silver Holdings</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">Jewelry, coins, bullion (weight in grams or tolas, karats 24k/22k/21k/18k)</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3">
+                <span id="subtotal-metals" class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">$0.00</span>
+                <svg class="collapse-icon w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+
+            <div class="category-body p-5 space-y-6 text-xs">
+              
+              <!-- Gold Calculator Section -->
+              <div class="bg-amber-50/40 dark:bg-amber-950/20 border border-amber-200/60 dark:border-amber-900/40 rounded-xl p-4 space-y-3">
+                <div class="flex justify-between items-center">
+                  <div class="font-bold text-amber-900 dark:text-amber-200 flex items-center space-x-1.5">
+                    <span>🟡 Gold Jewelry & Bullion</span>
+                  </div>
+                  <span class="text-[11px] text-slate-500">1 Tola = 11.66g • 1 Troy Oz = 31.10g</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div>
+                    <label for="gold-weight" class="font-medium text-slate-600 dark:text-slate-300 mb-1 block">Weight</label>
+                    <input type="number" id="gold-weight" placeholder="0" min="0" step="any" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 font-mono font-semibold text-slate-800 dark:text-slate-100 outline-none focus:ring-1 focus:ring-emerald-500">
+                  </div>
+                  <div>
+                    <label for="gold-unit" class="font-medium text-slate-600 dark:text-slate-300 mb-1 block">Unit</label>
+                    <select id="gold-unit" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 font-medium text-slate-800 dark:text-slate-200 outline-none">
+                      <option value="grams" selected>Grams (g)</option>
+                      <option value="tolas">Tolas (Bhori)</option>
+                      <option value="troy_oz">Troy Oz (oz t)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="gold-karat" class="font-medium text-slate-600 dark:text-slate-300 mb-1 block">Karat Purity</label>
+                    <select id="gold-karat" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 font-medium text-slate-800 dark:text-slate-200 outline-none">
+                      <option value="24k">24K (99.9% Pure)</option>
+                      <option value="22k" selected>22K (91.6% Pure)</option>
+                      <option value="21k">21K (87.5% Pure)</option>
+                      <option value="18k">18K (75.0% Pure)</option>
+                      <option value="14k">14K (58.3% Pure)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-2 border-t border-amber-200/50 dark:border-amber-900/30">
+                  <span class="text-slate-600 dark:text-slate-300">Auto-Computed Gold Value:</span>
+                  <span id="gold-computed-val" class="font-mono font-bold text-amber-700 dark:text-amber-300">$0.00</span>
+                </div>
+
+                <div class="flex items-center justify-between text-[11px] pt-1 text-slate-500">
+                  <span>Or enter direct market valuation:</span>
+                  <div class="flex items-center w-36 px-2 py-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800">
+                    <span class="currency-affix mr-1 font-mono">$</span>
+                    <input type="number" id="gold-direct" placeholder="Direct $" min="0" class="w-full bg-transparent font-mono text-right outline-none">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Silver Calculator Section -->
+              <div class="bg-slate-100/60 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 rounded-xl p-4 space-y-3">
+                <div class="flex justify-between items-center">
+                  <div class="font-bold text-slate-800 dark:text-slate-200 flex items-center space-x-1.5">
+                    <span>⚪ Silver Jewelry & Silverware</span>
+                  </div>
+                  <span class="text-[11px] text-slate-500">925 Sterling is standard for jewelry</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div>
+                    <label for="silver-weight" class="font-medium text-slate-600 dark:text-slate-300 mb-1 block">Weight</label>
+                    <input type="number" id="silver-weight" placeholder="0" min="0" step="any" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 font-mono font-semibold text-slate-800 dark:text-slate-100 outline-none focus:ring-1 focus:ring-emerald-500">
+                  </div>
+                  <div>
+                    <label for="silver-unit" class="font-medium text-slate-600 dark:text-slate-300 mb-1 block">Unit</label>
+                    <select id="silver-unit" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 font-medium text-slate-800 dark:text-slate-200 outline-none">
+                      <option value="grams" selected>Grams (g)</option>
+                      <option value="tolas">Tolas (Bhori)</option>
+                      <option value="troy_oz">Troy Oz (oz t)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="silver-purity" class="font-medium text-slate-600 dark:text-slate-300 mb-1 block">Purity</label>
+                    <select id="silver-purity" class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 font-medium text-slate-800 dark:text-slate-200 outline-none">
+                      <option value="999">999 Fine Silver</option>
+                      <option value="925" selected>925 Sterling Silver</option>
+                      <option value="900">900 Coin Silver</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-2 border-t border-slate-200 dark:border-slate-700">
+                  <span class="text-slate-600 dark:text-slate-300">Auto-Computed Silver Value:</span>
+                  <span id="silver-computed-val" class="font-mono font-bold text-slate-700 dark:text-slate-200">$0.00</span>
+                </div>
+
+                <div class="flex items-center justify-between text-[11px] pt-1 text-slate-500">
+                  <span>Or enter direct market valuation:</span>
+                  <div class="flex items-center w-36 px-2 py-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800">
+                    <span class="currency-affix mr-1 font-mono">$</span>
+                    <input type="number" id="silver-direct" placeholder="Direct $" min="0" class="w-full bg-transparent font-mono text-right outline-none">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 3. Shares, Investments & Cryptocurrency -->
+          <div class="category-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden transition-all">
+            <div class="category-header p-5 flex items-center justify-between cursor-pointer border-b border-slate-100 dark:border-slate-800 select-none hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+              <div class="flex items-center space-x-3">
+                <span class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl">📈</span>
+                <div>
+                  <h2 class="text-base font-bold text-slate-900 dark:text-white">3. Shares, Stocks & Liquid Investments</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">Day-trading stocks, mutual funds, cryptocurrency, accessible pension amounts</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3">
+                <span id="subtotal-investments" class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">$0.00</span>
+                <svg class="collapse-icon w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+
+            <div class="category-body p-5 space-y-4 text-xs">
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-stocks-trading" class="font-semibold text-slate-700 dark:text-slate-200 block">Stocks Held for Active Trading</label>
+                  <span class="text-[11px] text-slate-400">100% of current market value is zakatable</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-stocks-trading" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-slate-800 dark:text-slate-100 outline-none text-right">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-stocks-longterm" class="font-semibold text-slate-700 dark:text-slate-200 block">Long-Term Dividend Shares (Zakatable Portion)</label>
+                  <span class="text-[11px] text-slate-400">Liquid assets ratio of company (~25-30% of market value) or dividend earned</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-stocks-longterm" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-slate-800 dark:text-slate-100 outline-none text-right">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-crypto" class="font-semibold text-slate-700 dark:text-slate-200 block">Cryptocurrency & Liquid Digital Assets</label>
+                  <span class="text-[11px] text-slate-400">BTC, ETH, USDT, stablecoins, liquid tokens at current value</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-crypto" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-slate-800 dark:text-slate-100 outline-none text-right">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-mutual-funds" class="font-semibold text-slate-700 dark:text-slate-200 block">Mutual Funds, ETFs & Sukuk</label>
+                  <span class="text-[11px] text-slate-400">Shariah-compliant investment funds & Islamic fixed income</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-mutual-funds" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-slate-800 dark:text-slate-100 outline-none text-right">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-pension" class="font-semibold text-slate-700 dark:text-slate-200 block">Retirement Accounts (Accessible Portion)</label>
+                  <span class="text-[11px] text-slate-400">401(k), IRA, provident funds currently withdrawable minus tax penalties</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-pension" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-slate-800 dark:text-slate-100 outline-none text-right">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Business Inventory & Merchandise -->
+          <div class="category-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden transition-all">
+            <div class="category-header p-5 flex items-center justify-between cursor-pointer border-b border-slate-100 dark:border-slate-800 select-none hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+              <div class="flex items-center space-x-3">
+                <span class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl">🏪</span>
+                <div>
+                  <h2 class="text-base font-bold text-slate-900 dark:text-white">4. Business Inventory & Merchandise</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">Stock held for resale (at wholesale replacement cost) & trade receivables</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3">
+                <span id="subtotal-business" class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">$0.00</span>
+                <svg class="collapse-icon w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+
+            <div class="category-body p-5 space-y-4 text-xs">
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-biz-inventory" class="font-semibold text-slate-700 dark:text-slate-200 block">Wholesale Value of Resale Stock</label>
+                  <span class="text-[11px] text-slate-400">Current cost/wholesale value of goods held for sale. Equipment/machinery is exempt.</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-biz-inventory" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-slate-800 dark:text-slate-100 outline-none text-right">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-biz-cash" class="font-semibold text-slate-700 dark:text-slate-200 block">Business Liquid Cash & Invoices Due</label>
+                  <span class="text-[11px] text-slate-400">Cash in commercial accounts + customer invoices expected soon</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-biz-cash" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-slate-800 dark:text-slate-100 outline-none text-right">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Money Owed to You (Receivables) -->
+          <div class="category-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden transition-all">
+            <div class="category-header p-5 flex items-center justify-between cursor-pointer border-b border-slate-100 dark:border-slate-800 select-none hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+              <div class="flex items-center space-x-3">
+                <span class="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 flex items-center justify-center text-xl">🤝</span>
+                <div>
+                  <h2 class="text-base font-bold text-slate-900 dark:text-white">5. Money Owed to You (Receivables)</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">Personal loans given with expected repayment and security deposits</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3">
+                <span id="subtotal-receivables" class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-teal-50 dark:bg-teal-950 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800">$0.00</span>
+                <svg class="collapse-icon w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+
+            <div class="category-body p-5 space-y-4 text-xs">
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-loans-owed" class="font-semibold text-slate-700 dark:text-slate-200 block">Personal Loans Given (Repayable)</label>
+                  <span class="text-[11px] text-slate-400">Loans to solvent borrowers. Exclude bad/hopeless debts until recovered.</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-loans-owed" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-slate-800 dark:text-slate-100 outline-none text-right">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-deposits" class="font-semibold text-slate-700 dark:text-slate-200 block">Refundable Security Deposits</label>
+                  <span class="text-[11px] text-slate-400">Rental or utility security deposits that will be returned to you</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-deposits" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-slate-800 dark:text-slate-100 outline-none text-right">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Deductible Liabilities & Debts -->
+          <div class="category-card bg-white dark:bg-slate-900 border border-red-200 dark:border-red-900/40 rounded-2xl shadow-sm overflow-hidden transition-all">
+            <div class="category-header p-5 flex items-center justify-between cursor-pointer border-b border-red-100 dark:border-red-900/30 select-none hover:bg-red-50/30 dark:hover:bg-red-950/20">
+              <div class="flex items-center space-x-3">
+                <span class="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 flex items-center justify-center text-xl">🧾</span>
+                <div>
+                  <h2 class="text-base font-bold text-slate-900 dark:text-white">6. Deductible Short-Term Liabilities</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">Immediate debts, overdue bills, unpaid salaries, pending supplier dues</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3">
+                <span id="subtotal-deductions" class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-red-50 dark:bg-red-950 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800">-$0.00</span>
+                <svg class="collapse-icon w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+
+            <div class="category-body p-5 space-y-4 text-xs">
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-debt-immediate" class="font-semibold text-slate-700 dark:text-slate-200 block">Immediate Personal Debts & Credit Cards</label>
+                  <span class="text-[11px] text-slate-400">Due now. For mortgages, deduct ONLY the immediate monthly payment due.</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-red-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-debt-immediate" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-red-600 dark:text-red-400 outline-none text-right">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-due-bills" class="font-semibold text-slate-700 dark:text-slate-200 block">Due Rent & Household Utility Bills</label>
+                  <span class="text-[11px] text-slate-400">Overdue or currently billed rent, utilities, medical bills</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-red-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-due-bills" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-red-600 dark:text-red-400 outline-none text-right">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-unpaid-wages" class="font-semibold text-slate-700 dark:text-slate-200 block">Unpaid Employee Wages & Service Dues</label>
+                  <span class="text-[11px] text-slate-400">Salaries owed to workers/household staff ready for payout</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-red-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-unpaid-wages" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-red-600 dark:text-red-400 outline-none text-right">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+                <div class="sm:col-span-7">
+                  <label for="input-supplier-dues" class="font-semibold text-slate-700 dark:text-slate-200 block">Commercial Trade Payables Due</label>
+                  <span class="text-[11px] text-slate-400">Supplier invoices for inventory already received and due now</span>
+                </div>
+                <div class="sm:col-span-5 flex items-center rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 focus-within:ring-2 focus-within:ring-red-500">
+                  <span class="currency-affix font-mono font-semibold text-slate-400 mr-2">$</span>
+                  <input type="number" id="input-supplier-dues" data-field placeholder="0" min="0" step="any" class="w-full bg-transparent font-mono font-bold text-red-600 dark:text-red-400 outline-none text-right">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="flex items-center justify-between pt-2">
+            <button id="btn-load-demo" class="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-sm flex items-center space-x-1.5">
+              <span>📋</span>
+              <span>Load Example Portfolio</span>
+            </button>
+            <button id="btn-reset-form" class="px-4 py-2 rounded-xl text-xs font-semibold text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 transition">
+              Clear All Fields
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Sticky Summary & Calculation Statement (5 Cols) -->
+        <div class="lg:col-span-5 sticky top-20 space-y-4">
+          
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-xl space-y-5">
+            
+            <div class="flex justify-between items-center pb-3 border-b border-slate-100 dark:border-slate-800">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Live Assessment</span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">Zakat Statement</h3>
+              </div>
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
+                Hawl (1 Lunar Year)
+              </span>
+            </div>
+
+            <!-- Breakdown Numbers -->
+            <div class="space-y-2.5 text-xs">
+              <div class="flex justify-between items-center">
+                <span class="text-slate-500 dark:text-slate-400">Gross Zakatable Assets</span>
+                <span id="sum-total-assets" class="font-mono font-bold text-slate-900 dark:text-white">$0.00</span>
+              </div>
+
+              <div class="flex justify-between items-center">
+                <span class="text-slate-500 dark:text-slate-400">Deductible Liabilities</span>
+                <span id="sum-total-deductions" class="font-mono font-bold text-red-600 dark:text-red-400">-$0.00</span>
+              </div>
+
+              <!-- Net Zakatable Wealth Card -->
+              <div class="bg-slate-50 dark:bg-slate-800/60 p-3.5 rounded-xl flex justify-between items-center border border-slate-200/80 dark:border-slate-700/60 mt-2">
+                <div>
+                  <div class="text-[11px] font-bold text-slate-700 dark:text-slate-200">Net Zakatable Wealth</div>
+                  <div class="text-[10px] text-slate-400">Assets minus deductible debts</div>
+                </div>
+                <div id="sum-net-wealth" class="text-lg font-mono font-black text-slate-900 dark:text-white">$0.00</div>
+              </div>
+
+              <div class="flex justify-between items-center pt-2">
+                <span class="text-slate-500 dark:text-slate-400">Selected Nisab Threshold:</span>
+                <span id="sum-nisab-threshold" class="font-mono font-semibold text-slate-700 dark:text-slate-300">$600.11 (Silver)</span>
+              </div>
+            </div>
+
+            <!-- Status Badge & Box -->
+            <div id="sum-nisab-status-box" class="nisab-status-box not-reached p-4 rounded-2xl flex items-start space-x-3 transition-colors">
+              <span id="sum-nisab-status-icon" class="text-lg leading-none mt-0.5 font-bold">ℹ</span>
+              <div>
+                <div class="flex items-center space-x-2">
+                  <div id="sum-nisab-status-title" class="text-xs font-bold leading-snug">Below Nisab: No Zakat Due</div>
+                </div>
+                <div id="sum-nisab-status-sub" class="text-[11px] opacity-80 mt-1 leading-relaxed">
+                  Enter your assets on the left to check if your wealth meets the Nisab threshold.
+                </div>
+              </div>
+            </div>
+
+            <!-- Calendar Cycle Toggle (Lunar vs Solar) -->
+            <div class="flex items-center justify-between text-xs bg-slate-50 dark:bg-slate-800/40 p-2.5 rounded-xl border border-slate-200 dark:border-slate-800">
+              <span class="text-slate-600 dark:text-slate-400 font-medium">Cycle:</span>
+              <div class="flex items-center space-x-1.5">
+                <button class="rate-pill-btn active px-2.5 py-1 rounded-lg text-xs font-semibold transition" data-rate="lunar">Lunar (2.50%)</button>
+                <button class="rate-pill-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition" data-rate="solar">Solar (2.577%)</button>
+              </div>
+            </div>
+
+            <!-- Prominent Grand Total Card -->
+            <div class="bg-gradient-to-br from-emerald-600 to-teal-700 text-white rounded-2xl p-5 text-center shadow-lg shadow-emerald-900/20">
+              <div class="text-xs font-bold uppercase tracking-wider text-emerald-100">Exact Zakat Obligation Due</div>
+              <div id="sum-zakat-due-amount" class="text-4xl font-mono font-black mt-2 tracking-tight">$0.00</div>
+              <div id="sum-rate-notice" class="text-xs text-emerald-200 mt-1">2.50% (Lunar Hawl standard)</div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="space-y-2 pt-1">
+              <button id="btn-print" class="w-full py-3 rounded-xl bg-slate-900 dark:bg-emerald-600 hover:bg-slate-800 dark:hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center justify-center space-x-2 shadow-md">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                <span>Print Official Zakat Statement</span>
+              </button>
+
+              <button id="btn-copy-summary" class="w-full py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center justify-center space-x-1.5">
+                <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy Summary Breakdown</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== TAB 2: EDUCATIONAL FIQH GUIDE & 8 RECIPIENTS ==================== -->
+    <div id="tab-guide" class="tab-pane space-y-8">
+      
+      <!-- Quranic Ayah Banner: Surah At-Tawbah 9:60 -->
+      <div class="bg-gradient-to-br from-emerald-900 to-slate-900 text-white p-6 sm:p-8 rounded-3xl border border-emerald-700/40 shadow-xl space-y-4">
+        <div class="flex justify-between items-center">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-400">The Divine Mandate</span>
+          <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-800/80 text-emerald-200">Surah At-Tawbah (9:60)</span>
+        </div>
+        
+        <p class="font-arabic text-xl sm:text-2xl text-amber-200 leading-loose text-center sm:text-right">
+          إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ وَالْعَامِلِينَ عَلَيْهَا وَالْمُؤَلَّفَةِ قُلُوبُهُمْ وَفِي الرِّقَابِ وَالْغَارِمِينَ وَفِي سَبِيلِ اللَّهِ وَابْنِ السَّبِيلِ ۖ فَرِيضَةً مِّنَ اللَّهِ ۗ وَاللَّهُ عَلِيمٌ حَكِيمٌ
+        </p>
+
+        <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
+          "Zakat expenditures are only for the poor and for the needy and for those employed to collect [zakat] and for bringing hearts together [for Islam] and for freeing captives [or slaves] and for those in debt and for the cause of Allah and for the [stranded] traveler - an obligation [imposed] by Allah. And Allah is Knowing and Wise."
+        </p>
+      </div>
+
+      <!-- Overview Header -->
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-heading">
+          The 8 Quranic Categories of Zakat Recipients (Asnaf)
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          Unlike voluntary charity (Sadaqah) which may be given to anyone, Zakat is exclusively restricted by divine revelation to these eight specific categories.
+        </p>
+      </div>
+
+      <!-- 8 Categories Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">01</span>
+            <span class="font-arabic text-lg text-emerald-600 dark:text-emerald-400">الْفُقَرَاء</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">1. Al-Fuqara (The Extreme Poor)</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            Individuals who possess no wealth or have wealth below half of the Nisab threshold, unable to meet basic biological survival necessities.
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">02</span>
+            <span class="font-arabic text-lg text-emerald-600 dark:text-emerald-400">الْمَسَاكِين</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">2. Al-Masakin (The Destitute / Needy)</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            Those who have some income or work, but whose total earnings fall short of their essential cost of living, leaving them in persistent deficit.
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">03</span>
+            <span class="font-arabic text-lg text-emerald-600 dark:text-emerald-400">الْعَامِلِينَ عَلَيْهَا</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">3. Al-Amilina 'Alayha (Administrators)</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            The trustworthy appointed staff and auditors tasked with collecting, cataloging, securing, and disbursing Zakat to eligible recipients.
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">04</span>
+            <span class="font-arabic text-lg text-emerald-600 dark:text-emerald-400">الْمُؤَلَّفَةِ قُلُوبُهُمْ</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">4. Al-Mu'allafati Qulubuhum</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            New Muslim converts who experience financial boycott, displacement, or social ostracization, or those whose hearts are softened toward Islam.
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">05</span>
+            <span class="font-arabic text-lg text-emerald-600 dark:text-emerald-400">فِي الرِّقَاب</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">5. Fir-Riqab (Freeing Captives)</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            Historically used to manumit slaves. In modern jurisprudence, applied to liberating modern victims of human trafficking, bonded labor, and unlawful detention.
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">06</span>
+            <span class="font-arabic text-lg text-emerald-600 dark:text-emerald-400">الْغَارِمِين</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">6. Al-Gharimin (The Debt-Stricken)</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            Individuals overwhelmed by legitimate debts incurred for survival, medical crises, or disaster recovery, with zero realistic ability to repay.
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">07</span>
+            <span class="font-arabic text-lg text-emerald-600 dark:text-emerald-400">فِي سَبِيلِ اللَّه</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">7. Fi Sabilillah (In Allah's Cause)</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            Those dedicated to the legitimate defense of Muslim lands, the propagation of sacred Islamic knowledge, and frontline humanitarian struggle.
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">08</span>
+            <span class="font-arabic text-lg text-emerald-600 dark:text-emerald-400">ابْنِ السَّبِيل</span>
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">8. Ibnus-Sabil (The Stranded Wayfarer)</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            Travelers or refugees cut off from their funds or resources while away from home, even if they hold substantial assets in their homeland.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Who CANNOT Receive Zakat & Hawl Rules -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+        
+        <div class="bg-red-50/50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40 rounded-2xl p-6 space-y-3">
+          <h3 class="text-sm font-bold text-red-800 dark:text-red-300 flex items-center space-x-2">
+            <span>⛔</span>
+            <span>Who CANNOT Receive Your Zakat</span>
+          </h3>
+          <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-2">
+            <li>• <strong>Direct Ascendants:</strong> Parents, grandparents, great-grandparents (you are already obligated to maintain them).</li>
+            <li>• <strong>Direct Descendants:</strong> Children, grandchildren, great-grandchildren.</li>
+            <li>• <strong>Spouse:</strong> A husband cannot give Zakat to his wife, as he is legally bound to provide her maintenance.</li>
+            <li>• <strong>The Wealthy:</strong> Anyone possessing net wealth at or above the Nisab threshold.</li>
+            <li>• <strong>The Prophet's Family:</strong> Descendants of Banu Hashim.</li>
+            <li>• <strong>Public Works:</strong> Bridges, mosques, generic civil infrastructure (use Sadaqah Jariyah instead).</li>
+          </ul>
+        </div>
+
+        <div class="bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 rounded-2xl p-6 space-y-3">
+          <h3 class="text-sm font-bold text-emerald-800 dark:text-emerald-300 flex items-center space-x-2">
+            <span>⏱️</span>
+            <span>The Hawl (1 Complete Lunar Year) Rule</span>
+          </h3>
+          <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-2 leading-relaxed">
+            <li>• <strong>Anniversary Date:</strong> Zakat is calculated once your net wealth has exceeded Nisab and remained above it for 354 lunar days.</li>
+            <li>• <strong>Mid-Year Fluctuations:</strong> In Sunni consensus (Hanafi, Hanbali), you do not track day-to-day transactions; you evaluate the net qualifying balance on your annual Zakat due date.</li>
+            <li>• <strong>Advance Payments:</strong> Permissible in Islamic law. If you gave money during the year for emergency appeals, deduct it from your final Hawl statement.</li>
+            <li>• <strong>Ramadan Tradition:</strong> Muslims frequently designate Ramadan as their annual Zakat milestone for maximum divine reward.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ==================== TAB 3: CHARITY DIRECTORY ==================== -->
+    <div id="tab-directory" class="tab-pane space-y-6">
+      
+      <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white font-heading">Verified Islamic Charities Directory</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Distribute your Zakat with 100% policy compliance, zero overhead deductions, and independent NGO auditing.</p>
+          </div>
+          <div class="px-3 py-1.5 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-semibold">
+            🛡️ 100% Zakat Policy Audited
+          </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="mt-5">
+          <input type="text" id="charity-search-input" placeholder="Search charities by name, cause (e.g. Gaza, Orphans, Water), or country..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+
+        <!-- Filter Chips -->
+        <div class="flex items-center space-x-2 mt-3 overflow-x-auto pb-1 text-xs">
+          <button class="filter-chip active px-3 py-1.5 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium transition" data-category="all">All Causes</button>
+          <button class="filter-chip px-3 py-1.5 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium transition" data-category="emergency">Emergency & Gaza</button>
+          <button class="filter-chip px-3 py-1.5 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium transition" data-category="orphans">Orphans</button>
+          <button class="filter-chip px-3 py-1.5 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium transition" data-category="water">Water Wells</button>
+          <button class="filter-chip px-3 py-1.5 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium transition" data-category="healthcare">Healthcare</button>
+        </div>
+      </div>
+
+      <!-- Charities Grid (Populated by zakat-engine.js) -->
+      <div id="charity-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered by zakat-engine.js -->
+      </div>
+
+    </div>
+
+    <!-- ==================== TAB 4: FAQS ==================== -->
+    <div id="tab-faq" class="tab-pane space-y-4">
+      <div class="text-center max-w-xl mx-auto py-2">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white font-heading">Frequently Asked Questions</h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Authentic fiqh answers on modern investments, personal jewelry, debts, and Nisab criteria.</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-3">
+        
+        <div class="faq-item open bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
+          <button class="faq-question-btn w-full p-4 text-left font-bold text-xs sm:text-sm text-slate-900 dark:text-white flex justify-between items-center select-none">
+            <span>Should I use the Silver or Gold Nisab?</span>
+            <svg class="faq-chevron w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer px-4 pb-4 text-xs text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800 pt-3 leading-relaxed">
+            During prophetic times, 20 Mithqals of Gold (87.48g) and 200 Dirhams of Silver (612.36g) held equal purchasing power. Over the centuries, silver depreciated substantially compared to gold. Today, <strong>the vast majority of contemporary scholars and international Fiqh academies mandate using the Silver Nisab</strong> for cash, bank deposits, and general trade. Using Silver is spiritually safer, removes all doubt regarding obligation, and maximizes distribution to the poor. Gold Nisab may be applied when calculating exclusively gold holdings.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
+          <button class="faq-question-btn w-full p-4 text-left font-bold text-xs sm:text-sm text-slate-900 dark:text-white flex justify-between items-center select-none">
+            <span>How do I calculate Zakat on 401(k), IRA, or Pension Funds?</span>
+            <svg class="faq-chevron w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer px-4 pb-4 text-xs text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800 pt-3 leading-relaxed">
+            Scholars distinguish between accessible and locked funds:
+            <br><br>
+            <strong>1. Fully accessible accounts:</strong> If you are permitted to withdraw funds at will (e.g. Traditional/Roth IRA, withdrawable 401k), Zakat is due on the net accessible amount—the total balance minus early withdrawal penalties and estimated tax.
+            <br><br>
+            <strong>2. Locked pension schemes:</strong> If your employer or law strictly locks the funds until retirement age with no access, no Zakat is due during lockup. When you receive payout, you pay 2.5% upon receipt.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
+          <button class="faq-question-btn w-full p-4 text-left font-bold text-xs sm:text-sm text-slate-900 dark:text-white flex justify-between items-center select-none">
+            <span>Do I pay Zakat on personal gold jewelry that I wear regularly?</span>
+            <svg class="faq-chevron w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer px-4 pb-4 text-xs text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800 pt-3 leading-relaxed">
+            There is a classical scholarly distinction:
+            <br><br>
+            • <strong>Hanafi Madhhab:</strong> Zakat is obligatory on ALL gold and silver, whether worn regularly, stored as bullion, or gifted, once it meets Nisab.
+            <br>
+            • <strong>Shafi'i, Maliki, Hanbali:</strong> Customary jewelry worn for personal daily use is exempt as personal apparel. Any excess kept for savings or investment is zakatable.
+            <br><br>
+            To err on the side of caution and generosity, many scholars encourage calculating Zakat on all gold jewelry.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
+          <button class="faq-question-btn w-full p-4 text-left font-bold text-xs sm:text-sm text-slate-900 dark:text-white flex justify-between items-center select-none">
+            <span>Are personal homes, vehicles, and laptops zakatable?</span>
+            <svg class="faq-chevron w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer px-4 pb-4 text-xs text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800 pt-3 leading-relaxed">
+            <strong>No.</strong> Your primary residence, vehicle, clothes, furniture, appliances, and tools of trade are 100% exempt from Zakat regardless of market value. Zakat is only assessed on productive, tradeable, or liquid surplus wealth (Al-Mal An-Nami).
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
+          <button class="faq-question-btn w-full p-4 text-left font-bold text-xs sm:text-sm text-slate-900 dark:text-white flex justify-between items-center select-none">
+            <span>Can I give Zakat to poor family members or relatives?</span>
+            <svg class="faq-chevron w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer px-4 pb-4 text-xs text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800 pt-3 leading-relaxed">
+            <strong>Yes, and it yields double reward!</strong> The Prophet ﷺ taught that giving charity to poor relatives brings both the reward of charity and the reward of upholding family ties (Silat ar-Rahim). Eligible relatives include needy brothers, sisters, uncles, aunts, nephews, nieces, and cousins who qualify under the Nisab standard. You cannot give Zakat to parents, grandparents, children, or your spouse.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm">
+          <button class="faq-question-btn w-full p-4 text-left font-bold text-xs sm:text-sm text-slate-900 dark:text-white flex justify-between items-center select-none">
+            <span>Why is there a difference between Lunar (2.50%) and Solar (2.577%) rates?</span>
+            <svg class="faq-chevron w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer px-4 pb-4 text-xs text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-800 pt-3 leading-relaxed">
+            The Islamic calendar is lunar (354 days), for which the revealed Zakat rate is 2.500%. A Gregorian solar year is 365.25 days—about 11 days longer. If you align your financial books with the solar tax year, Islamic economists recommend paying <strong>2.577%</strong> to cover the extra 11 days and ensure exact equity.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <!-- Brand Info -->
+        <div class="space-y-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-2xl">🌙</span>
+            <span class="text-lg font-bold text-white font-heading">NoorHub</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The authentic unified Islamic digital living platform. Providing precision prayer schedules, fasting companions, zakat tools, and prophetic hadith without commercial tracking.
+          </p>
+          <p class="text-xs text-emerald-400 font-arabic pt-1">
+            صَدَقَةٌ جَارِيَةٌ لِوَجْهِ اللَّهِ تَعَالَى
+          </p>
+        </div>
+
+        <!-- Quick Links: Core Tools -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Core Tools</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="prayer-times.html" class="hover:text-emerald-400 transition">Prayer Times & Qibla</a></li>
+            <li><a href="fasting.html" class="hover:text-emerald-400 transition">Fasting & Ramadan Tracker</a></li>
+            <li><a href="tasbih.html" class="hover:text-emerald-400 transition">Digital Tasbih & Adhkar</a></li>
+            <li><a href="zakat.html" class="text-emerald-400 font-semibold transition">Zakat Calculator & Nisab</a></li>
+            <li><a href="hadith.html" class="hover:text-emerald-400 transition">40 Hadith of Imam Nawawi</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources & Knowledge -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Resources</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="names.html" class="hover:text-emerald-400 transition">Islamic Baby Names (Ism)</a></li>
+            <li><a href="inheritance.html" class="hover:text-emerald-400 transition">Faraid Inheritance Engine</a></li>
+            <li><a href="halal-guide.html" class="hover:text-emerald-400 transition">Halal Food & E-Numbers</a></li>
+            <li><a href="99-names.html" class="hover:text-emerald-400 transition">99 Names of Allah</a></li>
+            <li><a href="mosque.html" class="hover:text-emerald-400 transition">Mosque TV Kiosk Mode</a></li>
+          </ul>
+        </div>
+
+        <!-- Trust & About -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">About & Trust</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="about.html" class="hover:text-emerald-400 transition">About NoorHub Initiative</a></li>
+            <li><a href="contact.html" class="hover:text-emerald-400 transition">Contact & Feedback</a></li>
+            <li><a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Commitment (Zero Tracking)</a></li>
+            <li><a href="terms.html" class="hover:text-emerald-400 transition">Terms of Service</a></li>
+            <li class="pt-2 text-[11px] text-slate-500">Contact: siddiknurealam1@gmail.com</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <p>© 2026 NoorHub. Free, Open & Waqf-dedicated. All rights reserved for the Ummah.</p>
+        <div class="flex space-x-4 mt-2 sm:mt-0">
+          <span>noorhub.truxio.bond</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div id="toast-notice" class="toast-notice bg-slate-900 dark:bg-slate-800 text-white px-4 py-3 rounded-2xl shadow-2xl border border-slate-700 flex items-center space-x-2 text-xs">
+    <span class="text-emerald-400 font-bold">✓</span>
+    <span class="toast-text font-medium">Calculation updated</span>
+  </div>
+
+  <!-- Print Statement Container -->
+  <div id="print-only-statement" class="hidden"></div>
+
+  <!-- Shared Scripts & Zakat Calculation Engine -->
+  <script src="shared.js"></script>
+  <script src="zakat-engine.js"></script>
+</body>
+</html>

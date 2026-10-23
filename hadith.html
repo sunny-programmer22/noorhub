@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 40 Hadith of Imam An-Nawawi - NoorHub</title>
+  <meta name="description" content="Complete 42 Hadith collection of Imam an-Nawawi (Al-Arba'in an-Nawawiyyah). Arabic calligraphy with tashkeel, English translation, audio recitations, fawa'id insights, and interactive memorization flashcards.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b', 950: '#022c22' },
+            amber: { 50: '#fffbeb', 100: '#fef3c7', 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309' },
+            slate: { 850: '#131c2e', 900: '#0f172a', 950: '#0b0f19' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>">
+  <style>
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    .card-flipper {
+      transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    }
+    .card-flipper.is-flipped {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-emerald-900 text-emerald-100 text-xs py-1.5 px-4 text-center border-b border-emerald-800 flex justify-between items-center max-w-7xl mx-auto w-full">
+    <div class="hidden sm:flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>NoorHub Digital Waqf • Al-Arba'in an-Nawawiyyah (الأربعون النووية)</span>
+    </div>
+    <div class="mx-auto sm:mr-0 flex items-center space-x-4">
+      <span id="header-hijri-date" class="font-medium">1448 AH</span>
+      <span class="text-emerald-400">•</span>
+      <span id="header-clock" class="font-mono font-semibold">--:--:--</span>
+    </div>
+  </div>
+
+  <!-- Primary Navigation -->
+  <header class="sticky top-0 z-50 glass-header shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-900/20 group-hover:scale-105 transition-transform">
+            <span class="text-xl">🌙</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white font-heading">NoorHub</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-semibold uppercase tracking-wider">Hadith</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-arabic leading-none -mt-0.5">الأربعون النووية</p>
+          </div>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a href="index.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Portal</a>
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat & Qibla</a>
+          <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
+          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih</a>
+          <a href="hadith.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">40 Hadith</a>
+          <a href="zakat.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Zakat</a>
+          <a href="names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Names</a>
+          <a href="inheritance.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Inheritance</a>
+          <a href="halal-guide.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Halal Guide</a>
+          <a href="mosque.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Mosque Kiosk</a>
+        </nav>
+
+        <!-- Right Controls: Theme Toggle & Mobile Menu -->
+        <div class="flex items-center space-x-2">
+          <button class="theme-toggle-btn p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Toggle Light/Dark Theme">
+            <span class="dark:hidden text-lg">🌙</span>
+            <span class="hidden dark:inline text-lg">☀️</span>
+          </button>
+
+          <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-1 text-sm shadow-xl">
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">NoorHub Home</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Salat & Qibla Compass</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Sawm & Fasting Companion</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Digital Tasbih & Adhkar</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">The 40 Hadith of Imam Nawawi</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Zakat Multi-Asset Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Islamic Baby Names (Ism)</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Halal Food Guide</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Mosque TV Kiosk Mode</a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-8">
+
+    <!-- Hero Header Card -->
+    <div class="relative overflow-hidden bg-gradient-to-br from-emerald-900 via-emerald-800 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl border border-emerald-700/40">
+      <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none font-arabic text-9xl">
+        الأربعون
+      </div>
+      <div class="relative z-10 max-w-3xl space-y-4">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 text-xs font-semibold uppercase tracking-wider">
+          <span>📚 Prophetic Compendium</span>
+          <span>•</span>
+          <span class="font-arabic">الأربعون النَّوَوِيَّة</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black font-heading tracking-tight leading-tight">
+          The 40 Hadith of Imam An-Nawawi
+        </h1>
+        <p class="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
+          The essential foundational sayings of the Prophet Muhammad ﷺ, encompassing the pillars of Islam, faith, character, sincerity, and asceticism. Hand-curated by Imam Yahya ibn Sharaf an-Nawawi (رحمه الله).
+        </p>
+
+        <!-- Quick Stats & Badges -->
+        <div class="pt-2 flex flex-wrap items-center gap-3 text-xs">
+          <div class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+            <span class="text-amber-400 font-bold">42</span>
+            <span class="text-slate-200">Complete Ahadith</span>
+          </div>
+          <div class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+            <span class="text-emerald-300 font-bold">100%</span>
+            <span class="text-slate-200">Sahih & Hasan Chains</span>
+          </div>
+          <div class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+            <span>🎧</span>
+            <span class="text-slate-200">Audio Recitations</span>
+          </div>
+          <div class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+            <span id="stat-memorized-badge" class="text-amber-300 font-bold">0 / 42</span>
+            <span class="text-slate-200">Memorized</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Bar: Search, Filters & View Mode Switcher -->
+    <section class="glass-card bg-white dark:bg-slate-900 p-4 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+      
+      <!-- Top Row: Search and View Mode Buttons -->
+      <div class="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+        
+        <!-- Search Input -->
+        <div class="relative flex-grow max-w-xl">
+          <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </span>
+          <input 
+            type="text" 
+            id="hadith-search-input" 
+            placeholder="Search by number (1-42), narrator, Arabic text, or English keyword..." 
+            class="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+          >
+          <button id="hadith-clear-search" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+            ✕
+          </button>
+        </div>
+
+        <!-- Right Side: Quick Jump & Mode Switcher -->
+        <div class="flex flex-wrap items-center gap-2 justify-end">
+          
+          <!-- Quick Jump Dropdown -->
+          <div class="relative">
+            <select id="quick-jump-select" class="px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-emerald-500 outline-none">
+              <option value="">Jump to Hadith #</option>
+              <!-- Populated by JS -->
+            </select>
+          </div>
+
+          <!-- View Mode Toggle (Reader vs Flashcard) -->
+          <div class="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+            <button id="btn-mode-reader" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-white dark:bg-emerald-600 text-emerald-700 dark:text-white shadow-sm">
+              <span>📖</span>
+              <span>Full Reader</span>
+            </button>
+            <button id="btn-mode-flashcard" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400">
+              <span>🎴</span>
+              <span>Memorization Mode</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom Row: Topic Tags & Status Filters -->
+      <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
+        <span class="font-semibold text-slate-500 dark:text-slate-400 mr-1">Topics:</span>
+        <button class="topic-filter-btn px-2.5 py-1 rounded-lg font-medium bg-emerald-600 text-white" data-topic="all">All (42)</button>
+        <button class="topic-filter-btn px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" data-topic="Intention">Intention & Sincerity</button>
+        <button class="topic-filter-btn px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" data-topic="Faith">Faith & Islam</button>
+        <button class="topic-filter-btn px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" data-topic="Halal">Halal & Pure</button>
+        <button class="topic-filter-btn px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" data-topic="Character">Good Character</button>
+        <button class="topic-filter-btn px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" data-topic="Taqwa">Taqwa & Piety</button>
+        <button class="topic-filter-btn px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" data-topic="Brotherhood">Brotherhood</button>
+        
+        <div class="ml-auto flex items-center space-x-2">
+          <button id="filter-memorized-toggle" class="px-2.5 py-1 rounded-lg font-medium text-xs bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-900/40 hover:bg-amber-100 transition flex items-center space-x-1">
+            <span>⭐ Memorized Only</span>
+          </button>
+          <span id="results-count" class="text-slate-400 font-mono text-[11px]">Showing 42 of 42</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SECTION: FLASHCARD MEMORIZATION MODE (Hidden by default or toggled) -->
+    <section id="flashcard-section" class="hidden space-y-6">
+      
+      <!-- Memorization Progress Card -->
+      <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">🎴</span>
+            <h2 class="text-lg font-bold text-slate-900 dark:text-white font-heading">Hifdh Memorization Deck</h2>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            Step through cards 1 to 42. Click card or press <kbd class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-mono border">Space</kbd> to flip between Arabic matn and English translation.
+          </p>
+        </div>
+
+        <!-- Progress Metrics -->
+        <div class="flex items-center space-x-4 w-full sm:w-auto">
+          <div class="flex-grow sm:flex-grow-0 sm:w-48 space-y-1">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-slate-600 dark:text-slate-300">Memorized</span>
+              <span id="flashcard-progress-text" class="text-emerald-600 dark:text-emerald-400">0% (0/42)</span>
+            </div>
+            <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
+              <div id="flashcard-progress-bar" class="bg-emerald-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+          </div>
+          <button id="btn-reset-memorized" class="text-xs text-slate-400 hover:text-red-500 transition underline whitespace-nowrap">
+            Reset Progress
+          </button>
+        </div>
+      </div>
+
+      <!-- Flashcard Interactive 3D Stage -->
+      <div class="perspective-1000 max-w-3xl mx-auto min-h-[440px] sm:min-h-[420px] relative cursor-pointer" id="flashcard-container">
+        
+        <div id="flashcard-flipper" class="card-flipper transform-style-3d relative w-full h-full min-h-[440px] sm:min-h-[420px]">
+          
+          <!-- FRONT FACE (Arabic Focus) -->
+          <div class="backface-hidden absolute inset-0 w-full h-full bg-gradient-to-br from-white to-emerald-50/40 dark:from-slate-900 dark:to-emerald-950/20 p-6 sm:p-8 rounded-3xl border-2 border-emerald-500/40 dark:border-emerald-500/30 shadow-xl flex flex-col justify-between">
+            <div class="flex justify-between items-start">
+              <div class="flex items-center space-x-2">
+                <span id="fc-front-number" class="w-9 h-9 rounded-xl bg-emerald-600 text-white font-bold text-sm flex items-center justify-center shadow-md">
+                  #1
+                </span>
+                <div>
+                  <h3 id="fc-front-title-ar" class="font-arabic text-xl font-bold text-slate-900 dark:text-white leading-tight">الأعمال بالنيات</h3>
+                  <p id="fc-front-title-en" class="text-xs text-slate-500 dark:text-slate-400 font-medium">Actions Are By Intentions</p>
+                </div>
+              </div>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300">
+                Front: Arabic Matn
+              </span>
+            </div>
+
+            <!-- Narrator Badge -->
+            <div class="text-center my-2">
+              <span id="fc-front-narrator" class="inline-block text-xs font-arabic text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-3 py-1 rounded-full border border-amber-200 dark:border-amber-900/40">
+                عن أمير المؤمنين أبي حفص عمر بن الخطاب رضي الله عنه
+              </span>
+            </div>
+
+            <!-- Arabic Text Body -->
+            <div class="my-auto py-4 overflow-y-auto max-h-[220px]">
+              <p id="fc-front-arabic" class="font-arabic text-xl sm:text-2xl text-center text-slate-900 dark:text-emerald-100 leading-loose select-none">
+                <!-- Text Injected -->
+              </p>
+            </div>
+
+            <!-- Flip Hint Footer -->
+            <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+              <span class="flex items-center space-x-1">
+                <span>🔄</span>
+                <span>Click card or press <b>Space</b> to reveal English</span>
+              </span>
+              <span id="fc-front-index" class="font-mono font-bold text-emerald-600">1 / 42</span>
+            </div>
+          </div>
+
+          <!-- BACK FACE (English Translation & Lesson Focus) -->
+          <div class="backface-hidden rotate-y-180 absolute inset-0 w-full h-full bg-gradient-to-br from-white to-amber-50/40 dark:from-slate-900 dark:to-amber-950/20 p-6 sm:p-8 rounded-3xl border-2 border-amber-500/40 dark:border-amber-500/30 shadow-xl flex flex-col justify-between">
+            <div class="flex justify-between items-start">
+              <div class="flex items-center space-x-2">
+                <span id="fc-back-number" class="w-9 h-9 rounded-xl bg-amber-600 text-white font-bold text-sm flex items-center justify-center shadow-md">
+                  #1
+                </span>
+                <div>
+                  <h3 id="fc-back-title-en" class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-tight">Actions Are By Intentions</h3>
+                  <p id="fc-back-source" class="text-xs text-slate-500 dark:text-slate-400 font-medium">al-Bukhari and Muslim</p>
+                </div>
+              </div>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-300">
+                Back: English & Insight
+              </span>
+            </div>
+
+            <!-- Narrator in English -->
+            <div class="text-left my-1">
+              <p id="fc-back-narrator" class="text-xs font-medium text-emerald-700 dark:text-emerald-400">
+                Narrated by: Umar ibn al-Khattab (RA)
+              </p>
+            </div>
+
+            <!-- English Translation Body -->
+            <div class="my-auto py-2 overflow-y-auto max-h-[180px] space-y-3">
+              <blockquote id="fc-back-english" class="text-sm sm:text-base text-slate-700 dark:text-slate-200 leading-relaxed italic border-l-2 border-amber-500 pl-3">
+                <!-- Text Injected -->
+              </blockquote>
+              <div id="fc-back-takeaway" class="p-3 rounded-xl bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300">
+                <!-- Takeaway Injected -->
+              </div>
+            </div>
+
+            <!-- Flip Back Hint Footer -->
+            <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
+              <span class="flex items-center space-x-1">
+                <span>🔄</span>
+                <span>Click card to flip back to Arabic</span>
+              </span>
+              <span id="fc-back-index" class="font-mono font-bold text-amber-600">1 / 42</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Flashcard Controls Bar -->
+      <div class="max-w-3xl mx-auto flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        
+        <!-- Prev / Next & Flip Buttons -->
+        <div class="flex items-center space-x-2">
+          <button id="fc-btn-prev" class="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center space-x-1">
+            <span>←</span>
+            <span>Prev</span>
+          </button>
+          <button id="fc-btn-flip" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow-sm transition flex items-center space-x-1">
+            <span>↻</span>
+            <span>Flip</span>
+          </button>
+          <button id="fc-btn-next" class="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center space-x-1">
+            <span>Next</span>
+            <span>→</span>
+          </button>
+        </div>
+
+        <!-- Shuffle / Random -->
+        <button id="fc-btn-random" class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center space-x-1.5">
+          <span>🎲</span>
+          <span>Shuffle Card</span>
+        </button>
+
+        <!-- Memorization Status Toggle -->
+        <div class="flex items-center space-x-2">
+          <button id="fc-btn-toggle-memorized" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-emerald-100 dark:hover:bg-emerald-950/60 hover:text-emerald-700 dark:hover:text-emerald-300 text-xs font-bold transition flex items-center space-x-1.5 border border-slate-200 dark:border-slate-700">
+            <span class="icon">⚪</span>
+            <span class="label">Mark as Memorized</span>
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SECTION: FULL READER MODE (Default) -->
+    <section id="reader-section" class="space-y-6">
+      <div id="hadith-cards-container" class="space-y-6">
+        <!-- Hadith Cards injected via JavaScript -->
+      </div>
+
+      <!-- No Results Empty State -->
+      <div id="hadith-no-results" class="hidden text-center py-16 px-4 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-3">
+        <span class="text-5xl">🔍</span>
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">No Matching Hadith Found</h3>
+        <p class="text-sm text-slate-500 max-w-md mx-auto">
+          We couldn't find any Hadith matching your search terms. Try searching by number (1 to 42), narrator name, or broad keywords.
+        </p>
+        <button id="btn-reset-search" class="mt-2 px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-semibold hover:bg-emerald-700 transition">
+          Clear Search & Show All
+        </button>
+      </div>
+    </section>
+
+    <!-- SECTION: BIOGRAPHY OF IMAM AN-NAWAWI -->
+    <section class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-sm space-y-8 mt-12">
+      
+      <!-- Biography Title Header -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
+        <div class="space-y-1">
+          <div class="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+            <span>📜 Great Islamic Scholars</span>
+            <span>•</span>
+            <span class="font-arabic">تَرْجَمَةُ الإِمَامِ النَّوَوِيِّ</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-heading">
+            Biography of Imam Yahya ibn Sharaf An-Nawawi (رحمه الله)
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            631 AH – 676 AH (1233 CE – 1277 CE) • The Shaykh al-Islam, Master Muhaddith & Ascetic of Damascus
+          </p>
+        </div>
+        <div class="text-right">
+          <span class="font-arabic text-2xl font-bold text-emerald-700 dark:text-emerald-400">
+            أَبُو زَكَرِيَّا يَحْيَى بْنُ شَرَفٍ النَّوَوِيُّ
+          </span>
+        </div>
+      </div>
+
+      <!-- Biography 4-Card Overview Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/40 space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg shadow-sm">
+            🌱
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">Early Life in Nawa</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Born in Nawa, south of Damascus. As a boy, while other children played, young Yahya wept if forced to play, preferring to recite the Holy Quran. He memorized the entire Quran before puberty.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-amber-50/60 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900/40 space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center text-lg shadow-sm">
+            📖
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">12 Lessons Every Day</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            In Damascus at the Rawahiyyah madrasah, he studied 12 distinct lessons daily with senior scholars across Hadith, Fiqh, Usul, syntax, and language. He slept only while seated when overcome by slumber.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-sky-50/60 dark:bg-sky-950/30 border border-sky-100 dark:border-sky-900/40 space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center text-lg shadow-sm">
+            ⚖️
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">Uncompromising Zuhd</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            As head of Dar al-Hadith al-Ashrafiyyah, he declined any stipend. He subsisted entirely on bread and figs sent by his father. He courageously stood before Sultan Baybars to defend civilian taxes.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-purple-50/60 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900/40 space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center text-lg shadow-sm">
+            ✨
+          </div>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">Short Life, Eternal Barakah</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Passing away at just 44 years of age without ever marrying, Allah blessed his works with unparalleled barakah. His books remain the standard texts in mosques and universities worldwide.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Extended Detailed Narrative -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-4 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+        
+        <div class="space-y-4">
+          <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+            <span>📚</span>
+            <span>Why The "40 Hadith" Compendium is Legendary</span>
+          </h3>
+          <p>
+            Many classical scholars compiled "Forty Hadith" collections based on popular virtue narrations, yet Imam an-Nawawi’s compilation stands peerless in Islamic history. Rather than focusing merely on virtues of actions (Fada'il al-A'mal), Imam an-Nawawi deliberately chose 42 ahadith where each hadith forms <em>"a grand foundation of the religion (Qa'idah 'Adheemah min Qawa'id ad-Deen)"</em>.
+          </p>
+          <p>
+            Leading scholars remark that nearly all aspects of Islamic belief, worship, ethics, financial dealings, and civil conduct can be traced back to the principles enshrined within these 42 comprehensive traditions.
+          </p>
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 font-arabic text-sm leading-loose text-slate-800 dark:text-emerald-200">
+            «يَنْبَغِي لِكُلِّ مَنْ رَغِبَ فِي الآخِرَةِ أَنْ يَعْرِفَ هَذِهِ الأَحَادِيثَ؛ لِمَا اشْتَمَلَتْ عَلَيْهِ مِنَ المُهِمَّاتِ، وَاحْتَوَتْ عَلَيْهِ مِنَ التَّنْبِيهِ عَلَى جَمِيعِ الطَّاعَاتِ»
+            <span class="block text-xs font-sans text-slate-500 mt-1">
+              — Imam an-Nawawi in his introduction to the 40 Hadith
+            </span>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+            <span>🏛️</span>
+            <span>Monumental Works of Imam an-Nawawi</span>
+          </h3>
+          <ul class="space-y-2.5">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-600 dark:text-emerald-400 font-bold">1.</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white">Riyad as-Salihin (رياض الصالحين):</strong>
+                <span class="text-slate-600 dark:text-slate-400"> The Gardens of the Righteous, the most universally recited book of ethics and spirituality after the Quran.</span>
+              </div>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-600 dark:text-emerald-400 font-bold">2.</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white">Al-Minhaj Sharh Sahih Muslim (شرح صحيح مسلم):</strong>
+                <span class="text-slate-600 dark:text-slate-400"> The quintessential master commentary on Sahih Muslim, combining hadith derivation, grammar, and jurisprudence.</span>
+              </div>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-600 dark:text-emerald-400 font-bold">3.</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white">Al-Adhkar (الأذكار):</strong>
+                <span class="text-slate-600 dark:text-slate-400"> The premier encyclopedic compilation of prophetic supplications, remembrances, and spiritual formulas for every daily circumstance.</span>
+              </div>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-600 dark:text-emerald-400 font-bold">4.</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white">Al-Majmu' Sharh al-Muhadhdhab (المجموع):</strong>
+                <span class="text-slate-600 dark:text-slate-400"> The crowning jewel of comparative Islamic jurisprudence (Fiqh Muqaran), analyzing rulings with rigorous evidential proofs.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        
+        <!-- Brand Info -->
+        <div class="space-y-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-2xl">🌙</span>
+            <span class="text-lg font-bold text-white font-heading">NoorHub</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The authentic unified Islamic digital living platform. Providing precision prayer schedules, fasting companions, zakat tools, and prophetic hadith without commercial tracking.
+          </p>
+          <p class="text-xs text-emerald-400 font-arabic pt-1">
+            صَدَقَةٌ جَارِيَةٌ لِوَجْهِ اللَّهِ تَعَالَى
+          </p>
+        </div>
+
+        <!-- Quick Links: Core Tools -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Core Tools</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="prayer-times.html" class="hover:text-emerald-400 transition">Prayer Times & Qibla</a></li>
+            <li><a href="fasting.html" class="hover:text-emerald-400 transition">Fasting & Ramadan Tracker</a></li>
+            <li><a href="tasbih.html" class="hover:text-emerald-400 transition">Digital Tasbih & Adhkar</a></li>
+            <li><a href="zakat.html" class="hover:text-emerald-400 transition">Zakat Calculator & Nisab</a></li>
+            <li><a href="hadith.html" class="text-emerald-400 font-semibold transition">40 Hadith of Imam Nawawi</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources & Knowledge -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Resources</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="names.html" class="hover:text-emerald-400 transition">Islamic Baby Names (Ism)</a></li>
+            <li><a href="inheritance.html" class="hover:text-emerald-400 transition">Faraid Inheritance Engine</a></li>
+            <li><a href="halal-guide.html" class="hover:text-emerald-400 transition">Halal Food & E-Numbers</a></li>
+            <li><a href="99-names.html" class="hover:text-emerald-400 transition">99 Names of Allah</a></li>
+            <li><a href="mosque.html" class="hover:text-emerald-400 transition">Mosque TV Kiosk Mode</a></li>
+          </ul>
+        </div>
+
+        <!-- About & Trust -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">About & Trust</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="about.html" class="hover:text-emerald-400 transition">About NoorHub Initiative</a></li>
+            <li><a href="faq.html" class="hover:text-emerald-400 transition">Frequently Asked Questions</a></li>
+            <li><a href="contact.html" class="hover:text-emerald-400 transition">Contact & Feedback</a></li>
+            <li><a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Commitment (Zero Tracking)</a></li>
+            <li><a href="terms.html" class="hover:text-emerald-400 transition">Terms of Service</a></li>
+            <li class="pt-2 text-[11px] text-slate-500">Contact: siddiknurealam1@gmail.com</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <p>© 2026 NoorHub. Free, Open & Waqf-dedicated. All rights reserved for the Ummah.</p>
+        <div class="flex space-x-4 mt-2 sm:mt-0">
+          <span>noorhub.truxio.bond</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 pointer-events-none flex flex-col space-y-2"></div>
+
+  <!-- Scripts -->
+  <script src="shared.js"></script>
+  <script src="data/hadith-data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Data Retrieval
+      const allHadiths = (typeof HADITH_DATA !== 'undefined' ? HADITH_DATA : window.HADITH_DATA) || [];
+      
+      // Memorized Set from localStorage
+      let memorizedSet = new Set();
+      try {
+        const saved = JSON.parse(localStorage.getItem('noorhub_hadith_memorized') || '[]');
+        memorizedSet = new Set(saved);
+      } catch (e) {}
+
+      function saveMemorized() {
+        localStorage.setItem('noorhub_hadith_memorized', JSON.stringify([...memorizedSet]));
+        updateMemorizedStats();
+      }
+
+      function updateMemorizedStats() {
+        const count = memorizedSet.size;
+        const total = allHadiths.length || 42;
+        const pct = Math.round((count / total) * 100);
+
+        const badge = document.getElementById('stat-memorized-badge');
+        if (badge) badge.textContent = `${count} / ${total}`;
+
+        const progressText = document.getElementById('flashcard-progress-text');
+        if (progressText) progressText.textContent = `${pct}% (${count}/${total})`;
+
+        const progressBar = document.getElementById('flashcard-progress-bar');
+        if (progressBar) progressBar.style.width = `${pct}%`;
+
+        // Update card buttons if visible
+        document.querySelectorAll('.btn-hadith-memorize').forEach(btn => {
+          const id = parseInt(btn.dataset.id, 10);
+          if (memorizedSet.has(id)) {
+            btn.classList.add('bg-emerald-600', 'text-white');
+            btn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+            btn.innerHTML = '<span>✓ Memorized</span>';
+          } else {
+            btn.classList.remove('bg-emerald-600', 'text-white');
+            btn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+            btn.innerHTML = '<span>Mark as Memorized</span>';
+          }
+        });
+
+        // Flashcard mode toggle button
+        const fcMemBtn = document.getElementById('fc-btn-toggle-memorized');
+        if (fcMemBtn && currentFlashcardHadith) {
+          if (memorizedSet.has(currentFlashcardHadith.number)) {
+            fcMemBtn.querySelector('.icon').textContent = '✅';
+            fcMemBtn.querySelector('.label').textContent = 'Memorized';
+            fcMemBtn.classList.add('bg-emerald-600', 'text-white');
+            fcMemBtn.classList.remove('bg-slate-100', 'dark:bg-slate-800');
+          } else {
+            fcMemBtn.querySelector('.icon').textContent = '⚪';
+            fcMemBtn.querySelector('.label').textContent = 'Mark as Memorized';
+            fcMemBtn.classList.remove('bg-emerald-600', 'text-white');
+            fcMemBtn.classList.add('bg-slate-100', 'dark:bg-slate-800');
+          }
+        }
+      }
+
+      // Toast Notification Helper
+      function showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        const toast = document.createElement('div');
+        toast.className = `px-4 py-3 rounded-xl shadow-lg text-xs font-semibold text-white pointer-events-auto transition-all transform duration-300 translate-y-2 opacity-0 flex items-center space-x-2 ${
+          type === 'success' ? 'bg-emerald-700' : 'bg-slate-800'
+        }`;
+        toast.innerHTML = `<span>${type === 'success' ? '✓' : 'ℹ️'}</span><span>${message}</span>`;
+        container.appendChild(toast);
+        setTimeout(() => {
+          toast.classList.remove('translate-y-2', 'opacity-0');
+        }, 10);
+        setTimeout(() => {
+          toast.classList.add('opacity-0', 'translate-y-2');
+          setTimeout(() => toast.remove(), 300);
+        }, 3000);
+      }
+
+      // Audio Player Manager (Single active audio)
+      let activeAudio = null;
+      let activeAudioBtn = null;
+
+      function stopActiveAudio() {
+        if (activeAudio) {
+          activeAudio.pause();
+          activeAudio.currentTime = 0;
+          if (activeAudioBtn) {
+            activeAudioBtn.innerHTML = '<span>▶ Audio</span>';
+            activeAudioBtn.classList.remove('bg-amber-600', 'text-white');
+            activeAudioBtn.classList.add('bg-slate-100', 'dark:bg-slate-800');
+          }
+          activeAudio = null;
+          activeAudioBtn = null;
+        }
+      }
+
+      // 2. Populate Quick Jump
+      const jumpSelect = document.getElementById('quick-jump-select');
+      if (jumpSelect) {
+        allHadiths.forEach(h => {
+          const opt = document.createElement('option');
+          opt.value = h.number;
+          opt.textContent = `Hadith #${h.number}: ${h.titleEn}`;
+          jumpSelect.appendChild(opt);
+        });
+
+        jumpSelect.addEventListener('change', (e) => {
+          const num = parseInt(e.target.value, 10);
+          if (!num) return;
+          if (activeMode === 'reader') {
+            const targetEl = document.getElementById(`hadith-card-${num}`);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              targetEl.classList.add('ring-2', 'ring-emerald-500');
+              setTimeout(() => targetEl.classList.remove('ring-2', 'ring-emerald-500'), 2000);
+            }
+          } else {
+            const idx = allHadiths.findIndex(h => h.number === num);
+            if (idx !== -1) {
+              currentFlashcardIndex = idx;
+              renderFlashcard();
+            }
+          }
+        });
+      }
+
+      // 3. Render Full Reader Mode Cards
+      const container = document.getElementById('hadith-cards-container');
+      const countEl = document.getElementById('results-count');
+      const noResultsEl = document.getElementById('hadith-no-results');
+
+      let currentFilterTopic = 'all';
+      let currentSearchQuery = '';
+      let filterOnlyMemorized = false;
+
+      function renderReaderCards() {
+        if (!container) return;
+
+        const filtered = allHadiths.filter(h => {
+          // Topic match
+          if (currentFilterTopic !== 'all') {
+            const hasTopic = (h.topics || []).some(t => t.toLowerCase().includes(currentFilterTopic.toLowerCase()));
+            if (!hasTopic) return false;
+          }
+
+          // Memorized only match
+          if (filterOnlyMemorized && !memorizedSet.has(h.number)) {
+            return false;
+          }
+
+          // Search match
+          if (currentSearchQuery) {
+            const q = currentSearchQuery.toLowerCase().trim();
+            const numMatch = h.number.toString() === q;
+            const titleEnMatch = (h.titleEn || '').toLowerCase().includes(q);
+            const titleArMatch = (h.titleAr || '').includes(q);
+            const narratorEnMatch = (h.narratorEn || '').toLowerCase().includes(q);
+            const narratorArMatch = (h.narratorAr || '').includes(q);
+            const englishMatch = (h.english || '').toLowerCase().includes(q);
+            const arabicMatch = (h.arabic || '').includes(q);
+            if (!numMatch && !titleEnMatch && !titleArMatch && !narratorEnMatch && !narratorArMatch && !englishMatch && !arabicMatch) {
+              return false;
+            }
+          }
+
+          return true;
+        });
+
+        countEl.textContent = `Showing ${filtered.length} of ${allHadiths.length}`;
+
+        if (filtered.length === 0) {
+          container.innerHTML = '';
+          noResultsEl.classList.remove('hidden');
+          return;
+        } else {
+          noResultsEl.classList.add('hidden');
+        }
+
+        container.innerHTML = filtered.map(h => {
+          const isMem = memorizedSet.has(h.number);
+          const keyPointsHtml = (h.keyPoints && h.keyPoints.length) ? `
+            <div class="space-y-1.5 mt-3">
+              <h5 class="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Core Takeaways (الفوائد الرئيسية):</h5>
+              <ul class="list-disc list-inside space-y-1 text-xs text-slate-700 dark:text-slate-300">
+                ${h.keyPoints.map(kp => `<li>${kp.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</li>`).join('')}
+              </ul>
+            </div>
+          ` : '';
+
+          const lessonsHtml = (h.lessons && h.lessons.length) ? `
+            <div class="space-y-1.5 mt-3">
+              <h5 class="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">Lessons Learned (الدروس المستفادة):</h5>
+              <ol class="list-decimal list-inside space-y-1 text-xs text-slate-700 dark:text-slate-300">
+                ${h.lessons.map(ls => `<li>${ls}</li>`).join('')}
+              </ol>
+            </div>
+          ` : '';
+
+          const appHtml = (h.applications && h.applications.length) ? `
+            <div class="space-y-1.5 mt-3 p-3 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30">
+              <h5 class="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">Practical Daily Applications (التطبيق العملي):</h5>
+              <ul class="list-disc list-inside space-y-1 text-xs text-slate-700 dark:text-slate-300">
+                ${h.applications.map(ap => `<li>${ap.replace(/\*(.*?)\*/g, '<em>$1</em>')}</li>`).join('')}
+              </ul>
+            </div>
+          ` : '';
+
+          return `
+            <article id="hadith-card-${h.number}" class="glass-card bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm transition-all space-y-6">
+              
+              <!-- Card Top Header -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <div class="flex items-center space-x-3">
+                  <span class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-600 to-amber-500 text-white font-extrabold text-sm flex items-center justify-center shadow-md">
+                    #${h.number}
+                  </span>
+                  <div>
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-tight">
+                      ${h.titleEn}
+                    </h3>
+                    <div class="flex items-center space-x-2 text-xs text-slate-500 mt-0.5">
+                      <span class="font-medium text-emerald-600 dark:text-emerald-400">${h.collectionEn || 'Agreed Upon'}</span>
+                      <span>•</span>
+                      <span>${(h.topics || []).join(', ')}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center space-x-2 self-start sm:self-center">
+                  ${h.audioUrl ? `
+                    <button class="btn-play-audio px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-amber-100 dark:hover:bg-amber-950/40 text-slate-700 dark:text-slate-300 text-xs font-semibold transition flex items-center space-x-1.5" data-audio="${h.audioUrl}">
+                      <span>▶ Audio</span>
+                    </button>
+                  ` : ''}
+
+                  <button class="btn-hadith-memorize px-3 py-1.5 rounded-xl text-xs font-semibold transition ${isMem ? 'bg-emerald-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}" data-id="${h.number}">
+                    <span>${isMem ? '✓ Memorized' : 'Mark as Memorized'}</span>
+                  </button>
+
+                  <button class="btn-copy-hadith p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition" data-id="${h.number}" title="Copy Hadith Text">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                  </button>
+
+                  ${h.sunnahUrl ? `
+                    <a href="${h.sunnahUrl}" target="_blank" rel="noopener noreferrer" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-amber-500 transition" title="View on Sunnah.com">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                  ` : ''}
+                </div>
+              </div>
+
+              <!-- Arabic Section -->
+              <div class="space-y-3 bg-emerald-50/30 dark:bg-emerald-950/15 p-5 sm:p-6 rounded-2xl border border-emerald-100/80 dark:border-emerald-900/30">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="font-bold text-emerald-800 dark:text-emerald-300 font-heading">المتن الشريف</span>
+                  <span class="font-arabic text-amber-700 dark:text-amber-400 font-semibold">${h.narratorAr || ''}</span>
+                </div>
+                <p class="font-arabic text-2xl sm:text-3xl text-slate-900 dark:text-emerald-50 leading-loose selection:bg-emerald-200">
+                  ${h.arabic}
+                </p>
+              </div>
+
+              <!-- English Translation -->
+              <div class="space-y-2">
+                <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 flex items-center space-x-1.5">
+                  <span>Narrated by:</span>
+                  <span class="text-emerald-700 dark:text-emerald-300 font-bold">${h.narratorEn}</span>
+                </div>
+                <blockquote class="text-sm sm:text-base text-slate-800 dark:text-slate-200 leading-relaxed italic border-l-4 border-amber-500 pl-4 py-1">
+                  ${h.english}
+                </blockquote>
+              </div>
+
+              <!-- Expandable Core Insights / Fawa'id Accordion -->
+              ${(keyPointsHtml || lessonsHtml || appHtml) ? `
+                <div class="border-t border-slate-100 dark:border-slate-800 pt-3">
+                  <button class="btn-toggle-insights w-full flex items-center justify-between text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 py-1 transition" data-target="insights-${h.number}">
+                    <span class="flex items-center space-x-1.5">
+                      <span>💡</span>
+                      <span>Key Lessons, Benefits & Applications (الفوائد والدروس)</span>
+                    </span>
+                    <span class="accordion-arrow transform transition-transform text-slate-400">▼</span>
+                  </button>
+                  <div id="insights-${h.number}" class="hidden pt-3 space-y-4">
+                    ${keyPointsHtml}
+                    ${lessonsHtml}
+                    ${appHtml}
+                  </div>
+                </div>
+              ` : ''}
+
+            </article>
+          `;
+        }).join('');
+
+        // Attach event listeners for audio, memorization, copy, and accordions
+        attachReaderEventListeners();
+      }
+
+      function attachReaderEventListeners() {
+        // Play audio
+        document.querySelectorAll('.btn-play-audio').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const audioSrc = btn.dataset.audio;
+            if (activeAudio && activeAudioBtn === btn) {
+              // Pause toggle
+              stopActiveAudio();
+              return;
+            }
+            stopActiveAudio();
+            const audio = new Audio(audioSrc);
+            activeAudio = audio;
+            activeAudioBtn = btn;
+            btn.innerHTML = '<span>⏸ Pause</span>';
+            btn.classList.add('bg-amber-600', 'text-white');
+            btn.classList.remove('bg-slate-100', 'dark:bg-slate-800');
+            audio.play().catch(e => {
+              console.warn('Audio playback failed:', e);
+              showToast('Audio stream unavailable.', 'info');
+              stopActiveAudio();
+            });
+            audio.onended = () => {
+              stopActiveAudio();
+            };
+          });
+        });
+
+        // Memorize toggle
+        document.querySelectorAll('.btn-hadith-memorize').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = parseInt(btn.dataset.id, 10);
+            if (memorizedSet.has(id)) {
+              memorizedSet.delete(id);
+              showToast(`Hadith #${id} removed from memorized deck.`);
+            } else {
+              memorizedSet.add(id);
+              showToast(`Hadith #${id} marked as Memorized! 🎉`);
+            }
+            saveMemorized();
+          });
+        });
+
+        // Copy Hadith
+        document.querySelectorAll('.btn-copy-hadith').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = parseInt(btn.dataset.id, 10);
+            const hadith = allHadiths.find(h => h.number === id);
+            if (!hadith) return;
+            const textToCopy = `Hadith #${hadith.number} (${hadith.titleEn})\n\n${hadith.arabic}\n\nTranslation: ${hadith.english}\n\nNarrated by: ${hadith.narratorEn} (${hadith.collectionEn})\n— NoorHub 40 Hadith (noorhub.truxio.bond)`;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+              showToast(`Copied Hadith #${id} to clipboard!`);
+            }).catch(() => {
+              showToast('Copy failed. Please copy manually.', 'info');
+            });
+          });
+        });
+
+        // Toggle insights accordion
+        document.querySelectorAll('.btn-toggle-insights').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const targetId = btn.dataset.target;
+            const target = document.getElementById(targetId);
+            const arrow = btn.querySelector('.accordion-arrow');
+            if (target) {
+              const isHidden = target.classList.contains('hidden');
+              target.classList.toggle('hidden');
+              if (arrow) {
+                arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+              }
+            }
+          });
+        });
+      }
+
+      // 4. Flashcard Mode Logic
+      let currentFlashcardIndex = 0;
+      let isCardFlipped = false;
+      let currentFlashcardHadith = null;
+
+      const flashcardFlipper = document.getElementById('flashcard-flipper');
+      const flashcardContainer = document.getElementById('flashcard-container');
+
+      function flipFlashcard() {
+        isCardFlipped = !isCardFlipped;
+        if (flashcardFlipper) {
+          flashcardFlipper.classList.toggle('is-flipped', isCardFlipped);
+        }
+      }
+
+      if (flashcardContainer) {
+        flashcardContainer.addEventListener('click', flipFlashcard);
+      }
+
+      const btnFlip = document.getElementById('fc-btn-flip');
+      if (btnFlip) {
+        btnFlip.addEventListener('click', (e) => {
+          e.stopPropagation();
+          flipFlashcard();
+        });
+      }
+
+      function renderFlashcard() {
+        if (!allHadiths.length) return;
+        if (currentFlashcardIndex < 0) currentFlashcardIndex = allHadiths.length - 1;
+        if (currentFlashcardIndex >= allHadiths.length) currentFlashcardIndex = 0;
+
+        const h = allHadiths[currentFlashcardIndex];
+        currentFlashcardHadith = h;
+
+        // Reset flip state to front face
+        isCardFlipped = false;
+        if (flashcardFlipper) {
+          flashcardFlipper.classList.remove('is-flipped');
+        }
+
+        // Front Face
+        document.getElementById('fc-front-number').textContent = `#${h.number}`;
+        document.getElementById('fc-front-title-ar').textContent = h.titleAr || '';
+        document.getElementById('fc-front-title-en').textContent = h.titleEn || '';
+        document.getElementById('fc-front-narrator').textContent = h.narratorAr || '';
+        document.getElementById('fc-front-arabic').textContent = h.arabic || '';
+        document.getElementById('fc-front-index').textContent = `${currentFlashcardIndex + 1} / ${allHadiths.length}`;
+
+        // Back Face
+        document.getElementById('fc-back-number').textContent = `#${h.number}`;
+        document.getElementById('fc-back-title-en').textContent = h.titleEn || '';
+        document.getElementById('fc-back-source').textContent = `${h.collectionEn || ''} • Hadith #${h.number}`;
+        document.getElementById('fc-back-narrator').textContent = `Narrated by: ${h.narratorEn}`;
+        document.getElementById('fc-back-english').textContent = `"${h.english}"`;
+        
+        const takeawayEl = document.getElementById('fc-back-takeaway');
+        if (h.keyPoints && h.keyPoints.length) {
+          takeawayEl.innerHTML = `<strong>💡 Core Lesson:</strong> ${h.keyPoints[0].replace(/\*\*(.*?)\*\*/g, '<em>$1</em>')}`;
+          takeawayEl.classList.remove('hidden');
+        } else {
+          takeawayEl.classList.add('hidden');
+        }
+        document.getElementById('fc-back-index').textContent = `${currentFlashcardIndex + 1} / ${allHadiths.length}`;
+
+        updateMemorizedStats();
+      }
+
+      // Flashcard Prev / Next / Random
+      const btnPrev = document.getElementById('fc-btn-prev');
+      const btnNext = document.getElementById('fc-btn-next');
+      const btnRandom = document.getElementById('fc-btn-random');
+      const btnToggleMem = document.getElementById('fc-btn-toggle-memorized');
+
+      if (btnPrev) {
+        btnPrev.addEventListener('click', (e) => {
+          e.stopPropagation();
+          currentFlashcardIndex--;
+          renderFlashcard();
+        });
+      }
+
+      if (btnNext) {
+        btnNext.addEventListener('click', (e) => {
+          e.stopPropagation();
+          currentFlashcardIndex++;
+          renderFlashcard();
+        });
+      }
+
+      if (btnRandom) {
+        btnRandom.addEventListener('click', (e) => {
+          e.stopPropagation();
+          currentFlashcardIndex = Math.floor(Math.random() * allHadiths.length);
+          renderFlashcard();
+        });
+      }
+
+      if (btnToggleMem) {
+        btnToggleMem.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (!currentFlashcardHadith) return;
+          const num = currentFlashcardHadith.number;
+          if (memorizedSet.has(num)) {
+            memorizedSet.delete(num);
+            showToast(`Hadith #${num} removed from memorized.`);
+          } else {
+            memorizedSet.add(num);
+            showToast(`Hadith #${num} memorized! ✨`);
+          }
+          saveMemorized();
+        });
+      }
+
+      const btnResetMem = document.getElementById('btn-reset-memorized');
+      if (btnResetMem) {
+        btnResetMem.addEventListener('click', () => {
+          if (confirm('Are you sure you want to reset your memorization progress?')) {
+            memorizedSet.clear();
+            saveMemorized();
+            showToast('Memorization progress reset.');
+            renderReaderCards();
+          }
+        });
+      }
+
+      // Keyboard navigation for Flashcards
+      document.addEventListener('keydown', (e) => {
+        if (activeMode !== 'flashcard') return;
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
+
+        if (e.code === 'Space') {
+          e.preventDefault();
+          flipFlashcard();
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          currentFlashcardIndex++;
+          renderFlashcard();
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          currentFlashcardIndex--;
+          renderFlashcard();
+        }
+      });
+
+      // 5. View Mode Switching (Reader vs Flashcard)
+      let activeMode = 'reader';
+      const btnModeReader = document.getElementById('btn-mode-reader');
+      const btnModeFlashcard = document.getElementById('btn-mode-flashcard');
+      const readerSection = document.getElementById('reader-section');
+      const flashcardSection = document.getElementById('flashcard-section');
+
+      function setMode(mode) {
+        activeMode = mode;
+        if (mode === 'reader') {
+          readerSection.classList.remove('hidden');
+          flashcardSection.classList.add('hidden');
+          btnModeReader.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-white dark:bg-emerald-600 text-emerald-700 dark:text-white shadow-sm';
+          btnModeFlashcard.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400';
+        } else {
+          readerSection.classList.add('hidden');
+          flashcardSection.classList.remove('hidden');
+          btnModeFlashcard.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-white dark:bg-emerald-600 text-emerald-700 dark:text-white shadow-sm';
+          btnModeReader.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400';
+          renderFlashcard();
+        }
+      }
+
+      if (btnModeReader) btnModeReader.addEventListener('click', () => setMode('reader'));
+      if (btnModeFlashcard) btnModeFlashcard.addEventListener('click', () => setMode('flashcard'));
+
+      // 6. Search & Filters
+      const searchInput = document.getElementById('hadith-search-input');
+      const clearSearchBtn = document.getElementById('hadith-clear-search');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentSearchQuery = e.target.value;
+          if (clearSearchBtn) {
+            clearSearchBtn.classList.toggle('hidden', !currentSearchQuery);
+          }
+          if (activeMode === 'reader') {
+            renderReaderCards();
+          } else {
+            // Find first match in flashcards
+            const idx = allHadiths.findIndex(h => {
+              const q = currentSearchQuery.toLowerCase().trim();
+              return h.number.toString() === q ||
+                     (h.titleEn || '').toLowerCase().includes(q) ||
+                     (h.titleAr || '').includes(q) ||
+                     (h.narratorEn || '').toLowerCase().includes(q) ||
+                     (h.english || '').toLowerCase().includes(q);
+            });
+            if (idx !== -1) {
+              currentFlashcardIndex = idx;
+              renderFlashcard();
+            }
+          }
+        });
+      }
+
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          currentSearchQuery = '';
+          clearSearchBtn.classList.add('hidden');
+          renderReaderCards();
+        });
+      }
+
+      const resetSearchBtn = document.getElementById('btn-reset-search');
+      if (resetSearchBtn) {
+        resetSearchBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          currentSearchQuery = '';
+          currentFilterTopic = 'all';
+          filterOnlyMemorized = false;
+          if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
+          document.querySelectorAll('.topic-filter-btn').forEach(b => {
+            b.classList.remove('bg-emerald-600', 'text-white');
+            b.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+          });
+          const allBtn = document.querySelector('.topic-filter-btn[data-topic="all"]');
+          if (allBtn) {
+            allBtn.classList.add('bg-emerald-600', 'text-white');
+            allBtn.classList.remove('bg-slate-100', 'dark:bg-slate-800');
+          }
+          renderReaderCards();
+        });
+      }
+
+      // Topic Filter Pills
+      document.querySelectorAll('.topic-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.topic-filter-btn').forEach(b => {
+            b.classList.remove('bg-emerald-600', 'text-white');
+            b.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+          });
+          btn.classList.add('bg-emerald-600', 'text-white');
+          btn.classList.remove('bg-slate-100', 'dark:bg-slate-800');
+          currentFilterTopic = btn.dataset.topic;
+          renderReaderCards();
+        });
+      });
+
+      // Filter Memorized Only Toggle
+      const filterMemToggle = document.getElementById('filter-memorized-toggle');
+      if (filterMemToggle) {
+        filterMemToggle.addEventListener('click', () => {
+          filterOnlyMemorized = !filterOnlyMemorized;
+          filterMemToggle.classList.toggle('bg-amber-600', filterOnlyMemorized);
+          filterMemToggle.classList.toggle('text-white', filterOnlyMemorized);
+          renderReaderCards();
+        });
+      }
+
+      // 7. Hijri and Clock synchronization in header
+      function updateHeaderClock() {
+        const now = new Date();
+        const clockEl = document.getElementById('header-clock');
+        if (clockEl) clockEl.textContent = now.toLocaleTimeString('en-US', { hour12: false });
+      }
+      setInterval(updateHeaderClock, 1000);
+      updateHeaderClock();
+
+      try {
+        const hijriFormatter = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+        const el = document.getElementById('header-hijri-date');
+        if (el) el.textContent = hijriFormatter.format(new Date()) + ' AH';
+      } catch (e) {}
+
+      // Initial Render
+      renderReaderCards();
+      updateMemorizedStats();
+    });
+  </script>
+</body>
+</html>

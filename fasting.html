@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sawm & Fasting Companion - NoorHub</title>
+  <meta name="description" content="Unified Islamic Sawm & Ramadan Companion: live Suhoor & Iftar countdown with circular dial, authentic Sunnah fasting du'as, 30-day Quran Khatm tracker, voluntary fasting guide, and essential fiqh.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b', 950: '#022c22' },
+            amber: { 50: '#fffbeb', 100: '#fef3c7', 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309' },
+            slate: { 850: '#131c2e', 900: '#0f172a', 950: '#0b0f19' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern selection:bg-emerald-500 selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-emerald-900 text-emerald-100 text-xs py-1.5 px-4 text-center border-b border-emerald-800 flex justify-between items-center max-w-7xl mx-auto w-full">
+    <div class="hidden sm:flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>NoorHub Sawm Companion • Ramadan & Voluntary Fasting (Waqf)</span>
+    </div>
+    <div class="mx-auto sm:mr-0 flex items-center space-x-4">
+      <span id="fasting-hijri-date" class="font-medium">1448 AH</span>
+      <span class="text-emerald-400">•</span>
+      <span id="fasting-live-clock" class="font-mono font-semibold">--:--:--</span>
+    </div>
+  </div>
+
+  <!-- Primary Navigation -->
+  <header class="sticky top-0 z-50 glass-header shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-900/20 group-hover:scale-105 transition-transform">
+            <span class="text-xl">🌙</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white font-heading">NoorHub</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-semibold uppercase tracking-wider">Fasting</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-arabic leading-none -mt-0.5">الصوم والرمضان</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a href="index.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Portal</a>
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat & Qibla</a>
+          <a href="fasting.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">Fasting</a>
+          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih & Adhkar</a>
+          <a href="99-names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">99 Names</a>
+          <a href="hadith.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">40 Hadith</a>
+          <a href="zakat.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Zakat</a>
+          <a href="names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Baby Names</a>
+          <a href="inheritance.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Inheritance</a>
+          <a href="halal-guide.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Halal Guide</a>
+          <a href="mosque.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Mosque Kiosk</a>
+        </nav>
+
+        <!-- Right Action Controls -->
+        <div class="flex items-center space-x-2">
+          
+          <!-- City Selector -->
+          <div class="relative">
+            <select id="fasting-city-select" class="px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none shadow-sm cursor-pointer">
+              <!-- Populated by JS -->
+            </select>
+          </div>
+
+          <button id="fasting-gps-btn" title="Detect GPS Location" class="p-2 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-200 dark:hover:bg-emerald-900 transition">
+            🎯
+          </button>
+
+          <!-- Theme Switcher -->
+          <button class="theme-toggle-btn p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle theme">
+            <svg class="w-5 h-5 hidden dark:block text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+            <svg class="w-5 h-5 block dark:hidden text-slate-700" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          </button>
+
+          <!-- Mobile Hamburger -->
+          <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">NoorHub Home</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Salat & Qibla Compass</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">Sawm & Fasting Companion</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Digital Tasbih & Adhkar</a>
+      <a href="99-names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">99 Names of Allah</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">40 Hadith of Imam Nawawi</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Zakat Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Islamic Baby Names</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Halal Food Guide</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Mosque Kiosk</a>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-12">
+
+    <!-- Hero: Live Suhoor & Iftar Countdown with Circular Progress Dial -->
+    <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 text-white p-6 sm:p-10 shadow-2xl border border-emerald-800/40">
+      
+      <!-- Subtle Decorative Glows -->
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-emerald-600/15 blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-20 -top-20 w-80 h-80 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left: Status & Timers -->
+        <div class="lg:col-span-7 space-y-5">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span id="fasting-status-pill">Fasting Status</span>
+          </div>
+
+          <div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight font-heading text-white">
+              Sawm & Fasting Companion
+            </h1>
+            <p class="text-sm sm:text-base text-emerald-100/80 mt-2 font-arabic text-right sm:text-left">
+              شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ
+            </p>
+            <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+              Astronomical Suhoor (Imsak) and Iftar (Maghrib) calculations tailored to your exact geographical coordinates.
+            </p>
+          </div>
+
+          <!-- Countdown Big Box -->
+          <div class="bg-slate-900/80 backdrop-blur-md rounded-2xl p-5 border border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <span id="target-event-label" class="text-xs font-semibold uppercase tracking-wider text-amber-400">
+                Next Milestone
+              </span>
+              <div id="countdown-clock" class="text-3xl sm:text-4xl font-extrabold font-mono text-white mt-1">
+                --:--:--
+              </div>
+              <p id="target-event-time" class="text-xs text-slate-400 mt-0.5">
+                Calculating astronomical coordinates...
+              </p>
+            </div>
+
+            <!-- Quick Action Badges -->
+            <div class="flex items-center gap-3">
+              <a href="#fasting-duas" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white text-xs font-bold shadow-lg shadow-emerald-900/40 transition">
+                🤲 View Du'as
+              </a>
+              <a href="#quran-khatm" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition">
+                📖 30-Day Khatm
+              </a>
+            </div>
+          </div>
+
+          <!-- Key Fasting Timings Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+              <span class="text-[11px] text-slate-400 font-medium">Suhoor Ends (Fajr)</span>
+              <div id="suhoor-time-display" class="text-lg font-bold font-mono text-emerald-400 mt-0.5">--:--</div>
+              <span class="text-[10px] text-slate-500 font-arabic">الإمساك</span>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+              <span class="text-[11px] text-slate-400 font-medium">Sunrise (Shuruq)</span>
+              <div id="sunrise-time-display" class="text-lg font-bold font-mono text-amber-400 mt-0.5">--:--</div>
+              <span class="text-[10px] text-slate-500 font-arabic">الشروق</span>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+              <span class="text-[11px] text-slate-400 font-medium">Iftar (Maghrib)</span>
+              <div id="iftar-time-display" class="text-lg font-bold font-mono text-emerald-400 mt-0.5">--:--</div>
+              <span class="text-[10px] text-slate-500 font-arabic">الإفطار</span>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+              <span class="text-[11px] text-slate-400 font-medium">Fast Duration</span>
+              <div id="fast-duration-display" class="text-lg font-bold font-mono text-slate-200 mt-0.5">-- hrs</div>
+              <span class="text-[10px] text-slate-500">Daylight span</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Circular Dial SVG Progress -->
+        <div class="lg:col-span-5 flex flex-col items-center justify-center">
+          <div class="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center">
+            
+            <!-- SVG Circular Gauge -->
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 200 200">
+              <!-- Background Track -->
+              <circle cx="100" cy="100" r="86" stroke="currentColor" stroke-width="12" class="text-slate-800" fill="transparent" />
+              <!-- Animated Progress Bar -->
+              <circle id="fasting-progress-circle" cx="100" cy="100" r="86" stroke="url(#emerald-amber-gradient)" stroke-width="12" stroke-linecap="round" fill="transparent" stroke-dasharray="540.35" stroke-dashoffset="540.35" class="transition-all duration-1000 ease-out" />
+              <!-- Defs for gradient -->
+              <defs>
+                <linearGradient id="emerald-amber-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#10b981" />
+                  <stop offset="100%" stop-color="#f59e0b" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <!-- Center Content in Dial -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+              <span id="dial-mode-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                Fasting Window
+              </span>
+              <div id="dial-percentage" class="text-4xl font-extrabold font-mono text-white mt-2">
+                0%
+              </div>
+              <span id="dial-subtext" class="text-xs text-slate-300 mt-1">
+                Completed
+              </span>
+              <div class="mt-3 flex items-center space-x-1.5 text-[11px] text-slate-400">
+                <span id="dial-city-name" class="font-semibold text-slate-200">Makkah</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 mt-3 text-center">
+            Visual dial synchronizes in real time with solar transit.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: Authentic Sunnah Du'as for Fasting -->
+    <section id="fasting-duas" class="space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-2 border-b border-slate-200 dark:border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Sunnah Supplications</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-heading mt-0.5">
+            Authentic Du'as for Sawm
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            Fully vocalized Arabic with tashkeel, transliteration, English meanings, and verified canonical Hadith citations.
+          </p>
+        </div>
+      </div>
+
+      <!-- Duas Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Dua 1: Niyyah / Intention -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300">
+              1. Niyyah (Intention for Fasting)
+            </span>
+            <span class="text-xs text-slate-400">At Suhoor / Heart</span>
+          </div>
+
+          <div class="bg-slate-50 dark:bg-slate-850/60 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+            <p class="font-arabic text-xl sm:text-2xl text-slate-900 dark:text-emerald-300 leading-loose">
+              وَبِصَوْمِ غَدٍ نَوَيْتُ مِنْ شَهْرِ رَمَضَانَ
+            </p>
+          </div>
+
+          <div class="space-y-2 text-xs sm:text-sm">
+            <p class="text-emerald-700 dark:text-emerald-400 font-medium italic">
+              "Wa bi-ṣawmi ghadin nawaytu min shahri Ramaḍān."
+            </p>
+            <p class="text-slate-600 dark:text-slate-300">
+              "I intend to keep the fast tomorrow for the month of Ramadan."
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs text-slate-500">
+            <span>Reference: Traditional Sunnah Intention</span>
+            <button onclick="copyDua('وَبِصَوْمِ غَدٍ نَوَيْتُ مِنْ شَهْرِ رَمَضَانَ - Wa bi-sawmi ghadin nawaytu min shahri Ramadan')" class="text-emerald-600 dark:text-emerald-400 hover:underline font-semibold flex items-center space-x-1">
+              <span>📋 Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dua 2: Sunnah Iftar Du'a -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300">
+              2. Breaking the Fast (Sunnah Iftar)
+            </span>
+            <span class="text-xs text-slate-400">At Maghrib after 1st sip</span>
+          </div>
+
+          <div class="bg-slate-50 dark:bg-slate-850/60 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+            <p class="font-arabic text-xl sm:text-2xl text-slate-900 dark:text-emerald-300 leading-loose">
+              ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الأَجْرُ إِنْ شَاءَ اللَّهُ
+            </p>
+          </div>
+
+          <div class="space-y-2 text-xs sm:text-sm">
+            <p class="text-emerald-700 dark:text-emerald-400 font-medium italic">
+              "Dhahaba aẓ-ẓama'u wabtallatil-'urūqu wa thabatal-ajru in shā' Allāh."
+            </p>
+            <p class="text-slate-600 dark:text-slate-300">
+              "The thirst has gone, the veins are moistened, and the reward is confirmed, if Allah wills."
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs text-slate-500">
+            <span>Sunan Abi Dawud (2357) • Sahih</span>
+            <button onclick="copyDua('ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الأَجْرُ إِنْ شَاءَ اللَّهُ - Dhahaba az-zama\'u wabtallatil-uruqu wa thabatal-ajru in sha\' Allah')" class="text-emerald-600 dark:text-emerald-400 hover:underline font-semibold flex items-center space-x-1">
+              <span>📋 Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dua 3: Guest / Host Iftar Du'a -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300">
+              3. When Breaking Fast with a Host
+            </span>
+            <span class="text-xs text-slate-400">At Guest Invitation</span>
+          </div>
+
+          <div class="bg-slate-50 dark:bg-slate-850/60 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+            <p class="font-arabic text-xl sm:text-2xl text-slate-900 dark:text-emerald-300 leading-loose">
+              أَفْطَرَ عِنْدَكُمُ الصَّائِمُونَ وَأَكَلَ طَعَامَكُمُ الأَبْرَارُ وَصَلَّتْ عَلَيْكُمُ الْمَلَائِكَةُ
+            </p>
+          </div>
+
+          <div class="space-y-2 text-xs sm:text-sm">
+            <p class="text-emerald-700 dark:text-emerald-400 font-medium italic">
+              "Afṭara 'indakumus-ṣā'imūna wa akala ṭa'āmakumul-abrāru wa ṣallat 'alaykumul-malā'ikah."
+            </p>
+            <p class="text-slate-600 dark:text-slate-300">
+              "May fasting people break their fast with you, may the righteous eat your food, and may the angels send blessings upon you."
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs text-slate-500">
+            <span>Sunan Abi Dawud (3854) • Sahih</span>
+            <button onclick="copyDua('أَفْطَرَ عِنْدَكُمُ الصَّائِمُونَ وَأَكَلَ طَعَامَكُمُ الأَبْرَارُ وَصَلَّتْ عَلَيْكُمُ الْمَلَائِكَةُ - Aftara indakumussa\'imoona wa akala ta\'amakumul-abrar wa sallat alaykumul-mala\'ikah')" class="text-emerald-600 dark:text-emerald-400 hover:underline font-semibold flex items-center space-x-1">
+              <span>📋 Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dua 4: Laylatul Qadr Du'a -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300">
+              4. Laylatul Qadr (Night of Power)
+            </span>
+            <span class="text-xs text-slate-400">Last 10 Odd Nights</span>
+          </div>
+
+          <div class="bg-slate-50 dark:bg-slate-850/60 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+            <p class="font-arabic text-xl sm:text-2xl text-slate-900 dark:text-emerald-300 leading-loose">
+              اللَّهُمَّ إِنَّكَ عَفُوٌّ كَرِيمٌ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي
+            </p>
+          </div>
+
+          <div class="space-y-2 text-xs sm:text-sm">
+            <p class="text-emerald-700 dark:text-emerald-400 font-medium italic">
+              "Allāhumma innaka 'Afuwwun Karīmun tuḥibbul-'afwa fa'fu 'annī."
+            </p>
+            <p class="text-slate-600 dark:text-slate-300">
+              "O Allah, You are Most Forgiving and Generous; You love forgiveness, so forgive me."
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-xs text-slate-500">
+            <span>Jami' at-Tirmidhi (3513) • Sahih</span>
+            <button onclick="copyDua('اللَّهُمَّ إِنَّكَ عَفُوٌّ كَرِيمٌ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي - Allahumma innaka Afuwwun Kareemun tuhibbul-afwa fa\'fu annee')" class="text-emerald-600 dark:text-emerald-400 hover:underline font-semibold flex items-center space-x-1">
+              <span>📋 Copy</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: 30-Day Ramadan Quran Khatm Tracker -->
+    <section id="quran-khatm" class="space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 border-b border-slate-200 dark:border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Spiritual Milestones</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-heading mt-0.5">
+            30-Day Ramadan Quran Khatm Checklist
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            Recite one Juz daily (approx. 20 pages) to complete the entire Holy Quran during the blessed month. Your progress is saved automatically.
+          </p>
+        </div>
+
+        <!-- Quick Actions & Reset -->
+        <div class="flex items-center space-x-2">
+          <button id="btn-khatm-reset" class="text-xs font-medium text-slate-500 hover:text-red-500 transition px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-red-300">
+            🔄 Reset Tracker
+          </button>
+        </div>
+      </div>
+
+      <!-- Khatm Progress Bar Card -->
+      <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Completion Status</span>
+            <div class="text-2xl font-extrabold text-slate-900 dark:text-white mt-0.5 flex items-center gap-2">
+              <span id="khatm-completed-count">0</span>
+              <span class="text-slate-400 text-lg font-normal">/ 30 Juz Completed</span>
+              <span id="khatm-percent-badge" class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold">0%</span>
+            </div>
+          </div>
+
+          <!-- Filter Pills -->
+          <div class="flex items-center space-x-1.5 text-xs font-medium">
+            <button class="khatm-filter-btn px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-semibold transition" data-filter="all">All (30)</button>
+            <button class="khatm-filter-btn px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-filter="completed">Completed</button>
+            <button class="khatm-filter-btn px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-filter="remaining">Remaining</button>
+          </div>
+        </div>
+
+        <!-- Progress bar track -->
+        <div class="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div id="khatm-progress-bar" class="h-full bg-gradient-to-r from-emerald-500 to-amber-500 rounded-full transition-all duration-500 ease-out" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- 30 Juz Cards Grid -->
+      <div id="quran-juz-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </section>
+
+    <!-- SECTION: Voluntary Fasting Guide (Nawafil & Sunnah) -->
+    <section id="voluntary-fasting" class="space-y-6">
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Sunnah al-Nawafil</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-heading mt-0.5">
+          Voluntary Fasting Guide
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          The year-round prophetic calendar of non-obligatory fasts that elevate faith and expiate sins.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1: The White Days -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl">🌕</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">Monthly</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-3 font-heading">
+              The White Days (Ayyām al-Bīḍ)
+            </h3>
+            <p class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-0.5">
+              13th, 14th & 15th of Every Hijri Month
+            </p>
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+              Named because the moon is at its fullest and brightest. Fasting three days every month is equivalent to fasting the entire year in reward, as each good deed is multiplied tenfold.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-400 italic">
+            "If you fast three days of the month, fast the 13th, 14th and 15th." (Sunan an-Nasa'i 2420)
+          </div>
+        </div>
+
+        <!-- Card 2: Mondays and Thursdays -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl">📅</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300">Weekly</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-3 font-heading">
+              Mondays & Thursdays
+            </h3>
+            <p class="text-xs text-amber-600 dark:text-amber-400 font-semibold mt-0.5">
+              Every Monday and Thursday
+            </p>
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+              The Prophet ﷺ was keen on fasting Mondays and Thursdays, explaining that deeds are presented before Allah on these two days, and he loved for his deeds to be presented while fasting.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-400 italic">
+            "Deeds are presented on Monday and Thursday, and I love that my deeds be presented while I am fasting." (Tirmidhi 747)
+          </div>
+        </div>
+
+        <!-- Card 3: Day of Arafah -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl">⛰️</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">Annual</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-3 font-heading">
+              The Day of 'Arafah
+            </h3>
+            <p class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-0.5">
+              9th of Dhul-Hijjah
+            </p>
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+              For those not performing Hajj pilgrimage, fasting the Day of Arafah carries the monumental virtue of expiating the minor sins of both the preceding year and the coming year.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-400 italic">
+            "Fasting on the Day of 'Arafah expiates the sins of the past year and the coming year." (Sahih Muslim 1162)
+          </div>
+        </div>
+
+        <!-- Card 4: Day of Ashura -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl">🌊</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300">Annual</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-3 font-heading">
+              The Day of 'Ashura
+            </h3>
+            <p class="text-xs text-amber-600 dark:text-amber-400 font-semibold mt-0.5">
+              10th of Muharram (+ 9th Tasu'a)
+            </p>
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+              Commemorates the day Allah saved Prophet Musa (Moses AS) and the Children of Israel from Pharaoh. Fasting Ashura expiates the sins of the previous year. Fasting the 9th alongside it is Sunnah.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-400 italic">
+            "Fasting the day of 'Ashura, I hope that Allah will accept it as expiation for the year that came before it." (Muslim 1162)
+          </div>
+        </div>
+
+        <!-- Card 5: Six Days of Shawwal -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl">🌟</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">Post-Ramadan</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-3 font-heading">
+              Six Days of Shawwal
+            </h3>
+            <p class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-0.5">
+              Any 6 Days in Shawwal (after Eid)
+            </p>
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+              Whoever fasts the month of Ramadan and follows it with six voluntary days of fasting during Shawwal receives the reward of fasting perpetually for an entire unbroken year.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-400 italic">
+            "Whoever fasts Ramadan and then follows it with six days of Shawwal, it is as if he fasted for a lifetime." (Muslim 1164)
+          </div>
+        </div>
+
+        <!-- Card 6: Fasting of Prophet Dawud (AS) -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl">👑</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Supreme</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-3 font-heading">
+              Fasting of Prophet Dawud (AS)
+            </h3>
+            <p class="text-xs text-slate-500 font-semibold mt-0.5">
+              Alternate Days (Fast one, eat one)
+            </p>
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+              The most beloved fasting to Allah is the fasting of Dawud (David AS). He used to fast on alternate days and never fled when meeting the adversary. It represents supreme spiritual discipline.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-400 italic">
+            "The most beloved fasting to Allah is that of Dawud: he used to fast every other day." (Bukhari 1131, Muslim 1159)
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: Fiqh of Fasting Essentials Accordion -->
+    <section id="fasting-fiqh" class="space-y-6">
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Jurisprudence (Fiqh al-Siyam)</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-heading mt-0.5">
+          Fiqh of Fasting Essentials
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          Clarity on rulings, contemporary medical scenarios, nullifiers requiring Qadha or Kaffarah, and valid exemptions.
+        </p>
+      </div>
+
+      <!-- Accordion Container -->
+      <div class="space-y-3" id="fiqh-accordion">
+
+        <!-- Accordion Item 1 -->
+        <div class="fiqh-item glass-card rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+          <button class="fiqh-header w-full px-6 py-4 flex justify-between items-center text-left hover:bg-slate-50 dark:hover:bg-slate-850/60 transition">
+            <span class="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center space-x-3">
+              <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center justify-center text-xs font-bold">1</span>
+              <span>The Core Pillars (Arkan) and Intention (Niyyah) of Fasting</span>
+            </span>
+            <span class="fiqh-chevron transform transition-transform text-slate-400">▼</span>
+          </button>
+          <div class="fiqh-body hidden px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 space-y-2">
+            <p>
+              The fast (Sawm) has two non-negotiable core pillars:
+            </p>
+            <ul class="list-disc list-inside space-y-1 ml-2">
+              <li><strong>The Intention (Niyyah):</strong> Must be made from the heart before the break of dawn (Fajr) for obligatory Ramadan fasts. Stating it aloud is not a condition; heartfelt resolve suffices.</li>
+              <li><strong>Abstinence (Imsak):</strong> Refraining from food, drink, marital relations, and intentional nullifiers from the crack of dawn (Fajr) until total sunset (Maghrib).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Accordion Item 2 -->
+        <div class="fiqh-item glass-card rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+          <button class="fiqh-header w-full px-6 py-4 flex justify-between items-center text-left hover:bg-slate-50 dark:hover:bg-slate-850/60 transition">
+            <span class="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center space-x-3">
+              <span class="w-7 h-7 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 flex items-center justify-center text-xs font-bold">2</span>
+              <span>What Invalidates the Fast & Requires Qadha (Make-up Day Only)</span>
+            </span>
+            <span class="fiqh-chevron transform transition-transform text-slate-400">▼</span>
+          </button>
+          <div class="fiqh-body hidden px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 space-y-2">
+            <p>The following nullify the fast and require making up one day (Qadha) after Ramadan without heavy expiation (Kaffarah):</p>
+            <ul class="list-disc list-inside space-y-1 ml-2">
+              <li>Eating or drinking intentionally (without forgetfulness). Note: If done out of genuine forgetfulness, the Prophet ﷺ stated: <em>"His fast is valid; Allah fed him and gave him drink."</em> (Bukhari & Muslim).</li>
+              <li>Deliberately inducing vomiting by forcing oneself (unintentional vomiting does not break fast).</li>
+              <li>Onset of menstruation (Hayd) or post-natal bleeding (Nifas), even moments before Maghrib.</li>
+              <li>Nutritional intravenous (IV) fluids or glucose infusions that substitute for food/nourishment.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Accordion Item 3 -->
+        <div class="fiqh-item glass-card rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+          <button class="fiqh-header w-full px-6 py-4 flex justify-between items-center text-left hover:bg-slate-50 dark:hover:bg-slate-850/60 transition">
+            <span class="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center space-x-3">
+              <span class="w-7 h-7 rounded-lg bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300 flex items-center justify-center text-xs font-bold">3</span>
+              <span>Major Nullification Requiring Kaffarah (Heavy Expiation)</span>
+            </span>
+            <span class="fiqh-chevron transform transition-transform text-slate-400">▼</span>
+          </button>
+          <div class="fiqh-body hidden px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 space-y-2">
+            <p>
+              Engaging in sexual intercourse deliberately during the fasting daylight hours of Ramadan is a major sin that incurs <strong>Kaffarah</strong> in addition to making up the day:
+            </p>
+            <p class="font-semibold text-slate-700 dark:text-slate-200">The order of Kaffarah:</p>
+            <ol class="list-decimal list-inside space-y-1 ml-2">
+              <li>Freeing a believing slave (not applicable today).</li>
+              <li>Fasting <strong>60 consecutive days</strong> (two lunar months) without interruption without a legitimate excuse.</li>
+              <li>If physically unable due to chronic illness or old age, feeding <strong>60 destitute persons</strong> (one average meal each or its monetary value).</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Accordion Item 4 -->
+        <div class="fiqh-item glass-card rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+          <button class="fiqh-header w-full px-6 py-4 flex justify-between items-center text-left hover:bg-slate-50 dark:hover:bg-slate-850/60 transition">
+            <span class="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center space-x-3">
+              <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center justify-center text-xs font-bold">4</span>
+              <span>Contemporary Medical Rulings (Inhalers, Drops, Injections)</span>
+            </span>
+            <span class="fiqh-chevron transform transition-transform text-slate-400">▼</span>
+          </button>
+          <div class="fiqh-body hidden px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 space-y-2">
+            <p>Based on consensus resolutions by the International Islamic Fiqh Academy (OIC):</p>
+            <ul class="list-disc list-inside space-y-1 ml-2">
+              <li><strong>Asthma Inhalers:</strong> The majority of contemporary jurists (including Ibn Baz, Ibn 'Uthaymeen, and OIC Fiqh Academy) rule that therapeutic gas inhalers do not break the fast as the micro-droplets target bronchial airways, not digestive nutrition.</li>
+              <li><strong>Eye Drops & Ear Drops:</strong> Do not invalidate the fast even if a taste reaches the throat, provided they do not pass through a ruptured eardrum into digestion.</li>
+              <li><strong>Intramuscular & Subcutaneous Injections:</strong> Insulin, penicillin, analgesics, vaccines, or local dental anesthesia do not break the fast because they are non-nutritive and do not pass through the normal digestive tract.</li>
+              <li><strong>Routine Blood Tests:</strong> Drawing minor vials of blood for lab diagnostics does not invalidate the fast.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Accordion Item 5 -->
+        <div class="fiqh-item glass-card rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+          <button class="fiqh-header w-full px-6 py-4 flex justify-between items-center text-left hover:bg-slate-50 dark:hover:bg-slate-850/60 transition">
+            <span class="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center space-x-3">
+              <span class="w-7 h-7 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 flex items-center justify-center text-xs font-bold">5</span>
+              <span>What is Fully Permissible While Fasting (Mubah)</span>
+            </span>
+            <span class="fiqh-chevron transform transition-transform text-slate-400">▼</span>
+          </button>
+          <div class="fiqh-body hidden px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 space-y-2">
+            <ul class="list-disc list-inside space-y-1 ml-2">
+              <li>Using the Siwak (natural tooth-stick) throughout the day without restriction.</li>
+              <li>Brushing teeth with toothpaste, provided one is careful not to swallow any paste or water.</li>
+              <li>Bathing, swimming, or pouring cold water over the head to relieve extreme summer heat.</li>
+              <li>Swallowing one's own natural saliva is completely unanimously permitted.</li>
+              <li>Rinsing the mouth and sniffing water for Wudu (without excessive exaggeration).</li>
+              <li>Tasting food with the tip of the tongue for seasoning/cooking, provided it is spat out immediately and nothing reaches the esophagus.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Accordion Item 6 -->
+        <div class="fiqh-item glass-card rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+          <button class="fiqh-header w-full px-6 py-4 flex justify-between items-center text-left hover:bg-slate-50 dark:hover:bg-slate-850/60 transition">
+            <span class="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center space-x-3">
+              <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center justify-center text-xs font-bold">6</span>
+              <span>Legitimate Exemptions & Fidyah Compensation</span>
+            </span>
+            <span class="fiqh-chevron transform transition-transform text-slate-400">▼</span>
+          </button>
+          <div class="fiqh-body hidden px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 space-y-2">
+            <p>Allah says in Surah Al-Baqarah (2:185): <em>"Allah intends for you ease and does not intend for you hardship."</em></p>
+            <ul class="list-disc list-inside space-y-1 ml-2">
+              <li><strong>Temporary Illness or Travel:</strong> May break fast and must make up (Qadha) day-for-day when restored or returned.</li>
+              <li><strong>Pregnant or Breastfeeding Women:</strong> If fearing harm for their own health or infant's nutrition, they are exempt and make up missed days when safely able.</li>
+              <li><strong>The Elderly & Chronically Terminally Ill:</strong> Who have no realistic hope of recovery are exempt from fasting and pay <strong>Fidyah</strong>: feeding one impoverished person for every missed day (approx. 1.5 kg staple food or local currency equivalent, typically $8-$12/day).</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Unified Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <!-- Brand Summary -->
+        <div class="space-y-3">
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white">🌙</div>
+            <span class="font-bold text-lg text-white font-heading">NoorHub</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The unified Islamic platform offering astronomical prayer timings, fasting companions, authentic Hadith collections, and essential fiqh calculators. Dedicated as an open Digital Waqf.
+          </p>
+        </div>
+
+        <!-- Pillars Navigation -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Worship & Prayer</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="prayer-times.html" class="hover:text-emerald-400 transition">Salat & Qibla Timetable</a></li>
+            <li><a href="fasting.html" class="hover:text-emerald-400 transition">Sawm & Fasting Companion</a></li>
+            <li><a href="tasbih.html" class="hover:text-emerald-400 transition">Digital Tasbih & Adhkar</a></li>
+            <li><a href="hadith.html" class="hover:text-emerald-400 transition">40 Hadith of Imam Nawawi</a></li>
+          </ul>
+        </div>
+
+        <!-- Knowledge & Tools -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Knowledge & Wealth</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="99-names.html" class="hover:text-emerald-400 transition">99 Names of Allah (Asma-ul-Husna)</a></li>
+            <li><a href="zakat.html" class="hover:text-emerald-400 transition">Zakat Multi-Asset Calculator</a></li>
+            <li><a href="names.html" class="hover:text-emerald-400 transition">Islamic Baby Names (Ism)</a></li>
+            <li><a href="inheritance.html" class="hover:text-emerald-400 transition">Faraid Inheritance Engine</a></li>
+            <li><a href="halal-guide.html" class="hover:text-emerald-400 transition">Halal Food & E-Numbers</a></li>
+            <li><a href="mosque.html" class="hover:text-emerald-400 transition">Mosque TV Kiosk Mode</a></li>
+          </ul>
+        </div>
+
+        <!-- Trust & About -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">About & Trust</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="about.html" class="hover:text-emerald-400 transition">About NoorHub Initiative</a></li>
+            <li><a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Commitment (Zero Tracking)</a></li>
+            <li><a href="contact.html" class="hover:text-emerald-400 transition">Contact & Feedback</a></li>
+            <li class="pt-2 text-[11px] text-slate-500">Contact: siddiknurealam1@gmail.com</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <p>© 2026 NoorHub • The Unified Islamic Living Platform. Open Waqf.</p>
+        <div class="flex space-x-4 mt-2 sm:mt-0">
+          <span>noorhub.truxio.bond</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-2.5 rounded-xl shadow-2xl border border-slate-700 text-xs flex items-center space-x-2 transition-all duration-300 opacity-0 pointer-events-none translate-y-3">
+    <span>✨</span>
+    <span id="toast-msg">Text copied</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="shared.js"></script>
+  <script src="salat-engine.js"></script>
+  <script>
+    // Copy helper
+    function copyDua(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("Du'a copied to clipboard!");
+      }).catch(() => {
+        showToast("Copied to clipboard!");
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const text = document.getElementById('toast-msg');
+      if (!toast || !text) return;
+      text.textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
+      }, 2400);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const core = window.NoorHub;
+      const citySelect = document.getElementById('fasting-city-select');
+      const gpsBtn = document.getElementById('fasting-gps-btn');
+
+      // Populate cities
+      if (citySelect) {
+        citySelect.innerHTML = NOORHUB_CITIES.map(c => 
+          `<option value="${c.name}" ${c.name === core.city.name ? 'selected' : ''}>${c.name}, ${c.country}</option>`
+        ).join('');
+
+        citySelect.addEventListener('change', () => {
+          const found = NOORHUB_CITIES.find(c => c.name === citySelect.value);
+          if (found) {
+            core.saveCity(found);
+            updateFastingDashboard();
+          }
+        });
+      }
+
+      if (gpsBtn) {
+        gpsBtn.addEventListener('click', () => {
+          core.requestGPSLocation((loc) => {
+            showToast(`Location set to GPS (${loc.lat.toFixed(2)}, ${loc.lng.toFixed(2)})`);
+            updateFastingDashboard();
+          });
+        });
+      }
+
+      // Quran Juz Data
+      const JUZ_DATA = [
+        { juz: 1, name: "Al-Fatihah 1 - Al-Baqarah 141", pages: "1 - 21" },
+        { juz: 2, name: "Al-Baqarah 142 - 252", pages: "22 - 41" },
+        { juz: 3, name: "Al-Baqarah 253 - Ali 'Imran 92", pages: "42 - 61" },
+        { juz: 4, name: "Ali 'Imran 93 - An-Nisa 23", pages: "62 - 81" },
+        { juz: 5, name: "An-Nisa 24 - 147", pages: "82 - 101" },
+        { juz: 6, name: "An-Nisa 148 - Al-Ma'idah 81", pages: "102 - 121" },
+        { juz: 7, name: "Al-Ma'idah 82 - Al-An'am 110", pages: "122 - 141" },
+        { juz: 8, name: "Al-An'am 111 - Al-A'raf 87", pages: "142 - 161" },
+        { juz: 9, name: "Al-A'raf 88 - Al-Anfal 40", pages: "162 - 181" },
+        { juz: 10, name: "Al-Anfal 41 - At-Tawbah 92", pages: "182 - 201" },
+        { juz: 11, name: "At-Tawbah 93 - Hud 5", pages: "202 - 221" },
+        { juz: 12, name: "Hud 6 - Yusuf 52", pages: "222 - 241" },
+        { juz: 13, name: "Yusuf 53 - Ibrahim 52", pages: "242 - 261" },
+        { juz: 14, name: "Al-Hijr 1 - An-Nahl 128", pages: "262 - 281" },
+        { juz: 15, name: "Al-Isra 1 - Al-Kahf 74", pages: "282 - 301" },
+        { juz: 16, name: "Al-Kahf 75 - Ta-Ha 135", pages: "302 - 321" },
+        { juz: 17, name: "Al-Anbiya 1 - Al-Hajj 78", pages: "322 - 341" },
+        { juz: 18, name: "Al-Mu'minun 1 - Al-Furqan 20", pages: "342 - 361" },
+        { juz: 19, name: "Al-Furqan 21 - An-Naml 55", pages: "362 - 381" },
+        { juz: 20, name: "An-Naml 56 - Al-'Ankabut 45", pages: "382 - 401" },
+        { juz: 21, name: "Al-'Ankabut 46 - Al-Ahzab 30", pages: "402 - 421" },
+        { juz: 22, name: "Al-Ahzab 31 - Ya-Sin 27", pages: "422 - 441" },
+        { juz: 23, name: "Ya-Sin 28 - Az-Zumar 31", pages: "442 - 461" },
+        { juz: 24, name: "Az-Zumar 32 - Fussilat 46", pages: "462 - 481" },
+        { juz: 25, name: "Fussilat 47 - Al-Jathiyah 37", pages: "482 - 501" },
+        { juz: 26, name: "Al-Ahqaf 1 - Adh-Dhariyat 30", pages: "502 - 521" },
+        { juz: 27, name: "Adh-Dhariyat 31 - Al-Hadid 29", pages: "522 - 541" },
+        { juz: 28, name: "Al-Mujadila 1 - At-Tahrim 12", pages: "542 - 561" },
+        { juz: 29, name: "Al-Mulk 1 - Al-Mursalat 50", pages: "562 - 581" },
+        { juz: 30, name: "An-Naba 1 - An-Nas 6", pages: "582 - 604" }
+      ];
+
+      // Khatm LocalStorage persistence
+      let khatmStorage = JSON.parse(localStorage.getItem('noorhub_quran_khatm') || '{}');
+      let currentFilter = 'all';
+
+      function renderKhatmChecklist() {
+        const grid = document.getElementById('quran-juz-grid');
+        if (!grid) return;
+
+        let completedCount = 0;
+        let html = '';
+
+        JUZ_DATA.forEach(item => {
+          const isDone = !!khatmStorage[item.juz];
+          if (isDone) completedCount++;
+
+          if (currentFilter === 'completed' && !isDone) return;
+          if (currentFilter === 'remaining' && isDone) return;
+
+          html += `
+            <div class="juz-card glass-card rounded-xl p-3.5 border transition cursor-pointer select-none ${isDone ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800' : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'}" data-juz="${item.juz}">
+              <div class="flex items-start justify-between">
+                <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${isDone ? 'bg-emerald-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'}">
+                  ${item.juz}
+                </span>
+                <input type="checkbox" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 pointer-events-none" ${isDone ? 'checked' : ''}>
+              </div>
+              <div class="mt-2">
+                <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">${item.name}</h4>
+                <p class="text-[11px] text-slate-400 mt-0.5">Pages ${item.pages}</p>
+              </div>
+            </div>
+          `;
+        });
+
+        grid.innerHTML = html;
+
+        // Update counts
+        const countEl = document.getElementById('khatm-completed-count');
+        const badgeEl = document.getElementById('khatm-percent-badge');
+        const barEl = document.getElementById('khatm-progress-bar');
+
+        const pct = Math.round((completedCount / 30) * 100);
+        if (countEl) countEl.textContent = completedCount;
+        if (badgeEl) badgeEl.textContent = `${pct}%`;
+        if (barEl) barEl.style.width = `${pct}%`;
+
+        // Bind clicks
+        grid.querySelectorAll('.juz-card').forEach(card => {
+          card.addEventListener('click', () => {
+            const juzNum = card.getAttribute('data-juz');
+            khatmStorage[juzNum] = !khatmStorage[juzNum];
+            localStorage.setItem('noorhub_quran_khatm', JSON.stringify(khatmStorage));
+            renderKhatmChecklist();
+          });
+        });
+      }
+
+      // Filter buttons
+      document.querySelectorAll('.khatm-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.khatm-filter-btn').forEach(b => {
+            b.classList.remove('bg-emerald-600', 'text-white', 'font-semibold');
+            b.classList.add('text-slate-600', 'dark:text-slate-300');
+          });
+          btn.classList.add('bg-emerald-600', 'text-white', 'font-semibold');
+          btn.classList.remove('text-slate-600', 'dark:text-slate-300');
+          currentFilter = btn.getAttribute('data-filter');
+          renderKhatmChecklist();
+        });
+      });
+
+      // Reset button
+      const resetBtn = document.getElementById('btn-khatm-reset');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          if (confirm('Are you sure you want to reset your 30-Day Quran Khatm checklist?')) {
+            khatmStorage = {};
+            localStorage.removeItem('noorhub_quran_khatm');
+            renderKhatmChecklist();
+            showToast('Quran Khatm tracker reset.');
+          }
+        });
+      }
+
+      renderKhatmChecklist();
+
+      // Accordion logic
+      document.querySelectorAll('.fiqh-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const parent = header.closest('.fiqh-item');
+          const body = parent.querySelector('.fiqh-body');
+          const chevron = header.querySelector('.fiqh-chevron');
+
+          const isHidden = body.classList.contains('hidden');
+          
+          // Collapse all first (accordion style)
+          document.querySelectorAll('.fiqh-body').forEach(b => b.classList.add('hidden'));
+          document.querySelectorAll('.fiqh-chevron').forEach(c => c.classList.remove('rotate-180'));
+
+          if (isHidden) {
+            body.classList.remove('hidden');
+            chevron.classList.add('rotate-180');
+          }
+        });
+      });
+
+      // Live Fasting Countdown & Solar Calculations
+      function parseTimeToDate(timeStr, baseDate) {
+        const [h, m] = timeStr.split(':').map(Number);
+        const d = new Date(baseDate);
+        d.setHours(h, m, 0, 0);
+        return d;
+      }
+
+      function updateFastingDashboard() {
+        const loc = core.city;
+        const now = new Date();
+
+        // City display
+        const dialCity = document.getElementById('dial-city-name');
+        if (dialCity) dialCity.textContent = loc.name;
+
+        // Header Live Clock
+        const clockEl = document.getElementById('fasting-live-clock');
+        if (clockEl) {
+          clockEl.textContent = now.toLocaleTimeString('en-GB');
+        }
+
+        let times = null;
+        if (typeof AstronomicalPrayerCalculator !== 'undefined') {
+          times = AstronomicalPrayerCalculator.calculate(now, loc.lat, loc.lng, 2, 0, 'night-middle', loc.tz);
+        }
+
+        if (!times) {
+          // Fallback approximate times
+          times = { Fajr: "04:50", Sunrise: "06:12", Dhuhr: "12:15", Asr: "15:40", Maghrib: "18:25", Isha: "19:45" };
+        }
+
+        const suhoorTime = times.Fajr;
+        const sunriseTime = times.Sunrise;
+        const iftarTime = times.Maghrib;
+
+        document.getElementById('suhoor-time-display').textContent = suhoorTime;
+        document.getElementById('sunrise-time-display').textContent = sunriseTime;
+        document.getElementById('iftar-time-display').textContent = iftarTime;
+
+        const suhoorDate = parseTimeToDate(suhoorTime, now);
+        const iftarDate = parseTimeToDate(iftarTime, now);
+
+        // Calculate daylight fasting duration
+        const diffMs = iftarDate - suhoorDate;
+        const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+        const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById('fast-duration-display').textContent = `${diffHours}h ${diffMins}m`;
+
+        const countdownClock = document.getElementById('countdown-clock');
+        const targetLabel = document.getElementById('target-event-label');
+        const targetDesc = document.getElementById('target-event-time');
+        const statusPill = document.getElementById('fasting-status-pill');
+        const dialModeBadge = document.getElementById('dial-mode-badge');
+        const dialPct = document.getElementById('dial-percentage');
+        const dialSub = document.getElementById('dial-subtext');
+        const circle = document.getElementById('fasting-progress-circle');
+
+        const circumference = 540.35; // 2 * PI * 86
+
+        if (now >= suhoorDate && now < iftarDate) {
+          // CURRENTLY FASTING (Suhoor -> Iftar)
+          statusPill.textContent = "Fasting Active";
+          targetLabel.textContent = "Time Remaining Until Iftar (Breaking Fast)";
+          targetDesc.textContent = `Today's Iftar (Maghrib) at ${iftarTime}`;
+          dialModeBadge.textContent = "Fasting Active";
+          dialModeBadge.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+
+          const remainingMs = iftarDate - now;
+          const totalMs = iftarDate - suhoorDate;
+          const elapsedMs = now - suhoorDate;
+          const pct = Math.min(100, Math.max(0, Math.round((elapsedMs / totalMs) * 100)));
+
+          dialPct.textContent = `${pct}%`;
+          dialSub.textContent = "Fast Elapsed";
+
+          const offset = circumference - (circumference * pct) / 100;
+          circle.style.strokeDashoffset = offset;
+
+          const h = Math.floor(remainingMs / (1000 * 60 * 60));
+          const m = Math.floor((remainingMs % (1000 * 60 * 60)) / (1000 * 60));
+          const s = Math.floor((remainingMs % (1000 * 60)) / 1000);
+          countdownClock.textContent = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+        } else {
+          // NON-FASTING NIGHT WINDOW (Iftar -> Next Suhoor)
+          statusPill.textContent = "Night Eating Window";
+          targetLabel.textContent = "Time Remaining Until Suhoor Cut-off (Fajr)";
+          dialModeBadge.textContent = "Night Window";
+          dialModeBadge.className = "px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30";
+
+          let nextSuhoorDate = new Date(suhoorDate);
+          if (now >= iftarDate) {
+            nextSuhoorDate.setDate(nextSuhoorDate.getDate() + 1);
+          }
+
+          targetDesc.textContent = `Tomorrow's Suhoor cut-off at ${suhoorTime}`;
+
+          const remainingMs = nextSuhoorDate - now;
+          let prevIftar = new Date(iftarDate);
+          if (now < suhoorDate) {
+            prevIftar.setDate(prevIftar.getDate() - 1);
+          }
+          const totalNightMs = nextSuhoorDate - prevIftar;
+          const elapsedNightMs = now - prevIftar;
+          const pct = Math.min(100, Math.max(0, Math.round((elapsedNightMs / totalNightMs) * 100)));
+
+          dialPct.textContent = `${pct}%`;
+          dialSub.textContent = "Night Elapsed";
+
+          const offset = circumference - (circumference * pct) / 100;
+          circle.style.strokeDashoffset = offset;
+
+          const h = Math.floor(remainingMs / (1000 * 60 * 60));
+          const m = Math.floor((remainingMs % (1000 * 60 * 60)) / (1000 * 60));
+          const s = Math.floor((remainingMs % (1000 * 60)) / 1000);
+          countdownClock.textContent = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+        }
+      }
+
+      updateFastingDashboard();
+      setInterval(updateFastingDashboard, 1000);
+
+      window.addEventListener('noorhub-location-changed', updateFastingDashboard);
+    });
+  </script>
+</body>
+</html>

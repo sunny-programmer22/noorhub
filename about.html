@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About NoorHub - An Open Digital Waqf for the Global Ummah</title>
+  <meta name="description" content="Learn about NoorHub, a non-profit digital waqf (صدقة جارية) created to deliver accurate, ad-free, tracker-free Islamic software tools rooted in authentic Islamic scholarship.">
+  <meta name="keywords" content="About NoorHub, digital waqf, islamic software, tracker-free islamic app, authentic prayer times, fiqh academy, hadith nawawi, islamic open source">
+  <meta property="og:title" content="About NoorHub - An Open Digital Waqf for the Global Ummah">
+  <meta property="og:description" content="Authentic, modern, and tracker-free digital waqf for Muslims worldwide. Learn why NoorHub was built and its scholarly foundations.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://noorhub.truxio.bond/about.html">
+
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              950: '#022c22',
+            },
+            amber: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            },
+            slate: {
+              850: '#131c2e',
+              900: '#0f172a',
+              950: '#0b0f19',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-emerald-900 text-emerald-100 text-xs py-1.5 px-4 text-center border-b border-emerald-800 flex justify-between items-center max-w-7xl mx-auto w-full">
+    <div class="hidden sm:flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>NoorHub Digital Waqf • Free, Authentic & Ad-Respecting</span>
+    </div>
+    <div class="mx-auto sm:mr-0 flex items-center space-x-4">
+      <span id="header-hijri-date" class="font-medium">1448 AH</span>
+      <span class="text-emerald-400">•</span>
+      <span id="header-clock" class="font-mono font-semibold">--:--:--</span>
+    </div>
+  </div>
+
+  <!-- Primary Navigation -->
+  <header class="sticky top-0 z-50 glass-header shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-900/20 group-hover:scale-105 transition-transform">
+            <span class="text-xl">🌙</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white font-heading">NoorHub</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-semibold uppercase tracking-wider">About</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-arabic leading-none -mt-0.5">نُور هَب • المِنَصَّةُ الإِسْلَامِيَّةُ</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat & Qibla</a>
+          <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
+          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih & Adhkar</a>
+          <a href="hadith.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">40 Hadith</a>
+          <a href="zakat.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Zakat</a>
+          <a href="names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Names</a>
+          <a href="inheritance.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Inheritance</a>
+          <a href="halal-guide.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Halal Guide</a>
+          <a href="mosque.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Mosque Kiosk</a>
+        </nav>
+
+        <!-- Right Action Controls -->
+        <div class="flex items-center space-x-2">
+          <!-- Dark/Light Theme Switcher -->
+          <button class="theme-toggle-btn p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle theme">
+            <svg class="w-5 h-5 hidden dark:block text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+            <svg class="w-5 h-5 block dark:hidden text-slate-700" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          </button>
+
+          <!-- Mobile Menu Hamburger -->
+          <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Home</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Salat & Qibla Compass</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Sawm & Fasting Companion</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Digital Tasbih & Adhkar</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">The 40 Hadith of Imam Nawawi</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Zakat Multi-Asset Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Islamic Baby Names (Ism Finder)</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Faraid Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Halal Food & E-Number Guide</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Mosque TV Kiosk Mode</a>
+      <a href="faq.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Frequently Asked Questions</a>
+      <a href="about.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-bold text-emerald-600">About NoorHub</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full space-y-16">
+
+    <!-- Mission & Identity -->
+    <section class="text-center space-y-6">
+      <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 text-xs font-semibold uppercase tracking-wider">
+        <span>🕌</span>
+        <span>Digital Waqf Fi Sabilillah • صدقة جارية</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white font-heading tracking-tight">
+        The Story of <span class="text-emerald-600 dark:text-emerald-400">NoorHub</span>
+      </h1>
+
+      <p class="text-base sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+        NoorHub is a modern, non-profit digital waqf created to restore purity, dignity, and intellectual rigor to Islamic software tools. We build accurate, beautiful, and completely tracker-free technology for Muslims, students of knowledge, and seekers worldwide.
+      </p>
+
+      <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 max-w-2xl mx-auto shadow-sm text-center">
+        <p class="font-arabic text-xl sm:text-2xl text-emerald-700 dark:text-emerald-300 leading-loose">
+          « إِذَا مَاتَ الْإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلَّا مِنْ ثَلَاثَةٍ: إِلَّا مِنْ صَدَقَةٍ جَارِيَةٍ، أَوْ عِلْمٍ يُنْتَفَعُ بِهِ، أَوْ وَلَدٍ صَالِحٍ يَدْعُو لَهُ »
+        </p>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-2 font-medium">
+          "When a human being dies, all their deeds cease except for three: an ongoing charity (sadaqah jariyah), beneficial knowledge, or a righteous child who prays for them."
+          <span class="block text-[11px] text-amber-600 dark:text-amber-400 mt-0.5">— Sahih Muslim 1631</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Why NoorHub Was Built -->
+    <section class="space-y-8">
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+        <h2 class="text-2xl sm:text-3xl font-bold font-heading text-slate-900 dark:text-white flex items-center space-x-3">
+          <span class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-sm font-sans">01</span>
+          <span>Why NoorHub Was Built</span>
+        </h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Overcoming commercial surveillance in sacred daily rituals</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass-card rounded-2xl p-6 border border-rose-200/60 dark:border-rose-900/40 bg-white/60 dark:bg-slate-900/60 space-y-3">
+          <div class="flex items-center space-x-2 text-rose-600 dark:text-rose-400 font-semibold text-sm">
+            <span class="text-lg">⚠️</span>
+            <span>The Status Quo of Mainstream Apps</span>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            In recent years, many widely downloaded Islamic apps have betrayed the trust of worshippers. Millions of Muslims discovered that their daily prayer apps were selling real-time GPS locations to data brokers, embedding commercial advertising trackers, draining device batteries, and interrupting moments of du'a with commercial banners and subscriptions.
+          </p>
+          <ul class="text-xs space-y-2 text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-200 dark:border-slate-800">
+            <li class="flex items-center space-x-2">
+              <span class="text-rose-500">✕</span>
+              <span>Intrusive location telemetry sent to third-party databases</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-rose-500">✕</span>
+              <span>Cluttered commercial advertisements during worship</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-rose-500">✕</span>
+              <span>Proprietary closed calculations with opaque algorithms</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800/80 bg-white dark:bg-slate-900 space-y-3">
+          <div class="flex items-center space-x-2 text-emerald-600 dark:text-emerald-400 font-semibold text-sm">
+            <span class="text-lg">🌿</span>
+            <span>The NoorHub Alternative</span>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            NoorHub was founded on an unapologetic principle: <strong>worship requires tranquility and privacy</strong>. No one should ever have their physical coordinates monetized when checking if it is time to face the Qibla. NoorHub runs 100% locally in your web browser. There are no tracking scripts, no ads, and zero server-side telemetry.
+          </p>
+          <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-300 pt-2 border-t border-slate-200 dark:border-slate-800">
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>All astronomical & fiqh calculations execute on your machine</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Permanent Waqf: completely free forever, with no monetization</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Open, transparent, and verifiable by scholars and developers</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scholarly & Theological Foundations -->
+    <section class="space-y-8">
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+        <h2 class="text-2xl sm:text-3xl font-bold font-heading text-slate-900 dark:text-white flex items-center space-x-3">
+          <span class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-sm font-sans">02</span>
+          <span>Rigorous Scholarly Foundations</span>
+        </h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Grounded in traditional Sunni orthodox jurisprudence and primary texts</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Pillar 1: Quran & Hadith -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center text-lg font-bold">
+            📖
+          </div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Primary Canonical Texts</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Every narration, adhkar count, and legal principle in NoorHub is cross-referenced with primary Islamic texts: the Holy Qur'an, Sahih al-Bukhari, Sahih Muslim, Sunan Abi Dawud, and Jami' at-Tirmidhi.
+          </p>
+          <div class="pt-2 text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
+            Rigorous isnad verification • Sahih & Hasan standards
+          </div>
+        </div>
+
+        <!-- Pillar 2: Nawawi & Classic Authorities -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg font-bold">
+            📜
+          </div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Imam an-Nawawi & Classical Fiqh</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Our Hadith commentaries draw heavily from the monumental works of Muhyi al-Din Yahya ibn Sharaf an-Nawawi (Al-Arba'un, Riyad as-Salihin, Al-Majmu'), and Sheikh Sa'id bin Ali bin Wahf al-Qahtani's Hisn al-Muslim.
+          </p>
+          <div class="pt-2 text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
+            Linguistic precision • Deep spiritual context
+          </div>
+        </div>
+
+        <!-- Pillar 3: Contemporary Fiqh Academies -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center text-lg font-bold">
+            ⚖️
+          </div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Islamic Fiqh Academy Resolutions</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Contemporary questions—such as calculating Zakat on modern investment portfolios, high-latitude prayer twilight adjustments, and food additive status (E-codes)—incorporate consensus rulings from the International Islamic Fiqh Academy (OIC) and Muslim World League.
+          </p>
+          <div class="pt-2 text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
+            OIC Fiqh Academy • MWL • European Fatwa Council
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- The 9 Comprehensive Modules of NoorHub -->
+    <section class="space-y-8">
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+        <h2 class="text-2xl sm:text-3xl font-bold font-heading text-slate-900 dark:text-white flex items-center space-x-3">
+          <span class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-sm font-sans">03</span>
+          <span>Unified Platform Architecture</span>
+        </h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Nine synchronized tools built for daily Islamic life and deep study</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">🧭</span>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Salat & Qibla Engine</h4>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            High-precision astronomical solar declination calculations with support for all 8 recognized global conventions (MWL, ISNA, Umm al-Qura, Karachi, Egyptian, Tehran, Gulf, France) and spherical trigonometric Qibla bearings.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">🌙</span>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Fasting & Sawm Companion</h4>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Real-time Suhur cutoff and Iftar countdown timers, voluntary fasting calendars (Mondays, Thursdays, Ayyam al-Bid, Ashura, Arafah), and Ramadan 30-day tracking with Taraweeh logs.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">📿</span>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Digital Tasbih & Adhkar</h4>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Haptic and audio-supported counter with authentic morning and evening supplications from Hisn al-Muslim, custom target counts, and persistent local storage that remembers your progress.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">📚</span>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">40 Hadith of Imam Nawawi</h4>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Complete Arabic text with vocalized vowels, full English translations, hadith numbers, authentic grade citations, and spiritual commentary on foundational Islamic ethics and creed.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">💰</span>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Multi-Asset Zakat Engine</h4>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Calculates 2.5% zakat obligations across liquid cash, gold, silver, traded stock equities, mutual funds, real estate inventory, and business merchandise, evaluating against both gold (85g) and silver (595g) nisabs.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">📜</span>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Faraid Inheritance Calculator</h4>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Algorithmic implementation of Quranic inheritance shares (Surah an-Nisa, Ayahs 11, 12, and 176) with handling of primary heirs, residue ('asabah), and classic radd / 'awl adjustments.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">✨</span>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Islamic Baby Names (Ism Finder)</h4>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Over 1,000 carefully curated Quranic and Sahabah names with authentic Arabic spelling, root meanings, phonetic pronunciation guides, and gender filtering for expecting Muslim parents.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">🥗</span>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Halal Food & E-Number Guide</h4>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Searchable database of hundreds of food additive E-numbers with clear classifications (Halal, Haram, Mushbooh) detailing animal vs plant origins, gelatin extraction sources, and emulsifiers.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">🖥️</span>
+            <h4 class="font-bold text-slate-900 dark:text-white text-sm">Mosque TV Kiosk Mode</h4>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Full-screen, high-contrast digital display optimized for masjid TV screens and community monitors, presenting dynamic Adhan and Iqamah times, next prayer countdowns, and hadith of the day.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Waqf Governance & Ongoing Verification -->
+    <section class="glass-card rounded-3xl p-8 bg-gradient-to-br from-emerald-900/10 via-white to-amber-500/10 dark:from-slate-900 dark:via-slate-900 dark:to-slate-850 border border-emerald-500/20 space-y-6">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Governance & Open Waqf</span>
+          <h3 class="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white mt-1">
+            Dedicated Exclusively to the Benefit of the Ummah
+          </h3>
+        </div>
+        <a href="contact.html" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition shadow-md whitespace-nowrap">
+          Submit Scholarly Feedback
+        </a>
+      </div>
+
+      <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        NoorHub is maintained as a digital waqf—an endowed intellectual asset offered freely for the sake of Allah (Fi Sabilillah). We welcome imams, muftis, astronomers, and software engineers to review our algorithmic models, verify calculations, and propose corrections. If you notice any discrepancy or nuance that warrants improvement according to your local school of thought or sighting council, we encourage you to connect with us.
+      </p>
+
+      <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+        <div class="flex items-center space-x-2">
+          <span class="text-emerald-500">●</span>
+          <span>Lead Developer & Caretaker: Siddik Nure Alam</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span>📧 Contact: <a href="mailto:siddiknurealam1@gmail.com" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">siddiknurealam1@gmail.com</a></span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <!-- Brand Info -->
+        <div class="space-y-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-2xl">🌙</span>
+            <span class="text-lg font-bold text-white font-heading">NoorHub</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The authentic unified Islamic digital living platform. Providing precision prayer schedules, fasting companions, zakat tools, and prophetic hadith without commercial tracking.
+          </p>
+          <p class="text-xs text-emerald-400 font-arabic pt-1">
+            صَدَقَةٌ جَارِيَةٌ لِوَجْهِ اللَّهِ تَعَالَى
+          </p>
+        </div>
+
+        <!-- Quick Links: Core Tools -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Core Tools</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="prayer-times.html" class="hover:text-emerald-400 transition">Prayer Times & Qibla</a></li>
+            <li><a href="fasting.html" class="hover:text-emerald-400 transition">Fasting & Ramadan Tracker</a></li>
+            <li><a href="tasbih.html" class="hover:text-emerald-400 transition">Digital Tasbih & Adhkar</a></li>
+            <li><a href="zakat.html" class="hover:text-emerald-400 transition">Zakat Calculator & Nisab</a></li>
+            <li><a href="hadith.html" class="hover:text-emerald-400 transition">40 Hadith of Imam Nawawi</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources & Knowledge -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Resources</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="names.html" class="hover:text-emerald-400 transition">Islamic Baby Names (Ism)</a></li>
+            <li><a href="inheritance.html" class="hover:text-emerald-400 transition">Faraid Inheritance Engine</a></li>
+            <li><a href="halal-guide.html" class="hover:text-emerald-400 transition">Halal Food & E-Numbers</a></li>
+            <li><a href="99-names.html" class="hover:text-emerald-400 transition">99 Names of Allah</a></li>
+            <li><a href="mosque.html" class="hover:text-emerald-400 transition">Mosque TV Kiosk Mode</a></li>
+          </ul>
+        </div>
+
+        <!-- Trust & About -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">About & Trust</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="about.html" class="text-emerald-400 font-semibold transition">About NoorHub Initiative</a></li>
+            <li><a href="faq.html" class="hover:text-emerald-400 transition">Frequently Asked Questions</a></li>
+            <li><a href="contact.html" class="hover:text-emerald-400 transition">Contact & Feedback</a></li>
+            <li><a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Commitment (Zero Tracking)</a></li>
+            <li><a href="terms.html" class="hover:text-emerald-400 transition">Terms of Service</a></li>
+            <li class="pt-2 text-[11px] text-slate-500">Contact: siddiknurealam1@gmail.com</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <p>© 2026 NoorHub. Free, Open & Waqf-dedicated. All rights reserved for the Ummah.</p>
+        <div class="flex space-x-4 mt-2 sm:mt-0">
+          <span>noorhub.truxio.bond</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="shared.js"></script>
+</body>
+</html>

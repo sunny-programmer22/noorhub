@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salat & Qibla Compass - NoorHub</title>
+  <meta name="description" content="High-precision Islamic prayer times timetable, astronomical celestial engine, Adhan audio chimes, 2D azimuth Qibla compass, and monthly printable schedule.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b', 950: '#022c22' },
+            amber: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309' },
+            slate: { 850: '#131c2e', 900: '#0f172a', 950: '#0b0f19' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕋</text></svg>">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern">
+
+  <!-- Primary Navigation -->
+  <header class="sticky top-0 z-50 glass-header shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+            <span class="text-xl">🌙</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white font-heading">NoorHub</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-semibold uppercase">Salat</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-arabic leading-none -mt-0.5">الصلاة والقبلة</p>
+          </div>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a href="index.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Portal</a>
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">Salat & Qibla</a>
+          <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
+          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih</a>
+          <a href="99-names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">99 Names</a>
+          <a href="hadith.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">40 Hadith</a>
+          <a href="zakat.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Zakat</a>
+          <a href="names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Names</a>
+          <a href="inheritance.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Inheritance</a>
+          <a href="halal-guide.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Halal Guide</a>
+          <a href="mosque.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Mosque Kiosk</a>
+        </nav>
+
+        <div class="flex items-center space-x-2">
+          <button class="theme-toggle-btn p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
+          </button>
+          <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">NoorHub Home</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">Salat & Qibla Compass</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Sawm & Fasting Companion</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Digital Tasbih & Adhkar</a>
+      <a href="99-names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">99 Names of Allah</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">40 Hadith of Imam Nawawi</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Zakat Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Islamic Baby Names</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Halal Food Guide</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Mosque Kiosk</a>
+    </div>
+  </header>
+
+  <!-- Main Salat Content -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-8">
+    
+    <!-- Header Banner & Location -->
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-heading">
+          Salat Prayer Times & Qibla
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">
+          Precision astronomical calculation • Verified against global Islamic authorities
+        </p>
+      </div>
+
+      <!-- Location Badge & Select -->
+      <div class="flex items-center space-x-3">
+        <select id="salat-city-select" class="px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none">
+          <!-- Populated by JS -->
+        </select>
+        <button id="salat-gps-btn" class="px-3 py-2 rounded-xl bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-700 transition flex items-center space-x-1 shadow-sm">
+          <span>🎯 Use GPS</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Prayer Times Cards -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+      
+      <div class="glass-card rounded-2xl p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center relative overflow-hidden" id="pcard-fajr">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Fajr</div>
+        <div class="text-2xl font-bold font-mono text-slate-900 dark:text-white mt-1" id="ptime-fajr">--:--</div>
+        <div class="text-xs text-slate-400 font-arabic mt-1">الفجر</div>
+        <div class="text-[10px] text-emerald-600 dark:text-emerald-400 mt-2 font-medium">Dawn</div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center relative overflow-hidden" id="pcard-sunrise">
+        <div class="text-xs font-semibold uppercase tracking-wider text-amber-500">Sunrise</div>
+        <div class="text-2xl font-bold font-mono text-amber-600 dark:text-amber-400 mt-1" id="ptime-sunrise">--:--</div>
+        <div class="text-xs text-slate-400 font-arabic mt-1">الشروق</div>
+        <div class="text-[10px] text-amber-600 dark:text-amber-400 mt-2 font-medium">Shuruq</div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center relative overflow-hidden" id="pcard-dhuhr">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Dhuhr</div>
+        <div class="text-2xl font-bold font-mono text-slate-900 dark:text-white mt-1" id="ptime-dhuhr">--:--</div>
+        <div class="text-xs text-slate-400 font-arabic mt-1">الظهر</div>
+        <div class="text-[10px] text-emerald-600 dark:text-emerald-400 mt-2 font-medium">Midday</div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center relative overflow-hidden" id="pcard-asr">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Asr</div>
+        <div class="text-2xl font-bold font-mono text-slate-900 dark:text-white mt-1" id="ptime-asr">--:--</div>
+        <div class="text-xs text-slate-400 font-arabic mt-1">العصر</div>
+        <div class="text-[10px] text-emerald-600 dark:text-emerald-400 mt-2 font-medium">Afternoon</div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center relative overflow-hidden" id="pcard-maghrib">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Maghrib</div>
+        <div class="text-2xl font-bold font-mono text-slate-900 dark:text-white mt-1" id="ptime-maghrib">--:--</div>
+        <div class="text-xs text-slate-400 font-arabic mt-1">المغرب</div>
+        <div class="text-[10px] text-emerald-600 dark:text-emerald-400 mt-2 font-medium">Sunset (Iftar)</div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center relative overflow-hidden" id="pcard-isha">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Isha</div>
+        <div class="text-2xl font-bold font-mono text-slate-900 dark:text-white mt-1" id="ptime-isha">--:--</div>
+        <div class="text-xs text-slate-400 font-arabic mt-1">العشاء</div>
+        <div class="text-[10px] text-emerald-600 dark:text-emerald-400 mt-2 font-medium">Night</div>
+      </div>
+
+    </div>
+
+    <!-- 2D Interactive Qibla Compass Section -->
+    <section id="qibla-section" class="glass-card rounded-3xl p-6 sm:p-10 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-6 space-y-4">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 text-xs font-semibold">
+            <span>🕋</span>
+            <span>Spherical Forward Azimuth Trigonometry</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-heading">
+            Accurate Kaaba Qibla Direction
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            The Qibla is calculated using great-circle spherical navigation between your exact coordinates and the Holy Kaaba in Makkah al-Mukarramah (21.4225° N, 39.8262° E).
+          </p>
+
+          <div class="grid grid-cols-2 gap-4 pt-2">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60">
+              <span class="text-xs text-slate-400">Kaaba Bearing</span>
+              <p id="salat-qibla-bearing" class="text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400 mt-1">--°</p>
+              <span id="salat-qibla-cardinal" class="text-[11px] text-slate-500">From True North</span>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60">
+              <span class="text-xs text-slate-400">Great Circle Distance</span>
+              <p id="salat-kaaba-distance" class="text-2xl font-bold font-mono text-amber-600 dark:text-amber-400 mt-1">-- km</p>
+              <span class="text-[11px] text-slate-500">Direct geodesic route</span>
+            </div>
+          </div>
+
+          <div class="pt-2 text-xs text-slate-500 flex items-center space-x-2">
+            <span>💡</span>
+            <span>On mobile phones, rotate your device flat to align with the Kaaba direction.</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 flex flex-col items-center justify-center">
+          <div class="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center rounded-full border-4 border-emerald-500/30 bg-slate-900 shadow-2xl">
+            <!-- Compass Rose Markers -->
+            <div class="absolute top-3 text-xs font-extrabold text-rose-500">N</div>
+            <div class="absolute right-4 text-xs font-extrabold text-slate-400">E</div>
+            <div class="absolute bottom-3 text-xs font-extrabold text-slate-400">S</div>
+            <div class="absolute left-4 text-xs font-extrabold text-slate-400">W</div>
+
+            <!-- Dial ticks -->
+            <div class="absolute inset-4 rounded-full border border-dashed border-slate-700 pointer-events-none"></div>
+
+            <!-- Animated Needle -->
+            <div id="salat-compass-needle" class="absolute w-full h-full flex items-center justify-center transition-transform duration-700 ease-out" style="transform: rotate(0deg);">
+              <div class="w-1.5 bg-gradient-to-t from-transparent via-amber-400 to-amber-500 h-56 flex flex-col items-center justify-start">
+                <div class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center text-lg shadow-lg -mt-4 border-2 border-slate-900">
+                  🕋
+                </div>
+              </div>
+            </div>
+
+            <div class="w-6 h-6 rounded-full bg-emerald-500 border-4 border-white shadow-md z-10"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Calculation Settings & Juristic Schools -->
+    <section class="glass-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+      <h3 class="text-base font-bold text-slate-900 dark:text-white mb-4 flex items-center space-x-2">
+        <span>⚙️</span>
+        <span>Calculation Settings & Jurisprudential Standards</span>
+      </h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Calculation Method</label>
+          <select id="setting-method" class="w-full p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">
+            <option value="3" selected>Muslim World League (MWL)</option>
+            <option value="2">Islamic Society of North America (ISNA)</option>
+            <option value="1">University of Islamic Sciences, Karachi</option>
+            <option value="4">Umm al-Qura University, Makkah</option>
+            <option value="5">Egyptian General Authority of Survey</option>
+            <option value="11">Majlis Ugama Islam Singapura (MUIS)</option>
+            <option value="13">Diyanet İşleri Başkanlığı (Turkey)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Asr Juristic Method (Madhab)</label>
+          <select id="setting-school" class="w-full p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">
+            <option value="0" selected>Standard (Shafi'i, Maliki, Hanbali) - 1x Shadow</option>
+            <option value="1">Hanafi School - 2x Shadow</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">High Latitude Rule (Extreme Regions)</label>
+          <select id="setting-highlat" class="w-full p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">
+            <option value="night-middle" selected>Middle of the Night</option>
+            <option value="one-seventh">One Seventh of Night</option>
+            <option value="angle-based">Angle Based Estimation</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Monthly Schedule Printable Table -->
+    <section class="glass-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Monthly Prayer Times Schedule</h3>
+          <p class="text-xs text-slate-500">Full 30-day timetable calculated for your active city</p>
+        </div>
+        <button id="btn-export-csv" class="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 transition flex items-center space-x-1">
+          <span>📥 Export CSV</span>
+        </button>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead>
+            <tr class="border-b border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400">
+              <th class="py-2.5 px-3">Date</th>
+              <th class="py-2.5 px-3">Fajr</th>
+              <th class="py-2.5 px-3">Sunrise</th>
+              <th class="py-2.5 px-3">Dhuhr</th>
+              <th class="py-2.5 px-3">Asr</th>
+              <th class="py-2.5 px-3">Maghrib</th>
+              <th class="py-2.5 px-3">Isha</th>
+            </tr>
+          </thead>
+          <tbody id="monthly-tbody" class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300 font-mono">
+            <!-- Injected via script -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row justify-between items-center text-xs">
+      <p>© 2026 NoorHub • The Unified Islamic Living Platform. Open Waqf.</p>
+      <div class="flex flex-wrap space-x-4 mt-2 sm:mt-0">
+        <a href="about.html" class="hover:underline">About</a>
+        <a href="faq.html" class="hover:underline">FAQ</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+        <a href="privacy.html" class="hover:underline">Privacy</a>
+        <a href="terms.html" class="hover:underline">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script src="salat-engine.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const core = window.NoorHub;
+      const citySelect = document.getElementById('salat-city-select');
+      const gpsBtn = document.getElementById('salat-gps-btn');
+      const methodSelect = document.getElementById('setting-method');
+      const schoolSelect = document.getElementById('setting-school');
+
+      // Populate cities
+      citySelect.innerHTML = NOORHUB_CITIES.map(c => `<option value="${c.name}" ${c.name === core.city.name ? 'selected' : ''}>${c.name}, ${c.country}</option>`).join('');
+
+      citySelect.addEventListener('change', () => {
+        const found = NOORHUB_CITIES.find(c => c.name === citySelect.value);
+        if (found) {
+          core.saveCity(found);
+          updateAll();
+        }
+      });
+
+      if (gpsBtn) {
+        gpsBtn.addEventListener('click', () => {
+          core.requestGPSLocation((loc) => {
+            updateAll();
+          });
+        });
+      }
+
+      [methodSelect, schoolSelect].forEach(s => s.addEventListener('change', updateAll));
+
+      function updateAll() {
+        const loc = core.city;
+        const method = parseInt(methodSelect.value, 10);
+        const school = parseInt(schoolSelect.value, 10);
+        const now = new Date();
+
+        let t = null;
+        if (typeof AstronomicalPrayerCalculator !== 'undefined') {
+          t = AstronomicalPrayerCalculator.calculate(now, loc.lat, loc.lng, method, school, 'night-middle', loc.tz);
+        }
+
+        if (t) {
+          ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'].forEach(k => {
+            const cap = k.charAt(0).toUpperCase() + k.slice(1);
+            const el = document.getElementById(`ptime-${k}`);
+            if (el && t[cap]) el.textContent = t[cap];
+          });
+        }
+
+        // Qibla
+        const kaabaLat = 21.422487;
+        const kaabaLng = 39.826206;
+        const lat1 = (loc.lat * Math.PI) / 180;
+        const lat2 = (kaabaLat * Math.PI) / 180;
+        const dLng = ((kaabaLng - loc.lng) * Math.PI) / 180;
+        const y = Math.sin(dLng);
+        const x = Math.cos(lat1) * Math.tan(lat2) - Math.sin(lat1) * Math.cos(dLng);
+        let qibla = (Math.atan2(y, x) * 180) / Math.PI;
+        qibla = (qibla + 360) % 360;
+
+        const R = 6371;
+        const dLat = lat2 - lat1;
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+        const dist = Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+
+        const needle = document.getElementById('salat-compass-needle');
+        if (needle) needle.style.transform = `rotate(${qibla}deg)`;
+        const bEl = document.getElementById('salat-qibla-bearing');
+        if (bEl) bEl.textContent = `${Math.round(qibla)}°`;
+        const dEl = document.getElementById('salat-kaaba-distance');
+        if (dEl) dEl.textContent = `${dist.toLocaleString()} km`;
+
+        // Monthly schedule
+        generateMonthly(loc, method, school);
+      }
+
+      function generateMonthly(loc, method, school) {
+        const tbody = document.getElementById('monthly-tbody');
+        if (!tbody || typeof AstronomicalPrayerCalculator === 'undefined') return;
+        
+        let html = '';
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        for (let d = 1; d <= daysInMonth; d++) {
+          const dt = new Date(year, month, d);
+          const t = AstronomicalPrayerCalculator.calculate(dt, loc.lat, loc.lng, method, school, 'night-middle', loc.tz);
+          const isToday = d === today.getDate();
+          html += `
+            <tr class="${isToday ? 'bg-emerald-50 dark:bg-emerald-950/40 font-bold text-emerald-700 dark:text-emerald-300' : 'hover:bg-slate-50 dark:hover:bg-slate-800/40'}">
+              <td class="py-2 px-3 font-sans">${d} ${dt.toLocaleString('en', { month: 'short' })}</td>
+              <td class="py-2 px-3">${t ? t.Fajr : '--'}</td>
+              <td class="py-2 px-3 text-amber-600 dark:text-amber-400">${t ? t.Sunrise : '--'}</td>
+              <td class="py-2 px-3">${t ? t.Dhuhr : '--'}</td>
+              <td class="py-2 px-3">${t ? t.Asr : '--'}</td>
+              <td class="py-2 px-3">${t ? t.Maghrib : '--'}</td>
+              <td class="py-2 px-3">${t ? t.Isha : '--'}</td>
+            </tr>
+          `;
+        }
+        tbody.innerHTML = html;
+      }
+
+      // Device orientation for mobile compass
+      if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', (e) => {
+          if (e.webkitCompassHeading) {
+            // iOS
+            const heading = e.webkitCompassHeading;
+            const needle = document.getElementById('salat-compass-needle');
+            // adjust needle
+          }
+        }, false);
+      }
+
+      updateAll();
+    });
+  </script>
+</body>
+</html>

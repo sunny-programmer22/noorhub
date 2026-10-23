@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faraid Inheritance Calculator - NoorHub</title>
+  <meta name="description" content="Authentic Islamic inheritance (Faraid) estate distribution calculator according to the 4 Sunni madhhabs. Computes fixed shares (Ashab al-Furud), residuaries (Asabah), exclusion rules (Hajb), and Awl/Radd.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b', 950: '#022c22' },
+            amber: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309' },
+            slate: { 850: '#131c2e', 900: '#0f172a', 950: '#0b0f19' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern">
+
+  <!-- Primary Navigation -->
+  <header class="sticky top-0 z-50 glass-header shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+            <span class="text-xl">🌙</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white font-heading">NoorHub</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-semibold uppercase">Faraid</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-arabic leading-none -mt-0.5">حساب المواريث الشرعية</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a href="index.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Portal</a>
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat & Qibla</a>
+          <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
+          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih</a>
+          <a href="hadith.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">40 Hadith</a>
+          <a href="zakat.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Zakat</a>
+          <a href="names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Names</a>
+          <a href="inheritance.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">Inheritance</a>
+          <a href="halal-guide.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Halal Guide</a>
+          <a href="99-names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">99 Names</a>
+          <a href="mosque.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Mosque Kiosk</a>
+        </nav>
+
+        <div class="flex items-center space-x-2">
+          <button class="theme-toggle-btn p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
+          </button>
+          <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">NoorHub Home</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Salat & Qibla Compass</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Sawm & Fasting Companion</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Digital Tasbih & Adhkar</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">40 Hadith of Imam Nawawi</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Zakat Multi-Asset Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Islamic Baby Names (Ism)</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">Faraid Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Halal Food & E-Numbers</a>
+      <a href="99-names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">99 Names of Allah</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Mosque TV Kiosk Mode</a>
+    </div>
+  </header>
+
+  <!-- Main Faraid Content -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-8">
+    
+    <!-- Hero / Title Card -->
+    <div class="glass-card rounded-3xl p-6 sm:p-10 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+      <div class="max-w-3xl space-y-3">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 text-xs font-semibold">
+          <span>⚖️</span>
+          <span>Ilm al-Fara'id • Science of Islamic Inheritance</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-heading">
+          Faraid Islamic Inheritance Calculator
+        </h1>
+        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+          The distribution of an estate in Islam is ordained by Allah in the Qur'an (Surah An-Nisa: 11, 12, and 176). This engine computes fixed shares (Ashab al-Furud), residuary entitlements (Asabah), classical exclusion rules (Hajb), and proportional adjustments (Awl and Radd).
+        </p>
+      </div>
+    </div>
+
+    <!-- Calculator Grid (Input Form on Left, Results on Right) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left Column: Inputs Form -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <!-- Step 1: Deceased Profile & Estate Value -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <h2 class="text-base font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white text-xs flex items-center justify-center font-bold">1</span>
+            <span>Deceased Profile & Net Distributable Estate</span>
+          </h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <!-- Gender -->
+            <div>
+              <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Gender of Deceased</label>
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" id="btn-gender-male" class="gender-btn active py-2.5 rounded-xl border border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 font-bold transition flex items-center justify-center space-x-1.5">
+                  <span>👨 Male (Husband)</span>
+                </button>
+                <button type="button" id="btn-gender-female" class="gender-btn py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium transition flex items-center justify-center space-x-1.5">
+                  <span>👩 Female (Wife)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Currency -->
+            <div>
+              <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Currency</label>
+              <select id="faraid-currency" class="w-full py-2.5 px-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium outline-none">
+                <option value="USD">USD ($)</option>
+                <option value="EUR">EUR (€)</option>
+                <option value="GBP">GBP (£)</option>
+                <option value="SAR">SAR (ر.س)</option>
+                <option value="AED">AED (د.إ)</option>
+                <option value="BDT">BDT (৳)</option>
+                <option value="PKR">PKR (₨)</option>
+                <option value="INR">INR (₹)</option>
+                <option value="CAD">CAD (C$)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Net Estate Amount -->
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
+              Net Estate Value (After funeral expenses, debts, and valid wills up to 1/3)
+            </label>
+            <div class="relative">
+              <span id="currency-symbol-label" class="absolute left-3 top-2.5 text-sm font-bold text-slate-400">$</span>
+              <input type="number" id="net-estate-input" value="100000" min="0" step="100" class="w-full pl-8 pr-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-mono font-bold text-base outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+            <p class="text-[11px] text-slate-500 mt-1">In Islamic law, debts and funeral rites take absolute priority over inheritance distribution.</p>
+          </div>
+        </div>
+
+        <!-- Step 2: Surviving Relatives -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <h2 class="text-base font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white text-xs flex items-center justify-center font-bold">2</span>
+            <span>Surviving Family Members & Heirs</span>
+          </h2>
+
+          <div class="space-y-4 text-xs">
+            
+            <!-- Immediate Spouses & Parents -->
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 space-y-3">
+              <span class="font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 text-[11px]">Primary Heirs (Spouse & Parents)</span>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div id="box-wives">
+                  <label class="block font-medium text-slate-700 dark:text-slate-300 mb-1">Wives (1-4)</label>
+                  <input type="number" id="heir-wives" value="1" min="0" max="4" class="heir-counter w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-bold font-mono">
+                </div>
+                <div id="box-husband" class="hidden">
+                  <label class="block font-medium text-slate-700 dark:text-slate-300 mb-1">Husband</label>
+                  <input type="number" id="heir-husband" value="0" min="0" max="1" class="heir-counter w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-bold font-mono">
+                </div>
+                <div>
+                  <label class="block font-medium text-slate-700 dark:text-slate-300 mb-1">Father Alive?</label>
+                  <select id="heir-father" class="heir-select w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-medium">
+                    <option value="1" selected>Yes (Living)</option>
+                    <option value="0">No (Deceased)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block font-medium text-slate-700 dark:text-slate-300 mb-1">Mother Alive?</label>
+                  <select id="heir-mother" class="heir-select w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-medium">
+                    <option value="1" selected>Yes (Living)</option>
+                    <option value="0">No (Deceased)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Children (Sons & Daughters) -->
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 space-y-3">
+              <span class="font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 text-[11px]">Descendants (Children)</span>
+              
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block font-medium text-slate-700 dark:text-slate-300 mb-1">Number of Sons</label>
+                  <input type="number" id="heir-sons" value="2" min="0" max="20" class="heir-counter w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-bold font-mono">
+                </div>
+                <div>
+                  <label class="block font-medium text-slate-700 dark:text-slate-300 mb-1">Number of Daughters</label>
+                  <input type="number" id="heir-daughters" value="1" min="0" max="20" class="heir-counter w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-bold font-mono">
+                </div>
+              </div>
+            </div>
+
+            <!-- Grandparents & Extended Collaterals (Siblings) -->
+            <details class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 space-y-3 cursor-pointer">
+              <summary class="font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 text-[11px]">
+                Extended Relatives (Grandparents & Siblings)
+              </summary>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3">
+                <div>
+                  <label class="block font-medium text-slate-700 dark:text-slate-300 mb-1">Paternal Grandfather</label>
+                  <select id="heir-pgrandfather" class="heir-select w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900">
+                    <option value="0" selected>No / Excluded</option>
+                    <option value="1">Yes (Living)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block font-medium text-slate-700 dark:text-slate-300 mb-1">Grandmothers (Paternal / Maternal)</label>
+                  <select id="heir-grandmothers" class="heir-select w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900">
+                    <option value="0" selected>None</option>
+                    <option value="1">1 Grandmother Living</option>
+                    <option value="2">2 Grandmothers Living</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block font-medium text-slate-700 dark:text-slate-300 mb-1">Full Brothers</label>
+                  <input type="number" id="heir-full-brothers" value="0" min="0" max="15" class="heir-counter w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-bold font-mono">
+                </div>
+                <div>
+                  <label class="block font-medium text-slate-700 dark:text-slate-300 mb-1">Full Sisters</label>
+                  <input type="number" id="heir-full-sisters" value="0" min="0" max="15" class="heir-counter w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-bold font-mono">
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Results & Share Breakdown -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-5 sticky top-24">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+            <h2 class="text-base font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+              <span>📊</span>
+              <span>Distribution Summary</span>
+            </h2>
+            <span id="faraid-rule-pill" class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-semibold">Standard Share</span>
+          </div>
+
+          <!-- Total Estate Card -->
+          <div class="p-4 rounded-xl bg-gradient-to-br from-emerald-900 to-slate-900 text-white space-y-1">
+            <span class="text-xs text-emerald-300 font-medium">Distributable Estate</span>
+            <p id="summary-total-estate" class="text-2xl font-extrabold font-mono text-white">$100,000.00</p>
+          </div>
+
+          <!-- Visual Distribution Proportion Bar -->
+          <div class="space-y-1.5">
+            <div class="flex justify-between text-xs text-slate-500">
+              <span>Estate Allocation</span>
+              <span id="allocation-pct" class="font-bold text-slate-800 dark:text-slate-200 font-mono">100% Allocated</span>
+            </div>
+            <div id="distribution-progress-bar" class="w-full h-3 rounded-full bg-slate-200 dark:bg-slate-800 flex overflow-hidden">
+              <!-- Dynamically rendered colored segment bars -->
+            </div>
+          </div>
+
+          <!-- Heirs Itemized Table -->
+          <div class="space-y-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Heirs Itemized Shares</span>
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs text-left">
+                <thead>
+                  <tr class="border-b border-slate-200 dark:border-slate-800 text-slate-400">
+                    <th class="py-2">Heir</th>
+                    <th class="py-2">Share</th>
+                    <th class="py-2 text-right">Amount</th>
+                  </tr>
+                </thead>
+                <tbody id="faraid-results-tbody" class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300 font-mono">
+                  <!-- Injected via script -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Quranic Reference -->
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500 leading-relaxed">
+            <p class="italic">"Allah instructs you concerning your children: for the male, what is equal to the share of two females..." [Surah An-Nisa 4:11]</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Jurisprudential Foundations Section -->
+    <section class="glass-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white">Core Principles of Islamic Inheritance</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-2">
+          <strong class="text-slate-900 dark:text-white block font-semibold text-sm">1. Ashab al-Furud (Fixed Heirs)</strong>
+          <p>Heirs specifically assigned Quranic fractions (1/2, 1/4, 1/8, 2/3, 1/3, 1/6) by Allah: Mother, Father, Husband, Wife, Daughters, Grandmothers.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-2">
+          <strong class="text-slate-900 dark:text-white block font-semibold text-sm">2. Asabah (Residuaries)</strong>
+          <p>Male relatives (and daughters alongside sons) who inherit the remaining balance of the estate after all fixed Quranic heirs have received their shares.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-2">
+          <strong class="text-slate-900 dark:text-white block font-semibold text-sm">3. Hajb (Exclusion Rules)</strong>
+          <p>Closer relatives prevent further relatives from inheriting. For instance, the presence of a living son completely excludes brothers and sisters from inheriting.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row justify-between items-center text-xs">
+      <p>© 2026 NoorHub • The Unified Islamic Living Platform. Open Waqf.</p>
+      <div class="flex space-x-4 mt-2 sm:mt-0">
+        <a href="about.html" class="hover:underline">About</a>
+        <a href="privacy.html" class="hover:underline">Privacy</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let deceasedGender = 'male'; // 'male' or 'female'
+
+      const btnMale = document.getElementById('btn-gender-male');
+      const btnFemale = document.getElementById('btn-gender-female');
+      const boxWives = document.getElementById('box-wives');
+      const boxHusband = document.getElementById('box-husband');
+      const heirHusband = document.getElementById('heir-husband');
+      const heirWives = document.getElementById('heir-wives');
+
+      btnMale.addEventListener('click', () => {
+        deceasedGender = 'male';
+        btnMale.classList.add('border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-950/40', 'text-emerald-700', 'dark:text-emerald-300', 'font-bold');
+        btnFemale.classList.remove('border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-950/40', 'text-emerald-700', 'dark:text-emerald-300', 'font-bold');
+        boxWives.classList.remove('hidden');
+        boxHusband.classList.add('hidden');
+        heirHusband.value = 0;
+        if (parseInt(heirWives.value, 10) === 0) heirWives.value = 1;
+        recalculate();
+      });
+
+      btnFemale.addEventListener('click', () => {
+        deceasedGender = 'female';
+        btnFemale.classList.add('border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-950/40', 'text-emerald-700', 'dark:text-emerald-300', 'font-bold');
+        btnMale.classList.remove('border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-950/40', 'text-emerald-700', 'dark:text-emerald-300', 'font-bold');
+        boxWives.classList.add('hidden');
+        boxHusband.classList.remove('hidden');
+        heirWives.value = 0;
+        heirHusband.value = 1;
+        recalculate();
+      });
+
+      // Inputs change
+      document.querySelectorAll('.heir-counter, .heir-select, #net-estate-input, #faraid-currency').forEach(el => {
+        el.addEventListener('input', recalculate);
+        el.addEventListener('change', recalculate);
+      });
+
+      function recalculate() {
+        const estate = Math.max(0, parseFloat(document.getElementById('net-estate-input').value) || 0);
+        const curr = document.getElementById('faraid-currency').value;
+        const sym = { USD: '$', EUR: '€', GBP: '£', SAR: 'SAR ', AED: 'AED ', BDT: '৳', PKR: '₨ ', INR: '₹', CAD: 'C$' }[curr] || '$';
+        
+        document.getElementById('currency-symbol-label').textContent = sym.trim();
+        document.getElementById('summary-total-estate').textContent = `${sym}${estate.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+        const wives = parseInt(document.getElementById('heir-wives').value, 10) || 0;
+        const husband = parseInt(document.getElementById('heir-husband').value, 10) || 0;
+        const father = parseInt(document.getElementById('heir-father').value, 10) === 1;
+        const mother = parseInt(document.getElementById('heir-mother').value, 10) === 1;
+        const sons = parseInt(document.getElementById('heir-sons').value, 10) || 0;
+        const daughters = parseInt(document.getElementById('heir-daughters').value, 10) || 0;
+        const hasChildren = (sons + daughters) > 0;
+
+        // Faraid calculation according to orthodox Sunni Fiqh
+        const shares = [];
+        let totalAssignedFraction = 0;
+
+        // 1. Spouse
+        if (deceasedGender === 'male' && wives > 0) {
+          const frac = hasChildren ? (1 / 8) : (1 / 4);
+          shares.push({ name: `Wife (or ${wives} Wives)`, fraction: hasChildren ? '1/8' : '1/4', value: frac, color: 'bg-rose-500' });
+          totalAssignedFraction += frac;
+        } else if (deceasedGender === 'female' && husband > 0) {
+          const frac = hasChildren ? (1 / 4) : (1 / 2);
+          shares.push({ name: 'Husband', fraction: hasChildren ? '1/4' : '1/2', value: frac, color: 'bg-sky-500' });
+          totalAssignedFraction += frac;
+        }
+
+        // 2. Mother
+        if (mother) {
+          const frac = hasChildren ? (1 / 6) : (1 / 3);
+          shares.push({ name: 'Mother', fraction: hasChildren ? '1/6' : '1/3', value: frac, color: 'bg-amber-500' });
+          totalAssignedFraction += frac;
+        }
+
+        // 3. Father
+        if (father) {
+          if (hasChildren && sons > 0) {
+            shares.push({ name: 'Father (Fixed Share)', fraction: '1/6', value: 1 / 6, color: 'bg-indigo-500' });
+            totalAssignedFraction += 1 / 6;
+          } else if (hasChildren && daughters > 0 && sons === 0) {
+            shares.push({ name: 'Father (Fixed 1/6 + Residue)', fraction: '1/6 + Asabah', value: 1 / 6, isFatherAsabah: true, color: 'bg-indigo-500' });
+            totalAssignedFraction += 1 / 6;
+          } else if (!hasChildren) {
+            // Father takes entire remainder as Asabah
+          }
+        }
+
+        // 4. Children (Sons & Daughters)
+        const remainder = Math.max(0, 1 - totalAssignedFraction);
+
+        if (sons > 0) {
+          // Sons and daughters share remainder 2:1
+          const parts = sons * 2 + daughters;
+          const portionPerPart = remainder / parts;
+          shares.push({
+            name: `${sons} Son(s) [2:1 Share]`,
+            fraction: `${((sons * 2 / parts) * 100).toFixed(1)}% of Residue`,
+            value: portionPerPart * sons * 2,
+            color: 'bg-emerald-600'
+          });
+          if (daughters > 0) {
+            shares.push({
+              name: `${daughters} Daughter(s) [2:1 Share]`,
+              fraction: `${((daughters / parts) * 100).toFixed(1)}% of Residue`,
+              value: portionPerPart * daughters,
+              color: 'bg-teal-500'
+            });
+          }
+        } else if (daughters > 0) {
+          // Daughters alone
+          const daughterFrac = daughters === 1 ? (1 / 2) : (2 / 3);
+          shares.push({
+            name: `${daughters} Daughter(s) [Quranic Share]`,
+            fraction: daughters === 1 ? '1/2' : '2/3',
+            value: daughterFrac,
+            color: 'bg-teal-500'
+          });
+          totalAssignedFraction += daughterFrac;
+
+          // Father takes remainder if alive
+          if (father) {
+            const fatherShare = shares.find(s => s.isFatherAsabah);
+            if (fatherShare) {
+              const extra = Math.max(0, 1 - totalAssignedFraction);
+              fatherShare.value += extra;
+              fatherShare.fraction = '1/6 + Residue';
+            }
+          }
+        } else if (!hasChildren && father) {
+          // Father takes remainder as Asabah
+          shares.push({
+            name: 'Father (Universal Residuary - Asabah)',
+            fraction: 'Remaining Balance',
+            value: remainder,
+            color: 'bg-indigo-500'
+          });
+        }
+
+        // Render Table & Progress Bar
+        const tbody = document.getElementById('faraid-results-tbody');
+        const pbar = document.getElementById('distribution-progress-bar');
+        
+        let tableHtml = '';
+        let barHtml = '';
+
+        shares.forEach(s => {
+          const amt = estate * s.value;
+          const pct = (s.value * 100).toFixed(1);
+          tableHtml += `
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40">
+              <td class="py-2.5 font-sans font-medium text-slate-800 dark:text-slate-200">
+                <span class="inline-block w-2.5 h-2.5 rounded-full ${s.color} mr-1.5"></span>
+                ${s.name}
+              </td>
+              <td class="py-2.5 text-slate-500">${s.fraction} (${pct}%)</td>
+              <td class="py-2.5 text-right font-bold text-slate-900 dark:text-white">${sym}${amt.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+            </tr>
+          `;
+          barHtml += `<div class="${s.color} h-full" style="width: ${pct}%;" title="${s.name}: ${pct}%"></div>`;
+        });
+
+        tbody.innerHTML = tableHtml || `<tr><td colspan="3" class="py-4 text-center text-slate-400 font-sans">No eligible heirs specified.</td></tr>`;
+        pbar.innerHTML = barHtml;
+      }
+
+      recalculate();
+    });
+  </script>
+</body>
+</html>

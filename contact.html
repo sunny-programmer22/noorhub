@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Feedback - NoorHub Digital Waqf</title>
+  <meta name="description" content="Reach out to the NoorHub team. Submit general feedback, feature requests, scholarly fiqh corrections, mosque timetable support, or bug reports.">
+  <meta name="keywords" content="Contact NoorHub, Islamic software feedback, fiqh correction, mosque timetable integration, islamic app bug report">
+  <meta property="og:title" content="Contact & Feedback - NoorHub Digital Waqf">
+  <meta property="og:description" content="Connect directly with NoorHub. Help us maintain accuracy, authenticity, and technical excellence.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://noorhub.truxio.bond/contact.html">
+
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              950: '#022c22',
+            },
+            amber: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            },
+            slate: {
+              850: '#131c2e',
+              900: '#0f172a',
+              950: '#0b0f19',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-emerald-900 text-emerald-100 text-xs py-1.5 px-4 text-center border-b border-emerald-800 flex justify-between items-center max-w-7xl mx-auto w-full">
+    <div class="hidden sm:flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>NoorHub Digital Waqf • Free, Authentic & Ad-Respecting</span>
+    </div>
+    <div class="mx-auto sm:mr-0 flex items-center space-x-4">
+      <span id="header-hijri-date" class="font-medium">1448 AH</span>
+      <span class="text-emerald-400">•</span>
+      <span id="header-clock" class="font-mono font-semibold">--:--:--</span>
+    </div>
+  </div>
+
+  <!-- Primary Navigation -->
+  <header class="sticky top-0 z-50 glass-header shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-emerald-900/20 group-hover:scale-105 transition-transform">
+            <span class="text-xl">🌙</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white font-heading">NoorHub</span>
+              <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-semibold uppercase tracking-wider">Contact</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-arabic leading-none -mt-0.5">نُور هَب • المِنَصَّةُ الإِسْلَامِيَّةُ</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a href="prayer-times.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Salat & Qibla</a>
+          <a href="fasting.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Fasting</a>
+          <a href="tasbih.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Tasbih & Adhkar</a>
+          <a href="hadith.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">40 Hadith</a>
+          <a href="zakat.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Zakat</a>
+          <a href="names.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Names</a>
+          <a href="inheritance.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Inheritance</a>
+          <a href="halal-guide.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Halal Guide</a>
+          <a href="mosque.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Mosque Kiosk</a>
+        </nav>
+
+        <!-- Right Action Controls -->
+        <div class="flex items-center space-x-2">
+          <!-- Dark/Light Theme Switcher -->
+          <button class="theme-toggle-btn p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Toggle theme">
+            <svg class="w-5 h-5 hidden dark:block text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+            <svg class="w-5 h-5 block dark:hidden text-slate-700" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+          </button>
+
+          <!-- Mobile Menu Hamburger -->
+          <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
+      <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">Home</a>
+      <a href="prayer-times.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Salat & Qibla Compass</a>
+      <a href="fasting.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Sawm & Fasting Companion</a>
+      <a href="tasbih.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Digital Tasbih & Adhkar</a>
+      <a href="hadith.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">The 40 Hadith of Imam Nawawi</a>
+      <a href="zakat.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Zakat Multi-Asset Calculator</a>
+      <a href="names.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Islamic Baby Names (Ism Finder)</a>
+      <a href="inheritance.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Faraid Inheritance Calculator</a>
+      <a href="halal-guide.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Halal Food & E-Number Guide</a>
+      <a href="mosque.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Mosque TV Kiosk Mode</a>
+      <a href="about.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">About NoorHub</a>
+      <a href="faq.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Frequently Asked Questions</a>
+      <a href="contact.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-bold text-emerald-600">Contact & Feedback</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-12">
+
+    <!-- Header Banner -->
+    <div class="text-center space-y-4 max-w-2xl mx-auto">
+      <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 text-xs font-semibold uppercase tracking-wider">
+        <span>📬</span>
+        <span>Open Communication & Verification</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-heading">
+        Contact & Feedback
+      </h1>
+      <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300">
+        We warmly welcome inquiries from worshippers, students, imams, and technical contributors. Have a suggestion, scholarly correction, or need mosque setup assistance? Reach out below.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- Left Column: Direct Contact & Information Cards (5 Cols) -->
+      <div class="lg:col-span-5 space-y-6">
+
+        <!-- Direct Email Card -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg font-bold">
+              ✉️
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">Direct Inquiries</h3>
+              <p class="text-xs text-slate-500">Fast response directly from the caretaker</p>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 flex items-center justify-between">
+            <span id="contact-email-text" class="text-xs sm:text-sm font-mono font-semibold text-emerald-700 dark:text-emerald-300 break-all select-all">
+              siddiknurealam1@gmail.com
+            </span>
+            <button id="btn-copy-email" class="ml-2 px-2.5 py-1.5 rounded-lg bg-white dark:bg-slate-700 text-xs font-medium text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-600 hover:text-emerald-600 transition flex items-center space-x-1 shrink-0" title="Copy email address">
+              <span id="copy-icon">📋</span>
+              <span id="copy-status">Copy</span>
+            </button>
+          </div>
+
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Please include relevant details such as your geographic coordinates, operating system, or specific hadith number if your inquiry pertains to a calculation or text verification.
+          </p>
+        </div>
+
+        <!-- Scholarly Advisory Invitation -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+          <div class="flex items-center space-x-2 text-amber-600 dark:text-amber-400 font-bold text-sm">
+            <span>📜</span>
+            <span>Scholarly & Fiqh Advisory</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Are you an Islamic scholar, mufti, or prayer timetable coordinator for your regional Islamic council? We honor and prioritize theological reviews to guarantee that NoorHub adheres to authentic Sunni jurisprudence. Select <em>"Scholarly / Fiqh Correction"</em> in the form.
+          </p>
+        </div>
+
+        <!-- Mosque Support Notice -->
+        <div class="glass-card rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+          <div class="flex items-center space-x-2 text-emerald-600 dark:text-emerald-400 font-bold text-sm">
+            <span>🕌</span>
+            <span>Mosque Display Support</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Need help deploying NoorHub's <strong>Mosque Kiosk Mode</strong> on your prayer hall TV screens or smart monitors? We provide complimentary guidance on configuring custom Iqamah offsets, full-screen autoplay, and HDMI micro-computer setups.
+          </p>
+        </div>
+
+        <!-- Quick FAQ Card -->
+        <div class="p-5 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+          <h4 class="font-bold text-xs uppercase tracking-wider text-slate-600 dark:text-slate-400">
+            Common Inquiries
+          </h4>
+          <ul class="text-xs space-y-2">
+            <li>
+              <a href="faq.html#calc-methods" class="text-emerald-600 dark:text-emerald-400 hover:underline flex items-center space-x-1.5">
+                <span>→</span>
+                <span>How to choose the correct prayer calculation method?</span>
+              </a>
+            </li>
+            <li>
+              <a href="faq.html#qibla-compass" class="text-emerald-600 dark:text-emerald-400 hover:underline flex items-center space-x-1.5">
+                <span>→</span>
+                <span>Why does my Qibla compass need sensor calibration?</span>
+              </a>
+            </li>
+            <li>
+              <a href="faq.html#zakat-nisab" class="text-emerald-600 dark:text-emerald-400 hover:underline flex items-center space-x-1.5">
+                <span>→</span>
+                <span>Should I calculate Zakat using Gold or Silver Nisab?</span>
+              </a>
+            </li>
+            <li>
+              <a href="faq.html#mosque-setup" class="text-emerald-600 dark:text-emerald-400 hover:underline flex items-center space-x-1.5">
+                <span>→</span>
+                <span>How do I set up Mosque Kiosk Mode on a TV?</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Contact Form (7 Cols) -->
+      <div class="lg:col-span-7">
+        <div class="glass-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+          
+          <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+            <h2 class="text-xl font-bold font-heading text-slate-900 dark:text-white">
+              Send a Message or Inquiry
+            </h2>
+            <p class="text-xs text-slate-500 mt-1">
+              Select your inquiry type to help us route your request appropriately.
+            </p>
+          </div>
+
+          <form id="contact-form" class="space-y-5" novalidate>
+            
+            <!-- Category Selector -->
+            <div>
+              <label for="contact-category" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
+                Inquiry Category <span class="text-emerald-600">*</span>
+              </label>
+              <select id="contact-category" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-emerald-500 outline-none transition">
+                <option value="General Feedback & Inquiries">General Feedback & Inquiries</option>
+                <option value="Feature Suggestion">Feature Suggestion or Tool Request</option>
+                <option value="Scholarly / Fiqh Correction">Scholarly / Fiqh Correction (Verified Sources)</option>
+                <option value="Mosque Timetable Support">Mosque Timetable / TV Kiosk Setup Support</option>
+                <option value="Technical Bug Report">Technical Bug Report or Calculation Error</option>
+              </select>
+            </div>
+
+            <!-- Name and Email Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="contact-name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
+                  Your Name <span class="text-emerald-600">*</span>
+                </label>
+                <input type="text" id="contact-name" required placeholder="Brother or Sister" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-emerald-500 outline-none transition">
+              </div>
+
+              <div>
+                <label for="contact-email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
+                  Email Address <span class="text-emerald-600">*</span>
+                </label>
+                <input type="email" id="contact-email" required placeholder="youremail@example.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-emerald-500 outline-none transition">
+              </div>
+            </div>
+
+            <!-- Subject -->
+            <div>
+              <label for="contact-subject" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
+                Subject Line <span class="text-emerald-600">*</span>
+              </label>
+              <input type="text" id="contact-subject" required placeholder="Brief summary of your inquiry" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-emerald-500 outline-none transition">
+            </div>
+
+            <!-- Message Area -->
+            <div>
+              <label for="contact-message" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
+                Message & Details <span class="text-emerald-600">*</span>
+              </label>
+              <textarea id="contact-message" rows="5" required placeholder="Please write your questions, scholarly citations, or technical details here..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-emerald-500 outline-none transition resize-y"></textarea>
+            </div>
+
+            <!-- Submission Actions -->
+            <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+              <div class="text-[11px] text-slate-500 dark:text-slate-400">
+                🔒 Privacy: Messages are generated directly to email. Zero tracking.
+              </div>
+
+              <div class="flex items-center space-x-3">
+                <button type="submit" id="btn-submit-form" class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs transition shadow-md shadow-emerald-900/20 flex items-center justify-center space-x-2">
+                  <span>📨</span>
+                  <span>Submit Message</span>
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+          <!-- Confirmation Notification Box -->
+          <div id="form-feedback-modal" class="hidden p-5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 space-y-3">
+            <div class="flex items-start space-x-3">
+              <div class="text-2xl text-emerald-600">✓</div>
+              <div class="space-y-1">
+                <h4 class="font-bold text-sm text-emerald-900 dark:text-emerald-100">
+                  Message Ready to Dispatch!
+                </h4>
+                <p class="text-xs text-emerald-800 dark:text-emerald-300 leading-relaxed" id="modal-feedback-text">
+                  Your message has been composed. If your email client does not open automatically, you can copy the inquiry details below and send directly to <strong class="underline">siddiknurealam1@gmail.com</strong>.
+                </p>
+              </div>
+            </div>
+            <div class="pt-2 flex items-center space-x-3">
+              <button id="btn-open-email-client" class="px-3.5 py-1.5 rounded-lg bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-700 transition">
+                Open Email Client (Mailto)
+              </button>
+              <button id="btn-copy-inquiry-body" class="px-3.5 py-1.5 rounded-lg bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 text-xs font-medium hover:text-emerald-600 transition">
+                Copy Inquiry Text
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <!-- Brand Info -->
+        <div class="space-y-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-2xl">🌙</span>
+            <span class="text-lg font-bold text-white font-heading">NoorHub</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The authentic unified Islamic digital living platform. Providing precision prayer schedules, fasting companions, zakat tools, and prophetic hadith without commercial tracking.
+          </p>
+          <p class="text-xs text-emerald-400 font-arabic pt-1">
+            صَدَقَةٌ جَارِيَةٌ لِوَجْهِ اللَّهِ تَعَالَى
+          </p>
+        </div>
+
+        <!-- Quick Links: Core Tools -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Core Tools</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="prayer-times.html" class="hover:text-emerald-400 transition">Prayer Times & Qibla</a></li>
+            <li><a href="fasting.html" class="hover:text-emerald-400 transition">Fasting & Ramadan Tracker</a></li>
+            <li><a href="tasbih.html" class="hover:text-emerald-400 transition">Digital Tasbih & Adhkar</a></li>
+            <li><a href="zakat.html" class="hover:text-emerald-400 transition">Zakat Calculator & Nisab</a></li>
+            <li><a href="hadith.html" class="hover:text-emerald-400 transition">40 Hadith of Imam Nawawi</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources & Knowledge -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">Resources</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="names.html" class="hover:text-emerald-400 transition">Islamic Baby Names (Ism)</a></li>
+            <li><a href="inheritance.html" class="hover:text-emerald-400 transition">Faraid Inheritance Engine</a></li>
+            <li><a href="halal-guide.html" class="hover:text-emerald-400 transition">Halal Food & E-Numbers</a></li>
+            <li><a href="99-names.html" class="hover:text-emerald-400 transition">99 Names of Allah</a></li>
+            <li><a href="mosque.html" class="hover:text-emerald-400 transition">Mosque TV Kiosk Mode</a></li>
+          </ul>
+        </div>
+
+        <!-- Trust & About -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">About & Trust</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="about.html" class="hover:text-emerald-400 transition">About NoorHub Initiative</a></li>
+            <li><a href="faq.html" class="hover:text-emerald-400 transition">Frequently Asked Questions</a></li>
+            <li><a href="contact.html" class="text-emerald-400 font-semibold transition">Contact & Feedback</a></li>
+            <li><a href="privacy.html" class="hover:text-emerald-400 transition">Privacy Commitment (Zero Tracking)</a></li>
+            <li><a href="terms.html" class="hover:text-emerald-400 transition">Terms of Service</a></li>
+            <li class="pt-2 text-[11px] text-slate-500">Contact: siddiknurealam1@gmail.com</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <p>© 2026 NoorHub. Free, Open & Waqf-dedicated. All rights reserved for the Ummah.</p>
+        <div class="flex space-x-4 mt-2 sm:mt-0">
+          <span>noorhub.truxio.bond</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="shared.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Copy email functionality
+      const copyBtn = document.getElementById('btn-copy-email');
+      const emailText = document.getElementById('contact-email-text');
+      const copyStatus = document.getElementById('copy-status');
+
+      if (copyBtn && emailText) {
+        copyBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText(emailText.textContent.trim()).then(() => {
+            copyStatus.textContent = 'Copied!';
+            copyBtn.classList.add('text-emerald-600', 'border-emerald-500');
+            setTimeout(() => {
+              copyStatus.textContent = 'Copy';
+              copyBtn.classList.remove('text-emerald-600', 'border-emerald-500');
+            }, 3000);
+          }).catch(() => {
+            alert('Email address: ' + emailText.textContent.trim());
+          });
+        });
+      }
+
+      // 2. Form submission logic
+      const form = document.getElementById('contact-form');
+      const feedbackModal = document.getElementById('form-feedback-modal');
+      const openMailBtn = document.getElementById('btn-open-email-client');
+      const copyInquiryBtn = document.getElementById('btn-copy-inquiry-body');
+
+      let currentMailto = '';
+      let currentInquiryBody = '';
+
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById('contact-name').value.trim();
+          const email = document.getElementById('contact-email').value.trim();
+          const category = document.getElementById('contact-category').value;
+          const subject = document.getElementById('contact-subject').value.trim();
+          const message = document.getElementById('contact-message').value.trim();
+
+          if (!name || !email || !subject || !message) {
+            alert('Please fill out all required fields before submitting.');
+            return;
+          }
+
+          const fullSubject = `[NoorHub ${category}] ${subject}`;
+          currentInquiryBody = `Inquiry Category: ${category}\nFrom: ${name} (${email})\nDate: ${new Date().toISOString()}\n\nMessage:\n${message}\n\n---\nSent via NoorHub Contact Portal (noorhub.truxio.bond)`;
+
+          currentMailto = `mailto:siddiknurealam1@gmail.com?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(currentInquiryBody)}`;
+
+          // Display confirmation panel
+          if (feedbackModal) {
+            feedbackModal.classList.remove('hidden');
+            feedbackModal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+
+          // Trigger mailto intent
+          window.location.href = currentMailto;
+        });
+      }
+
+      if (openMailBtn) {
+        openMailBtn.addEventListener('click', () => {
+          if (currentMailto) {
+            window.location.href = currentMailto;
+          }
+        });
+      }
+
+      if (copyInquiryBtn) {
+        copyInquiryBtn.addEventListener('click', () => {
+          if (currentInquiryBody) {
+            navigator.clipboard.writeText(currentInquiryBody).then(() => {
+              copyInquiryBtn.textContent = 'Inquiry Copied!';
+              setTimeout(() => {
+                copyInquiryBtn.textContent = 'Copy Inquiry Text';
+              }, 3000);
+            });
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
