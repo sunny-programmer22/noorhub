@@ -1590,10 +1590,9 @@ function initSettings() {
 }
 
 function initTheme() {
-  const savedTheme = localStorage.getItem('salatnow_theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const savedTheme = localStorage.getItem('noorhub_theme') || localStorage.getItem('salatnow_theme');
 
-  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+  if (savedTheme === 'dark') {
     document.documentElement.classList.add('dark');
   } else {
     document.documentElement.classList.remove('dark');

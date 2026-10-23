@@ -28,7 +28,7 @@ const NOORHUB_CITIES = [
 class NoorHubCore {
   constructor() {
     this.city = this.loadCity();
-    this.theme = localStorage.getItem('noorhub_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    this.theme = localStorage.getItem('noorhub_theme') || 'light';
     this.initTheme();
     this.initMobileNav();
     this.initHeaderElements();
