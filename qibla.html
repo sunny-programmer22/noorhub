@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Qibla Compass - NoorHub</title>
-  <meta name="description" content="Precision 2D astronomical Qibla compass. Real-time phone orientation sensors, golden Kaaba pointer, desktop 360° simulator, distance to Makkah, and authentic Islamic fiqh guide.">
+  <title>Precision Qibla Compass & Geodesic Map - NoorHub</title>
+  <meta name="description" content="Precision astronomical Qibla compass & live geodesic satellite map. Real-time fluid hardware orientation sensors, golden Kaaba pointer, Great Circle orthodrome, distance to Makkah, and authentic Islamic fiqh guide.">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -20,7 +20,7 @@
       }
     }
   </script>
-    <script>
+  <script>
     // Theme initialization: default light mode unless dark is explicitly stored
     if (localStorage.getItem('noorhub_theme') === 'dark') {
       document.documentElement.classList.add('dark');
@@ -28,8 +28,24 @@
       document.documentElement.classList.remove('dark');
     }
   </script>
+  
+  <!-- Leaflet.js Mapping Engine for Geodesic Navigation -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕋</text></svg>">
+  <style>
+    .noorhub-map-marker-clean {
+      background: transparent !important;
+      border: none !important;
+    }
+    .leaflet-popup-content-wrapper {
+      border-radius: 1rem !important;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.2) !important;
+      border: 1px solid rgba(16, 185, 129, 0.2) !important;
+    }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col islamic-bg-pattern">
 
@@ -50,8 +66,7 @@
           </div>
         </a>
 
-        <!-- Desktop Nav Links -->
-                <!-- Desktop Navigation Links -->
+        <!-- Desktop Navigation Links -->
         <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-300">
           <a href="index.html" class="px-3 py-2 rounded-lg hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Portal</a>
           <a href="qibla.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/40">Qibla Compass</a>
@@ -80,7 +95,7 @@
       </div>
     </div>
 
-        <!-- Mobile Drawer Menu -->
+    <!-- Mobile Drawer Menu -->
     <div id="mobile-nav-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2 text-sm">
       <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Portal</a>
       <a href="qibla.html" class="block px-3 py-2 rounded-md bg-emerald-50 dark:bg-emerald-950 font-semibold text-emerald-600">Qibla Compass</a>
@@ -112,13 +127,13 @@
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <div>
         <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300 text-xs font-semibold mb-2">
-          <span>🕋 Great-Circle Azimuth Trigonometry</span>
+          <span>🕋 Spherical Forward Azimuth Geodesy</span>
         </div>
         <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-heading">
           Precision Qibla Compass
         </h1>
         <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-          Orient yourself directly toward the Holy Kaaba in Makkah al-Mukarramah (21.4225° N, 39.8262° E)
+          Direct astronomical Great Circle orientation to the Holy Kaaba in Makkah al-Mukarramah (21.422487° N, 39.826206° E)
         </p>
       </div>
 
@@ -127,7 +142,7 @@
         <select id="qibla-city-select" class="px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-emerald-500 outline-none">
           <!-- Populated by JS -->
         </select>
-        <button id="qibla-gps-btn" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center space-x-1.5 shadow-sm">
+        <button id="qibla-gps-btn" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center space-x-1.5 shadow-sm active:scale-95">
           <span>🎯 Use GPS</span>
         </button>
       </div>
@@ -136,19 +151,19 @@
     <!-- The 2D Interactive Compass Main Card -->
     <section class="glass-card rounded-3xl p-6 sm:p-10 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
       
-      <!-- Action Bar: Sensor Status, Permission Button, and Audio Toggle -->
+      <!-- Action Bar: Sensor Status, Single Dignified Activation Button, and Audio Toggle -->
       <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800">
-        <div class="flex items-center space-x-2">
+        <div class="flex flex-wrap items-center gap-2.5">
           <span class="compass-sensor-badge inline-flex items-center text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700">
-            Sensor: Standby (Hold Flat)
+            Sensor Status: Geographic Instrument Mode (GPS Calibrated)
           </span>
-          <button class="enable-compass-sensor-btn px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center space-x-1 shadow-sm">
-            <span>📱 Enable Phone Compass</span>
+          <button id="activate-sensors-btn" class="calibrate-activate-sensors-btn enable-compass-sensor-btn px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-bold transition flex items-center space-x-1.5 shadow-sm">
+            <span>🧭 Calibrate & Activate Sensors</span>
           </button>
         </div>
 
         <div class="flex items-center space-x-2">
-          <button class="toggle-compass-sound-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition border border-slate-200 dark:border-slate-700">
+          <button class="toggle-compass-sound-btn px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold transition border border-slate-200 dark:border-slate-700">
             🔔 Chime: On
           </button>
         </div>
@@ -179,7 +194,7 @@
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60">
               <span class="text-slate-500 dark:text-slate-400 font-medium">Current Device Heading</span>
               <p class="current-heading-label text-2xl sm:text-3xl font-extrabold font-mono text-amber-600 dark:text-amber-400 mt-1">0° N</p>
-              <span class="text-[10px] text-slate-400">Direction your device is pointing</span>
+              <span class="text-[10px] text-slate-400">Direction device is oriented</span>
             </div>
           </div>
 
@@ -191,36 +206,39 @@
 
           <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 px-1">
             <span class="qibla-distance-label font-mono font-medium">-- km to Makkah</span>
-            <span>Haptic & Audio: Active</span>
+            <span>Haptic Feedback & Audio: Active</span>
           </div>
 
-          <!-- Desktop / Manual Direction Simulator Slider -->
-          <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-3">
+          <!-- Geodesic Instrument & Street Navigation Telemetry -->
+          <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-3.5">
             <div class="flex justify-between items-center text-xs">
-              <span class="font-bold text-slate-800 dark:text-slate-200">Desktop / Manual Direction Simulator:</span>
-              <span class="current-heading-label font-mono font-bold text-emerald-600 dark:text-emerald-400">0° N</span>
+              <span class="font-bold text-slate-800 dark:text-slate-200 flex items-center space-x-1.5">
+                <span>📐</span>
+                <span>Geodesic Coordinates & Telemetry</span>
+              </span>
+              <span class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 font-mono" id="qibla-geo-status">GPS Calibrated</span>
             </div>
-            <input type="range" min="0" max="360" value="0" class="compass-heading-slider w-full accent-emerald-600 cursor-pointer h-2 bg-slate-200 dark:bg-slate-700 rounded-lg">
-            <div class="flex justify-between text-[10px] font-mono text-slate-400">
-              <span>0° (N)</span>
-              <span>90° (E)</span>
-              <span>180° (S)</span>
-              <span>270° (W)</span>
-              <span>360° (N)</span>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px]">
+              <div class="p-2.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wider">Your Location</span>
+                <span id="geo-user-coords" class="font-mono font-semibold text-slate-700 dark:text-slate-300 block mt-0.5 truncate">--° N, --° E</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wider">Holy Kaaba</span>
+                <span class="font-mono font-semibold text-amber-600 dark:text-amber-400 block mt-0.5">21.4225° N, 39.8262° E</span>
+              </div>
             </div>
-            
-            <!-- Quick Test Buttons -->
-            <div class="flex flex-wrap gap-2 pt-2">
-              <button class="test-align-kaaba-btn px-3 py-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-xs font-bold border border-emerald-300 dark:border-emerald-800 hover:bg-emerald-200 dark:hover:bg-emerald-900 transition flex items-center space-x-1">
-                <span>🎯 Simulate Facing Kaaba</span>
-              </button>
-              <button class="test-reset-north-btn px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-300 dark:hover:bg-slate-600 transition">
-                <span>🧭 Reset to North (0°)</span>
-              </button>
+
+            <div class="p-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/40 text-xs text-slate-600 dark:text-slate-300 space-y-1">
+              <div class="font-bold text-emerald-800 dark:text-emerald-300 flex items-center space-x-1">
+                <span>🏢</span>
+                <span>Desktop & Laptop Street-Level Alignment:</span>
+              </div>
+              <p class="text-[11px] leading-relaxed text-slate-600 dark:text-slate-400">
+                On computers without magnetometers, use the interactive Great Circle satellite map below. Zoom in to your exact building to align your prayer rug with walls, windows, or street angles along the radiant golden beam.
+              </p>
             </div>
-            <p class="text-[11px] text-slate-400 leading-tight">
-              Tip: You can slide above, click "Simulate Facing Kaaba", or drag the circular compass face with your mouse/finger to test rotation!
-            </p>
           </div>
 
         </div>
@@ -230,8 +248,8 @@
           
           <div class="interactive-compass-dial-container cursor-grab active:cursor-grabbing select-none relative w-72 h-72 sm:w-88 sm:h-88 flex items-center justify-center rounded-full border-4 border-slate-800 dark:border-slate-700 bg-slate-950 shadow-2xl compass-outer-frame transition-all duration-300">
             
-            <!-- Rotating Compass Rose Dial -->
-            <div class="compass-dial-rotate absolute inset-0 w-full h-full flex items-center justify-center transition-transform duration-200 ease-out" style="transform: rotate(0deg);">
+            <!-- Rotating Compass Rose Dial (Liquid Damped) -->
+            <div class="compass-dial-rotate absolute inset-0 w-full h-full flex items-center justify-center" style="transform: rotate(0deg);">
               
               <!-- Precise SVG Dial Face with Ticks and Degrees -->
               <svg class="w-full h-full p-3" viewBox="0 0 300 300">
@@ -270,7 +288,7 @@
             </div>
 
             <!-- Kaaba Pointer Needle (Points directly to relative Kaaba direction) -->
-            <div class="qibla-pointer-needle absolute w-full h-full flex items-center justify-center transition-transform duration-200 ease-out z-20 pointer-events-none" style="transform: rotate(0deg);">
+            <div class="qibla-pointer-needle absolute w-full h-full flex items-center justify-center z-20 pointer-events-none" style="transform: rotate(0deg);">
               <div class="w-2.5 bg-gradient-to-t from-transparent via-amber-400 to-amber-500 h-64 flex flex-col items-center justify-start">
                 <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-500 to-amber-400 text-white flex items-center justify-center text-xl shadow-2xl -mt-5 border-2 border-slate-900 animate-bounce">
                   🕋
@@ -293,12 +311,67 @@
               Keep phone flat on your palm. When the Kaaba icon points straight up (at ▲), you face Makkah!
             </p>
             <p class="text-[11px] text-slate-400">
-              Interactive 360° rotation • Touch/drag the compass rose to turn manually
+              Fluid-damped magnetic stabilization • Astronomical Spherical Forward Azimuth
             </p>
           </div>
 
         </div>
 
+      </div>
+    </section>
+
+    <!-- Live Geodesic Great Circle Map Section -->
+    <section class="glass-card rounded-3xl p-6 sm:p-10 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800/60 text-amber-700 dark:text-amber-300 text-xs font-semibold mb-2">
+            <span>🌐 High-Precision Geodesic Orthodrome</span>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white font-heading">
+            Live Geodesic Satellite & Street Alignment Map
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+            Real-time Great Circle path directly connecting your exact coordinates to the Holy Kaaba. Desktop and laptop users can zoom directly down to street and rooftop level to orient prayers along building walls and windows.
+          </p>
+        </div>
+
+        <!-- Map Navigation Controls -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="map-btn-user" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center space-x-1.5 shadow-sm active:scale-95">
+            <span>🔍 Street Level (My Location)</span>
+          </button>
+          <button id="map-btn-fit" class="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold transition border border-slate-200 dark:border-slate-700 flex items-center space-x-1.5">
+            <span>🌐 Full Geodesic Arc</span>
+          </button>
+          <button id="map-btn-kaaba" class="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold transition border border-slate-200 dark:border-slate-700 flex items-center space-x-1.5">
+            <span>🕋 Makkah (Kaaba)</span>
+          </button>
+          <button id="map-layer-toggle" class="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition flex items-center space-x-1.5 shadow-sm">
+            <span>🛰️ Switch to Satellite</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Map Container -->
+      <div class="relative w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-inner">
+        <div id="qibla-map" class="w-full h-[450px] sm:h-[550px] z-10"></div>
+        
+        <!-- On-Map Geodesic Telemetry Overlay -->
+        <div class="absolute bottom-4 left-4 z-20 pointer-events-none bg-slate-900/90 backdrop-blur-md text-white p-3.5 rounded-2xl border border-emerald-500/40 shadow-2xl text-xs space-y-1 hidden sm:block max-w-xs">
+          <div class="flex items-center space-x-1.5 text-emerald-400 font-bold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>Geodesic Great Circle Beam</span>
+          </div>
+          <div class="text-[11px] text-slate-300 font-mono">
+            Forward Azimuth: <span id="map-overlay-bearing" class="font-bold text-amber-300">--°</span>
+          </div>
+          <div class="text-[11px] text-slate-300 font-mono">
+            Distance: <span id="map-overlay-distance" class="font-bold text-emerald-300">-- km</span>
+          </div>
+          <div class="text-[10px] text-slate-400 pt-0.5">
+            Zoom in to maximum street level for physical room & window alignment.
+          </div>
+        </div>
       </div>
     </section>
 

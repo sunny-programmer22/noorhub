@@ -188,13 +188,13 @@
             <span>Live Astronomical Qibla Compass</span>
           </div>
           <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-heading mt-1">
-            Kaaba Qibla Direction & Heading Finder
+            Kaaba Qibla Direction &amp; Heading Finder
           </h2>
         </div>
 
         <div class="flex items-center space-x-2">
-          <span class="compass-sensor-badge inline-flex items-center text-[11px] font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-700">
-            Sensor: Standby
+          <span class="compass-sensor-badge inline-flex items-center text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 px-2.5 py-1 rounded-full border border-emerald-300 dark:border-emerald-800">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span> Geographic Direction Mode (GPS Calibrated)
           </span>
           <button class="enable-compass-sensor-btn px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center space-x-1 shadow-sm">
             <span>📱 Enable Phone Compass</span>
@@ -244,31 +244,47 @@
 
           <div class="flex items-center justify-between text-xs text-slate-500 pt-1">
             <span class="qibla-distance-label font-mono">-- km to Makkah</span>
-            <span>Haptic & Audio: Active</span>
+            <span>Haptic &amp; Audio: Active</span>
           </div>
 
-          <!-- Manual Heading Slider (For Laptops / Testing) -->
-          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 space-y-2">
-            <div class="flex justify-between items-center text-xs">
-              <span class="font-semibold text-slate-700 dark:text-slate-300">Desktop / Manual Direction Simulator:</span>
-              <span class="current-heading-label font-mono font-bold text-emerald-600 dark:text-emerald-400">0° N</span>
+          <!-- Professional Astronomical Instrumentation Panel -->
+          <div class="p-5 rounded-2xl bg-gradient-to-br from-slate-50 to-emerald-50/30 dark:from-slate-800/60 dark:to-emerald-950/20 border border-slate-200 dark:border-slate-700/70 space-y-3">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-700/60">
+              <span class="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center space-x-1.5">
+                <span>🌐</span>
+                <span>Astronomical Coordinates &amp; Telemetry</span>
+              </span>
+              <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-300 dark:border-emerald-800">
+                WGS-84 Spheroid
+              </span>
             </div>
-            <input type="range" min="0" max="360" value="0" class="compass-heading-slider w-full accent-emerald-600 cursor-pointer">
-            <div class="flex flex-wrap gap-2 pt-1">
-              <button class="test-align-kaaba-btn px-2.5 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-xs font-bold border border-emerald-300 dark:border-emerald-800 hover:bg-emerald-200 dark:hover:bg-emerald-900 transition flex items-center space-x-1">
-                <span>🎯 Simulate Facing Kaaba</span>
-              </button>
-              <button class="test-reset-north-btn px-2.5 py-1 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-300 dark:hover:bg-slate-600 transition">
-                <span>🧭 Reset to North (0°)</span>
-              </button>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-3 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800">
+                <span class="text-slate-500 dark:text-slate-400 text-[11px]">Kaaba Celestial Coordinates</span>
+                <p class="font-mono font-bold text-slate-800 dark:text-slate-200 mt-1">21.4225° N, 39.8262° E</p>
+                <span class="text-[10px] text-slate-400">Makkah al-Mukarramah</span>
+              </div>
+
+              <div class="p-3 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800">
+                <span class="text-slate-500 dark:text-slate-400 text-[11px]">Geodesic Distance</span>
+                <p class="qibla-distance-label font-mono font-bold text-slate-800 dark:text-slate-200 mt-1">-- km to Makkah</p>
+                <span class="text-[10px] text-slate-400">Great Circle Arc</span>
+              </div>
             </div>
-            <p class="text-[11px] text-slate-400">Slide to turn your simulated direction, click "Simulate Facing Kaaba", or drag the compass dial directly.</p>
+
+            <div class="pt-2">
+              <a href="qibla.html" class="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md transition group">
+                <span>Open Full Qibla Map &amp; Satellite Compass</span>
+                <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </a>
+            </div>
           </div>
         </div>
 
         <!-- Right: The 2D Interactive Compass -->
         <div class="lg:col-span-6 flex flex-col items-center justify-center">
-          <div class="interactive-compass-dial-container cursor-grab active:cursor-grabbing select-none relative w-72 h-72 sm:w-84 sm:h-84 flex items-center justify-center rounded-full border-4 border-slate-800 dark:border-slate-700 bg-slate-950 shadow-2xl compass-outer-frame transition-all duration-300">
+          <div class="interactive-compass-dial-container select-none relative w-72 h-72 sm:w-84 sm:h-84 flex items-center justify-center rounded-full border-4 border-slate-800 dark:border-slate-700 bg-slate-950 shadow-2xl compass-outer-frame transition-all duration-300">
             
             <!-- Rotating Compass Rose Dial -->
             <div class="compass-dial-rotate absolute inset-0 w-full h-full flex items-center justify-center transition-transform duration-200 ease-out" style="transform: rotate(0deg);">
@@ -307,7 +323,7 @@
             </div>
 
             <!-- Phone Top Orientation Notch Indicator -->
-            <div class="absolute -top-3 w-6 h-3 bg-rose-500 rounded-b-md shadow-md z-30 flex items-center justify-center text-[8px] font-bold text-white">▲</div>
+            <div class="absolute -top-3 w-6 h-3 bg-rose-500 rounded-b-md shadow-md z-30 flex items-center justify-center text-[8px] font-bold text-white">&#9650;</div>
 
             <!-- Central Jewel -->
             <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-emerald-600 to-emerald-400 border-4 border-slate-900 shadow-lg z-30 flex items-center justify-center">
@@ -316,8 +332,8 @@
 
           </div>
 
-          <p class="text-[11px] text-slate-400 mt-4 text-center">
-            Tip: Keep phone flat on your palm. When the Kaaba icon points straight up, you are facing Makkah!
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-4 text-center">
+            Position device flat or parallel to the horizon. The golden Kaaba pointer dynamically tracks the spherical azimuth toward the Holy Sanctuary.
           </p>
         </div>
 

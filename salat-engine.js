@@ -6,7 +6,7 @@
  * - Aladhan REST API integration with graceful automatic offline fallback
  * - Real-time countdown timer & active prayer progress bar
  * - 2D Interactive Qibla Compass using forward azimuth spherical trigonometry
- * - Mobile DeviceOrientation sensor support with calibration and desktop drag/slider simulation
+ * - Mobile DeviceOrientation sensor support with real-time geomagnetic orientation
  * - Web Audio API synthesized Adhan & spiritual prayer chime
  * - Browser Web Notifications API integration
  * - Monthly prayer calendar schedule generator & CSV exporter
